@@ -812,7 +812,7 @@ p:empty {
   text-align: center;
 }
 
-#custom-partner-search-form [id^="edit-keys"] {
+#esf-tc-custom-partner-search-form [id^="edit-keys"] {
   border: 1px solid #576987;
   background: rgba(255, 255, 255, .88);
   border-right: 0;
@@ -823,7 +823,7 @@ p:empty {
   color: #5d5d5d;
 }
 
-#custom-partner-search-form [id^="edit-submit"] {
+#esf-tc-custom-partner-search-form [id^="edit-submit"] {
   border: 1px solid #576987;
   background: rgba(255, 255, 255, .88) url(../images/search/zoom.png) no-repeat 50% 50%;
   border-left: 0;
