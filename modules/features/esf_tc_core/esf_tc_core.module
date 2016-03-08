@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the esf_tc_core feature.
+ */
+
+include_once 'esf_tc_core.features.inc';

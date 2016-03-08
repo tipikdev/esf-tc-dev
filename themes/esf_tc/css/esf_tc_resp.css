@@ -1,0 +1,33 @@
+@media (max-width: 767px) {
+  /* NAVIGATION */
+  #main-menu .menu.nav > li {
+    display: block;
+    width: 100%;
+  }
+
+  #main-menu .menu > li > .menu,
+  #main-menu .expanded .expanded .menu {
+    position: static;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+  }
+}
+
+@media (min-width: 984px) {
+  /* RESET */
+  .container {
+    width: 984px;
+  }
+
+  /* Left menu */
+  #sidebar-left {
+    padding: 0;
+  }
+
+  /* Content wrapper */
+  #content-wrapper {
+    padding: 0 15px;
+  }
+}

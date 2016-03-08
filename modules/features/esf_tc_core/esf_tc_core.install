@@ -1,0 +1,38 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for esf_tc_core module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function esf_tc_core_install() {
+  $t = get_t();
+  drupal_set_message($t("The feature ESF TC core has been installed."));
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function esf_tc_core_uninstall() {
+  $t = get_t();
+  drupal_set_message($t("The feature ESF TC core has been uninstalled."));
+}
+
+/**
+ * Implements hook_enable().
+ */
+function esf_tc_core_enable() {
+  $t = get_t();
+  drupal_set_message($t("The feature ESF TC core has been enabled."));
+}
+
+/**
+ * Implements hook_disable().
+ */
+function esf_tc_core_disable() {
+  $t = get_t();
+  drupal_set_message($t("The feature ESF TC core has been disabled."));
+}
