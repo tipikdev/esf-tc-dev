@@ -1,0 +1,115 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for esf_tc_content_types module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function esf_tc_content_types_install() {
+  $t = get_t();
+  drupal_set_message($t("The feature ESF TC content types has been installed."));
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function esf_tc_content_types_uninstall() {
+  $t = get_t();
+
+  // Deletes the Call types taxonomy term.
+  $vocabulary = taxonomy_vocabulary_machine_name_load('call_types');
+  if ($vocabulary) {
+    $vid = $vocabulary->vid;
+    taxonomy_vocabulary_delete($vid);
+  }
+
+  // Deletes the ESF Countries and regions taxonomy term.
+  $vocabulary = taxonomy_vocabulary_machine_name_load('esf_countries_regions');
+  if ($vocabulary) {
+    $vid = $vocabulary->vid;
+    taxonomy_vocabulary_delete($vid);
+  }
+
+  // Deletes the ESF themes taxonomy term.
+  $vocabulary = taxonomy_vocabulary_machine_name_load('esf_themes');
+  if ($vocabulary) {
+    $vid = $vocabulary->vid;
+    taxonomy_vocabulary_delete($vid);
+  }
+
+  // Deletes the Languages taxonomy term.
+  $vocabulary = taxonomy_vocabulary_machine_name_load('languages');
+  if ($vocabulary) {
+    $vid = $vocabulary->vid;
+    taxonomy_vocabulary_delete($vid);
+  }
+
+  // Deletes the Organisation types taxonomy term.
+  $vocabulary = taxonomy_vocabulary_machine_name_load('organisation_types');
+  if ($vocabulary) {
+    $vid = $vocabulary->vid;
+    taxonomy_vocabulary_delete($vid);
+  }
+
+  // Deletes the Project activities taxonomy term.
+  $vocabulary = taxonomy_vocabulary_machine_name_load('project_activities');
+  if ($vocabulary) {
+    $vid = $vocabulary->vid;
+    taxonomy_vocabulary_delete($vid);
+  }
+
+  // Deletes the Project target groups taxonomy term.
+  $vocabulary = taxonomy_vocabulary_machine_name_load('project_target_groups');
+  if ($vocabulary) {
+    $vid = $vocabulary->vid;
+    taxonomy_vocabulary_delete($vid);
+  }
+
+  drupal_set_message($t("Specific ESF vocabularies have been deleted from your site."));
+  drupal_set_message($t("The feature ESF TC content types has been uninstalled."));
+}
+
+/**
+ * Implements hook_enable().
+ */
+function esf_tc_content_types_enable() {
+  $t = get_t();
+
+  // Enable SolR indexation for content types.
+  multisite_drupal_toolbox_config_solr_bundle('esf_tnc_global_call', 'add');
+  multisite_drupal_toolbox_config_solr_bundle('esf_tnc_hp_slide', 'add');
+  multisite_drupal_toolbox_config_solr_bundle('esf_tnc_organisation', 'add');
+  multisite_drupal_toolbox_config_solr_bundle('esf_tnc_project', 'add');
+  multisite_drupal_toolbox_config_solr_bundle('esf_tnc_tca', 'add');
+  multisite_drupal_toolbox_config_solr_bundle('forum', 'add');
+
+  drupal_set_message($t("The feature ESF TC content types has been enabled."));
+}
+
+/**
+ * Implements hook_disable().
+ */
+function esf_tc_content_types_disable() {
+  $t = get_t();
+
+  // Disable content types.
+  multisite_drupal_toolbox_disable_content_type('esf_tnc_global_call');
+  multisite_drupal_toolbox_disable_content_type('esf_tnc_hp_slide');
+  multisite_drupal_toolbox_disable_content_type('esf_tnc_organisation');
+  multisite_drupal_toolbox_disable_content_type('esf_tnc_project');
+  multisite_drupal_toolbox_disable_content_type('esf_tnc_tca');
+  multisite_drupal_toolbox_disable_content_type('forum');
+
+  // Disable SolR indexation for content types.
+  multisite_drupal_toolbox_config_solr_bundle('esf_tnc_global_call', 'delete');
+  multisite_drupal_toolbox_config_solr_bundle('esf_tnc_hp_slide', 'delete');
+  multisite_drupal_toolbox_config_solr_bundle('esf_tnc_organisation', 'delete');
+  multisite_drupal_toolbox_config_solr_bundle('esf_tnc_project', 'delete');
+  multisite_drupal_toolbox_config_solr_bundle('esf_tnc_tca', 'delete');
+  multisite_drupal_toolbox_config_solr_bundle('forum', 'delete');
+
+  drupal_set_message($t("The feature ESF TC content types has been disabled."));
+}
