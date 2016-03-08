@@ -18,7 +18,7 @@ function esf_tc_content_types_views_default_views() {
   $view->human_name = 'All organisations';
   $view->core = 7;
   $view->api_version = '3.0';
-  $view->disabled = FALSE;
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
@@ -142,7 +142,7 @@ function esf_tc_content_types_views_default_views() {
   $view->human_name = 'call for project ( project type)';
   $view->core = 7;
   $view->api_version = '3.0';
-  $view->disabled = FALSE;
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
@@ -235,7 +235,7 @@ function esf_tc_content_types_views_default_views() {
   $view->human_name = 'Contact';
   $view->core = 7;
   $view->api_version = '3.0';
-  $view->disabled = FALSE;
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
@@ -302,7 +302,7 @@ function esf_tc_content_types_views_default_views() {
   $view->human_name = 'Hp_slider';
   $view->core = 7;
   $view->api_version = '3.0';
-  $view->disabled = FALSE;
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
@@ -360,7 +360,7 @@ function esf_tc_content_types_views_default_views() {
   $view->human_name = 'organisations selected in the Thematic';
   $view->core = 7;
   $view->api_version = '3.0';
-  $view->disabled = FALSE;
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
@@ -445,7 +445,7 @@ function esf_tc_content_types_views_default_views() {
   $view->human_name = 'published_organisations';
   $view->core = 7;
   $view->api_version = '3.0';
-  $view->disabled = FALSE;
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');

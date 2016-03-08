@@ -62,7 +62,7 @@ function esf_tc_content_types_context_default_contexts() {
   $export['esf_tc_homepage'] = $context;
 
   $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->disabled = FALSE;
   $context->api_version = 3;
   $context->name = 'esf_tnc_site_wide';
   $context->description = 'global context';

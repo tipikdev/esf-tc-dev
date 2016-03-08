@@ -24,7 +24,7 @@ function esf_tc_content_types_field_default_field_instances() {
           'file_view_mode' => 'default',
         ),
         'type' => 'media',
-        'weight' => 10,
+        'weight' => 11,
       ),
       'print' => array(
         'label' => 'above',
@@ -66,7 +66,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'media_generic',
-      'weight' => 14,
+      'weight' => 13,
     ),
   );
 
@@ -164,7 +164,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'track_list' => 0,
       ),
       'type' => 'term_reference_tree',
-      'weight' => 5,
+      'weight' => 4,
     ),
   );
 
@@ -228,13 +228,13 @@ function esf_tc_content_types_field_default_field_instances() {
           'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
-        'weight' => 9,
+        'weight' => 10,
       ),
       'print' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'field_collection_item',
@@ -242,64 +242,7 @@ function esf_tc_content_types_field_default_field_instances() {
     'label' => 'Eligibility end date',
     'required' => 1,
     'settings' => array(
-      'default_value' => 'now',
-      'default_value2' => 'same',
-      'default_value_code' => '',
-      'default_value_code2' => '',
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'date',
-      'settings' => array(
-        'increment' => 15,
-        'input_format' => 'd/m/Y - H:i:s',
-        'input_format_custom' => '',
-        'label_position' => 'above',
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'text_parts' => array(),
-        'year_range' => '-3:+3',
-      ),
-      'type' => 'date_select',
-      'weight' => 10,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'field_collection_item-field_call_coordinated_calls-field_fc_call_eligibility_start'.
-  $field_instances['field_collection_item-field_call_coordinated_calls-field_fc_call_eligibility_start'] = array(
-    'bundle' => 'field_call_coordinated_calls',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'inline',
-        'module' => 'date',
-        'settings' => array(
-          'format_type' => 'long',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
-          'show_remaining_days' => FALSE,
-        ),
-        'type' => 'date_default',
-        'weight' => 11,
-      ),
-      'print' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 11,
-      ),
-    ),
-    'entity_type' => 'field_collection_item',
-    'field_name' => 'field_fc_call_eligibility_start',
-    'label' => 'Eligibility start date',
-    'required' => 1,
-    'settings' => array(
-      'default_value' => 'now',
+      'default_value' => 'blank',
       'default_value2' => 'same',
       'default_value_code' => '',
       'default_value_code2' => '',
@@ -320,6 +263,62 @@ function esf_tc_content_types_field_default_field_instances() {
       ),
       'type' => 'date_select',
       'weight' => 9,
+    ),
+  );
+
+  // Exported field_instance:
+  $field_instances['field_collection_item-field_call_coordinated_calls-field_fc_call_eligibility_start'] = array(
+    'bundle' => 'field_call_coordinated_calls',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => FALSE,
+        ),
+        'type' => 'date_default',
+        'weight' => 9,
+      ),
+      'print' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_fc_call_eligibility_start',
+    'label' => 'Eligibility start date',
+    'required' => 1,
+    'settings' => array(
+      'default_value' => 'blank',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'increment' => 15,
+        'input_format' => 'd/m/Y - H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'no_fieldset' => 0,
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_select',
+      'weight' => 8,
     ),
   );
 
@@ -380,7 +379,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'link_field',
-      'weight' => 13,
+      'weight' => 12,
     ),
   );
 
@@ -424,12 +423,11 @@ please save your work as draft and check that the editorial status of the organi
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 6,
+      'weight' => 5,
     ),
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_call_coordinated_calls-field_fc_call_num_short_ref'.
   $field_instances['field_collection_item-field_call_coordinated_calls-field_fc_call_num_short_ref'] = array(
     'bundle' => 'field_call_coordinated_calls',
     'default_value' => NULL,
@@ -499,7 +497,6 @@ please save your work as draft and check that the editorial status of the organi
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_call_coordinated_calls-field_fc_call_other_countries'.
   $field_instances['field_collection_item-field_call_coordinated_calls-field_fc_call_other_countries'] = array(
     'bundle' => 'field_call_coordinated_calls',
     'default_value' => NULL,
@@ -564,12 +561,11 @@ please save your work as draft and check that the editorial status of the organi
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 4,
+      'weight' => 3,
     ),
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_call_coordinated_calls-field_fc_call_sub_deadline'.
   $field_instances['field_collection_item-field_call_coordinated_calls-field_fc_call_sub_deadline'] = array(
     'bundle' => 'field_call_coordinated_calls',
     'deleted' => 0,
@@ -593,7 +589,7 @@ please save your work as draft and check that the editorial status of the organi
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'field_collection_item',
@@ -601,7 +597,7 @@ please save your work as draft and check that the editorial status of the organi
     'label' => 'Submission deadline',
     'required' => 1,
     'settings' => array(
-      'default_value' => 'now',
+      'default_value' => 'blank',
       'default_value2' => 'same',
       'default_value_code' => '',
       'default_value_code2' => '',
@@ -616,17 +612,16 @@ please save your work as draft and check that the editorial status of the organi
         'input_format' => 'd/m/Y - H:i:s',
         'input_format_custom' => '',
         'label_position' => 'above',
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'no_fieldset' => 0,
         'text_parts' => array(),
         'year_range' => '-3:+3',
       ),
       'type' => 'date_select',
-      'weight' => 11,
+      'weight' => 14,
     ),
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_call_coordinated_calls-field_fc_call_title_en'.
   $field_instances['field_collection_item-field_call_coordinated_calls-field_fc_call_title_en'] = array(
     'bundle' => 'field_call_coordinated_calls',
     'default_value' => NULL,
@@ -692,12 +687,11 @@ please save your work as draft and check that the editorial status of the organi
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 7,
+      'weight' => 6,
     ),
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_call_coordinated_calls-field_fc_call_total_budget'.
   $field_instances['field_collection_item-field_call_coordinated_calls-field_fc_call_total_budget'] = array(
     'bundle' => 'field_call_coordinated_calls',
     'default_value' => NULL,
@@ -762,7 +756,7 @@ please save your work as draft and check that the editorial status of the organi
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 12,
+      'weight' => 11,
     ),
   );
 
@@ -832,7 +826,7 @@ please save your work as draft and check that the editorial status of the organi
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 8,
+      'weight' => 7,
     ),
   );
 
@@ -943,7 +937,6 @@ please save your work as draft and check that the editorial status of the organi
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_org_additional_contacts-field_fc_contact_account'.
   $field_instances['field_collection_item-field_org_additional_contacts-field_fc_contact_account'] = array(
     'bundle' => 'field_org_additional_contacts',
     'default_value' => NULL,
@@ -1211,7 +1204,6 @@ please save your work as draft and check that the editorial status of the organi
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_tca_partner_organisations-field_fc_budget_activity'.
   $field_instances['field_collection_item-field_tca_partner_organisations-field_fc_budget_activity'] = array(
     'bundle' => 'field_tca_partner_organisations',
     'default_value' => NULL,
@@ -1246,8 +1238,7 @@ please save your work as draft and check that the editorial status of the organi
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_tca_partner_organisations-field_fc_date_initial_signature'.
-  $field_instances['field_collection_item-field_tca_partner_organisations-field_fc_date_initial_signature'] = array(
+  $field_instances['field_collection_item-field_tca_partner_organisations-field_fc_date_initial_sign'] = array(
     'bundle' => 'field_tca_partner_organisations',
     'deleted' => 0,
     'description' => '',
@@ -1268,11 +1259,11 @@ please save your work as draft and check that the editorial status of the organi
       ),
     ),
     'entity_type' => 'field_collection_item',
-    'field_name' => 'field_fc_date_initial_signature',
+    'field_name' => 'field_fc_date_initial_sign',
     'label' => 'Date of initial signature',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
-      'default_value' => 'now',
+      'default_value' => 'blank',
       'default_value2' => 'same',
       'default_value_code' => '',
       'default_value_code2' => '',
@@ -1297,7 +1288,6 @@ please save your work as draft and check that the editorial status of the organi
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_tca_partner_organisations-field_fc_mas_approval_status'.
   $field_instances['field_collection_item-field_tca_partner_organisations-field_fc_mas_approval_status'] = array(
     'bundle' => 'field_tca_partner_organisations',
     'default_value' => array(
@@ -1313,7 +1303,7 @@ please save your work as draft and check that the editorial status of the organi
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 5,
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'field_collection_item',
@@ -1336,7 +1326,6 @@ please save your work as draft and check that the editorial status of the organi
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_tca_partner_organisations-field_fc_partner_project'.
   $field_instances['field_collection_item-field_tca_partner_organisations-field_fc_partner_project'] = array(
     'bundle' => 'field_tca_partner_organisations',
     'default_value' => NULL,
@@ -1375,7 +1364,6 @@ please save your work as draft and check that the editorial status of the organi
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_tca_partner_organisations-field_fc_total_budget_'.
   $field_instances['field_collection_item-field_tca_partner_organisations-field_fc_total_budget_'] = array(
     'bundle' => 'field_tca_partner_organisations',
     'default_value' => NULL,
@@ -1392,12 +1380,12 @@ please save your work as draft and check that the editorial status of the organi
           'thousand_separator' => '',
         ),
         'type' => 'number_integer',
-        'weight' => 6,
+        'weight' => 5,
       ),
     ),
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_fc_total_budget_',
-    'label' => 'Total budget  ',
+    'label' => 'Total budget',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1417,7 +1405,6 @@ please save your work as draft and check that the editorial status of the organi
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_tca_partner_organisations-field_place_of_signature'.
   $field_instances['field_collection_item-field_tca_partner_organisations-field_place_of_signature'] = array(
     'bundle' => 'field_tca_partner_organisations',
     'default_value' => NULL,
@@ -3797,7 +3784,7 @@ please save your work as draft and check that the editorial status of the organi
     ),
     'entity_type' => 'node',
     'field_name' => 'field_org_specify_type',
-    'label' => 'Please specify the type of organisation ',
+    'label' => 'Please specify the type of organisation',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -4676,21 +4663,21 @@ please save your work as draft and check that the editorial status of the organi
           'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
-        'weight' => 37,
+        'weight' => 57,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'node',
     'field_name' => 'field_project_end_date_activity',
     'label' => 'End date of transnational activity',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
-      'default_value' => 'now',
+      'default_value' => 'blank',
       'default_value2' => 'same',
       'default_value_code' => '',
       'default_value_code2' => '',
@@ -4710,7 +4697,7 @@ please save your work as draft and check that the editorial status of the organi
         'year_range' => '-3:+3',
       ),
       'type' => 'date_select',
-      'weight' => 40,
+      'weight' => 34,
     ),
   );
 
@@ -4896,7 +4883,7 @@ please save your work as draft and check that the editorial status of the organi
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 36,
+      'weight' => 37,
     ),
   );
 
@@ -5040,7 +5027,7 @@ please save your work as draft and check that the editorial status of the organi
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 38,
+      'weight' => 39,
     ),
   );
 
@@ -5112,7 +5099,7 @@ please save your work as draft and check that the editorial status of the organi
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 35,
+      'weight' => 36,
     ),
   );
 
@@ -5435,7 +5422,7 @@ If an organisation is not found, please save your work as draft and check that t
         ),
       ),
       'type' => 'media_generic',
-      'weight' => 34,
+      'weight' => 35,
     ),
   );
 
@@ -5502,7 +5489,7 @@ If an organisation is not found, please save your work as draft and check that t
         ),
       ),
       'type' => 'media_generic',
-      'weight' => 37,
+      'weight' => 38,
     ),
   );
 
@@ -6349,7 +6336,7 @@ If an organisation is not found, please save your work as draft and check that t
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 42,
+      'weight' => 41,
     ),
   );
 
@@ -6474,7 +6461,7 @@ If an organisation is not found, please save your work as draft and check that t
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 39,
+      'weight' => 40,
     ),
   );
 
@@ -6656,7 +6643,7 @@ If an organisation is not found, please save your work as draft and check that t
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 18,
+      'weight' => 17,
     ),
   );
 
@@ -6700,7 +6687,7 @@ If an organisation is not found, please save your work as draft and check that t
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 17,
+      'weight' => 16,
     ),
   );
 
@@ -6716,7 +6703,7 @@ If an organisation is not found, please save your work as draft and check that t
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 11,
+        'weight' => 12,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -6788,7 +6775,7 @@ If an organisation is not found, please save your work as draft and check that t
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 9,
+        'weight' => 10,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -6868,21 +6855,21 @@ If an organisation is not found, please save your work as draft and check that t
           'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
-        'weight' => 2,
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'node',
     'field_name' => 'field_tca_end_date_activity',
     'label' => 'End date of the TCA activity',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
-      'default_value' => 'now',
+      'default_value' => 'blank',
       'default_value2' => 'same',
       'default_value_code' => '',
       'default_value_code2' => '',
@@ -6922,7 +6909,7 @@ If an organisation is not found, please save your work as draft and check that t
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 3,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -6960,7 +6947,7 @@ If an organisation is not found, please save your work as draft and check that t
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 5,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -7044,7 +7031,7 @@ If an organisation is not found, please save your work as draft and check that t
           'image_style' => '',
         ),
         'type' => 'image',
-        'weight' => 4,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -7110,7 +7097,7 @@ If an organisation is not found, please save your work as draft and check that t
           'link' => 1,
         ),
         'type' => 'entityreference_label',
-        'weight' => 8,
+        'weight' => 9,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -7280,7 +7267,7 @@ If an organisation is not found, please save your work as draft and check that t
         'module' => 'file',
         'settings' => array(),
         'type' => 'file_default',
-        'weight' => 6,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -7346,13 +7333,13 @@ If an organisation is not found, please save your work as draft and check that t
           'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
-        'weight' => 12,
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'node',
@@ -7360,7 +7347,7 @@ If an organisation is not found, please save your work as draft and check that t
     'label' => 'Start date of the TCA activity',
     'required' => 0,
     'settings' => array(
-      'default_value' => 'now',
+      'default_value' => 'blank',
       'default_value2' => 'same',
       'default_value_code' => '',
       'default_value_code2' => '',
@@ -7400,7 +7387,7 @@ If an organisation is not found, please save your work as draft and check that t
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 7,
+        'weight' => 8,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -7440,7 +7427,7 @@ If an organisation is not found, please save your work as draft and check that t
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 10,
+        'weight' => 11,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -8361,8 +8348,7 @@ please save your work as draft and check that the editorial status of the organi
   t('Place of signature');
   t('Please specify the type of organisation');
   t('Please type the name of a contact to display possible options. If a user is not found, please save your work as draft and check that the editorial status of the user profile is set to Published or add name and email.');
-  t('Please type the name of a contact to display possible options. If a user is not found, please save your work as draft and check that the editorial status of the user profile is set to Published or ask the user to create an ECAS account and ask to be informed when the user has logged once.
-');
+  t('Please type the name of a contact to display possible options. If a user is not found, please save your work as draft and check that the editorial status of the user profile is set to Published or ask the user to create an ECAS account and ask to be informed when the user has logged once.');
   t('Please type the name of a contact to display possible options.<br> If a user is not found, please save your work as draft and check that the editorial status of the user profile is set to Published or add a name and email.');
   t('Please type the name of a partner organisation to display possible options. If an organisation is not found, please save your work and check that the editorial status of the organisation is set to Published or create a new organisation.');
   t('Please type the name of an organisation to display possible options.

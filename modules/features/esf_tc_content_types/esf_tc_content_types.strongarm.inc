@@ -11,252 +11,252 @@ function esf_tc_content_types_strongarm() {
   $export = array();
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_anonymous_esf_tnc_global_call';
   $strongarm->value = '0';
   $export['comment_anonymous_esf_tnc_global_call'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_anonymous_esf_tnc_hp_slide';
   $strongarm->value = '0';
   $export['comment_anonymous_esf_tnc_hp_slide'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_anonymous_esf_tnc_organisation';
   $strongarm->value = '0';
   $export['comment_anonymous_esf_tnc_organisation'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_anonymous_esf_tnc_project';
   $strongarm->value = '0';
   $export['comment_anonymous_esf_tnc_project'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_anonymous_esf_tnc_tca';
   $strongarm->value = '0';
   $export['comment_anonymous_esf_tnc_tca'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_mode_esf_tnc_global_call';
   $strongarm->value = 1;
   $export['comment_default_mode_esf_tnc_global_call'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_mode_esf_tnc_hp_slide';
   $strongarm->value = 1;
   $export['comment_default_mode_esf_tnc_hp_slide'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_mode_esf_tnc_organisation';
   $strongarm->value = 1;
   $export['comment_default_mode_esf_tnc_organisation'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_mode_esf_tnc_project';
   $strongarm->value = 1;
   $export['comment_default_mode_esf_tnc_project'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_mode_esf_tnc_tca';
   $strongarm->value = 1;
   $export['comment_default_mode_esf_tnc_tca'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_per_page_esf_tnc_global_call';
   $strongarm->value = '50';
   $export['comment_default_per_page_esf_tnc_global_call'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_per_page_esf_tnc_hp_slide';
   $strongarm->value = '50';
   $export['comment_default_per_page_esf_tnc_hp_slide'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_per_page_esf_tnc_organisation';
   $strongarm->value = '50';
   $export['comment_default_per_page_esf_tnc_organisation'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_per_page_esf_tnc_project';
   $strongarm->value = '50';
   $export['comment_default_per_page_esf_tnc_project'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_per_page_esf_tnc_tca';
   $strongarm->value = '50';
   $export['comment_default_per_page_esf_tnc_tca'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_esf_tnc_global_call';
   $strongarm->value = '1';
   $export['comment_esf_tnc_global_call'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_esf_tnc_hp_slide';
   $strongarm->value = '1';
   $export['comment_esf_tnc_hp_slide'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_esf_tnc_organisation';
   $strongarm->value = '1';
   $export['comment_esf_tnc_organisation'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_esf_tnc_project';
   $strongarm->value = '1';
   $export['comment_esf_tnc_project'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_esf_tnc_tca';
   $strongarm->value = '1';
   $export['comment_esf_tnc_tca'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_form_location_esf_tnc_global_call';
   $strongarm->value = 1;
   $export['comment_form_location_esf_tnc_global_call'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_form_location_esf_tnc_hp_slide';
   $strongarm->value = 1;
   $export['comment_form_location_esf_tnc_hp_slide'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_form_location_esf_tnc_organisation';
   $strongarm->value = 1;
   $export['comment_form_location_esf_tnc_organisation'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_form_location_esf_tnc_project';
   $strongarm->value = 1;
   $export['comment_form_location_esf_tnc_project'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_form_location_esf_tnc_tca';
   $strongarm->value = 0;
   $export['comment_form_location_esf_tnc_tca'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_preview_esf_tnc_global_call';
   $strongarm->value = '1';
   $export['comment_preview_esf_tnc_global_call'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_preview_esf_tnc_hp_slide';
   $strongarm->value = '0';
   $export['comment_preview_esf_tnc_hp_slide'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_preview_esf_tnc_organisation';
   $strongarm->value = '0';
   $export['comment_preview_esf_tnc_organisation'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_preview_esf_tnc_project';
   $strongarm->value = '1';
   $export['comment_preview_esf_tnc_project'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_preview_esf_tnc_tca';
   $strongarm->value = '0';
   $export['comment_preview_esf_tnc_tca'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_subject_field_esf_tnc_global_call';
   $strongarm->value = 1;
   $export['comment_subject_field_esf_tnc_global_call'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_subject_field_esf_tnc_hp_slide';
   $strongarm->value = 1;
   $export['comment_subject_field_esf_tnc_hp_slide'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_subject_field_esf_tnc_organisation';
   $strongarm->value = 1;
   $export['comment_subject_field_esf_tnc_organisation'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_subject_field_esf_tnc_project';
   $strongarm->value = 1;
   $export['comment_subject_field_esf_tnc_project'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_subject_field_esf_tnc_tca';
   $strongarm->value = 0;
   $export['comment_subject_field_esf_tnc_tca'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__esf_tnc_global_call';
   $strongarm->value = array(
@@ -304,7 +304,7 @@ function esf_tc_content_types_strongarm() {
   $export['field_bundle_settings_node__esf_tnc_global_call'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__esf_tnc_hp_slide';
   $strongarm->value = array(
@@ -324,7 +324,7 @@ function esf_tc_content_types_strongarm() {
   $export['field_bundle_settings_node__esf_tnc_hp_slide'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__esf_tnc_organisation';
   $strongarm->value = array(
@@ -372,7 +372,7 @@ function esf_tc_content_types_strongarm() {
   $export['field_bundle_settings_node__esf_tnc_organisation'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__esf_tnc_project';
   $strongarm->value = array(
@@ -417,7 +417,7 @@ function esf_tc_content_types_strongarm() {
   $export['field_bundle_settings_node__esf_tnc_project'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__esf_tnc_tca';
   $strongarm->value = array(
@@ -465,42 +465,42 @@ function esf_tc_content_types_strongarm() {
   $export['field_bundle_settings_node__esf_tnc_tca'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_esf_tnc_global_call';
   $strongarm->value = '0';
   $export['language_content_type_esf_tnc_global_call'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_esf_tnc_hp_slide';
   $strongarm->value = '0';
   $export['language_content_type_esf_tnc_hp_slide'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_esf_tnc_organisation';
   $strongarm->value = '0';
   $export['language_content_type_esf_tnc_organisation'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_esf_tnc_project';
   $strongarm->value = '0';
   $export['language_content_type_esf_tnc_project'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_esf_tnc_tca';
   $strongarm->value = '0';
   $export['language_content_type_esf_tnc_tca'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_esf_tnc_global_call';
   $strongarm->value = array(
@@ -509,14 +509,14 @@ function esf_tc_content_types_strongarm() {
   $export['menu_options_esf_tnc_global_call'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_esf_tnc_hp_slide';
   $strongarm->value = array();
   $export['menu_options_esf_tnc_hp_slide'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_esf_tnc_organisation';
   $strongarm->value = array(
@@ -526,7 +526,7 @@ function esf_tc_content_types_strongarm() {
   $export['menu_options_esf_tnc_organisation'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_esf_tnc_project';
   $strongarm->value = array(
@@ -535,7 +535,7 @@ function esf_tc_content_types_strongarm() {
   $export['menu_options_esf_tnc_project'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_esf_tnc_tca';
   $strongarm->value = array(
@@ -544,42 +544,42 @@ function esf_tc_content_types_strongarm() {
   $export['menu_options_esf_tnc_tca'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_esf_tnc_global_call';
   $strongarm->value = 'main-menu:0';
   $export['menu_parent_esf_tnc_global_call'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_esf_tnc_hp_slide';
   $strongarm->value = 'main-menu:0';
   $export['menu_parent_esf_tnc_hp_slide'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_esf_tnc_organisation';
   $strongarm->value = 'menu-left-menu:0';
   $export['menu_parent_esf_tnc_organisation'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_esf_tnc_project';
   $strongarm->value = 'main-menu:0';
   $export['menu_parent_esf_tnc_project'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_esf_tnc_tca';
   $strongarm->value = 'main-menu:0';
   $export['menu_parent_esf_tnc_tca'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'nodeaccess_nodereference';
   $strongarm->value = array(
@@ -680,7 +680,7 @@ function esf_tc_content_types_strongarm() {
   $export['nodeaccess_nodereference'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'nodeaccess_nodereference_cross_access';
   $strongarm->value = array(
@@ -691,7 +691,7 @@ function esf_tc_content_types_strongarm() {
   $export['nodeaccess_nodereference_cross_access'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'nodeaccess_userreference';
   $strongarm->value = array(
@@ -775,14 +775,14 @@ function esf_tc_content_types_strongarm() {
   $export['nodeaccess_userreference'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_esf_tnc_global_call';
   $strongarm->value = array();
   $export['node_options_esf_tnc_global_call'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_esf_tnc_hp_slide';
   $strongarm->value = array(
@@ -791,175 +791,175 @@ function esf_tc_content_types_strongarm() {
   $export['node_options_esf_tnc_hp_slide'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_esf_tnc_organisation';
   $strongarm->value = array();
   $export['node_options_esf_tnc_organisation'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_esf_tnc_project';
   $strongarm->value = array();
   $export['node_options_esf_tnc_project'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_esf_tnc_tca';
   $strongarm->value = array();
   $export['node_options_esf_tnc_tca'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_esf_tnc_global_call';
   $strongarm->value = '0';
   $export['node_preview_esf_tnc_global_call'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_esf_tnc_hp_slide';
   $strongarm->value = '1';
   $export['node_preview_esf_tnc_hp_slide'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_esf_tnc_organisation';
   $strongarm->value = '1';
   $export['node_preview_esf_tnc_organisation'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_esf_tnc_project';
   $strongarm->value = '1';
   $export['node_preview_esf_tnc_project'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_esf_tnc_tca';
   $strongarm->value = '1';
   $export['node_preview_esf_tnc_tca'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_esf_tnc_global_call';
   $strongarm->value = 0;
   $export['node_submitted_esf_tnc_global_call'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_esf_tnc_hp_slide';
   $strongarm->value = 0;
   $export['node_submitted_esf_tnc_hp_slide'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_esf_tnc_organisation';
   $strongarm->value = 0;
   $export['node_submitted_esf_tnc_organisation'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_esf_tnc_project';
   $strongarm->value = 0;
   $export['node_submitted_esf_tnc_project'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_esf_tnc_tca';
   $strongarm->value = 0;
   $export['node_submitted_esf_tnc_tca'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_esf_tnc_global_call_pattern';
   $strongarm->value = 'call-[node:nid]';
   $export['pathauto_node_esf_tnc_global_call_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_esf_tnc_organisation_pattern';
   $strongarm->value = '[node:field_org_acronym]-[node:nid]';
   $export['pathauto_node_esf_tnc_organisation_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_esf_tnc_project_pattern';
   $strongarm->value = 'TPI-[node:nid]';
   $export['pathauto_node_esf_tnc_project_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_esf_tnc_tca_pattern';
   $strongarm->value = 'TCA-[node:nid]';
   $export['pathauto_node_esf_tnc_tca_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_taxonomy_term_call_types_pattern';
   $strongarm->value = '';
   $export['pathauto_taxonomy_term_call_types_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_taxonomy_term_ec_world_countries_pattern';
   $strongarm->value = '';
   $export['pathauto_taxonomy_term_ec_world_countries_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_taxonomy_term_esf_countries_regions_pattern';
   $strongarm->value = '';
   $export['pathauto_taxonomy_term_esf_countries_regions_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_taxonomy_term_esf_themes_pattern';
   $strongarm->value = '';
   $export['pathauto_taxonomy_term_esf_themes_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_taxonomy_term_languages_pattern';
   $strongarm->value = '';
   $export['pathauto_taxonomy_term_languages_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_taxonomy_term_organisation_types_pattern';
   $strongarm->value = '';
   $export['pathauto_taxonomy_term_organisation_types_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_taxonomy_term_project_activities_pattern';
   $strongarm->value = '';
   $export['pathauto_taxonomy_term_project_activities_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_taxonomy_term_project_target_groups_pattern';
   $strongarm->value = '';
