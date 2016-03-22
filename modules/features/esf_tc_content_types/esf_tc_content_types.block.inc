@@ -23,7 +23,7 @@ function esf_tc_content_types_block_view($delta = '') {
     case 'statistics':
       $block = array(
         'subject' => t('Statistics'),
-        'content' => esf_tc_build_stats_block(),
+        'content' => _esf_tc_build_stats_block(),
       );
       break;
   }
@@ -36,11 +36,11 @@ function esf_tc_content_types_block_view($delta = '') {
 /**
  * Build the content of Statistics block.
  */
-function esf_tc_build_stats_block() {
+function _esf_tc_build_stats_block() {
   $info = array();
 
   // Count number of Organisations.
-  $count = esf_tc_helper_count_published_content('esf_tnc_organisation');
+  $count = _esf_tc_helper_count_published_content('esf_tnc_organisation');
 
   $info['organisations'] = array(
     'title' => t('Organisations'),
@@ -48,7 +48,7 @@ function esf_tc_build_stats_block() {
   );
 
   // Count number of Project.
-  $count = esf_tc_helper_count_published_content('esf_tnc_project');
+  $count = _esf_tc_helper_count_published_content('esf_tnc_project');
 
   $info['projects'] = array(
     'title' => t('Projects'),
@@ -57,7 +57,7 @@ function esf_tc_build_stats_block() {
 
   // Count number of Active Searching Project.
   $fields = array('field_project_searching' => 1);
-  $count = esf_tc_helper_count_published_content('esf_tnc_project', $fields);
+  $count = _esf_tc_helper_count_published_content('esf_tnc_project', $fields);
 
   $info['searching'] = array(
     'title' => t('Active searches'),
@@ -67,7 +67,7 @@ function esf_tc_build_stats_block() {
   unset($query);
 
   // Count number of TCA.
-  $count = esf_tc_helper_count_published_content('esf_tnc_tca');
+  $count = _esf_tc_helper_count_published_content('esf_tnc_tca');
 
   $info['TCA'] = array(
     'title' => t('TCAs'),
@@ -75,7 +75,7 @@ function esf_tc_build_stats_block() {
   );
 
   // Count number of Calls.
-  $count = esf_tc_helper_count_published_content('esf_tnc_global_call');
+  $count = _esf_tc_helper_count_published_content('esf_tnc_global_call');
 
   $info['calls'] = array(
     'title' => t('Calls'),
@@ -88,7 +88,7 @@ function esf_tc_build_stats_block() {
 /**
  * Helper function - Count of published content.
  */
-function esf_tc_helper_count_published_content($bundle, $fields = array()) {
+function _esf_tc_helper_count_published_content($bundle, $fields = array()) {
   // Field_esf_editorial_status.
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node')

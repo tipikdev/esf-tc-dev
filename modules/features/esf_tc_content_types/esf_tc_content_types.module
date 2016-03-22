@@ -5,11 +5,6 @@
  */
 
 include_once 'esf_tc_content_types.features.inc';
-/**
- * @file
- * Code for the ESF TC content types feature.
- */
-
 include_once 'esf_tc_content_types.theme.inc';
 include_once 'esf_tc_content_types.block.inc';
 
