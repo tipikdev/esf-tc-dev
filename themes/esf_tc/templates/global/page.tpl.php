@@ -95,10 +95,6 @@
  */
 ?>
 
-<?php
-global $base_url;
-?>
-
 <a id="top-page"></a>
 
 <div class="container">
