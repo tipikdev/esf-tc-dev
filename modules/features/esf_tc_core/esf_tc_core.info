@@ -11,7 +11,6 @@ dependencies[] = ctools
 dependencies[] = features
 features[ctools][] = context:context:3
 features[features_api][] = api:2
-features[menu_custom][] = main-menu
 features[menu_custom][] = menu-left-menu
 features[menu_links][] = main-menu_about-the-esf:<front>
 features[menu_links][] = main-menu_activities:<front>
