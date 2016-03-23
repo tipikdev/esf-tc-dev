@@ -9,7 +9,6 @@ dependencies[] = context
 dependencies[] = ctools
 dependencies[] = esf_tc_content_types
 dependencies[] = facetapi
-dependencies[] = menu
 dependencies[] = strongarm
 features[apachesolr_search_page][] = core_search
 features[apachesolr_search_page][] = partners_search

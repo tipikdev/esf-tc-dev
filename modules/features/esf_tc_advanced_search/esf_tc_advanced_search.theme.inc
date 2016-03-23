@@ -11,9 +11,6 @@
  *
  * Add custom template files.
  */
-/**
- * Implements hook_action_info().
- */
 function esf_tc_advanced_search_theme_registry_alter(&$theme_registry) {
   // Defined path to current module.
   $module_path = drupal_get_path('module', 'esf_tc_advanced_search');
