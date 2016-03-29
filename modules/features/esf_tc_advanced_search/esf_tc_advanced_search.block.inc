@@ -27,7 +27,7 @@ function esf_tc_advanced_search_block_view($delta = '') {
     case 'partners_search_block':
       $path = _esf_tc_helper_get_solr_default_page_path();
       $block = array(
-        'content' => esf_tc_helper_custom_search_block($path),
+        'content' => _esf_tc_helper_custom_search_block($path),
       );
   }
   if ($block) {
@@ -39,7 +39,7 @@ function esf_tc_advanced_search_block_view($delta = '') {
 /**
  * Custom Search Block for parners.
  */
-function esf_tc_helper_custom_search_block($path) {
+function _esf_tc_helper_custom_search_block($path) {
   $form = drupal_get_form('esf_tc_custom_partner_search_form');
   return drupal_render($form);
 }
