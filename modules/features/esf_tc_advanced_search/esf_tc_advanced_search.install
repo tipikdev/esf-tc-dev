@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for esf_tc_advanced_search module.
+ */
+
+/**
+ * Implements hook_enable().
+ */
+function esf_tc_advanced_search_enable() {
+  $t = get_t();
+  drupal_set_message($t("The feature ESF TC Advanced Search has been enabled."));
+}
+
+/**
+ * Implements hook_disable().
+ */
+function esf_tc_advanced_search_disable() {
+  $t = get_t();
+  drupal_set_message($t("The feature ESF TC Advanced Search has been disabled."));
+}

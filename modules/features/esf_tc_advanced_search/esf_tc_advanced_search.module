@@ -1,0 +1,33 @@
+<?php
+/**
+ * @file
+ * Code for the esf_tc_advanced_search feature.
+ */
+
+include_once 'esf_tc_advanced_search.features.inc';
+include_once 'esf_tc_advanced_search.block.inc';
+include_once 'esf_tc_advanced_search.theme.inc';
+
+/**
+ * Implements hook_apachesolr_query_prepare().
+ */
+function esf_tc_advanced_search_apachesolr_query_prepare($query) {
+  if (arg(0) == 'search' && arg(1) == 'partners-search') {
+    $query->addFilter('bundle', '( esf_tnc_project OR esf_tnc_tca OR esf_tnc_organisation OR esf_tnc_global_call)', FALSE);
+  }
+}
+
+/**
+ * Implements hook_apachesolr_process_results().
+ */
+function esf_tc_advanced_search_apachesolr_process_results(array &$results, DrupalSolrQueryInterface $query) {
+  // Attach teaser view to result.
+  for ($i = 0; $i < count($results); $i++) {
+    if ($results[$i]['entity_type'] == 'node') {
+      $view_mode = 'teaser';
+      $teaser = node_view(node_load($results[$i]['node']->entity_id), $view_mode);
+      $results[$i]['snippet'] = $teaser;
+      $results[$i]['info'] = $results[$i]['type'];
+    }
+  }
+}

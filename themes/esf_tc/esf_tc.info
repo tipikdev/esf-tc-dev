@@ -1,0 +1,27 @@
+name = ESF TC Theme
+description = ESF TC website theme, based on Ec_resp theme
+package = ESF_TC_theme
+version = "7.x-1.0"
+core = "7.x"
+base theme  = ec_resp
+base theme version  = 7.x-2.1
+multisite_version = 2.1
+php = "5.2.4"
+
+stylesheets[all][] = "css/esf_tc.css"
+stylesheets[all][] = "css/esf_tc_resp.css"
+
+scripts[] = "scripts/esf_tc.js"
+
+regions[header_top] = "Header Top"
+regions[header_right] = "Header Right"
+regions[featured] = "Featured"
+regions[tools] = "Tools"
+regions[help] = "Help"
+regions[sidebar_left] = "Sidebar Left"
+regions[sidebar_right] = "Sidebar Right"
+regions[content_top] = "Content Top"
+regions[content] = "Content"
+regions[content_right] = "Content Right"
+regions[content_bottom] = "Content Bottom"
+regions[footer] = "Footer"
