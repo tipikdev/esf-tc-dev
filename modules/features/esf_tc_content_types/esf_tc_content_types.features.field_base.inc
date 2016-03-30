@@ -669,20 +669,15 @@ function esf_tc_content_types_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_fc_call_total_budget',
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
+    'indexes' => array(),
     'locked' => 1,
-    'module' => 'text',
+    'module' => 'number',
     'settings' => array(
       'entity_translation_sync' => FALSE,
-      'max_length' => 255,
       'profile2_private' => FALSE,
     ),
     'translatable' => 0,
-    'type' => 'text',
+    'type' => 'number_integer',
   );
 
   // Exported field_base: 'field_fc_contact_account'.
