@@ -696,14 +696,19 @@ please save your work as draft and check that the editorial status of the organi
     'bundle' => 'field_call_coordinated_calls',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Enter a number without separators (dot, spaces). Ex: 150000.',
+    'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'inline',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 8,
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => '',
+        ),
+        'type' => 'number_integer',
+        'weight' => 14,
       ),
       'print' => array(
         'label' => 'above',
@@ -717,46 +722,19 @@ please save your work as draft and check that the editorial status of the organi
     'label' => 'Total budget',
     'required' => 1,
     'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'basic_html' => 'basic_html',
-          'filtered_html' => 'filtered_html',
-          'full_html' => 'full_html',
-          'plain_text' => 'plain_text',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'basic_html' => array(
-              'weight' => 5,
-            ),
-            'filtered_html' => array(
-              'weight' => -9,
-            ),
-            'full_html' => array(
-              'weight' => -10,
-            ),
-            'plain_text' => array(
-              'weight' => -8,
-            ),
-          ),
-        ),
-      ),
       'entity_translation_sync' => FALSE,
-      'text_processing' => 0,
+      'max' => '',
+      'min' => '',
+      'prefix' => '€',
+      'suffix' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'maxlength_js' => 0,
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 11,
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 15,
     ),
   );
 
@@ -8348,7 +8326,8 @@ please save your work as draft and check that the editorial status of the organi
   t('Place of signature');
   t('Please specify the type of organisation');
   t('Please type the name of a contact to display possible options. If a user is not found, please save your work as draft and check that the editorial status of the user profile is set to Published or add name and email.');
-  t('Please type the name of a contact to display possible options. If a user is not found, please save your work as draft and check that the editorial status of the user profile is set to Published or ask the user to create an ECAS account and ask to be informed when the user has logged once.');
+  t('Please type the name of a contact to display possible options. If a user is not found, please save your work as draft and check that the editorial status of the user profile is set to Published or ask the user to create an ECAS account and ask to be informed when the user has logged once.
+');
   t('Please type the name of a contact to display possible options.<br> If a user is not found, please save your work as draft and check that the editorial status of the user profile is set to Published or add a name and email.');
   t('Please type the name of a partner organisation to display possible options. If an organisation is not found, please save your work and check that the editorial status of the organisation is set to Published or create a new organisation.');
   t('Please type the name of an organisation to display possible options.
