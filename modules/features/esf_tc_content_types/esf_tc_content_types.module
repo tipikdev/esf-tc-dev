@@ -66,11 +66,11 @@ function esf_tc_content_types_node_presave($node) {
  * Alter organisation node form.
  */
 function esf_tc_content_types_form_esf_tnc_organisation_node_form_alter(&$form, &$form_state, $form_id) {
-  // Add afterbuild function to manage states on field collection.
+  // Add after build function to manage states on field collection.
   $form['field_org_additional_contacts']['und']['#after_build'][] = 'esf_tc_content_types_field_org_additional_contacts_after_build';
 
   // Add custom validate function.
-  $form['#validate'][] = 'esf_tc_content_types_organisation_validate';
+  $form['#validate'][] = 'esf_tc_content_types_projects_database_draft_validate';
 
   // Change Field Access.
   if (user_access('administer nodes')) {
@@ -96,74 +96,22 @@ function esf_tc_content_types_form_esf_tnc_organisation_node_form_alter(&$form, 
 
   }
 
-  // Change fields settings based on editorial status.
-  $form['field_org_type_of_organisation']['#states'] = array(
-    'required' => array(
-      ':input[name="field_esf_editorial_status[und]"]' => array('value' => 'published'),
-    ),
-  );
-
-  $form['field_esf_country_ref']['#states'] = array(
-    'required' => array(
-      ':input[name="field_esf_editorial_status[und]"]' => array('value' => 'published'),
-    ),
-  );
-
-  $form['field_org_acronym']['#states'] = array(
-    'required' => array(
-      ':input[name="field_esf_editorial_status[und]"]' => array('value' => 'published'),
-    ),
-  );
-
-  $form['field_org_name_national_lang']['#states'] = array(
-    'required' => array(
-      ':input[name="field_esf_editorial_status[und]"]' => array('value' => 'published'),
-    ),
-  );
-
-  $form['title_field']['#states'] = array(
-    'required' => array(
-      ':input[name="field_esf_editorial_status[und]"]' => array('value' => 'published'),
-    ),
-  );
-
-  $form['field_org_address']['#states'] = array(
-    'required' => array(
-      ':input[name="field_esf_editorial_status[und]"]' => array('value' => 'published'),
-    ),
-  );
-
   // Manage legal contact.
   $form['field_org_contact_legal_name']['#states'] = array(
-    'required' => array(
-      ':input[name="field_esf_editorial_status[und]"]' => array('value' => 'published'),
-    ),
     'visible' => array(
       ':input[name="field_org_contact_account[und]"]' => array('value' => 'no'),
     ),
   );
 
   $form['field_org_contact_legal_email']['#states'] = array(
-    'required' => array(
-      ':input[name="field_esf_editorial_status[und]"]' => array('value' => 'pubsolrlished'),
-    ),
     'visible' => array(
       ':input[name="field_org_contact_account[und]"]' => array('value' => 'no'),
     ),
   );
 
   $form['field_org_contact']['#states'] = array(
-    'required' => array(
-      ':input[name="field_esf_editorial_status[und]"]' => array('value' => 'published'),
-    ),
     'visible' => array(
       ':input[name="field_org_contact_account[und]"]' => array('value' => 'yes'),
-    ),
-  );
-
-  $form['field_org_contact_legal_role']['#states'] = array(
-    'required' => array(
-      ':input[name="field_esf_editorial_status[und]"]' => array('value' => 'published'),
     ),
   );
 }
@@ -219,185 +167,16 @@ function esf_tc_content_types_field_org_additional_contacts_after_build($form, &
 }
 
 /**
- * Implements hook_form_validate().
- *
- * Add custom organisation node form validation.
- */
-function esf_tc_content_types_organisation_validate($form, &$form_state) {
-  if ($form_state['values']['field_esf_editorial_status']['und'][0]['value'] == 'published') {
-
-    if (empty($form_state['values']['field_org_type_of_organisation']['und'][0]['tid'])) {
-      form_set_error('field_org_type_of_organisation', t('!name field is required.', array('!name' => $form['field_org_type_of_organisation']['und']['#title'])));
-    }
-
-    if (empty($form_state['values']['field_esf_country_ref']['und'])) {
-      form_set_error('field_esf_country_ref', t('!name field is required.', array('!name' => $form['field_esf_country_ref']['und']['#title'])));
-    }
-
-    if (empty($form_state['values']['field_org_acronym']['und'][0]['value'])) {
-      form_set_error('field_org_acronym', t('!name field is required.', array('!name' => $form['field_org_acronym']['und']['#title'])));
-    }
-
-    if (empty($form_state['values']['field_org_name_national_lang']['und'][0]['value'])) {
-      form_set_error('field_org_name_national_lang', t('!name field is required.', array('!name' => $form['field_org_name_national_lang']['und']['#title'])));
-    }
-
-    if (empty($form_state['values']['field_org_address']['und'][0]['country'])) {
-      form_set_error('field_org_address', t('!name field is required.', array('!name' => $form['field_org_address']['und']['#title'])));
-    }
-
-    if (empty($form_state['values']['field_org_contact_legal_name']['und'][0]['value']) && ($form_state['values']['field_org_contact_account']['und'][0]['value'] == 'no')) {
-      form_set_error('field_org_contact_legal_name', t('!name field is required.', array('!name' => $form['field_org_contact_legal_name']['und'][0]['value']['#title'])));
-    }
-
-    if (empty($form_state['values']['field_org_contact_legal_email']['und'][0]['value']) && ($form_state['values']['field_org_contact_account']['und'][0]['value'] == 'no')) {
-      form_set_error('field_org_contact_legal_email', t('!name field is required.', array('!name' => $form['field_org_contact_legal_email']['und'][0]['value']['#title'])));
-    }
-
-    if (empty($form_state['values']['field_org_contact']['und'][0]['target_id']) && ($form_state['values']['field_org_contact_account']['und'][0]['value'] == 'yes')) {
-      form_set_error('field_org_contact', t('!name field is required.', array('!name' => $form['field_org_contact']['und']['#title'])));
-    }
-
-    if (empty($form_state['values']['field_org_contact_legal_role']['und'][0]['value'])) {
-      form_set_error('field_org_contact_legal_role', t('!name field is required.', array('!name' => $form['field_org_contact_legal_role']['und'][0]['value']['#title'])));
-    }
-
-    $contacts = $form_state['values']['field_org_additional_contacts']['und'];
-
-    foreach ($contacts as $key => $contact) {
-
-      if (is_numeric($key) && empty($contact['field_fc_org_name']['und'][0]['value']) && $contact['field_fc_contact_account']['und'][0]['value'] == 'no') {
-        form_set_error('field_fc_org_name', t('!name field is required.', array('!name' => $form['field_org_additional_contacts']['und'][0]['field_fc_org_name']['und']['#title'])));
-      }
-
-      if (is_numeric($key) && empty($contact['field_fc_org_email']['und'][0]['value']) && $contact['field_fc_contact_account']['und'][0]['value'] == 'no') {
-        form_set_error('field_fc_org_email', t('!name field is required.', array('!name' => $form['field_org_additional_contacts']['und'][0]['field_fc_org_email']['und']['#title'])));
-      }
-
-      if (is_numeric($key) && empty($contact['field_fc_org_contact']['und'][0]['target_id']) && $contact['field_fc_contact_account']['und'][0]['value'] == 'yes') {
-        form_set_error('field_fc_org_contact', t('!name field is required.', array('!name' => $form['field_org_additional_contacts']['und'][0]['field_fc_org_contact']['und']['#title'])));
-      }
-
-      if (is_numeric($key) && empty($contact['field_fc_org_role']['und'][0]['value']) && !empty($contact['field_fc_contact_account']['und'][0]['value'])) {
-        form_set_error('field_fc_org_role', t('!name field is required.', array('!name' => $form['field_org_additional_contacts']['und'][0]['field_fc_org_role']['und']['#title'])));
-      }
-
-    }
-  }
-}
-
-/**
- * Implements hook_form_FORMID_alter().
+ * Implements hook_form_alter().
  *
  * Alter project node form.
  */
 function esf_tc_content_types_form_esf_tnc_project_node_form_alter(&$form, &$form_state, $form_id) {
+
+  $type = $form['type']['#value'];
+
   // Add custom validate function.
-  $form['#validate'][] = 'esf_tc_content_types_project_validate';
-
-  // Change fields settings based on editorial status.
-  $form['field_projet_country']['#states'] = array(
-    'required' => array(
-      ':input[name="field_esf_editorial_status[und]"]' => array('value' => 'published'),
-    ),
-  );
-
-  $form['field_projet_call_flexible']['#states'] = array(
-    'required' => array(
-      ':input[name="field_esf_editorial_status[und]"]' => array('value' => 'published'),
-    ),
-  );
-
-  $form['field_project_call_for_projects']['#states'] = array(
-    'required' => array(
-      ':input[name="field_esf_editorial_status[und]"]' => array('value' => 'published'),
-    ),
-  );
-
-  $form['title_field']['#states'] = array(
-    'required' => array(
-      ':input[name="field_esf_editorial_status[und]"]' => array('value' => 'published'),
-    ),
-  );
-
-  $form['field_project_acronym']['#states'] = array(
-    'required' => array(
-      ':input[name="field_esf_editorial_status[und]"]' => array('value' => 'published'),
-    ),
-  );
-
-  $form['field_project_ma_responsible']['#states'] = array(
-    'required' => array(
-      ':input[name="field_esf_editorial_status[und]"]' => array('value' => 'published'),
-    ),
-  );
-
-  $form['field_project_lead_organisation']['#states'] = array(
-    'required' => array(
-      ':input[name="field_esf_editorial_status[und]"]' => array('value' => 'published'),
-    ),
-  );
-
-  $form['field_project_manager']['#states'] = array(
-    'required' => array(
-      ':input[name="field_esf_editorial_status[und]"]' => array('value' => 'published'),
-    ),
-  );
-
-  $form['field_project_status']['#states'] = array(
-    'required' => array(
-      ':input[name="field_esf_editorial_status[und]"]' => array('value' => 'published'),
-    ),
-  );
-
-  $form['field_project_searching']['#states'] = array(
-    'required' => array(
-      ':input[name="field_esf_editorial_status[und]"]' => array('value' => 'published'),
-    ),
-  );
-}
-
-/**
- * Project custom validation.
- */
-function esf_tc_content_types_project_validate($form, &$form_state) {
-  if ($form_state['values']['field_esf_editorial_status']['und'][0]['value'] == 'published') {
-    if (empty($form_state['values']['field_esf_country_ref']['und'][0]['tid'])) {
-      form_set_error('field_esf_country_ref', t('!name field is required.', array('!name' => $form['field_esf_country_ref']['und']['#title'])));
-    }
-
-    if (empty($form_state['values']['field_project_call_for_projects']['und'][0]['target_id'])) {
-      form_set_error('field_project_call_for_projects', t('!name field is required.', array('!name' => $form['field_project_call_for_projects']['und']['#title'])));
-    }
-
-    if (empty($form_state['values']['field_esf_type_call']['und'][0]['tid'])) {
-      form_set_error('field_esf_type_call', t('!name field is required.', array('!name' => $form['field_esf_type_call']['und']['#title'])));
-    }
-
-    if (empty($form_state['values']['field_project_acronym']['und'][0]['value'])) {
-      form_set_error('field_project_acronym', t('!name field is required.', array('!name' => $form['field_project_acronym']['und']['#title'])));
-    }
-
-    if (empty($form_state['values']['field_project_ma_responsible']['und'][0]['target_id'])) {
-      form_set_error('field_project_ma_responsible', t('!name field is required.', array('!name' => $form['field_project_ma_responsible']['und']['#title'])));
-    }
-
-    if (empty($form_state['values']['field_project_lead_organisation']['und'][0]['target_id'])) {
-      form_set_error('field_project_lead_organisation', t('!name field is required.', array('!name' => $form['field_project_lead_organisation']['und']['#title'])));
-    }
-
-    if (empty($form_state['values']['field_project_manager']['und'][0]['target_id'])) {
-      form_set_error('field_project_manager', t('!name field is required.', array('!name' => $form['field_project_manager']['und']['#title'])));
-    }
-
-    if (empty($form_state['values']['field_project_status']['und'][0]['value'])) {
-      form_set_error('field_project_status', t('!name field is required.', array('!name' => $form['field_project_status']['und']['#title'])));
-    }
-
-    if (empty($form_state['values']['field_project_searching']['und'][0]['value'])) {
-      form_set_error('field_project_searching', t('!name field is required.', array('!name' => $form['field_project_searching']['und']['#title'])));
-    }
-  }
+  $form['#validate'][] = 'esf_tc_content_types_projects_database_draft_validate';
 }
 
 /**
@@ -407,7 +186,7 @@ function esf_tc_content_types_project_validate($form, &$form_state) {
  */
 function esf_tc_content_types_form_esf_tnc_global_call_node_form_alter(&$form, &$form_state, $form_id) {
   // Add custom validate function.
-  $form['#validate'][] = 'esf_tc_content_types_global_call_validate';
+  $form['#validate'][] = 'esf_tc_content_types_projects_database_draft_validate';
 
   if (user_access('administer nodes')) {
     $form['field_call_content_managers']['#states'] = array(
@@ -441,47 +220,14 @@ function esf_tc_content_types_form_esf_tnc_global_call_node_form_alter(&$form, &
 }
 
 /**
- * Global call custom validation.
- */
-function esf_tc_content_types_global_call_validate($form, &$form_state) {
-  if ($form_state['values']['field_esf_editorial_status']['und'][0]['value'] == 'published') {
-
-    if (empty($form_state['values']['field_esf_type_call']['und'][0]['tid'])) {
-      form_set_error('field_esf_type_call', t('!name field is required.', array('!name' => $form['field_esf_type_call']['und']['#title'])));
-    }
-
-    $calls = $form_state['values']['field_call_coordinated_calls']['und'];
-
-    foreach ($calls as $key => $call) {
-      if (is_numeric($key)) {
-        if (empty($call['field_esf_themes_ref']['und'][0]['tid'])) {
-          form_set_error('field_esf_themes_ref', t('!name field is required.', array('!name' => $form['field_call_coordinated_calls']['und'][0]['field_esf_themes_ref']['und']['#title'])));
-        }
-
-        if (empty($call['field_esf_country_ref']['und'][0]['tid'])) {
-          form_set_error('field_esf_country_ref', t('!name field is required.', array('!name' => $form['field_call_coordinated_calls']['und'][0]['field_esf_country_ref']['und']['#title'])));
-        }
-
-        if (empty($call['field_esf_region_ref']['und'][0]['tid'])) {
-          form_set_error('field_esf_region_ref', t('!name field is required.', array('!name' => $form['field_call_coordinated_calls']['und'][0]['field_esf_region_ref']['und']['#title'])));
-        }
-        if (empty($call['field_fc_call_ma_ibs_']['und'][0]['target_id'])) {
-          form_set_error('field_fc_call_ma_ibs_', t('!name field is required.', array('!name' => $form['field_call_coordinated_calls']['und'][0]['field_fc_call_ma_ibs_']['und']['#title'])));
-        }
-
-      }
-    }
-  }
-}
-
-/**
  * Implements hook_form_FORMID_alter().
  *
  * Alter TCA node form.
  */
 function esf_tc_content_types_form_esf_tnc_tca_node_form_alter(&$form, &$form_state, $form_id) {
   // Add custom validate function.
-  $form['#validate'][] = 'esf_tc_content_types_tca_validate';
+  $form['#validate'][] = 'esf_tc_content_types_projects_database_draft_validate';
+
   // Change Field Access.
   if (user_access('administer nodes')) {
     $form['field_tca_content_managers_tca']['#states'] = array(
@@ -509,31 +255,43 @@ function esf_tc_content_types_form_esf_tnc_tca_node_form_alter(&$form, &$form_st
 }
 
 /**
- * TCA custom validation.
+ * Project database (4 content types) custom validation for drafting.
  */
-function esf_tc_content_types_tca_validate($form, &$form_state) {
-  $partners = $form_state['values']['field_tca_partner_organisations']['und'];
-  if ($form_state['values']['field_esf_editorial_status']['und'][0]['value'] == 'published') {
-    foreach ($partners as $key => $partner) {
-      if (is_numeric($key)) {
-        if (empty($partner['field_fc_partner_project']['und'][0]['target_id'])) {
-          form_set_error('field_fc_partner_project', t('!name field is required.', array('!name' => $form['field_tca_partner_organisations']['und'][0]['field_fc_partner_project']['und']['#title'])));
+function esf_tc_content_types_projects_database_draft_validate(&$form, &$form_state) {
+
+  $editorial_field_name = _esf_tc_content_types_get_editorial_status_field_name();
+  $state = reset($form_state['values'][$editorial_field_name][LANGUAGE_NONE])['value'];
+
+  $errors = form_get_errors();
+
+  if($state == 'draft') {
+    if ($errors) {
+      // Clear errors.
+      form_clear_error();
+      // Remove error messages.
+      $error_messages = drupal_get_messages('error');
+      $removed_messages = array();
+
+      foreach ($errors as $name => $error_message) {
+        // Get Field title;
+        $field_name = explode(']',$name) [0];
+        $is_date = false;
+        $required_error = '';
+
+        if ($field_name) {
+          $field_info = field_info_field($field_name);
+          $field_instance = field_info_instance($form['#entity_type'], $field_name, $form['#bundle']);
+          $required_error = t('!name field is required.', array('!name' => $field_instance['label']));
+          $is_date = $field_info['module'] == 'date';
+        }
+        if (strstr($name, 'title_field]') === FALSE && ($required_error == $error_message || $is_date)) {
+          $removed_messages[] = $error_message;
+          unset($errors[$name]);
         }
         else {
-
-          $budgets = $partner['field_fc_budget_activity']['und'];
-          foreach ($budgets as $key_b => $budget) {
-            if (is_numeric($key_b) && empty($budget['field_fc_budget_activity1']['und'][0]['value'])) {
-              form_set_error('field_fc_budget_activity1', t('!name field is required.', array('!name' => $form['field_tca_partner_organisations']['und'][0]['field_fc_budget_activity']['und'][0]['field_fc_budget_activity1']['und']['#title'])));
-            }
-            if (is_numeric($key_b) && empty($budget['field_fc_budget']['und'][0]['value'])) {
-              form_set_error('field_fc_budget', t('!name field is required.', array('!name' => $form['field_tca_partner_organisations']['und'][0]['field_fc_budget_activity']['und'][0]['field_fc_budget']['und']['#title'])));
-            }
-          }
+          form_set_error($name, $error_message);
         }
-
       }
-
     }
   }
 }
@@ -572,4 +330,23 @@ function esf_tc_content_types_node_grants($account, $op) {
     );
     return $grants;
   }
+}
+
+/**
+ * Helper function get the editorial status field name.
+ */
+function _esf_tc_content_types_get_editorial_status_field_name() {
+  return variable_get('esf_tc_editorial_status_field_name', 'field_esf_editorial_status');
+}
+
+/**
+ * Helper function get all content types used for Projects database.
+ */
+function _esf_tc_content_types_get_project_database_types() {
+  return array(
+    'esf_tnc_project',
+    'esf_tnc_project',
+    'esf_tnc_global_call',
+    'esf_tnc_tca',
+  );
 }
