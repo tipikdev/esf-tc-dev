@@ -267,6 +267,7 @@ function esf_tc_content_types_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'field_collection_item-field_call_coordinated_calls-field_fc_call_eligibility_start'.
   $field_instances['field_collection_item-field_call_coordinated_calls-field_fc_call_eligibility_start'] = array(
     'bundle' => 'field_call_coordinated_calls',
     'deleted' => 0,
@@ -428,6 +429,7 @@ please save your work as draft and check that the editorial status of the organi
   );
 
   // Exported field_instance:
+  // 'field_collection_item-field_call_coordinated_calls-field_fc_call_num_short_ref'.
   $field_instances['field_collection_item-field_call_coordinated_calls-field_fc_call_num_short_ref'] = array(
     'bundle' => 'field_call_coordinated_calls',
     'default_value' => NULL,
@@ -497,6 +499,7 @@ please save your work as draft and check that the editorial status of the organi
   );
 
   // Exported field_instance:
+  // 'field_collection_item-field_call_coordinated_calls-field_fc_call_other_countries'.
   $field_instances['field_collection_item-field_call_coordinated_calls-field_fc_call_other_countries'] = array(
     'bundle' => 'field_call_coordinated_calls',
     'default_value' => NULL,
@@ -566,6 +569,7 @@ please save your work as draft and check that the editorial status of the organi
   );
 
   // Exported field_instance:
+  // 'field_collection_item-field_call_coordinated_calls-field_fc_call_sub_deadline'.
   $field_instances['field_collection_item-field_call_coordinated_calls-field_fc_call_sub_deadline'] = array(
     'bundle' => 'field_call_coordinated_calls',
     'deleted' => 0,
@@ -622,6 +626,7 @@ please save your work as draft and check that the editorial status of the organi
   );
 
   // Exported field_instance:
+  // 'field_collection_item-field_call_coordinated_calls-field_fc_call_title_en'.
   $field_instances['field_collection_item-field_call_coordinated_calls-field_fc_call_title_en'] = array(
     'bundle' => 'field_call_coordinated_calls',
     'default_value' => NULL,
@@ -692,6 +697,7 @@ please save your work as draft and check that the editorial status of the organi
   );
 
   // Exported field_instance:
+  // 'field_collection_item-field_call_coordinated_calls-field_fc_call_total_budget'.
   $field_instances['field_collection_item-field_call_coordinated_calls-field_fc_call_total_budget'] = array(
     'bundle' => 'field_call_coordinated_calls',
     'default_value' => NULL,
@@ -723,8 +729,8 @@ please save your work as draft and check that the editorial status of the organi
     'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
-      'max' => '',
-      'min' => '',
+      'max' => 10000000000,
+      'min' => 0,
       'prefix' => '€',
       'suffix' => '',
       'user_register_form' => FALSE,
@@ -915,6 +921,7 @@ please save your work as draft and check that the editorial status of the organi
   );
 
   // Exported field_instance:
+  // 'field_collection_item-field_org_additional_contacts-field_fc_contact_account'.
   $field_instances['field_collection_item-field_org_additional_contacts-field_fc_contact_account'] = array(
     'bundle' => 'field_org_additional_contacts',
     'default_value' => NULL,
@@ -1182,6 +1189,7 @@ please save your work as draft and check that the editorial status of the organi
   );
 
   // Exported field_instance:
+  // 'field_collection_item-field_tca_partner_organisations-field_fc_budget_activity'.
   $field_instances['field_collection_item-field_tca_partner_organisations-field_fc_budget_activity'] = array(
     'bundle' => 'field_tca_partner_organisations',
     'default_value' => NULL,
@@ -1216,6 +1224,7 @@ please save your work as draft and check that the editorial status of the organi
   );
 
   // Exported field_instance:
+  // 'field_collection_item-field_tca_partner_organisations-field_fc_date_initial_sign'.
   $field_instances['field_collection_item-field_tca_partner_organisations-field_fc_date_initial_sign'] = array(
     'bundle' => 'field_tca_partner_organisations',
     'deleted' => 0,
@@ -1266,6 +1275,7 @@ please save your work as draft and check that the editorial status of the organi
   );
 
   // Exported field_instance:
+  // 'field_collection_item-field_tca_partner_organisations-field_fc_mas_approval_status'.
   $field_instances['field_collection_item-field_tca_partner_organisations-field_fc_mas_approval_status'] = array(
     'bundle' => 'field_tca_partner_organisations',
     'default_value' => array(
@@ -1304,6 +1314,7 @@ please save your work as draft and check that the editorial status of the organi
   );
 
   // Exported field_instance:
+  // 'field_collection_item-field_tca_partner_organisations-field_fc_partner_project'.
   $field_instances['field_collection_item-field_tca_partner_organisations-field_fc_partner_project'] = array(
     'bundle' => 'field_tca_partner_organisations',
     'default_value' => NULL,
@@ -1342,6 +1353,7 @@ please save your work as draft and check that the editorial status of the organi
   );
 
   // Exported field_instance:
+  // 'field_collection_item-field_tca_partner_organisations-field_fc_total_budget_'.
   $field_instances['field_collection_item-field_tca_partner_organisations-field_fc_total_budget_'] = array(
     'bundle' => 'field_tca_partner_organisations',
     'default_value' => NULL,
@@ -1383,6 +1395,7 @@ please save your work as draft and check that the editorial status of the organi
   );
 
   // Exported field_instance:
+  // 'field_collection_item-field_tca_partner_organisations-field_place_of_signature'.
   $field_instances['field_collection_item-field_tca_partner_organisations-field_place_of_signature'] = array(
     'bundle' => 'field_tca_partner_organisations',
     'default_value' => NULL,
@@ -1442,6 +1455,500 @@ please save your work as draft and check that the editorial status of the organi
       ),
       'type' => 'text_textfield',
       'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance: 'node-esf_tnc_event-body'.
+  $field_instances['node-esf_tnc_event-body'] = array(
+    'bundle' => 'esf_tnc_event',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'smart_trim',
+        'settings' => array(
+          'more_link' => 0,
+          'more_text' => 'Read more',
+          'summary_handler' => 'full',
+          'trim_length' => 300,
+          'trim_link' => 0,
+          'trim_options' => array(
+            'text' => 0,
+          ),
+          'trim_preserve_tags' => '',
+          'trim_suffix' => '...',
+          'trim_type' => 'chars',
+        ),
+        'type' => 'smart_trim_format',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'body',
+    'label' => 'Body',
+    'required' => FALSE,
+    'settings' => array(
+      'display_summary' => TRUE,
+      'entity_translation_sync' => FALSE,
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 20,
+        'summary_rows' => 5,
+      ),
+      'type' => 'text_textarea_with_summary',
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'node-esf_tnc_event-field_esf_event_attached_doc'.
+  $field_instances['node-esf_tnc_event-field_esf_event_attached_doc'] = array(
+    'bundle' => 'esf_tnc_event',
+    'default_value' => array(),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'file',
+        'settings' => array(),
+        'type' => 'file_default',
+        'weight' => 4,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'file',
+        'settings' => array(),
+        'type' => 'file_default',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_esf_event_attached_doc',
+    'label' => 'Attached document',
+    'required' => 0,
+    'settings' => array(
+      'description_field' => 0,
+      'entity_translation_sync' => FALSE,
+      'file_directory' => '',
+      'file_extensions' => 'jpg jpeg gif png txt pdf xls xlsx doc docx odt ods odp ppt pptx zip tar',
+      'max_filesize' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'media',
+      'settings' => array(
+        'allowed_schemes' => array(
+          'node' => 0,
+          'private' => 0,
+          'public' => 'public',
+        ),
+        'allowed_types' => array(
+          'audio' => 0,
+          'document' => 0,
+          'image' => 'image',
+          'video' => 0,
+        ),
+        'browser_plugins' => array(
+          'media_default--media_browser_1' => 0,
+          'media_default--media_browser_my_files' => 0,
+          'media_internet' => 0,
+          'upload' => 0,
+        ),
+      ),
+      'type' => 'media_generic',
+      'weight' => 7,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'node-esf_tnc_event-field_esf_event_external_link'.
+  $field_instances['node-esf_tnc_event-field_esf_event_external_link'] = array(
+    'bundle' => 'esf_tnc_event',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 5,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_esf_event_external_link',
+    'label' => 'External link',
+    'required' => 0,
+    'settings' => array(
+      'absolute_url' => 1,
+      'attributes' => array(
+        'class' => '',
+        'configurable_class' => 0,
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'entity_translation_sync' => FALSE,
+      'rel_remove' => 'default',
+      'title' => 'optional',
+      'title_label_use_field_label' => 0,
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance: 'node-esf_tnc_event-field_esf_event_location'.
+  $field_instances['node-esf_tnc_event-field_esf_event_location'] = array(
+    'bundle' => 'esf_tnc_event',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'addressfield',
+        'settings' => array(
+          'format_handlers' => array(
+            0 => 'address',
+          ),
+          'use_widget_handlers' => 1,
+        ),
+        'type' => 'addressfield_default',
+        'weight' => 2,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'addressfield',
+        'settings' => array(
+          'format_handlers' => array(
+            0 => 'address',
+          ),
+          'use_widget_handlers' => 1,
+        ),
+        'type' => 'addressfield_default',
+        'weight' => 5,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_esf_event_location',
+    'label' => 'Location',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'addressfield',
+      'settings' => array(
+        'available_countries' => array(),
+        'default_country' => 'site_default',
+        'format_handlers' => array(
+          'address' => 'address',
+          'address-hide-postal-code' => 0,
+          'address-hide-street' => 0,
+          'address-hide-country' => 0,
+          'organisation' => 0,
+          'name-full' => 0,
+          'name-oneline' => 0,
+          'address-optional' => 0,
+        ),
+      ),
+      'type' => 'addressfield_standard',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'node-esf_tnc_event-field_esf_event_organiser'.
+  $field_instances['node-esf_tnc_event-field_esf_event_organiser'] = array(
+    'bundle' => 'esf_tnc_event',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'title',
+        'settings' => array(
+          'title_class' => '',
+          'title_link' => '',
+          'title_style' => '',
+        ),
+        'type' => 'title_linked',
+        'weight' => 6,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_esf_event_organiser',
+    'label' => 'Organiser',
+    'required' => 1,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'basic_html' => 'basic_html',
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'basic_html' => array(
+              'weight' => 5,
+            ),
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -10,
+            ),
+            'plain_text' => array(
+              'weight' => -8,
+            ),
+          ),
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'node-esf_tnc_event-field_esf_event_picture'.
+  $field_instances['node-esf_tnc_event-field_esf_event_picture'] = array(
+    'bundle' => 'esf_tnc_event',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 7,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => 'thumbnail',
+        ),
+        'type' => 'image',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_esf_event_picture',
+    'label' => 'Picture',
+    'required' => 0,
+    'settings' => array(
+      'alt_field' => 0,
+      'default_image' => 0,
+      'entity_translation_sync' => FALSE,
+      'file_directory' => '',
+      'file_extensions' => 'png gif jpg jpeg',
+      'max_filesize' => '',
+      'max_resolution' => '302x201',
+      'min_resolution' => '100x100',
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'image',
+      'settings' => array(
+        'filefield_sources' => array(
+          'filefield_sources' => array(
+            'attach' => 0,
+            'clipboard' => 0,
+            'plupload' => 0,
+            'reference' => 0,
+            'remote' => 0,
+            'upload' => 'upload',
+          ),
+          'source_attach' => array(
+            'absolute' => 0,
+            'attach_mode' => 'move',
+            'path' => 'file_attach',
+          ),
+          'source_imce' => array(
+            'imce_mode' => 0,
+          ),
+          'source_reference' => array(
+            'autocomplete' => 0,
+            'search_all_fields' => 0,
+          ),
+        ),
+        'preview_image_style' => 'thumbnail',
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'image_image',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance: 'node-esf_tnc_event-field_esf_event_start_date'.
+  $field_instances['node-esf_tnc_event-field_esf_event_start_date'] = array(
+    'bundle' => 'esf_tnc_event',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => FALSE,
+        ),
+        'type' => 'date_default',
+        'weight' => 1,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'short',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => 0,
+        ),
+        'type' => 'date_default',
+        'weight' => 7,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_esf_event_start_date',
+    'label' => 'Start date',
+    'required' => 1,
+    'settings' => array(
+      'default_value' => 'blank',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'increment' => 15,
+        'input_format' => 'd/m/Y - H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'no_fieldset' => 0,
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_select',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'node-esf_tnc_event-field_esf_linked_tn'.
+  $field_instances['node-esf_tnc_event-field_esf_linked_tn'] = array(
+    'bundle' => 'esf_tnc_event',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'i18n_taxonomy',
+        'settings' => array(),
+        'type' => 'i18n_taxonomy_term_reference_link',
+        'weight' => 6,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_esf_linked_tn',
+    'label' => 'Linked TN',
+    'required' => 1,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 9,
     ),
   );
 
@@ -1802,7 +2309,7 @@ please save your work as draft and check that the editorial status of the organi
     'entity_type' => 'node',
     'field_name' => 'field_esf_type_call',
     'label' => 'Type of call',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -2005,6 +2512,362 @@ please save your work as draft and check that the editorial status of the organi
       ),
       'type' => 'text_textarea',
       'weight' => 32,
+    ),
+  );
+
+  // Exported field_instance: 'node-esf_tnc_news-body'.
+  $field_instances['node-esf_tnc_news-body'] = array(
+    'bundle' => 'esf_tnc_news',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'smart_trim',
+        'settings' => array(
+          'more_link' => 0,
+          'more_text' => 'Read more',
+          'summary_handler' => 'full',
+          'trim_length' => 300,
+          'trim_link' => 0,
+          'trim_options' => array(
+            'text' => 0,
+          ),
+          'trim_preserve_tags' => '',
+          'trim_suffix' => '...',
+          'trim_type' => 'chars',
+        ),
+        'type' => 'smart_trim_format',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'body',
+    'label' => 'Body',
+    'required' => FALSE,
+    'settings' => array(
+      'display_summary' => TRUE,
+      'entity_translation_sync' => FALSE,
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 20,
+        'summary_rows' => 5,
+      ),
+      'type' => 'text_textarea_with_summary',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'node-esf_tnc_news-field_esf_linked_tn'.
+  $field_instances['node-esf_tnc_news-field_esf_linked_tn'] = array(
+    'bundle' => 'esf_tnc_news',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'i18n_taxonomy',
+        'settings' => array(),
+        'type' => 'i18n_taxonomy_term_reference_link',
+        'weight' => 4,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_esf_linked_tn',
+    'label' => 'Linked TN',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 7,
+    ),
+  );
+
+  // Exported field_instance: 'node-esf_tnc_news-field_esf_news_attached_doc'.
+  $field_instances['node-esf_tnc_news-field_esf_news_attached_doc'] = array(
+    'bundle' => 'esf_tnc_news',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'file',
+        'settings' => array(),
+        'type' => 'file_default',
+        'weight' => 2,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'file',
+        'settings' => array(),
+        'type' => 'file_default',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_esf_news_attached_doc',
+    'label' => 'Attached document',
+    'required' => 0,
+    'settings' => array(
+      'description_field' => 0,
+      'entity_translation_sync' => FALSE,
+      'file_directory' => '',
+      'file_extensions' => 'jpg jpeg gif png txt pdf xls xlsx doc docx odt ods odp ppt pptx zip tar',
+      'max_filesize' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'media',
+      'settings' => array(
+        'allowed_schemes' => array(
+          'node' => 0,
+          'private' => 0,
+          'public' => 'public',
+        ),
+        'allowed_types' => array(
+          'audio' => 0,
+          'document' => 0,
+          'image' => 'image',
+          'video' => 0,
+        ),
+        'browser_plugins' => array(
+          'media_default--media_browser_1' => 0,
+          'media_default--media_browser_my_files' => 0,
+          'media_internet' => 0,
+          'upload' => 0,
+        ),
+      ),
+      'type' => 'media_generic',
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'node-esf_tnc_news-field_esf_news_date'.
+  $field_instances['node-esf_tnc_news-field_esf_news_date'] = array(
+    'bundle' => 'esf_tnc_news',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => FALSE,
+        ),
+        'type' => 'date_default',
+        'weight' => 5,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => FALSE,
+        ),
+        'type' => 'date_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_esf_news_date',
+    'label' => 'Date of news',
+    'required' => 0,
+    'settings' => array(
+      'default_value' => 'now',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'increment' => 15,
+        'input_format' => 'd/m/Y - H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'no_fieldset' => 0,
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_select',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'node-esf_tnc_news-field_esf_news_external_link'.
+  $field_instances['node-esf_tnc_news-field_esf_news_external_link'] = array(
+    'bundle' => 'esf_tnc_news',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 3,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_esf_news_external_link',
+    'label' => 'External link',
+    'required' => 0,
+    'settings' => array(
+      'absolute_url' => 1,
+      'attributes' => array(
+        'class' => '',
+        'configurable_class' => 0,
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'entity_translation_sync' => FALSE,
+      'rel_remove' => 'default',
+      'title' => 'optional',
+      'title_label_use_field_label' => 0,
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'node-esf_tnc_news-field_esf_news_picture'.
+  $field_instances['node-esf_tnc_news-field_esf_news_picture'] = array(
+    'bundle' => 'esf_tnc_news',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 6,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => 'thumbnail',
+        ),
+        'type' => 'image',
+        'weight' => 5,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_esf_news_picture',
+    'label' => 'Picture',
+    'required' => 0,
+    'settings' => array(
+      'alt_field' => 0,
+      'default_image' => 0,
+      'entity_translation_sync' => FALSE,
+      'file_directory' => '',
+      'file_extensions' => 'png gif jpg jpeg',
+      'max_filesize' => '',
+      'max_resolution' => '302x201',
+      'min_resolution' => '100x100',
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'image',
+      'settings' => array(
+        'filefield_sources' => array(
+          'filefield_sources' => array(
+            'attach' => 0,
+            'clipboard' => 0,
+            'plupload' => 0,
+            'reference' => 0,
+            'remote' => 0,
+            'upload' => 'upload',
+          ),
+          'source_attach' => array(
+            'absolute' => 0,
+            'attach_mode' => 'move',
+            'path' => 'file_attach',
+          ),
+          'source_imce' => array(
+            'imce_mode' => 0,
+          ),
+          'source_reference' => array(
+            'autocomplete' => 0,
+            'search_all_fields' => 0,
+          ),
+        ),
+        'preview_image_style' => 'thumbnail',
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'image_image',
+      'weight' => 2,
     ),
   );
 
@@ -2261,7 +3124,7 @@ please save your work as draft and check that the editorial status of the organi
     'entity_type' => 'node',
     'field_name' => 'field_org_acronym',
     'label' => 'Acronym or short denomination',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
@@ -3812,7 +4675,7 @@ please save your work as draft and check that the editorial status of the organi
   // 'node-esf_tnc_organisation-field_org_type_of_organisation'.
   $field_instances['node-esf_tnc_organisation-field_org_type_of_organisation'] = array(
     'bundle' => 'esf_tnc_organisation',
-    'default_value' => array(),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -3834,7 +4697,7 @@ please save your work as draft and check that the editorial status of the organi
     'entity_type' => 'node',
     'field_name' => 'field_org_type_of_organisation',
     'label' => 'Type of organisation',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -3844,10 +4707,6 @@ please save your work as draft and check that the editorial status of the organi
       'module' => 'options',
       'settings' => array(
         'apply_chosen' => '',
-        'other' => 'Other (specify)',
-        'other_size' => 60,
-        'other_title' => 'Please specify the type of organisation',
-        'sort_options' => 0,
       ),
       'type' => 'options_select',
       'weight' => 1,
@@ -4067,7 +4926,7 @@ please save your work as draft and check that the editorial status of the organi
     'entity_type' => 'node',
     'field_name' => 'field_esf_country_ref',
     'label' => 'Country of submission',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -4244,7 +5103,7 @@ please save your work as draft and check that the editorial status of the organi
     'entity_type' => 'node',
     'field_name' => 'field_esf_type_call',
     'label' => 'Coordinated call or flexible approach?',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -4284,7 +5143,7 @@ please save your work as draft and check that the editorial status of the organi
     'entity_type' => 'node',
     'field_name' => 'field_project_acronym',
     'label' => 'Acronym or short denomination',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
@@ -5230,7 +6089,7 @@ If an organisation is not found, please save your work as draft and check that t
     'entity_type' => 'node',
     'field_name' => 'field_project_lead_organisation',
     'label' => 'Project lead organisation',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'nodeaccess_nodereference' => array(
@@ -5498,7 +6357,7 @@ If an organisation is not found, please save your work as draft and check that t
     'entity_type' => 'node',
     'field_name' => 'field_project_ma_responsible',
     'label' => 'MAs/IB responsible for the call',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'nodeaccess_nodereference' => array(
@@ -5573,7 +6432,7 @@ If an organisation is not found, please save your work as draft and check that t
     'entity_type' => 'node',
     'field_name' => 'field_project_manager',
     'label' => 'Project manager',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'nodeaccess_userreference' => array(
@@ -5591,11 +6450,13 @@ If an organisation is not found, please save your work as draft and check that t
           'article' => 0,
           'editorial_team' => 0,
           'esf_tnc_global_call' => 0,
+          'esf_tnc_hp_slide' => 0,
           'esf_tnc_organisation' => 0,
           'esf_tnc_project' => 0,
           'esf_tnc_tca' => 0,
           'feed' => 0,
           'feed_item' => 0,
+          'forum' => 0,
           'page' => 0,
         ),
         'priority' => 0,
@@ -6321,7 +7182,11 @@ If an organisation is not found, please save your work as draft and check that t
   // Exported field_instance: 'node-esf_tnc_project-field_project_status'.
   $field_instances['node-esf_tnc_project-field_project_status'] = array(
     'bundle' => 'esf_tnc_project',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 'undefined-project-idea',
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -8252,6 +9117,7 @@ If an organisation is not found, please save your work as draft and check that t
   t('Activity');
   t('Additional  contacts');
   t('Address');
+  t('Attached document');
   t('Attachments');
   t('Body');
   t('Budget');
@@ -8264,6 +9130,7 @@ If an organisation is not found, please save your work as draft and check that t
   t('Country');
   t('Country of submission');
   t('Date of initial signature');
+  t('Date of news');
   t('Description');
   t('Description in English');
   t('ESF project status');
@@ -8278,6 +9145,7 @@ If an organisation is not found, please save your work as draft and check that t
   t('Expected partners and their roles');
   t('Experience & current activities of the organisation (in relation to TNC)');
   t('Experience and facilities available');
+  t('External link');
   t('Flag featured TCA');
   t('Flag featured organisation');
   t('Flag featured project');
@@ -8293,7 +9161,9 @@ please save your work as draft and check that the editorial status of the organi
   t('Keep my email private');
   t('Languages spoken by the project team');
   t('Languages spoken in the organisation');
+  t('Linked TN');
   t('Links');
+  t('Location');
   t('Logo of the TCA (for the promotional section)');
   t('MA or IB involved');
   t('MAs approval status');
@@ -8315,6 +9185,7 @@ please save your work as draft and check that the editorial status of the organi
   t('Organisation department');
   t('Organisation logo');
   t('Organisation logo (for the promotional section)');
+  t('Organiser');
   t('Other Countries');
   t('Other activity');
   t('Other language');
@@ -8323,6 +9194,7 @@ please save your work as draft and check that the editorial status of the organi
   t('Phone (Home)');
   t('Phone (Mobile)');
   t('Phone (Work)');
+  t('Picture');
   t('Place of signature');
   t('Please specify the type of organisation');
   t('Please type the name of a contact to display possible options. If a user is not found, please save your work as draft and check that the editorial status of the user profile is set to Published or add name and email.');
@@ -8349,6 +9221,7 @@ If an organisation is not found, please save your work as draft and check that t
   t('Searching');
   t('Select which organisation contacts are contacted in case of notification.');
   t('Signed agreement');
+  t('Start date');
   t('Start date of the TCA activity');
   t('Status');
   t('Submission deadline');

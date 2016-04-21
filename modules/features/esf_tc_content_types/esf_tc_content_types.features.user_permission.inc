@@ -20,6 +20,13 @@ function esf_tc_content_types_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'create esf_tnc_event content'.
+  $permissions['create esf_tnc_event content'] = array(
+    'name' => 'create esf_tnc_event content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: 'create esf_tnc_global_call content'.
   $permissions['create esf_tnc_global_call content'] = array(
     'name' => 'create esf_tnc_global_call content',
@@ -36,6 +43,13 @@ function esf_tc_content_types_user_default_permissions() {
     'roles' => array(
       'webmaster' => 'webmaster',
     ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'create esf_tnc_news content'.
+  $permissions['create esf_tnc_news content'] = array(
+    'name' => 'create esf_tnc_news content',
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -78,6 +92,13 @@ function esf_tc_content_types_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'delete any esf_tnc_event content'.
+  $permissions['delete any esf_tnc_event content'] = array(
+    'name' => 'delete any esf_tnc_event content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: 'delete any esf_tnc_global_call content'.
   $permissions['delete any esf_tnc_global_call content'] = array(
     'name' => 'delete any esf_tnc_global_call content',
@@ -94,6 +115,13 @@ function esf_tc_content_types_user_default_permissions() {
     'roles' => array(
       'webmaster' => 'webmaster',
     ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete any esf_tnc_news content'.
+  $permissions['delete any esf_tnc_news content'] = array(
+    'name' => 'delete any esf_tnc_news content',
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -136,6 +164,13 @@ function esf_tc_content_types_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'delete own esf_tnc_event content'.
+  $permissions['delete own esf_tnc_event content'] = array(
+    'name' => 'delete own esf_tnc_event content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: 'delete own esf_tnc_global_call content'.
   $permissions['delete own esf_tnc_global_call content'] = array(
     'name' => 'delete own esf_tnc_global_call content',
@@ -152,6 +187,13 @@ function esf_tc_content_types_user_default_permissions() {
     'roles' => array(
       'webmaster' => 'webmaster',
     ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete own esf_tnc_news content'.
+  $permissions['delete own esf_tnc_news content'] = array(
+    'name' => 'delete own esf_tnc_news content',
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -195,6 +237,13 @@ function esf_tc_content_types_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'edit any esf_tnc_event content'.
+  $permissions['edit any esf_tnc_event content'] = array(
+    'name' => 'edit any esf_tnc_event content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: 'edit any esf_tnc_global_call content'.
   $permissions['edit any esf_tnc_global_call content'] = array(
     'name' => 'edit any esf_tnc_global_call content',
@@ -211,6 +260,13 @@ function esf_tc_content_types_user_default_permissions() {
     'roles' => array(
       'webmaster' => 'webmaster',
     ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'edit any esf_tnc_news content'.
+  $permissions['edit any esf_tnc_news content'] = array(
+    'name' => 'edit any esf_tnc_news content',
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -253,6 +309,13 @@ function esf_tc_content_types_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'edit own esf_tnc_event content'.
+  $permissions['edit own esf_tnc_event content'] = array(
+    'name' => 'edit own esf_tnc_event content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: 'edit own esf_tnc_global_call content'.
   $permissions['edit own esf_tnc_global_call content'] = array(
     'name' => 'edit own esf_tnc_global_call content',
@@ -269,6 +332,13 @@ function esf_tc_content_types_user_default_permissions() {
     'roles' => array(
       'webmaster' => 'webmaster',
     ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'edit own esf_tnc_news content'.
+  $permissions['edit own esf_tnc_news content'] = array(
+    'name' => 'edit own esf_tnc_news content',
+    'roles' => array(),
     'module' => 'node',
   );
 

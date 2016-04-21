@@ -31,6 +31,14 @@ function esf_tc_content_types_views_api($module = NULL, $api = NULL) {
  */
 function esf_tc_content_types_node_info() {
   $items = array(
+    'esf_tnc_event' => array(
+      'name' => t('Event'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
     'esf_tnc_global_call' => array(
       'name' => t('Global call'),
       'base' => 'node_content',
@@ -41,6 +49,14 @@ function esf_tc_content_types_node_info() {
     ),
     'esf_tnc_hp_slide' => array(
       'name' => t('Hp_slide'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
+    'esf_tnc_news' => array(
+      'name' => t('News'),
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',

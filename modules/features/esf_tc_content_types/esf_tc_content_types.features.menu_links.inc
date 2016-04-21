@@ -17,6 +17,7 @@ function esf_tc_content_types_menu_default_menu_links() {
     'router_path' => '',
     'link_title' => 'ESF Transnational Cooperation',
     'options' => array(
+      'identifier' => 'menu-left-menu_esf-transnational-cooperation:<front>',
       'attributes' => array(
         'data-display-title' => 1,
         'data-hide-children' => 0,
@@ -31,7 +32,6 @@ function esf_tc_content_types_menu_default_menu_links() {
         'data-remove-class' => 0,
         'style' => '',
       ),
-      'identifier' => 'menu-left-menu_esf-transnational-cooperation:<front>',
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -145,6 +145,7 @@ function esf_tc_content_types_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'menu-left-menu_esf-transnational-cooperation:<front>',
   );
+  // Exported menu link: menu-left-menu_search-transnational-platform:search/site.
   $menu_links['menu-left-menu_search-transnational-platform:search/site'] = array(
     'menu_name' => 'menu-left-menu',
     'link_path' => 'search/site',

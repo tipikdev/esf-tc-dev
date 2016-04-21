@@ -11,7 +11,7 @@ function esf_tc_content_types_field_group_info() {
   $field_groups = array();
 
   $field_group = new stdClass();
-  $field_group->disabled = FALSE;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_org_legal_contact|node|esf_tnc_organisation|form';
   $field_group->group_name = 'group_org_legal_contact';
@@ -43,7 +43,7 @@ function esf_tc_content_types_field_group_info() {
   $field_groups['group_org_legal_contact|node|esf_tnc_organisation|form'] = $field_group;
 
   $field_group = new stdClass();
-  $field_group->disabled = FALSE;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_profile_contact_token|profile2|contact_profile|form';
   $field_group->group_name = 'group_profile_contact_token';
@@ -72,7 +72,7 @@ function esf_tc_content_types_field_group_info() {
   $field_groups['group_profile_contact_token|profile2|contact_profile|form'] = $field_group;
 
   $field_group = new stdClass();
-  $field_group->disabled = FALSE;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_project_content_en|node|esf_tnc_project|form';
   $field_group->group_name = 'group_project_content_en';

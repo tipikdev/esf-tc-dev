@@ -184,5 +184,30 @@ function esf_tc_content_types_taxonomy_default_vocabularies() {
         ),
       ),
     ),
+    'themes_news_and_events' => (object) array(
+      'name' => 'Themes - news and events',
+      'machine_name' => 'themes_news_and_events',
+      'description' => '',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 0,
+      'language' => 'und',
+      'i18n_mode' => 0,
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
+    ),
   );
 }
