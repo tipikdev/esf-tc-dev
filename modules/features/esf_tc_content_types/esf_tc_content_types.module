@@ -9,6 +9,31 @@ include_once 'esf_tc_content_types.theme.inc';
 include_once 'esf_tc_content_types.block.inc';
 
 /**
+ * Implements hook_permission().
+ */
+function esf_tc_content_types_permission() {
+  // Block And Archive permission.
+  $project_database_ct = _esf_tc_content_types_get_project_database_types();
+  $perm = array();
+  if (is_array($project_database_ct)) {
+    foreach ($project_database_ct as $type) {
+      $info = node_type_get_type($type);
+      $perm += array(
+        "archive any $type content" => array(
+          'title' => t('%type_name: Archive any content', array('%type_name' => $info->name)),
+        ),
+        "block any $type content" => array(
+          'title' => t('%type_name: Block any content', array('%type_name' => $info->name)),
+        ),
+        "republish any $type content" => array(
+          'title' => t('%type_name: Publish any blocked, need deletion and archived content', array('%type_name' => $info->name)),
+        ),
+      );
+    }
+  }
+  return $perm;
+}
+/**
  * Implements hook_node_presave().
  */
 function esf_tc_content_types_node_presave($node) {
@@ -60,6 +85,67 @@ function esf_tc_content_types_node_presave($node) {
   }
 }
 
+
+/**
+ * Implements hook_form_alter().
+ */
+function esf_tc_content_types_form_alter(&$form, &$form_state, $form_id) {
+
+  // Transform editorial status to buttons.
+  // TODO - ADD ACCESS ON FIELDS.
+
+  $editorial_field_name = _esf_tc_content_types_get_editorial_status_field_name();
+  $color_class = array(
+    'success' => 'btn-success',
+    'info' => 'btn-info',
+    'warning' => 'btn-warning',
+    'danger' => 'btn-danger',
+  );
+  if (isset($form[$editorial_field_name])) {
+    // Add Submit method
+    $form['#submit'][] = 'esf_tc_content_types_projects_database_submit';
+    // Hide Select list.
+    $form[$editorial_field_name]['#access'] = FALSE;
+    // Create alternative buttons.
+    $state = reset($form[$editorial_field_name][LANGUAGE_NONE]['#default_value']);
+    $weight = $form['actions']['submit']['#weight'];
+
+    if ($state == 'draft') {
+      // Save as draft button.
+      $form['actions']['submit']['#value'] = t('Save as draft');
+      // Publish button.
+      $form['actions']['published'] = $form['actions']['submit'];
+      $form['actions']['published']['#value'] = t('Publish');
+      $form['actions']['published']['#weight'] = $weight++;
+      $form['actions']['published']['#attributes']['class'][] = $color_class['success'];
+    }
+
+    // If node exists.
+    if ($form['nid']['#value']) {
+      // Block button.
+      $form['actions']['block'] = $form['actions']['submit'];
+      $form['actions']['block']['#value'] = t('Block');
+      $form['actions']['block']['#weight'] = $weight++;
+      $form['actions']['block']['#attributes']['class'][] = $color_class['warning'];
+      $form['actions']['block']['#access'] = _esf_tc_content_types_button_access('block', $form['type']['#value'], $form['#node'], $state);
+      // Archive button.
+      $form['actions']['archive'] = $form['actions']['submit'];
+      $form['actions']['archive']['#value'] = t('Archive');
+      $form['actions']['archive']['#weight'] = $weight++;
+      $form['actions']['archive']['#attributes']['class'][] = $color_class['warning'];
+//      $form['actions']['archive']['#access'] = user_access("archive any $type content");
+      // Ask for deletion button.
+      $form['actions']['ask_deletion'] = $form['actions']['submit'];
+      $form['actions']['ask_deletion']['#value'] = t('Ask for deletion');
+      $form['actions']['ask_deletion']['#weight'] = $weight++;
+      $form['actions']['ask_deletion']['#attributes']['class'][] = $color_class['danger'];
+    }
+    // Delete.
+    if ($form['actions']['delete']) {
+      $form['actions']['delete']['#attributes']['class'][] = $color_class['danger'];
+    }
+  }
+}
 /**
  * Implements hook_form_FORMID_alter().
  *
@@ -258,13 +344,13 @@ function esf_tc_content_types_form_esf_tnc_tca_node_form_alter(&$form, &$form_st
  * Project database (4 content types) custom validation for drafting.
  */
 function esf_tc_content_types_projects_database_draft_validate(&$form, &$form_state) {
-
   $editorial_field_name = _esf_tc_content_types_get_editorial_status_field_name();
   $state = reset($form_state['values'][$editorial_field_name][LANGUAGE_NONE])['value'];
 
   $errors = form_get_errors();
 
-  if($state == 'draft') {
+  // Only skip validation on Save as Draft of a drafted content.
+  if ($state == 'draft' && $form_state['clicked_button']['#value'] == 'Save as draft') {
     if ($errors) {
       // Clear errors.
       form_clear_error();
@@ -293,6 +379,32 @@ function esf_tc_content_types_projects_database_draft_validate(&$form, &$form_st
         }
       }
     }
+  }
+}
+
+/**
+ * Project database (4 content types) custom submit for editorial status.
+ */
+function esf_tc_content_types_projects_database_submit(&$form, &$form_state) {
+  $arr_status = array(
+    'publish' => 'published',
+    'block' => 'blocked',
+    'archive' => 'archived',
+    'ask for deletion' => 'needs-deletion',
+  );
+
+  $field_esf_editorial_status = _esf_tc_content_types_get_editorial_status_field_name();
+  $action = strtolower($form_state['clicked_button']['#value']);
+
+  if ($action && $action != 'draft') {
+    // Force publish drupal status.
+    $form_state['status'] = 1;
+    // Force Editorial status.
+    $new_status = $arr_status[$action];
+    if ($new_status) {
+      $form_state['values'][$field_esf_editorial_status][LANGUAGE_NONE][0]['value'] = $new_status;
+    }
+    // TODO: Notify
   }
 }
 
@@ -344,9 +456,103 @@ function _esf_tc_content_types_get_editorial_status_field_name() {
  */
 function _esf_tc_content_types_get_project_database_types() {
   return array(
-    'esf_tnc_project',
+    'esf_tnc_organisation',
     'esf_tnc_project',
     'esf_tnc_global_call',
     'esf_tnc_tca',
   );
+}
+/**
+ * Helper function to check if user can access to the actions button.
+ */
+function _esf_tc_content_types_button_access($action, $content_type, $node, $status = null) {
+  $content_types = _esf_tc_content_types_get_project_database_types();
+  $editorial_status_field_name = _esf_tc_content_types_get_editorial_status_field_name();
+
+  // Find status if not defined.
+  if (!$status) {
+    $status = field_get_items('node', $node, $editorial_status_field_name);
+    if (is_array($status))
+      $status = reset($current_status)['value'];
+  }
+
+  if(in_array($content_type, $content_types)) {
+    switch ($action) {
+      case 'block':
+        if (in_array($status, array('published','archived'))) {
+          if (user_access("block any $content_type content")) {
+            return TRUE;
+          } else {
+            // Get all managing authorities linked and check current user.
+            $MAs = _esf_tc_content_types_get_responsible_authorities($content_type, $node);
+            return _esf_tc_content_types_ma_access($MAs);
+          }
+        }
+        break;
+      case 'archive':
+        if ($status == 'published')
+          return user_access("archive any $content_type content");
+        break;
+      case 'need-deletion':
+        if (in_array($status, array('draft','need-deletion'))) {
+          if (node_access('edit', $node)) {
+            return TRUE;
+          } else {
+            // Get all managing authorities linked and check current user.
+            $MAs = _esf_tc_content_types_get_responsible_authorities($content_type, $node);
+            return _esf_tc_content_types_ma_access($MAs);
+            }
+          }
+        break;
+      case 'publish':
+        if (in_array($status, array('blocked','archived','need-deletion'))) {
+          if (user_access("republish any $content_type content")) {
+            return TRUE;
+          } elseif ($status == 'blocked') {
+            // Get all managing authorities linked and check current user.
+            $MAs = _esf_tc_content_types_get_responsible_authorities($content_type, $node);
+            return _esf_tc_content_types_ma_access($MAs);
+          }
+        }
+        break;
+    }
+  }
+  return FALSE;
+}
+/**
+ * Helper function to get the Managing Authorities linked to the node.
+ * Return array of nodes.
+ */
+function _esf_tc_content_types_get_responsible_authorities($content_type, $node) {
+  $content_types = _esf_tc_content_types_get_project_database_types();
+
+  if(in_array($content_type, $content_types)) {
+    switch ($content_type) {
+      case 'esf_tnc_organisation':
+        // TODO find if the organisation has a projects in a call and if the user is a MA.
+      case 'esf_tnc_project':
+        // TODO find if the project is in a call and if the user is a MA.
+      case 'esf_tnc_global_call':
+        // TODO TO BE CHANGED TO CALLS.
+      case 'esf_tnc_tca':
+        // TODO find if the TCA has an if the user is a MA.
+      default:
+          return array(); // TODO DELETE THIS
+    }
+  }
+  else
+    return array();
+}
+/**
+ * Helper function to check if current user is an Managing Authorities granted.
+ */
+function _esf_tc_content_types_ma_access($MAs) {
+  if (is_array($MAs) && count($MAs)) {
+    foreach ($MAs as $MA) {
+      if (node_access('edit',$MA))
+        return TRUE;
+    }
+    unset($MA);
+  }
+  return FALSE;
 }
