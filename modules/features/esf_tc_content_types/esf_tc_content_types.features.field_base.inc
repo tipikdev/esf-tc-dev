@@ -455,7 +455,7 @@ function esf_tc_content_types_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         0 => array(
-          'vocabulary' => 'themes_news_and_events',
+          'vocabulary' => 'forums',
           'parent' => 0,
         ),
       ),

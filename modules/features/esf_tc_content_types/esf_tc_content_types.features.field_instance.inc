@@ -8485,7 +8485,7 @@ If an organisation is not found, please save your work as draft and check that t
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 33,
+      'weight' => 2,
     ),
   );
 

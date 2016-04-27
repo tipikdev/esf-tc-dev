@@ -661,6 +661,153 @@ function esf_tc_content_types_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'i18n_node_extended_esf_tnc_event';
+  $strongarm->value = 1;
+  $export['i18n_node_extended_esf_tnc_event'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'i18n_node_extended_esf_tnc_global_call';
+  $strongarm->value = 1;
+  $export['i18n_node_extended_esf_tnc_global_call'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'i18n_node_extended_esf_tnc_hp_slide';
+  $strongarm->value = 1;
+  $export['i18n_node_extended_esf_tnc_hp_slide'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'i18n_node_extended_esf_tnc_news';
+  $strongarm->value = 1;
+  $export['i18n_node_extended_esf_tnc_news'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'i18n_node_extended_esf_tnc_organisation';
+  $strongarm->value = 1;
+  $export['i18n_node_extended_esf_tnc_organisation'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'i18n_node_extended_esf_tnc_project';
+  $strongarm->value = 1;
+  $export['i18n_node_extended_esf_tnc_project'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'i18n_node_extended_esf_tnc_tca';
+  $strongarm->value = 1;
+  $export['i18n_node_extended_esf_tnc_tca'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'i18n_node_options_esf_tnc_event';
+  $strongarm->value = array();
+  $export['i18n_node_options_esf_tnc_event'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'i18n_node_options_esf_tnc_global_call';
+  $strongarm->value = array();
+  $export['i18n_node_options_esf_tnc_global_call'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'i18n_node_options_esf_tnc_hp_slide';
+  $strongarm->value = array();
+  $export['i18n_node_options_esf_tnc_hp_slide'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'i18n_node_options_esf_tnc_news';
+  $strongarm->value = array();
+  $export['i18n_node_options_esf_tnc_news'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'i18n_node_options_esf_tnc_organisation';
+  $strongarm->value = array();
+  $export['i18n_node_options_esf_tnc_organisation'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'i18n_node_options_esf_tnc_project';
+  $strongarm->value = array();
+  $export['i18n_node_options_esf_tnc_project'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'i18n_node_options_esf_tnc_tca';
+  $strongarm->value = array();
+  $export['i18n_node_options_esf_tnc_tca'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'i18n_sync_node_type_esf_tnc_event';
+  $strongarm->value = array();
+  $export['i18n_sync_node_type_esf_tnc_event'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'i18n_sync_node_type_esf_tnc_global_call';
+  $strongarm->value = array();
+  $export['i18n_sync_node_type_esf_tnc_global_call'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'i18n_sync_node_type_esf_tnc_hp_slide';
+  $strongarm->value = array();
+  $export['i18n_sync_node_type_esf_tnc_hp_slide'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'i18n_sync_node_type_esf_tnc_news';
+  $strongarm->value = array();
+  $export['i18n_sync_node_type_esf_tnc_news'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'i18n_sync_node_type_esf_tnc_organisation';
+  $strongarm->value = array();
+  $export['i18n_sync_node_type_esf_tnc_organisation'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'i18n_sync_node_type_esf_tnc_project';
+  $strongarm->value = array();
+  $export['i18n_sync_node_type_esf_tnc_project'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'i18n_sync_node_type_esf_tnc_tca';
+  $strongarm->value = array();
+  $export['i18n_sync_node_type_esf_tnc_tca'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_esf_tnc_event';
   $strongarm->value = '0';
   $export['language_content_type_esf_tnc_event'] = $strongarm;
@@ -825,52 +972,52 @@ function esf_tc_content_types_strongarm() {
   $strongarm->value = array(
     'esf_tnc_project' => array(
       'field_project_ma_responsible' => array(
+        'all' => array(
+          'view' => 'view',
+        ),
+        'author' => array(
+          'delete' => 'delete',
+          'update' => 'update',
+          'view' => 'view',
+        ),
+        'author_published' => 1,
         'referenced' => array(
-          'view' => array(
+          'delete' => array(
+            'update' => 'update',
             'view' => 'view',
           ),
           'update' => array(
             'update' => 'update',
             'view' => 'view',
           ),
-          'delete' => array(
+          'view' => array(
             'view' => 'view',
-            'update' => 'update',
           ),
-        ),
-        'author' => array(
-          'view' => 'view',
-          'update' => 'update',
-          'delete' => 'delete',
-        ),
-        'author_published' => '1',
-        'all' => array(
-          'view' => 'view',
         ),
         'field_type' => 'entityreference',
       ),
       'field_project_lead_organisation' => array(
+        'all' => array(
+          'view' => 'view',
+        ),
+        'author' => array(
+          'delete' => 'delete',
+          'update' => 'update',
+          'view' => 'view',
+        ),
+        'author_published' => 1,
         'referenced' => array(
-          'view' => array(
+          'delete' => array(
             'view' => 'view',
           ),
+          'published' => 1,
           'update' => array(
             'update' => 'update',
             'view' => 'view',
           ),
-          'delete' => array(
+          'view' => array(
             'view' => 'view',
           ),
-          'published' => '1',
-        ),
-        'author' => array(
-          'view' => 'view',
-          'update' => 'update',
-          'delete' => 'delete',
-        ),
-        'author_published' => '1',
-        'all' => array(
-          'view' => 'view',
         ),
         'field_type' => 'entityreference',
       ),
@@ -1073,7 +1220,7 @@ function esf_tc_content_types_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_esf_tnc_event';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['node_preview_esf_tnc_event'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -1094,7 +1241,7 @@ function esf_tc_content_types_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_esf_tnc_news';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['node_preview_esf_tnc_news'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -1250,6 +1397,67 @@ function esf_tc_content_types_strongarm() {
   $strongarm->name = 'pathauto_taxonomy_term_project_target_groups_pattern';
   $strongarm->value = '';
   $export['pathauto_taxonomy_term_project_target_groups_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'workbench_access';
+  $strongarm->value = 'taxonomy';
+  $export['workbench_access'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'workbench_access_allow_multiple';
+  $strongarm->value = 0;
+  $export['workbench_access_allow_multiple'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'workbench_access_auto_assign';
+  $strongarm->value = 1;
+  $export['workbench_access_auto_assign'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'workbench_access_custom_form';
+  $strongarm->value = 0;
+  $export['workbench_access_custom_form'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'workbench_access_label';
+  $strongarm->value = 'Section';
+  $export['workbench_access_label'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'workbench_access_node_type_forum';
+  $strongarm->value = 1;
+  $export['workbench_access_node_type_forum'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'workbench_access_taxonomy';
+  $strongarm->value = array(
+    'forums' => 'forums',
+    'call_types' => 0,
+    'classification' => 0,
+    'ec_world_countries' => 0,
+    'esf_countries_regions' => 0,
+    'esf_themes' => 0,
+    'languages' => 0,
+    'organisation_types' => 0,
+    'project_activities' => 0,
+    'project_target_groups' => 0,
+    'tags' => 0,
+  );
+  $export['workbench_access_taxonomy'] = $strongarm;
 
   return $export;
 }

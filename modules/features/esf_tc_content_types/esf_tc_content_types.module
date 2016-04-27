@@ -12,6 +12,8 @@ include_once 'esf_tc_content_types.block.inc';
  * Implements hook_node_presave().
  */
 function esf_tc_content_types_node_presave($node) {
+  global $user;
+
   // Store all contacts in specific grant access field for
   // an organisation content type.
   // Do not test if the scheduler info (publish_on) is present.
@@ -58,6 +60,31 @@ function esf_tc_content_types_node_presave($node) {
       $node->field_tca_content_managers_tca['und'] = $projects;
     }
   }
+
+  if ($node->type == 'forum' && $node->is_new) {
+    // Notify forum moderator on new content.
+    $forum_term = taxonomy_term_load($node->taxonomy_forums['und'][0]['tid']);
+    $emails = _esf_tc_content_types_get_forum_moderators($forum_term);
+    if (!empty($emails)) {
+      rules_invoke_component('esf_tc_content_types_notify_forum_moderator_on_new_post', $user, $emails, $forum_term, $node);
+    }
+  }
+}
+
+/**
+ * Implements hook_comment_insert().
+ */
+function esf_tc_content_types_comment_insert($comment) {
+  global $user;
+
+  // Notify forum moderator on new comment.
+  $node = node_load($comment->nid);
+  $forum_term = taxonomy_term_load($node->taxonomy_forums['und'][0]['tid']);
+  $emails = _esf_tc_content_types_get_forum_moderators($forum_term);
+  if (!empty($emails)) {
+    rules_invoke_component('esf_tc_content_types_notify_forum_moderator_on_new_comment', $user, $emails, $forum_term, $node, $comment);
+  }
+
 }
 
 /**
@@ -542,34 +569,183 @@ function esf_tc_content_types_tca_validate($form, &$form_state) {
  * Implements hook_node_access_records().
  */
 function esf_tc_content_types_node_access_records($node) {
-  // Denied Access for non-public forum node.
-  if (is_object($node) && $node->type == 'forum') {
-    $field = field_get_items('node', $node, 'field_topic_public', LANGUAGE_NONE);
-    $public = reset($field)['value'];
+  $grants = array();
 
+  // Denied access for non-public forum node per forum thematics.
+  // Update and delete grants are managed by WB Access and basic permissions.
+  if (is_object($node) && $node->type == 'forum') {
+    $visibility = field_get_items('node', $node, 'field_topic_public', LANGUAGE_NONE);
+    $public = reset($visibility)['value'];
     if (!$public) {
-      $grants = array();
+      $forum_section_field = field_get_items('node', $node, 'taxonomy_forums', LANGUAGE_NONE);
+      $forum_section = $forum_section_field[0]['tid'];
       $grants[] = array(
         'realm' => 'forum_private',
-        'gid' => 1,
+        'gid' => $forum_section,
         'grant_view' => 1,
-        'grant_update' => 1,
-        'grant_delete' => 1,
+        'grant_update' => 0,
+        'grant_delete' => 0,
         'priority' => 0,
       );
-      return $grants;
     }
   }
+  return $grants;
 }
 
 /**
  * Implements hook_node_grants().
  */
 function esf_tc_content_types_node_grants($account, $op) {
-  if ($account->uid) {
-    $grants = array(
-      'forum_private' => array(array(1)),
-    );
-    return $grants;
+  $grants = array();
+
+  // Set default grants condition for forum access.
+  $grants['forum_private'] = array(0);
+
+  if ($op == 'view') {
+    if ($account->uid) {
+      // Check permission access to forum section.
+      $wb_user_access_tree = workbench_access_get_user_tree($account);
+      if (!empty($wb_user_access_tree)) {
+        foreach ($wb_user_access_tree as $key => $term) {
+          $grants['forum_private'][] = $key;
+        }
+      }
+    }
   }
+  return $grants;
+}
+
+/**
+ * Implements template_preprocess_forums().
+ */
+function esf_tc_content_types_preprocess_forums(&$variables) {
+  // Add custom content to forum page.
+  if ($variables['tid'] != 0) {
+    $variables['topics_title'] = t('Discussions');
+    $variables['news'] = _esf_tc_render_block('views', 'esf_news-block_1');
+    $variables['events'] = _esf_tc_render_block('views', 'esf_events-block_1');
+    $variables['action_links'] = menu_local_actions();
+  }
+}
+
+/**
+ * Render block.
+ */
+function _esf_tc_render_block($block_module, $block_name) {
+  $block_load = block_load($block_module, $block_name);
+  $render_blocks = _block_render_blocks(array($block_load));
+  $renderable_block = _block_get_renderable_array($render_blocks);
+  return drupal_render($renderable_block);
+}
+
+/**
+ * Implements hook_menu_alter().
+ */
+function esf_tc_content_types_menu_alter(&$items) {
+  $items['forum/%forum_forum/join'] = array(
+    'title' => 'Join the network',
+    'type' => MENU_LOCAL_ACTION,
+    'page callback' => '_esf_tc_content_types_manage_networking',
+    'page arguments' => array(1, 2),
+    'access callback' => 'user_is_logged_in',
+  );
+
+  $items['forum/%forum_forum/remove'] = array(
+    'title' => 'Remove me from the newtork',
+    'type' => MENU_LOCAL_ACTION,
+    'page callback' => '_esf_tc_content_types_manage_networking',
+    'page arguments' => array(1, 2),
+    'access callback' => 'user_is_logged_in',
+  );
+}
+
+/**
+ * Notify the forum moderator.
+ */
+function _esf_tc_content_types_manage_networking($forum_term, $op) {
+  global $user;
+
+  if ($op == 'join') {
+    // Notify the forum moderator when asking to join.
+    $emails = _esf_tc_content_types_get_forum_moderators($forum_term);
+    if (empty($emails)) {
+      drupal_set_message(t('There is currently no moderator for this network. Please contact the webmaster.'), 'warning');
+    }
+    else {
+      rules_invoke_component('esf_tc_content_types_notify_forum_moderator_to_add_user', $user, $forum_term, $emails);
+    }
+  }
+  elseif ($op == 'remove') {
+    // Remove directly the user from the network.
+    workbench_access_user_section_delete($user->uid, $forum_term->tid, 'taxonomy');
+    drupal_set_message(t('Your access to the netowrk has been removed'));
+  }
+
+  // Redirect to forum page.
+  drupal_goto(drupal_get_path_alias('forum/' . $forum_term->tid));
+}
+
+/**
+ * Implements hook_menu_local_tasks_alter().
+ */
+function esf_tc_content_types_menu_local_tasks_alter(&$data, $router_item, $root_path) {
+  global $user;
+
+  // Add local link to forum pages.
+  if ($root_path == 'forum/%') {
+    if (user_is_logged_in()) {
+      $tid = (isset($router_item['page_arguments'][0]) ? $router_item['page_arguments'][0]->tid : 0);
+      $forum_term = forum_forum_load($tid);
+      if ($forum_term) {
+        // Get the access tree for the user account.
+        $user_access_tree = workbench_access_get_user_tree($user);
+
+        // Add specific action link regarding the user is already member
+        // of the network or not.
+        $links = array();
+        if (!array_key_exists($tid, $user_access_tree)) {
+          $links['forum_join'] = array(
+            '#theme' => 'menu_local_action',
+            '#link' => array(
+              'title' => t('Join this network'),
+              'href' => 'forum/' . $forum_term->tid . '/join',
+            ),
+          );
+        }
+        else {
+          $links['forum_remove'] = array(
+            '#theme' => 'menu_local_action',
+            '#link' => array(
+              'title' => t('Remove me from this network'),
+              'href' => 'forum/' . $forum_term->tid . '/remove',
+            ),
+          );
+        }
+        $data['actions']['output'] = $links;
+      }
+    }
+  }
+}
+
+/**
+ * Get emails of moderators by forum.
+ */
+function _esf_tc_content_types_get_forum_moderators($forum_term) {
+  $moderator_rid = ($role = user_role_load_by_name('forum moderator')) ? $role->rid : NULL;
+
+  // Retrieve the moderators' emails of the network.
+  $query = db_select('users', 'u')
+    ->fields('u', array('uid', 'mail'));
+  $query->join('workbench_access_user', 'wau', 'u.uid = wau.uid');
+  $query->join('users_roles', 'ur', 'u.uid = ur.uid');
+  $query->condition('wau.access_scheme', 'taxonomy')
+    ->condition('wau.access_id', $forum_term->tid)
+    ->condition('ur.rid', $moderator_rid);
+  $result = $query->execute();
+
+  $emails = array();
+  foreach ($result as $account) {
+    $emails[] = $account->mail;
+  }
+  return $emails;
 }

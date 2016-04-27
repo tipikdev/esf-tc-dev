@@ -77,12 +77,12 @@ function esf_tc_content_types_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'menu-left-menu_esf-transnational-cooperation:<front>',
   );
-  // Exported menu link: menu-left-menu_news--events:forum/552.
-  $menu_links['menu-left-menu_news--events:forum/552'] = array(
+  // Exported menu link: menu-left-menu_networking:forum.
+  $menu_links['menu-left-menu_networking:forum'] = array(
     'menu_name' => 'menu-left-menu',
-    'link_path' => 'forum/552',
-    'router_path' => 'forum/%',
-    'link_title' => 'News & Events',
+    'link_path' => 'forum',
+    'router_path' => 'forum',
+    'link_title' => 'Networking',
     'options' => array(
       'attributes' => array(
         'data-display-title' => 1,
@@ -94,17 +94,17 @@ function esf_tc_content_types_menu_default_menu_links() {
         'data-display-title' => 1,
         'data-hide-children' => 0,
         'id' => '',
-        'class' => 'news',
+        'class' => 'networking',
         'data-remove-class' => 0,
         'style' => '',
       ),
-      'identifier' => 'menu-left-menu_news--events:forum/552',
+      'identifier' => 'menu-left-menu_networking:forum',
     ),
     'module' => 'menu',
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
-    'expanded' => 1,
+    'expanded' => 0,
     'weight' => -49,
     'customized' => 1,
     'language' => 'und',
@@ -118,6 +118,7 @@ function esf_tc_content_types_menu_default_menu_links() {
     'router_path' => 'search/partners-search',
     'link_title' => 'Partner database',
     'options' => array(
+      'identifier' => 'menu-left-menu_partner-database:search/partners-search',
       'attributes' => array(
         'data-display-title' => 1,
         'data-hide-children' => 0,
@@ -132,7 +133,6 @@ function esf_tc_content_types_menu_default_menu_links() {
         'data-remove-class' => 0,
         'style' => '',
       ),
-      'identifier' => 'menu-left-menu_partner-database:search/partners-search',
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -145,7 +145,8 @@ function esf_tc_content_types_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'menu-left-menu_esf-transnational-cooperation:<front>',
   );
-  // Exported menu link: menu-left-menu_search-transnational-platform:search/site.
+  // Exported menu link:
+  // menu-left-menu_search-transnational-platform:search/site.
   $menu_links['menu-left-menu_search-transnational-platform:search/site'] = array(
     'menu_name' => 'menu-left-menu',
     'link_path' => 'search/site',
@@ -183,7 +184,7 @@ function esf_tc_content_types_menu_default_menu_links() {
   // Translatables
   // Included for use with string extractors like potx.
   t('ESF Transnational Cooperation');
-  t('News & Events');
+  t('Networking');
   t('Partner database');
   t('Search transnational platform');
   t('myTNC');

@@ -10,6 +10,25 @@
 function esf_tc_content_types_user_default_permissions() {
   $permissions = array();
 
+  // Exported permission: 'access workbench access by role'.
+  $permissions['access workbench access by role'] = array(
+    'name' => 'access workbench access by role',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contact' => 'contact',
+    ),
+    'module' => 'workbench_access',
+  );
+
+  // Exported permission: 'administer comments'.
+  $permissions['administer comments'] = array(
+    'name' => 'administer comments',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'comment',
+  );
+
   // Exported permission: 'administer nodes'.
   $permissions['administer nodes'] = array(
     'name' => 'administer nodes',
@@ -18,6 +37,34 @@ function esf_tc_content_types_user_default_permissions() {
       'webmaster' => 'webmaster',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: 'administer workbench access'.
+  $permissions['administer workbench access'] = array(
+    'name' => 'administer workbench access',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'workbench_access',
+  );
+
+  // Exported permission: 'assign workbench access'.
+  $permissions['assign workbench access'] = array(
+    'name' => 'assign workbench access',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'forum moderator' => 'forum moderator',
+    ),
+    'module' => 'workbench_access',
+  );
+
+  // Exported permission: 'batch update workbench access'.
+  $permissions['batch update workbench access'] = array(
+    'name' => 'batch update workbench access',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'workbench_access',
   );
 
   // Exported permission: 'create esf_tnc_event content'.
@@ -160,6 +207,7 @@ function esf_tc_content_types_user_default_permissions() {
     'name' => 'delete any forum content',
     'roles' => array(
       'administrator' => 'administrator',
+      'forum moderator' => 'forum moderator',
     ),
     'module' => 'node',
   );
@@ -305,8 +353,18 @@ function esf_tc_content_types_user_default_permissions() {
     'name' => 'edit any forum content',
     'roles' => array(
       'administrator' => 'administrator',
+      'forum moderator' => 'forum moderator',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: 'edit own comments'.
+  $permissions['edit own comments'] = array(
+    'name' => 'edit own comments',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'comment',
   );
 
   // Exported permission: 'edit own esf_tnc_event content'.
@@ -380,6 +438,34 @@ function esf_tc_content_types_user_default_permissions() {
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: 'skip comment approval'.
+  $permissions['skip comment approval'] = array(
+    'name' => 'skip comment approval',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'comment',
+  );
+
+  // Exported permission: 'view workbench access information'.
+  $permissions['view workbench access information'] = array(
+    'name' => 'view workbench access information',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'workbench_access',
+  );
+
+  // Exported permission: 'view workbench taxonomy pages'.
+  $permissions['view workbench taxonomy pages'] = array(
+    'name' => 'view workbench taxonomy pages',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'workbench_access',
   );
 
   return $permissions;
