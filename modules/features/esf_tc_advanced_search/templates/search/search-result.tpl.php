@@ -19,7 +19,8 @@
     <?php if ($display = render($snippet)): ?>
       <?php print $display; ?>
     <?php elseif ($snippet): ?>
-      <p class="search-snippet"<?php print $content_attributes; ?>><?php print $snippet; ?></p>
+      <p
+        class="search-snippet"<?php print $content_attributes; ?>><?php print $snippet; ?></p>
     <?php endif; ?>
   </div>
 </li>
