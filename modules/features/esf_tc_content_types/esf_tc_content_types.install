@@ -84,6 +84,8 @@ function esf_tc_content_types_enable() {
   multisite_drupal_toolbox_config_solr_bundle('esf_tnc_organisation', 'add');
   multisite_drupal_toolbox_config_solr_bundle('esf_tnc_project', 'add');
   multisite_drupal_toolbox_config_solr_bundle('esf_tnc_tca', 'add');
+  multisite_drupal_toolbox_config_solr_bundle('esf_tnc_news', 'add');
+  multisite_drupal_toolbox_config_solr_bundle('esf_tnc_event', 'add');
   multisite_drupal_toolbox_config_solr_bundle('forum', 'add');
 
   drupal_set_message($t("The feature ESF TC content types has been enabled."));
@@ -101,6 +103,8 @@ function esf_tc_content_types_disable() {
   multisite_drupal_toolbox_disable_content_type('esf_tnc_organisation');
   multisite_drupal_toolbox_disable_content_type('esf_tnc_project');
   multisite_drupal_toolbox_disable_content_type('esf_tnc_tca');
+  multisite_drupal_toolbox_disable_content_type('esf_tnc_news');
+  multisite_drupal_toolbox_disable_content_type('esf_tnc_event');
   multisite_drupal_toolbox_disable_content_type('forum');
 
   // Disable SolR indexation for content types.
@@ -109,6 +113,8 @@ function esf_tc_content_types_disable() {
   multisite_drupal_toolbox_config_solr_bundle('esf_tnc_organisation', 'delete');
   multisite_drupal_toolbox_config_solr_bundle('esf_tnc_project', 'delete');
   multisite_drupal_toolbox_config_solr_bundle('esf_tnc_tca', 'delete');
+  multisite_drupal_toolbox_config_solr_bundle('esf_tnc_news', 'delete');
+  multisite_drupal_toolbox_config_solr_bundle('esf_tnc_event', 'delete');
   multisite_drupal_toolbox_config_solr_bundle('forum', 'delete');
 
   drupal_set_message($t("The feature ESF TC content types has been disabled."));
