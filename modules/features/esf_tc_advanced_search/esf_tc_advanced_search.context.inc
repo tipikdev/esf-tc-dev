@@ -121,6 +121,57 @@ function esf_tc_advanced_search_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'event-search';
+  $context->description = 'context for event search page';
+  $context->tag = 'search';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'events' => 'events',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'menu-menu-left-menu' => array(
+          'module' => 'menu',
+          'delta' => 'menu-left-menu',
+          'region' => 'sidebar_left',
+          'weight' => '-10',
+        ),
+        'facetapi-MLVrCOI59V1xb6WMeEPREpT89ZpN5ZxP' => array(
+          'module' => 'facetapi',
+          'delta' => 'MLVrCOI59V1xb6WMeEPREpT89ZpN5ZxP',
+          'region' => 'sidebar_left',
+          'weight' => '-9',
+        ),
+        'facetapi-M25HaXJhGFuf90wFawfbm1lhspReJ9nY' => array(
+          'module' => 'facetapi',
+          'delta' => 'M25HaXJhGFuf90wFawfbm1lhspReJ9nY',
+          'region' => 'sidebar_left',
+          'weight' => '-8',
+        ),
+        'facetapi-ahPHo0uhIJPJC2xhqiJd81U13Zi2Hbes' => array(
+          'module' => 'facetapi',
+          'delta' => 'ahPHo0uhIJPJC2xhqiJd81U13Zi2Hbes',
+          'region' => 'sidebar_left',
+          'weight' => '-7',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('context for event search page');
+  t('search');
+  $export['event-search'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'news-search';
   $context->description = 'context for news search page';
   $context->tag = 'search';
