@@ -22,7 +22,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -45,7 +45,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'fid',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'mediafield',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -66,7 +66,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'target_id',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'entityreference',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -103,7 +103,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'revision_id',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'field_collection',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -127,10 +127,11 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
+      'profile2_private' => FALSE,
     ),
     'translatable' => 0,
     'type' => 'text_long',
@@ -148,7 +149,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'value',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
@@ -175,7 +176,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'value',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
@@ -205,7 +206,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'tid',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'taxonomy',
     'settings' => array(
       'allowed_values' => array(
@@ -234,7 +235,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'value',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
@@ -421,7 +422,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'tid',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'taxonomy',
     'settings' => array(
       'allowed_values' => array(
@@ -594,7 +595,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'tid',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'taxonomy',
     'settings' => array(
       'allowed_values' => array(
@@ -623,7 +624,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'tid',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'taxonomy',
     'settings' => array(
       'allowed_values' => array(
@@ -652,7 +653,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'tid',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'taxonomy',
     'settings' => array(
       'allowed_values' => array(
@@ -677,7 +678,7 @@ function esf_tc_content_types_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_fc_budget',
     'indexes' => array(),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'number',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -699,7 +700,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'revision_id',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'field_collection',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -723,7 +724,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -742,7 +743,7 @@ function esf_tc_content_types_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_fc_call_eligibility_end',
     'indexes' => array(),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'date',
     'settings' => array(
       'cache_count' => 4,
@@ -773,7 +774,7 @@ function esf_tc_content_types_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_fc_call_eligibility_start',
     'indexes' => array(),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'date',
     'settings' => array(
       'cache_count' => 4,
@@ -804,7 +805,7 @@ function esf_tc_content_types_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_fc_call_links',
     'indexes' => array(),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'link',
     'settings' => array(
       'attributes' => array(
@@ -838,7 +839,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'target_id',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'entityreference',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -874,7 +875,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -897,7 +898,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -916,7 +917,7 @@ function esf_tc_content_types_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_fc_call_sub_deadline',
     'indexes' => array(),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'date',
     'settings' => array(
       'cache_count' => 4,
@@ -951,7 +952,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -970,7 +971,7 @@ function esf_tc_content_types_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_fc_call_total_budget',
     'indexes' => array(),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'number',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -992,7 +993,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'value',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
@@ -1015,7 +1016,7 @@ function esf_tc_content_types_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_fc_date_initial_sign',
     'indexes' => array(),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'date',
     'settings' => array(
       'cache_count' => 4,
@@ -1050,7 +1051,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'value',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
@@ -1080,7 +1081,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'target_id',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'entityreference',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1116,7 +1117,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1139,7 +1140,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1162,7 +1163,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1185,7 +1186,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'target_id',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'entityreference',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1222,7 +1223,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1241,7 +1242,7 @@ function esf_tc_content_types_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_fc_total_budget_',
     'indexes' => array(),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'number',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1263,7 +1264,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1285,7 +1286,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1308,7 +1309,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'revision_id',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'field_collection',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1328,7 +1329,7 @@ function esf_tc_content_types_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_org_address',
     'indexes' => array(),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'addressfield',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1350,7 +1351,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'fid',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'mediafield',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1371,7 +1372,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'target_id',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'entityreference',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1407,7 +1408,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'value',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
@@ -1434,7 +1435,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1457,7 +1458,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1480,7 +1481,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1503,7 +1504,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'target_id',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'entityreference',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1539,7 +1540,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1560,7 +1561,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'value',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
@@ -1587,7 +1588,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1608,7 +1609,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1625,7 +1626,7 @@ function esf_tc_content_types_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_org_links',
     'indexes' => array(),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'link',
     'settings' => array(
       'attributes' => array(
@@ -1659,7 +1660,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'fid',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'image',
     'settings' => array(
       'default_image' => 0,
@@ -1685,7 +1686,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'fid',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'image',
     'settings' => array(
       'default_image' => 0,
@@ -1711,7 +1712,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1733,7 +1734,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1756,7 +1757,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'value',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
@@ -1783,7 +1784,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1805,7 +1806,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1828,7 +1829,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1851,7 +1852,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1874,7 +1875,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'tid',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'taxonomy',
     'settings' => array(
       'allowed_values' => array(
@@ -1899,7 +1900,7 @@ function esf_tc_content_types_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_organisation',
     'indexes' => array(),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'number',
     'settings' => array(
       'decimal_separator' => '.',
@@ -1924,7 +1925,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1947,7 +1948,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'target_id',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'entityreference',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1983,7 +1984,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'value',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
@@ -2010,7 +2011,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'value',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
@@ -2037,7 +2038,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -2056,7 +2057,7 @@ function esf_tc_content_types_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_profile_contact_contact',
     'indexes' => array(),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'number',
     'settings' => array(
       'decimal_separator' => '.',
@@ -2081,7 +2082,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -2104,7 +2105,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'value',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
@@ -2132,7 +2133,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -2155,7 +2156,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -2178,7 +2179,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'tid',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'taxonomy',
     'settings' => array(
       'allowed_values' => array(
@@ -2207,7 +2208,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -2230,7 +2231,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -2252,7 +2253,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'tid',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'taxonomy',
     'settings' => array(
       'allowed_values' => array(
@@ -2281,7 +2282,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'fid',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'mediafield',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -2303,7 +2304,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'target_id',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'entityreference',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -2339,7 +2340,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'tid',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'taxonomy',
     'settings' => array(
       'allowed_values' => array(
@@ -2364,7 +2365,7 @@ function esf_tc_content_types_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_project_end_date_activity',
     'indexes' => array(),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'date',
     'settings' => array(
       'cache_count' => 4,
@@ -2399,7 +2400,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -2421,7 +2422,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -2443,7 +2444,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'value',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
@@ -2470,7 +2471,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -2492,7 +2493,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -2514,7 +2515,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -2536,7 +2537,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -2554,7 +2555,7 @@ function esf_tc_content_types_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_project_indicative_budget_',
     'indexes' => array(),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'number',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -2576,7 +2577,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'target_id',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'entityreference',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -2611,7 +2612,7 @@ function esf_tc_content_types_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_project_links',
     'indexes' => array(),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'link',
     'settings' => array(
       'attributes' => array(
@@ -2646,7 +2647,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'fid',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'image',
     'settings' => array(
       'default_image' => 0,
@@ -2672,7 +2673,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'fid',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'image',
     'settings' => array(
       'default_image' => 0,
@@ -2698,7 +2699,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'target_id',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'entityreference',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -2734,7 +2735,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'target_id',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'entityreference',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -2770,7 +2771,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -2793,7 +2794,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -2816,7 +2817,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -2838,7 +2839,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'target_id',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'entityreference',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -2874,7 +2875,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -2897,7 +2898,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -2920,7 +2921,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -2943,7 +2944,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -2965,7 +2966,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -2987,7 +2988,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'value',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
@@ -3014,7 +3015,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'value',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
@@ -3044,7 +3045,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'value',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
@@ -3072,7 +3073,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'tid',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'taxonomy',
     'settings' => array(
       'allowed_values' => array(
@@ -3101,7 +3102,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -3124,7 +3125,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -3147,7 +3148,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'target_id',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'entityreference',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -3182,7 +3183,7 @@ function esf_tc_content_types_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_tca_end_date_activity',
     'indexes' => array(),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'date',
     'settings' => array(
       'cache_count' => 4,
@@ -3217,7 +3218,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'value',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
@@ -3244,7 +3245,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -3266,7 +3267,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'fid',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'image',
     'settings' => array(
       'default_image' => 0,
@@ -3292,7 +3293,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'target_id',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'entityreference',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -3328,7 +3329,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'value',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
@@ -3355,7 +3356,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'revision_id',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'field_collection',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -3379,7 +3380,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'fid',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'file',
     'settings' => array(
       'display_default' => 0,
@@ -3402,7 +3403,7 @@ function esf_tc_content_types_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_tca_start_date_activity',
     'indexes' => array(),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'date',
     'settings' => array(
       'cache_count' => 4,
@@ -3437,7 +3438,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'value',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
@@ -3467,7 +3468,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -3486,7 +3487,7 @@ function esf_tc_content_types_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_tca_total_budget',
     'indexes' => array(),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'number',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -3508,7 +3509,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'value',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
@@ -3535,7 +3536,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
