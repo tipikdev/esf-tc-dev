@@ -5,6 +5,8 @@
  * Install, update and uninstall functions for esf_tc_content_types module.
  */
 
+include_once 'esf_tc_content_types.install.inc';
+
 /**
  * Implements hook_install().
  */
@@ -119,3 +121,47 @@ function esf_tc_content_types_disable() {
 
   drupal_set_message($t("The feature ESF TC content types has been disabled."));
 }
+
+/**
+ * Implements hook_update_N().
+ */
+/*
+function esf_tc_content_types_update_7101() {
+  $folder_path = drupal_get_path('module', 'esf_tc_content_types') . '/default_images/';
+
+  // Update default image on field base.
+  // Event default image.
+  $field_name = 'field_esf_event_picture';
+  $filename = 'default_event.jpg';
+  $source = $folder_path . $filename;
+  _esf_tc_content_types_replace_default_image($field_name, $filename, $source);
+
+  // News default image.
+  $field_name = 'field_esf_news_picture';
+  $filename = 'default_news.jpg';
+  $source = $folder_path . $filename;
+  _esf_tc_content_types_replace_default_image($field_name, $filename, $source);
+}
+*/
+
+/**
+ * Implements hook_update_N().
+ */
+/*
+function esf_tc_content_types_update_7101() {
+  $folder_path = drupal_get_path('module', 'esf_tc_content_types') . '/default_images/';
+
+  // Update default image on field base.
+  // Event default image.
+  $field_name = 'field_esf_event_picture';
+  $filename = 'default_event.jpg';
+  $source = $folder_path . $filename;
+  _esf_tc_content_types_replace_default_image($field_name, $filename, $source);
+
+  // News default image.
+  $field_name = 'field_esf_news_picture';
+  $filename = 'default_news.jpg';
+  $source = $folder_path . $filename;
+  _esf_tc_content_types_replace_default_image($field_name, $filename, $source);
+}
+*/

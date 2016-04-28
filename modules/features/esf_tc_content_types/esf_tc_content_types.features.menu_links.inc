@@ -145,8 +145,7 @@ function esf_tc_content_types_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'menu-left-menu_esf-transnational-cooperation:<front>',
   );
-  // Exported menu link:
-  // menu-left-menu_search-transnational-platform:search/site.
+  // Exported menu link: menu-left-menu_search-transnational-platform:search/site.
   $menu_links['menu-left-menu_search-transnational-platform:search/site'] = array(
     'menu_name' => 'menu-left-menu',
     'link_path' => 'search/site',

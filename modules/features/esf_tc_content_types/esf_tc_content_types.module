@@ -750,4 +750,48 @@ function _esf_tc_content_types_get_forum_moderators($forum_term) {
   return $emails;
 }
 
+/**
+ * Implements hook_field_default_field_instances_alter().
+ *
+ * Set the default image.
+ */
+/*
+function esf_tc_content_types_field_default_field_instances_alter(&$fields) {
+  // Event default image.
+  if (isset($fields['node-esf_tnc_event-field_esf_event_picture']['settings']['default_image'])) {
+    $variable_name = 'esf_tc_field_esf_event_picture_fid';
+    $fid = $fields['node-esf_tnc_event-field_esf_event_picture']['settings']['default_image'];
+    $fields['field_esf_event_picture']['settings']['default_image'] = variable_get($variable_name, $fid);
+  }
 
+  // News default image.
+  if (isset($fields['node-esf_tnc_event-field_esf_news_picture']['settings']['default_image'])) {
+    $variable_name = 'esf_tc_field_esf_news_picture_fid';
+    $fid = $fields['node-esf_tnc_event-field_esf_news_picture']['settings']['default_image'];
+    $fields['node-esf_tnc_event-field_esf_news_picture']['settings']['default_image'] = variable_get($variable_name, $fid);
+  }
+}
+*/
+
+/**
+ * Implements hook_field_default_field_instances_alter().
+ *
+ * Set the default image.
+ */
+/*
+function esf_tc_content_types_field_default_field_instances_alter(&$fields) {
+  // Event default image.
+  if (isset($fields['node-esf_tnc_event-field_esf_event_picture']['settings']['default_image'])) {
+    $variable_name = 'esf_tc_field_esf_event_picture_fid';
+    $fid = $fields['node-esf_tnc_event-field_esf_event_picture']['settings']['default_image'];
+    $fields['field_esf_event_picture']['settings']['default_image'] = variable_get($variable_name, $fid);
+  }
+
+  // News default image.
+  if (isset($fields['node-esf_tnc_event-field_esf_news_picture']['settings']['default_image'])) {
+    $variable_name = 'esf_tc_field_esf_news_picture_fid';
+    $fid = $fields['node-esf_tnc_event-field_esf_news_picture']['settings']['default_image'];
+    $fields['node-esf_tnc_event-field_esf_news_picture']['settings']['default_image'] = variable_get($variable_name, $fid);
+  }
+}
+*/
