@@ -52,7 +52,7 @@ function esf_tc_advanced_search_apachesolr_query_alter($query) {
 function esf_tc_advanced_search_apachesolr_query_prepare($query) {
   $context = $query->getcontext();
   if ($context['page_id'] == 'partners_search') {
-    $query->addFilter('bundle', '( esf_tnc_project OR esf_tnc_tca OR esf_tnc_organisation OR esf_tnc_global_call)', FALSE);
+    $query->addFilter('bundle', '( esf_tnc_project OR esf_tnc_tca OR esf_tnc_organisation OR esf_tnc_call_for_project)', FALSE);
   }
   elseif ($context['page_id'] == 'esf_tc_news_search') {
     $query->addFilter('bundle', 'esf_tnc_news', FALSE);
@@ -71,7 +71,7 @@ function esf_tc_advanced_search_apachesolr_process_results(array &$results, Drup
   // Attach teaser view to result.
   for ($i = 0; $i < count($results); $i++) {
     if ($results[$i]['entity_type'] == 'node') {
-      $view_mode = 'teaser';
+      $view_mode = ($results[$i]['bundle'] == 'esf_tnc_call_for_project' ? 'full' : 'teaser');
       $teaser = node_view(node_load($results[$i]['node']->entity_id), $view_mode);
       $results[$i]['snippet'] = $teaser;
       $results[$i]['info'] = $results[$i]['type'];

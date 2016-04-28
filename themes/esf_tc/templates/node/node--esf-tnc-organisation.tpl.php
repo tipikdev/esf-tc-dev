@@ -101,34 +101,34 @@
         class="abstract"><?php print render($content['field_org_experience']); ?></div>
 
       <table class="standard-table" cellpadding="0" cellspacing="0">
-        <?php if (isset($content['field_org_type_of_organisation'])) :?>
+        <?php if (isset($content['field_org_type_of_organisation'])) : ?>
           <tr>
             <th><?php print render($content['field_org_type_of_organisation']['#title']) ?>
               :
             </th>
-            <td><?php if (['field_org_type_of_organisation'] == 'Other (specify)') :?>
+            <td><?php if (['field_org_type_of_organisation'] == t('Other (specify)')) : ?>
                 <?php print render($content['field_org_specify_type'][0]['#markup']); ?>
-              <?php else :?>
+              <?php else : ?>
                 <?php print render($content['field_org_type_of_organisation']); ?>
               <?php endif; ?>
             </td>
           </tr>
         <?php endif; ?>
-        <?php if (isset($content['field_esf_country_ref'])) :?>
+        <?php if (isset($content['field_esf_country_ref'])) : ?>
           <tr>
             <th><?php print render($content['field_esf_country_ref']['#title']) ?>
               :
             </th>
-            <td><?php if (['field_esf_country_ref'] == 'Other countries') :?>
+            <td><?php if ($content['field_esf_country_ref'][0]['#markup'] == t('Other countries')) : ?>
                 <?php print render($content['field_org_other_countries']); ?>
-              <?php else : ?>
+                <?php else : ?>
                 <?php print render($content['field_esf_country_ref']); ?>
               <?php endif; ?>
             </td>
           </tr>
         <?php endif; ?>
 
-        <?php if (isset($content['field_esf_region_ref'])) :?>
+        <?php if (isset($content['field_esf_region_ref'])) : ?>
           <tr>
             <th><?php print render($content['field_esf_region_ref']['#title']) ?>
               :
@@ -137,7 +137,7 @@
           </tr>
         <?php endif; ?>
 
-        <?php if (isset($content['field_org_acronym'])) :?>
+        <?php if (isset($content['field_org_acronym'])) : ?>
           <tr>
             <th><?php print render($content['field_org_acronym']['#title']) ?>
               :
@@ -146,7 +146,7 @@
           </tr>
         <?php endif; ?>
 
-        <?php if (isset($content['field_org_name_national_lang'])) :?>
+        <?php if (isset($content['field_org_name_national_lang'])) : ?>
           <tr>
             <th><?php print render($content['field_org_name_national_lang']['#title']) ?>
               :
@@ -155,7 +155,7 @@
           </tr>
         <?php endif; ?>
 
-        <?php if (isset($content['field_org_organisation_depart'])) :?>
+        <?php if (isset($content['field_org_organisation_depart'])) : ?>
           <tr>
             <th><?php print render($content['field_org_organisation_depart']['#title']) ?>
               :
@@ -164,7 +164,7 @@
           </tr>
         <?php endif; ?>
 
-        <?php if (isset($content['field_org_address'])) :?>
+        <?php if (isset($content['field_org_address'])) : ?>
           <tr>
             <th><?php print render($content['field_org_address']['#title']) ?>
               :
@@ -173,22 +173,22 @@
           </tr>
         <?php endif; ?>
 
-        <?php if (isset($content['field_org_contact_account'])) :?>
+        <?php if (isset($content['field_org_contact_account'])) : ?>
           <tr>
             <th><?php print 'Legal contact' ?>:</th>
             <td>
               <?php if ($content['field_org_contact_account'][0]['#markup'] == 'Yes') : ?>
-                <?php print render($content['field_org_contact'][0]);?>
-              <?php else :?>
+                <?php print render($content['field_org_contact'][0]); ?>
+              <?php else : ?>
                 <?php print render($content['field_org_contact_legal_name']) . ' - ' . render($content['field_org_contact_legal_email'][0]); ?>
-              <?php endif;?>
+              <?php endif; ?>
               <br/> Role
               : <?php print render($content['field_org_contact_legal_role'][0]); ?>
             </td>
           </tr>
         <?php endif; ?>
 
-        <?php if (isset($content['field_org_additional_contacts'])) :?>
+        <?php if (isset($content['field_org_additional_contacts'])) : ?>
           <tr>
             <th><?php print render($content['field_org_additional_contacts']['#title']) ?>
               :
@@ -197,7 +197,7 @@
           </tr>
         <?php endif; ?>
 
-        <?php if (isset($content['field_org_main_occupation'])) :?>
+        <?php if (isset($content['field_org_main_occupation'])) : ?>
           <tr>
             <th><?php print render($content['field_org_main_occupation']['#title']) ?>
               :
@@ -206,7 +206,7 @@
           </tr>
         <?php endif; ?>
 
-        <?php if (isset($content['field_esf_languages_ref'])) :?>
+        <?php if (isset($content['field_esf_languages_ref'])) : ?>
           <tr>
             <th><?php print render($content['field_esf_languages_ref']['#title']) ?>
               :
@@ -217,18 +217,16 @@
 
       </table>
     <?php else: ?>
-
       <?php if ($view_mode == 'teaser'): ?>
-
         <div
           class="abstract"><?php print render($content['field_org_experience']); ?></div>
         <table class="standard-table" cellpadding="0" cellspacing="0">
-          <?php if (isset($content['field_org_type_of_organisation'])) :?>
+          <?php if (isset($content['field_org_type_of_organisation'])) : ?>
             <tr>
               <th><?php print render($content['field_org_type_of_organisation']['#title']) ?>
                 :
               </th>
-              <td><?php if (['field_org_type_of_organisation'] == 'Other (specify)') :?>
+              <td><?php if (['field_org_type_of_organisation'] == t('Other (specify)')) : ?>
                   <?php print render($content['field_org_specify_type'][0]['#markup']); ?>
                 <?php else : ?>
                   <?php print render($content['field_org_type_of_organisation']); ?>
@@ -236,22 +234,21 @@
               </td>
             </tr>
           <?php endif; ?>
-          <?php if (isset($content['field_esf_country_ref'])) :?>
+          <?php if (isset($content['field_esf_country_ref'])) : ?>
             <tr>
               <th><?php print render($content['field_esf_country_ref']['#title']) ?>
                 :
               </th>
-              <td><?php if (['field_esf_country_ref'] == 'Other countries') :?>
+              <td><?php if ($content['field_esf_country_ref'][0]['#markup'] == t('Other countries')) : ?>
                   <?php print render($content['field_org_other_countries']); ?>
-                <?php else :?>
-                  print render($content['field_esf_country_ref']);
+                <?php else : ?>
+                  <?php print render($content['field_esf_country_ref']); ?>
                 <?php endif; ?>
-                <?php print render($content['field_org_other_countries']); ?>
               </td>
             </tr>
           <?php endif; ?>
 
-          <?php if (isset($content['field_esf_region_ref'])) :?>
+          <?php if (isset($content['field_esf_region_ref'])) : ?>
             <tr>
               <th><?php print render($content['field_esf_region_ref']['#title']) ?>
                 :
