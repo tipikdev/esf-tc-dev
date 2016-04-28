@@ -729,7 +729,7 @@ please save your work as draft and check that the editorial status of the organi
     'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
-      'max' => 10000000000,
+      'max' => 2147483647,
       'min' => 0,
       'prefix' => '€',
       'suffix' => '',
@@ -841,7 +841,7 @@ please save your work as draft and check that the editorial status of the organi
     'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
-      'max' => '',
+      'max' => 2147483647,
       'min' => '',
       'prefix' => '€',
       'suffix' => '',
@@ -1379,7 +1379,7 @@ please save your work as draft and check that the editorial status of the organi
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
-      'max' => '',
+      'max' => 2147483647,
       'min' => '',
       'prefix' => '€',
       'suffix' => '',
@@ -2151,10 +2151,10 @@ please save your work as draft and check that the editorial status of the organi
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
-          'basic_html' => 'basic_html',
-          'filtered_html' => 'filtered_html',
+          'basic_html' => 0,
+          'filtered_html' => 0,
           'full_html' => 'full_html',
-          'plain_text' => 'plain_text',
+          'plain_text' => 0,
         ),
         'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
@@ -5216,10 +5216,10 @@ please save your work as draft and check that the editorial status of the organi
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
-          'basic_html' => 'basic_html',
-          'filtered_html' => 'filtered_html',
+          'basic_html' => 0,
+          'filtered_html' => 0,
           'full_html' => 'full_html',
-          'plain_text' => 'plain_text',
+          'plain_text' => 0,
         ),
         'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
@@ -5485,6 +5485,7 @@ please save your work as draft and check that the editorial status of the organi
   // 'node-esf_tnc_project-field_project_end_date_activity'.
   $field_instances['node-esf_tnc_project-field_project_end_date_activity'] = array(
     'bundle' => 'esf_tnc_project',
+    'default_value' => array(),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -5512,7 +5513,7 @@ please save your work as draft and check that the editorial status of the organi
     'entity_type' => 'node',
     'field_name' => 'field_project_end_date_activity',
     'label' => 'End date of transnational activity',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'default_value' => 'blank',
       'default_value2' => 'same',
@@ -5567,10 +5568,10 @@ please save your work as draft and check that the editorial status of the organi
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
-          'basic_html' => 'basic_html',
-          'filtered_html' => 'filtered_html',
+          'basic_html' => 0,
+          'filtered_html' => 0,
           'full_html' => 'full_html',
-          'plain_text' => 'plain_text',
+          'plain_text' => 0,
         ),
         'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
@@ -5638,10 +5639,10 @@ please save your work as draft and check that the editorial status of the organi
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
-          'basic_html' => 'basic_html',
-          'filtered_html' => 'filtered_html',
+          'basic_html' => 0,
+          'filtered_html' => 0,
           'full_html' => 'full_html',
-          'plain_text' => 'plain_text',
+          'plain_text' => 0,
         ),
         'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
@@ -5753,10 +5754,10 @@ please save your work as draft and check that the editorial status of the organi
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
-          'basic_html' => 'basic_html',
-          'filtered_html' => 'filtered_html',
+          'basic_html' => 0,
+          'filtered_html' => 0,
           'full_html' => 'full_html',
-          'plain_text' => 'plain_text',
+          'plain_text' => 0,
         ),
         'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
@@ -5825,10 +5826,10 @@ please save your work as draft and check that the editorial status of the organi
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
-          'basic_html' => 'basic_html',
-          'filtered_html' => 'filtered_html',
+          'basic_html' => 0,
+          'filtered_html' => 0,
           'full_html' => 'full_html',
-          'plain_text' => 'plain_text',
+          'plain_text' => 0,
         ),
         'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
@@ -5897,10 +5898,10 @@ please save your work as draft and check that the editorial status of the organi
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
-          'basic_html' => 'basic_html',
-          'filtered_html' => 'filtered_html',
+          'basic_html' => 0,
+          'filtered_html' => 0,
           'full_html' => 'full_html',
-          'plain_text' => 'plain_text',
+          'plain_text' => 0,
         ),
         'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
@@ -5969,10 +5970,10 @@ please save your work as draft and check that the editorial status of the organi
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
-          'basic_html' => 'basic_html',
-          'filtered_html' => 'filtered_html',
+          'basic_html' => 0,
+          'filtered_html' => 0,
           'full_html' => 'full_html',
-          'plain_text' => 'plain_text',
+          'plain_text' => 0,
         ),
         'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
@@ -6657,10 +6658,10 @@ If an organisation is not found, please save your work as draft and check that t
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
-          'basic_html' => 'basic_html',
-          'filtered_html' => 'filtered_html',
+          'basic_html' => 0,
+          'filtered_html' => 0,
           'full_html' => 'full_html',
-          'plain_text' => 'plain_text',
+          'plain_text' => 0,
         ),
         'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
@@ -7023,10 +7024,10 @@ If an organisation is not found, please save your work as draft and check that t
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
-          'basic_html' => 'basic_html',
-          'filtered_html' => 'filtered_html',
+          'basic_html' => 0,
+          'filtered_html' => 0,
           'full_html' => 'full_html',
-          'plain_text' => 'plain_text',
+          'plain_text' => 0,
         ),
         'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
@@ -7094,10 +7095,10 @@ If an organisation is not found, please save your work as draft and check that t
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
-          'basic_html' => 'basic_html',
-          'filtered_html' => 'filtered_html',
+          'basic_html' => 0,
+          'filtered_html' => 0,
           'full_html' => 'full_html',
-          'plain_text' => 'plain_text',
+          'plain_text' => 0,
         ),
         'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
@@ -7817,10 +7818,10 @@ If an organisation is not found, please save your work as draft and check that t
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
-          'basic_html' => 'basic_html',
-          'filtered_html' => 'filtered_html',
+          'basic_html' => 0,
+          'filtered_html' => 0,
           'full_html' => 'full_html',
-          'plain_text' => 'plain_text',
+          'plain_text' => 0,
         ),
         'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
@@ -8359,7 +8360,7 @@ If an organisation is not found, please save your work as draft and check that t
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
-      'max' => '',
+      'max' => 2147483647,
       'min' => '',
       'prefix' => '€',
       'suffix' => '',

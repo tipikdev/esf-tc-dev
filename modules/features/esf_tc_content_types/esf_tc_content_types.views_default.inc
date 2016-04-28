@@ -165,15 +165,16 @@ function esf_tc_content_types_views_default_views() {
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   /* Field: Content: Call for projects */
   $handler->display->display_options['fields']['field_call_coordinated_calls']['id'] = 'field_call_coordinated_calls';
   $handler->display->display_options['fields']['field_call_coordinated_calls']['table'] = 'field_data_field_call_coordinated_calls';
   $handler->display->display_options['fields']['field_call_coordinated_calls']['field'] = 'field_call_coordinated_calls';
   $handler->display->display_options['fields']['field_call_coordinated_calls']['label'] = '';
+  $handler->display->display_options['fields']['field_call_coordinated_calls']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_call_coordinated_calls']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_call_coordinated_calls']['type'] = 'field_collection_fields';
   $handler->display->display_options['fields']['field_call_coordinated_calls']['settings'] = array(
@@ -185,6 +186,14 @@ function esf_tc_content_types_views_default_views() {
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Contextual filter: Field: Country (field_esf_country_ref) */
+  $handler->display->display_options['arguments']['field_esf_country_ref_tid']['id'] = 'field_esf_country_ref_tid';
+  $handler->display->display_options['arguments']['field_esf_country_ref_tid']['table'] = 'field_data_field_esf_country_ref';
+  $handler->display->display_options['arguments']['field_esf_country_ref_tid']['field'] = 'field_esf_country_ref_tid';
+  $handler->display->display_options['arguments']['field_esf_country_ref_tid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_esf_country_ref_tid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_esf_country_ref_tid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_esf_country_ref_tid']['summary_options']['items_per_page'] = '25';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
