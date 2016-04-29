@@ -129,6 +129,18 @@ function esf_tc_content_types_update_7101() {
   // Delete Global call content type .
   multisite_drupal_toolbox_disable_content_type('esf_tnc_global_call');
   multisite_drupal_toolbox_config_solr_bundle('esf_tnc_global_call','delete');
+
+  // Delete unused fields.
+  $fields = array(
+    'field_org_content_managers',
+    'field_tca_content_managers_tca',
+    'field_org_notification',
+  );
+  foreach( $fields as $field) {
+    if (field_info_field($field)) {
+      field_delete_field($field);
+    };
+  }
 }
 
 /**

@@ -21,7 +21,7 @@ function esf_tc_content_types_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Legal contact',
-    'weight' => '11',
+    'weight' => '12',
     'children' => array(
       0 => 'field_org_contact_account',
       1 => 'field_org_contact_legal_name',

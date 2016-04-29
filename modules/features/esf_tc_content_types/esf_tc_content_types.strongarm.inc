@@ -844,9 +844,7 @@ function esf_tc_content_types_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_esf_tnc_event';
-  $strongarm->value = array(
-    0 => 'main-menu',
-  );
+  $strongarm->value = array();
   $export['menu_options_esf_tnc_event'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -860,9 +858,7 @@ function esf_tc_content_types_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_esf_tnc_news';
-  $strongarm->value = array(
-    0 => 'main-menu',
-  );
+  $strongarm->value = array();
   $export['menu_options_esf_tnc_news'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -879,18 +875,14 @@ function esf_tc_content_types_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_esf_tnc_project';
-  $strongarm->value = array(
-    0 => 'main-menu',
-  );
+  $strongarm->value = array();
   $export['menu_options_esf_tnc_project'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_esf_tnc_tca';
-  $strongarm->value = array(
-    0 => 'main-menu',
-  );
+  $strongarm->value = array();
   $export['menu_options_esf_tnc_tca'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -941,179 +933,6 @@ function esf_tc_content_types_strongarm() {
   $strongarm->name = 'menu_parent_esf_tnc_tca';
   $strongarm->value = 'main-menu:0';
   $export['menu_parent_esf_tnc_tca'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'nodeaccess_nodereference';
-  $strongarm->value = array(
-    'esf_tnc_project' => array(
-      'field_project_ma_responsible' => array(
-        'all' => array(
-          'view' => 'view',
-        ),
-        'author' => array(
-          'delete' => 'delete',
-          'update' => 'update',
-          'view' => 'view',
-        ),
-        'author_published' => 1,
-        'referenced' => array(
-          'delete' => array(
-            'update' => 'update',
-            'view' => 'view',
-          ),
-          'update' => array(
-            'update' => 'update',
-            'view' => 'view',
-          ),
-          'view' => array(
-            'view' => 'view',
-          ),
-        ),
-        'field_type' => 'entityreference',
-      ),
-      'field_project_lead_organisation' => array(
-        'all' => array(
-          'view' => 'view',
-        ),
-        'author' => array(
-          'delete' => 'delete',
-          'update' => 'update',
-          'view' => 'view',
-        ),
-        'author_published' => 1,
-        'referenced' => array(
-          'delete' => array(
-            'view' => 'view',
-          ),
-          'published' => 1,
-          'update' => array(
-            'update' => 'update',
-            'view' => 'view',
-          ),
-          'view' => array(
-            'view' => 'view',
-          ),
-        ),
-        'field_type' => 'entityreference',
-      ),
-    ),
-    'esf_tnc_tca' => array(
-      'field_tca_content_managers_tca' => array(
-        'author' => array(
-          'view' => 'view',
-        ),
-        'referenced' => array(
-          'published' => 1,
-          'update' => array(
-            'update' => 'update',
-            'view' => 'view',
-          ),
-          'view' => array(
-            'view' => 'view',
-          ),
-        ),
-        'field_type' => 'entityreference',
-      ),
-    ),
-  );
-  $export['nodeaccess_nodereference'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'nodeaccess_nodereference_cross_access';
-  $strongarm->value = array(
-    'view' => TRUE,
-    'update' => TRUE,
-    'delete' => TRUE,
-  );
-  $export['nodeaccess_nodereference_cross_access'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'nodeaccess_userreference';
-  $strongarm->value = array(
-    'esf_tnc_organisation' => array(
-      'field_org_contact' => array(
-        'referenced' => array(
-          'view' => 'view',
-          'update' => 'update',
-          'delete' => 'delete',
-        ),
-        'referenced_published' => '1',
-        'create' => array(
-          'esf_tnc_organisation' => 'esf_tnc_organisation',
-        ),
-        'author' => array(
-          'view' => 'view',
-          'update' => 'update',
-          'delete' => 'delete',
-        ),
-        'author_published' => '1',
-        'all' => array(
-          'view' => 'view',
-        ),
-      ),
-      'field_org_content_managers' => array(
-        'referenced' => array(
-          'view' => 'view',
-          'update' => 'update',
-          'delete' => 'delete',
-        ),
-        'referenced_published' => '1',
-        'create' => array(
-          'esf_tnc_organisation' => 'esf_tnc_organisation',
-        ),
-        'author' => array(
-          'view' => 'view',
-          'update' => 'update',
-          'delete' => 'delete',
-        ),
-        'author_published' => '1',
-        'all' => array(
-          'view' => 'view',
-        ),
-      ),
-    ),
-    'esf_tnc_project' => array(
-      'field_project_manager' => array(
-        'referenced' => array(
-          'view' => 'view',
-          'update' => 'update',
-        ),
-        'referenced_published' => '1',
-        'author' => array(
-          'view' => 'view',
-          'update' => 'update',
-          'delete' => 'delete',
-        ),
-        'author_published' => '1',
-        'all' => array(
-          'view' => 'view',
-        ),
-      ),
-      'field_project_operat_contact' => array(
-        'referenced' => array(
-          'view' => 'view',
-          'update' => 'update',
-        ),
-        'referenced_published' => '1',
-        'author' => array(
-          'view' => 'view',
-          'update' => 'update',
-          'delete' => 'delete',
-        ),
-        'author_published' => '1',
-        'all' => array(
-          'view' => 'view',
-        ),
-      ),
-    ),
-  );
-  $export['nodeaccess_userreference'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -1211,14 +1030,14 @@ function esf_tc_content_types_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_esf_tnc_project';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['node_preview_esf_tnc_project'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_esf_tnc_tca';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['node_preview_esf_tnc_tca'] = $strongarm;
 
   $strongarm = new stdClass();

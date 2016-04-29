@@ -96,17 +96,26 @@
     hide($content['links']);
     ?>
 
-    <?php if ($view_mode == 'full'): ?>
+    <?php if ($view_mode == 'full' || $view_mode == 'teaser'): ?>
       <div
         class="abstract"><?php print render($content['field_org_experience']); ?></div>
-
       <table class="standard-table" cellpadding="0" cellspacing="0">
+        <?php if ($content['field_org_is_ma_ib_type']['#items'][0]['value']) : ?>
+          <tr>
+            <th><?php print t('Type of organisation'); ?>
+              :
+            </th>
+            <td><?php print t('MA/IB'); ?>
+            </td>
+          </tr>
+        <?php endif; ?>
+
         <?php if (isset($content['field_org_type_of_organisation'])) : ?>
           <tr>
             <th><?php print render($content['field_org_type_of_organisation']['#title']) ?>
               :
             </th>
-            <td><?php if (['field_org_type_of_organisation'] == t('Other (specify)')) : ?>
+            <td><?php if ($content['field_org_type_of_organisation'][0]['#markup'] == t('Other')) : ?>
                 <?php print render($content['field_org_specify_type'][0]['#markup']); ?>
               <?php else : ?>
                 <?php print render($content['field_org_type_of_organisation']); ?>
@@ -114,14 +123,15 @@
             </td>
           </tr>
         <?php endif; ?>
+
         <?php if (isset($content['field_esf_country_ref'])) : ?>
           <tr>
             <th><?php print render($content['field_esf_country_ref']['#title']) ?>
               :
             </th>
-            <td><?php if ($content['field_esf_country_ref'][0]['#markup'] == t('Other countries')) : ?>
+            <td><?php if ($content['field_esf_country_ref'][0]['#markup'] == t('Other')) : ?>
                 <?php print render($content['field_org_other_countries']); ?>
-                <?php else : ?>
+              <?php else : ?>
                 <?php print render($content['field_esf_country_ref']); ?>
               <?php endif; ?>
             </td>
@@ -130,136 +140,104 @@
 
         <?php if (isset($content['field_esf_region_ref'])) : ?>
           <tr>
-            <th><?php print render($content['field_esf_region_ref']['#title']) ?>
+            <th><?php print render($content['field_esf_region_ref']['#title']); ?>
               :
             </th>
             <td><?php print render($content['field_esf_region_ref']); ?></td>
           </tr>
         <?php endif; ?>
 
-        <?php if (isset($content['field_org_acronym'])) : ?>
-          <tr>
-            <th><?php print render($content['field_org_acronym']['#title']) ?>
-              :
-            </th>
-            <td><?php print render($content['field_org_acronym']); ?></td>
-          </tr>
-        <?php endif; ?>
+        <?php if ($view_mode == 'full'): ?>
+          <?php if (isset($content['field_org_acronym'])) : ?>
+            <tr>
+              <th><?php print render($content['field_org_acronym']['#title']); ?>
+                :
+              </th>
+              <td><?php print render($content['field_org_acronym']); ?></td>
+            </tr>
+          <?php endif; ?>
 
-        <?php if (isset($content['field_org_name_national_lang'])) : ?>
-          <tr>
-            <th><?php print render($content['field_org_name_national_lang']['#title']) ?>
-              :
-            </th>
-            <td><?php print render($content['field_org_name_national_lang']); ?></td>
-          </tr>
-        <?php endif; ?>
+          <?php if (isset($content['field_org_name_national_lang'])) : ?>
+            <tr>
+              <th><?php print render($content['field_org_name_national_lang']['#title']); ?>
+                :
+              </th>
+              <td><?php print render($content['field_org_name_national_lang']); ?></td>
+            </tr>
+          <?php endif; ?>
 
-        <?php if (isset($content['field_org_organisation_depart'])) : ?>
-          <tr>
-            <th><?php print render($content['field_org_organisation_depart']['#title']) ?>
-              :
-            </th>
-            <td><?php print render($content['field_org_organisation_depart']); ?></td>
-          </tr>
-        <?php endif; ?>
+          <?php if (isset($content['field_org_organisation_depart'])) : ?>
+            <tr>
+              <th><?php print render($content['field_org_organisation_depart']['#title']); ?>
+                :
+              </th>
+              <td><?php print render($content['field_org_organisation_depart']); ?></td>
+            </tr>
+          <?php endif; ?>
 
-        <?php if (isset($content['field_org_address'])) : ?>
-          <tr>
-            <th><?php print render($content['field_org_address']['#title']) ?>
-              :
-            </th>
-            <td><?php print render($content['field_org_address']); ?></td>
-          </tr>
-        <?php endif; ?>
+          <?php if (isset($content['field_org_address'])) : ?>
+            <tr>
+              <th><?php print render($content['field_org_address']['#title']); ?>
+                :
+              </th>
+              <td><?php print render($content['field_org_address']); ?></td>
+            </tr>
+          <?php endif; ?>
 
-        <?php if (isset($content['field_org_contact_account'])) : ?>
-          <tr>
-            <th><?php print 'Legal contact' ?>:</th>
-            <td>
-              <?php if ($content['field_org_contact_account'][0]['#markup'] == 'Yes') : ?>
-                <?php print render($content['field_org_contact'][0]); ?>
-              <?php else : ?>
-                <?php print render($content['field_org_contact_legal_name']) . ' - ' . render($content['field_org_contact_legal_email'][0]); ?>
-              <?php endif; ?>
-              <br/> Role
-              : <?php print render($content['field_org_contact_legal_role'][0]); ?>
-            </td>
-          </tr>
-        <?php endif; ?>
+          <?php if (isset($content['field_org_contact_account'])) : ?>
+            <tr>
+              <th><?php print 'Legal contact' ?>:</th>
+              <td>
+                <?php if ($content['field_org_contact_account'][0]['#markup'] == 'Yes') : ?>
+                  <?php print render($content['field_org_contact'][0]); ?>
+                <?php else : ?>
+                  <?php print render($content['field_org_contact_legal_name']) . ' - ' . render($content['field_org_contact_legal_email'][0]); ?>
+                <?php endif; ?>
+                <br/> Role
+                : <?php print render($content['field_org_contact_legal_role'][0]); ?>
+              </td>
+            </tr>
+          <?php endif; ?>
 
-        <?php if (isset($content['field_org_additional_contacts'])) : ?>
-          <tr>
-            <th><?php print render($content['field_org_additional_contacts']['#title']) ?>
-              :
-            </th>
-            <td><?php print render($content['field_org_additional_contacts']); ?></td>
-          </tr>
-        <?php endif; ?>
+          <?php if (isset($content['field_org_additional_contacts'])) : ?>
+            <tr>
+              <th><?php print render($content['field_org_additional_contacts']['#title']); ?>
+                :
+              </th>
+              <td><?php print render($content['field_org_additional_contacts']); ?></td>
+            </tr>
+          <?php endif; ?>
 
-        <?php if (isset($content['field_org_main_occupation'])) : ?>
-          <tr>
-            <th><?php print render($content['field_org_main_occupation']['#title']) ?>
-              :
-            </th>
-            <td><?php print render($content['field_org_main_occupation']); ?></td>
-          </tr>
-        <?php endif; ?>
+          <?php if (isset($content['field_org_main_occupation'])) : ?>
+            <tr>
+              <th><?php print render($content['field_org_main_occupation']['#title']); ?>
+                :
+              </th>
+              <td><?php print render($content['field_org_main_occupation']); ?></td>
+            </tr>
+          <?php endif; ?>
 
-        <?php if (isset($content['field_esf_languages_ref'])) : ?>
-          <tr>
-            <th><?php print render($content['field_esf_languages_ref']['#title']) ?>
-              :
-            </th>
-            <td><?php print render($content['field_esf_languages_ref']); ?></td>
-          </tr>
-        <?php endif; ?>
+          <?php if (isset($content['field_esf_languages_ref'])) : ?>
+            <tr>
+              <th><?php print render($content['field_esf_languages_ref']['#title']); ?>
+                :
+              </th>
+              <td><?php print render($content['field_esf_languages_ref']); ?></td>
+            </tr>
+          <?php endif; ?>
 
+          <?php if (isset($content['field_org_other_language'])) : ?>
+            <tr>
+              <th><?php print render($content['field_org_other_language']['#title']); ?>
+                :
+              </th>
+              <td><?php print render($content['field_org_other_language']); ?></td>
+            </tr>
+          <?php endif; ?>
+        <?php endif; ?>
       </table>
     <?php else: ?>
-      <?php if ($view_mode == 'teaser'): ?>
-        <div
-          class="abstract"><?php print render($content['field_org_experience']); ?></div>
-        <table class="standard-table" cellpadding="0" cellspacing="0">
-          <?php if (isset($content['field_org_type_of_organisation'])) : ?>
-            <tr>
-              <th><?php print render($content['field_org_type_of_organisation']['#title']) ?>
-                :
-              </th>
-              <td><?php if (['field_org_type_of_organisation'] == t('Other (specify)')) : ?>
-                  <?php print render($content['field_org_specify_type'][0]['#markup']); ?>
-                <?php else : ?>
-                  <?php print render($content['field_org_type_of_organisation']); ?>
-                <?php endif; ?>
-              </td>
-            </tr>
-          <?php endif; ?>
-          <?php if (isset($content['field_esf_country_ref'])) : ?>
-            <tr>
-              <th><?php print render($content['field_esf_country_ref']['#title']) ?>
-                :
-              </th>
-              <td><?php if ($content['field_esf_country_ref'][0]['#markup'] == t('Other countries')) : ?>
-                  <?php print render($content['field_org_other_countries']); ?>
-                <?php else : ?>
-                  <?php print render($content['field_esf_country_ref']); ?>
-                <?php endif; ?>
-              </td>
-            </tr>
-          <?php endif; ?>
-
-          <?php if (isset($content['field_esf_region_ref'])) : ?>
-            <tr>
-              <th><?php print render($content['field_esf_region_ref']['#title']) ?>
-                :
-              </th>
-              <td><?php print render($content['field_esf_region_ref']); ?></td>
-            </tr>
-          <?php endif; ?>
-        </table>
-      <?php else: ?>
-        <?php print render($content); ?>
-      <?php endif; ?>
+      <?php print render($content); ?>
     <?php endif; ?>
     <?php if ($suffix_display): ?>
       <div class="row node-info">

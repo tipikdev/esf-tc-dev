@@ -157,27 +157,6 @@ function esf_tc_content_types_default_rules_configuration() {
       "DO" : [ { "node_publish" : { "node" : [ "node" ] } } ]
     }
   }');
-  $items['rules_publish_content_type'] = entity_import('rules_config', '{ "rules_publish_content_type" : {
-      "LABEL" : "Publish all content type ",
-      "PLUGIN" : "reaction rule",
-      "OWNER" : "rules",
-      "REQUIRES" : [ "rules" ],
-      "ON" : {
-        "node_insert--esf_tnc_organisation" : { "bundle" : "esf_tnc_organisation" },
-        "node_update--esf_tnc_organisation" : { "bundle" : "esf_tnc_organisation" },
-        "node_insert--esf_tnc_project" : { "bundle" : "esf_tnc_project" },
-        "node_update--esf_tnc_project" : { "bundle" : "esf_tnc_project" },
-        "node_insert--esf_tnc_global_call" : { "bundle" : "esf_tnc_global_call" },
-        "node_update--esf_tnc_global_call" : { "bundle" : "esf_tnc_global_call" },
-        "node_insert--esf_tnc_tca" : { "bundle" : "esf_tnc_tca" },
-        "node_update--esf_tnc_tca" : { "bundle" : "esf_tnc_tca" }
-      },
-      "IF" : [
-        { "data_is" : { "data" : [ "node:field-esf-editorial-status" ], "value" : "published" } }
-      ],
-      "DO" : [ { "node_publish" : { "node" : [ "node" ] } } ]
-    }
-  }');
   $items['rules_update_editorial_status_when_an_organisation_is_published'] = entity_import('rules_config', '{ "rules_update_editorial_status_when_an_organisation_is_published" : {
       "LABEL" : "Update editorial status when an organisation is published",
       "PLUGIN" : "reaction rule",

@@ -2539,7 +2539,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 8,
       ),
     ),
     'entity_type' => 'node',
@@ -2559,7 +2559,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 27,
+      'weight' => 26,
     ),
   );
 
@@ -2582,7 +2582,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_plain',
-        'weight' => 2,
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'node',
@@ -2608,7 +2608,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'track_list' => 0,
       ),
       'type' => 'term_reference_tree',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
@@ -2661,11 +2661,7 @@ function esf_tc_content_types_field_default_field_instances() {
   // 'node-esf_tnc_organisation-field_esf_languages_ref'.
   $field_instances['node-esf_tnc_organisation-field_esf_languages_ref'] = array(
     'bundle' => 'esf_tnc_organisation',
-    'default_value' => array(
-      0 => array(
-        'tid' => 350,
-      ),
-    ),
+    'default_value' => array(),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -2695,11 +2691,12 @@ function esf_tc_content_types_field_default_field_instances() {
       'active' => 1,
       'module' => 'options',
       'settings' => array(
-        'apply_chosen' => '',
+        'apply_chosen' => 0,
       ),
-      'type' => 'options_select',
-      'weight' => 14,
+      'type' => 'options_buttons',
+      'weight' => 15,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance: 'node-esf_tnc_organisation-field_esf_region_ref'.
@@ -2721,7 +2718,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_plain',
-        'weight' => 3,
+        'weight' => 5,
       ),
     ),
     'entity_type' => 'node',
@@ -2747,7 +2744,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'track_list' => 0,
       ),
       'type' => 'term_reference_tree',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
@@ -2816,7 +2813,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -2829,7 +2826,7 @@ function esf_tc_content_types_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'field_collection',
         'settings' => array(
           'add' => 'Add',
@@ -2845,7 +2842,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 10,
       ),
     ),
     'entity_type' => 'node',
@@ -2861,7 +2858,7 @@ function esf_tc_content_types_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 12,
+      'weight' => 13,
     ),
   );
 
@@ -2873,7 +2870,7 @@ function esf_tc_content_types_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'addressfield',
         'settings' => array(
           'format_handlers' => array(
@@ -2917,7 +2914,7 @@ function esf_tc_content_types_field_default_field_instances() {
         ),
       ),
       'type' => 'addressfield_standard',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
@@ -2976,7 +2973,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'media_generic',
-      'weight' => 23,
+      'weight' => 24,
     ),
   );
 
@@ -3002,7 +2999,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 9,
       ),
     ),
     'entity_type' => 'node',
@@ -3127,7 +3124,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 13,
       ),
     ),
     'entity_type' => 'node',
@@ -3197,7 +3194,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 12,
       ),
     ),
     'entity_type' => 'node',
@@ -3267,7 +3264,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 11,
       ),
     ),
     'entity_type' => 'node',
@@ -3318,90 +3315,6 @@ function esf_tc_content_types_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'node-esf_tnc_organisation-field_org_content_managers'.
-  $field_instances['node-esf_tnc_organisation-field_org_content_managers'] = array(
-    'bundle' => 'esf_tnc_organisation',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 37,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_org_content_managers',
-    'label' => 'Content managers',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'nodeaccess_userreference' => array(
-        'all' => array(
-          'view' => 'view',
-        ),
-        'all_published' => 0,
-        'author' => array(
-          'delete' => 'delete',
-          'update' => 'update',
-          'view' => 'view',
-        ),
-        'author_published' => 1,
-        'create' => array(
-          'article' => 0,
-          'editorial_team' => 0,
-          'esf_tnc_global_call' => 0,
-          'esf_tnc_organisation' => 'esf_tnc_organisation',
-          'esf_tnc_project' => 0,
-          'esf_tnc_tca' => 0,
-          'feed' => 0,
-          'feed_item' => 0,
-          'forum' => 0,
-          'page' => 0,
-        ),
-        'priority' => 0,
-        'referenced' => array(
-          'delete' => 'delete',
-          'deny_delete' => 0,
-          'deny_update' => 0,
-          'deny_view' => 0,
-          'update' => 'update',
-          'view' => 'view',
-        ),
-        'referenced_published' => 1,
-        'unused' => 0,
-        'views' => array(
-          'view' => '',
-          'view_args' => '',
-        ),
-      ),
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 26,
-    ),
-  );
-
   // Exported field_instance: 'node-esf_tnc_organisation-field_org_experience'.
   $field_instances['node-esf_tnc_organisation-field_org_experience'] = array(
     'bundle' => 'esf_tnc_organisation',
@@ -3421,7 +3334,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_plain',
-        'weight' => 4,
+        'weight' => 6,
       ),
     ),
     'entity_type' => 'node',
@@ -3470,7 +3383,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 16,
+      'weight' => 17,
     ),
   );
 
@@ -3513,7 +3426,7 @@ function esf_tc_content_types_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 19,
+      'weight' => 20,
     ),
   );
 
@@ -3585,7 +3498,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 21,
+      'weight' => 22,
     ),
   );
 
@@ -3657,8 +3570,55 @@ function esf_tc_content_types_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 18,
+      'weight' => 19,
     ),
+  );
+
+  // Exported field_instance:
+  // 'node-esf_tnc_organisation-field_org_is_ma_ib_type'.
+  $field_instances['node-esf_tnc_organisation-field_org_is_ma_ib_type'] = array(
+    'bundle' => 'esf_tnc_organisation',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 37,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'module' => 'i18n_field',
+        'settings' => array(),
+        'type' => 'i18n_list_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_org_is_ma_ib_type',
+    'label' => 'MA/IB type',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 0,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 1,
+    ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance: 'node-esf_tnc_organisation-field_org_links'.
@@ -3717,7 +3677,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'link_field',
-      'weight' => 22,
+      'weight' => 23,
     ),
   );
 
@@ -3783,7 +3743,7 @@ function esf_tc_content_types_field_default_field_instances() {
         ),
       ),
       'type' => 'media_generic',
-      'weight' => 17,
+      'weight' => 18,
     ),
   );
 
@@ -3850,7 +3810,7 @@ function esf_tc_content_types_field_default_field_instances() {
         ),
       ),
       'type' => 'media_generic',
-      'weight' => 20,
+      'weight' => 21,
     ),
   );
 
@@ -3863,7 +3823,7 @@ function esf_tc_content_types_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_plain',
@@ -3922,7 +3882,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 13,
+      'weight' => 14,
     ),
   );
 
@@ -3992,52 +3952,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 8,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'node-esf_tnc_organisation-field_org_notification'.
-  $field_instances['node-esf_tnc_organisation-field_org_notification'] = array(
-    'bundle' => 'esf_tnc_organisation',
-    'default_value' => array(
-      0 => array(
-        'value' => 'only-legal-contact',
-      ),
-    ),
-    'deleted' => 0,
-    'description' => 'Select which organisation contacts are contacted in case of notification.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 24,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 7,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_org_notification',
-    'label' => 'Notification',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'apply_chosen' => '',
-      ),
-      'type' => 'options_select',
-      'weight' => 24,
+      'weight' => 9,
     ),
   );
 
@@ -4107,7 +4022,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -4131,7 +4046,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 1,
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'node',
@@ -4178,7 +4093,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -4201,12 +4116,12 @@ function esf_tc_content_types_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 7,
       ),
     ),
     'entity_type' => 'node',
     'field_name' => 'field_org_other_language',
-    'label' => 'Other language',
+    'label' => 'Other languages',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -4248,8 +4163,9 @@ function esf_tc_content_types_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 15,
+      'weight' => 16,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance:
@@ -4269,9 +4185,14 @@ function esf_tc_content_types_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 13,
+        'module' => 'title',
+        'settings' => array(
+          'title_class' => '',
+          'title_link' => '',
+          'title_style' => '',
+        ),
+        'type' => 'title_linked',
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'node',
@@ -4318,7 +4239,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
@@ -4342,13 +4263,13 @@ function esf_tc_content_types_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_plain',
-        'weight' => 0,
+        'weight' => 1,
       ),
     ),
     'entity_type' => 'node',
     'field_name' => 'field_org_type_of_organisation',
     'label' => 'Type of organisation',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -4360,8 +4281,9 @@ function esf_tc_content_types_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 1,
+      'weight' => 2,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance: 'node-esf_tnc_organisation-title_field'.
@@ -4437,7 +4359,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -4648,11 +4570,7 @@ function esf_tc_content_types_field_default_field_instances() {
   // Exported field_instance: 'node-esf_tnc_project-field_esf_languages_ref'.
   $field_instances['node-esf_tnc_project-field_esf_languages_ref'] = array(
     'bundle' => 'esf_tnc_project',
-    'default_value' => array(
-      0 => array(
-        'tid' => 350,
-      ),
-    ),
+    'default_value' => array(),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -4684,7 +4602,7 @@ function esf_tc_content_types_field_default_field_instances() {
       'settings' => array(
         'apply_chosen' => '',
       ),
-      'type' => 'options_select',
+      'type' => 'options_buttons',
       'weight' => 16,
     ),
   );
@@ -6600,7 +6518,7 @@ If an organisation is not found, please save your work as draft and check that t
     ),
     'entity_type' => 'node',
     'field_name' => 'field_project_other_language',
-    'label' => 'Other language',
+    'label' => 'Other languages',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -6644,6 +6562,7 @@ If an organisation is not found, please save your work as draft and check that t
       'type' => 'text_textfield',
       'weight' => 17,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance:
@@ -7253,82 +7172,6 @@ If an organisation is not found, please save your work as draft and check that t
       ),
       'type' => 'text_textfield',
       'weight' => 2,
-    ),
-  );
-
-  // Exported field_instance: 'node-esf_tnc_tca-field_tca_content_managers_tca'.
-  $field_instances['node-esf_tnc_tca-field_tca_content_managers_tca'] = array(
-    'bundle' => 'esf_tnc_tca',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 10,
-      ),
-      'teaser' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 5,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_tca_content_managers_tca',
-    'label' => 'Content managers',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'nodeaccess_nodereference' => array(
-        'all' => array(
-          'view' => 0,
-        ),
-        'all_published' => 0,
-        'author' => array(
-          'delete' => 0,
-          'update' => 0,
-          'view' => 'view',
-        ),
-        'author_published' => 0,
-        'priority' => 0,
-        'referenced' => array(
-          'delete' => array(
-            'delete' => 0,
-            'update' => 0,
-            'view' => 0,
-          ),
-          'published' => 1,
-          'update' => array(
-            'delete' => 0,
-            'update' => 'update',
-            'view' => 'view',
-          ),
-          'view' => array(
-            'delete' => 0,
-            'update' => 0,
-            'view' => 'view',
-          ),
-        ),
-        'unused' => 0,
-      ),
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete_tags',
-      'weight' => 14,
     ),
   );
 
@@ -8919,6 +8762,7 @@ If an organisation is not found, please save your work as draft and check that t
   t('Location');
   t('Logo of the TCA (for the promotional section)');
   t('MA or IB involved');
+  t('MA/IB type');
   t('MAs approval status');
   t('MAs/IB responsible for the call');
   t('Main activity of the organisation');
@@ -8928,7 +8772,6 @@ If an organisation is not found, please save your work as draft and check that t
   t('Name');
   t('Name in English');
   t('Name in national language');
-  t('Notification');
   t('Notify partners');
   t('Notify the legal contact of all partners in order to validate their data.');
   t('Number / Short reference');
@@ -8941,7 +8784,7 @@ If an organisation is not found, please save your work as draft and check that t
   t('Organiser');
   t('Other Countries');
   t('Other activity');
-  t('Other language');
+  t('Other languages');
   t('Partner organisations');
   t('Partner project');
   t('Phone (Home)');
@@ -8972,7 +8815,6 @@ If an organisation is not found, please save your work as draft and check that t
   t('Results and deliverables');
   t('Role');
   t('Searching');
-  t('Select which organisation contacts are contacted in case of notification.');
   t('Signed agreement');
   t('Start date');
   t('Start date of the TCA activity');
