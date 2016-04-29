@@ -99,13 +99,16 @@ function esf_tc_content_types_form_alter(&$form, &$form_state, $form_id) {
     'danger' => 'btn-danger',
   );
   if (isset($form[$editorial_field_name])) {
-    // Add Submit method
+    // Add Submit method.
     $form['#submit'][] = 'esf_tc_content_types_projects_database_submit';
     // Hide Select list.
-//    $form[$editorial_field_name]['#access'] = FALSE;
+    $form[$editorial_field_name]['#access'] = FALSE;
     // Create alternative buttons.
     $state = reset($form[$editorial_field_name][LANGUAGE_NONE]['#default_value']);
     $weight = $form['actions']['submit']['#weight'] + 1;
+
+    // Alert if status is not published.
+    _esf_tc_content_type_display_message($form['#node'], $state);
 
     $form['actions']['submit']['#access'] = _esf_tc_content_types_button_access('submit', $form['type']['#value'], $form['#node'], $state);
 
@@ -698,4 +701,24 @@ function _esf_tc_content_type_get_organisation($uid) {
 
   $nids = array_unique($nids);
   return $nids;
+}
+
+/**
+ * Helper function to display message on form when status is not published.
+ */
+function _esf_tc_content_type_display_message($node, $state) {
+  switch ($state) {
+    case 'draft':
+      drupal_set_message(t('The status of this content is draft'), 'warning', TRUE);
+      break;
+    case 'blocked':
+      drupal_set_message(t('This content is blocked, please contact the webmaster or the managing authority'), 'error', TRUE);
+      break;
+    case 'archived':
+      drupal_set_message(t('This content is archived. Update is not allowed anymore'), 'warning', TRUE);
+      break;
+    case 'needs-deletion':
+      drupal_set_message(t('This content is tagged as needs deletion. Please contact the webmaster if you need change the status'), 'error', TRUE);
+      break;
+  }
 }
