@@ -8791,6 +8791,46 @@ If an organisation is not found, please save your work as draft and check that t
   );
 
   // Exported field_instance:
+  // 'taxonomy_term-call_types-field_global_call_status'.
+  $field_instances['taxonomy_term-call_types-field_global_call_status'] = array(
+    'bundle' => 'call_types',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'i18n_field',
+        'settings' => array(),
+        'type' => 'i18n_list_default',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_global_call_status',
+    'label' => 'Status',
+    'required' => 1,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 3,
+    ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance:
   // 'taxonomy_term-ec_world_countries-iso_3166_1_alpha_2_code'.
   $field_instances['taxonomy_term-ec_world_countries-iso_3166_1_alpha_2_code'] = array(
     'bundle' => 'ec_world_countries',
@@ -8936,6 +8976,7 @@ If an organisation is not found, please save your work as draft and check that t
   t('Signed agreement');
   t('Start date');
   t('Start date of the TCA activity');
+  t('Status');
   t('Submission deadline');
   t('TCA Title in English');
   t('TCA Title in another  language');
