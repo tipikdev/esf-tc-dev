@@ -579,7 +579,7 @@ p:empty {
   background-position: 48px 50%;
   background-repeat: no-repeat;
   font-weight: normal;
-  padding: 12px 12px 12px 78px;
+  padding: 12px 30px 12px 78px;
 }
 
 #block-menu-menu-left-menu .menu .menu > .partner > a {
@@ -754,7 +754,6 @@ p:empty {
   padding: 0 124px 0 0;
   margin: 18px 0 0;
 }
-
 
 #content-wrapper h2 {
   color: #074a8b;
@@ -1114,7 +1113,6 @@ p:empty {
   vertical-align: middle;
 }
 
-
 /* ADD CONTENT*/
 .page-node-add #block-system-main dd {
   margin: 0 0 12px;
@@ -1124,6 +1122,6 @@ p:empty {
   display: none;
 }
 
-#content-wrapper table .profile  .user-picture img {
+#content-wrapper table .profile .user-picture img {
   max-width: 100%;
 }

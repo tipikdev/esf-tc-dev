@@ -1234,12 +1234,12 @@ please save your work as draft and check that the editorial status of the organi
         'label' => 'inline',
         'module' => 'date',
         'settings' => array(
-          'format_type' => 'long',
+          'format_type' => 'short',
           'fromto' => 'both',
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
-          'show_remaining_days' => FALSE,
+          'show_remaining_days' => 0,
         ),
         'type' => 'date_default',
         'weight' => 4,
@@ -1470,7 +1470,7 @@ please save your work as draft and check that the editorial status of the organi
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 0,
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -1521,7 +1521,7 @@ please save your work as draft and check that the editorial status of the organi
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'file',
         'settings' => array(),
         'type' => 'file_default',
@@ -1549,7 +1549,7 @@ please save your work as draft and check that the editorial status of the organi
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'media',
+      'module' => 'file',
       'settings' => array(
         'allowed_schemes' => array(
           'node' => 0,
@@ -1568,10 +1568,75 @@ please save your work as draft and check that the editorial status of the organi
           'media_internet' => 0,
           'upload' => 0,
         ),
+        'filefield_sources' => array(
+          'filefield_sources' => array(),
+          'source_attach' => array(
+            'absolute' => 0,
+            'attach_mode' => 'move',
+            'path' => 'file_attach',
+          ),
+          'source_imce' => array(
+            'imce_mode' => 0,
+          ),
+          'source_reference' => array(
+            'autocomplete' => 0,
+          ),
+        ),
+        'progress_indicator' => 'throbber',
       ),
-      'type' => 'media_generic',
+      'type' => 'file_generic',
       'weight' => 7,
     ),
+  );
+
+  // Exported field_instance: 'node-esf_tnc_event-field_esf_event_country'.
+  $field_instances['node-esf_tnc_event-field_esf_event_country'] = array(
+    'bundle' => 'esf_tnc_event',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'i18n_taxonomy',
+        'settings' => array(),
+        'type' => 'i18n_taxonomy_term_reference_link',
+        'weight' => 8,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 8,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_esf_event_country',
+    'label' => 'Country',
+    'required' => 1,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'term_reference_tree',
+      'settings' => array(
+        'cascading_selection' => 0,
+        'filter_view' => '',
+        'leaves_only' => 0,
+        'max_depth' => '',
+        'parent_term_id' => '',
+        'select_parents' => 1,
+        'start_minimized' => 1,
+        'token_display' => '',
+        'track_list' => 0,
+      ),
+      'type' => 'term_reference_tree',
+      'weight' => 3,
+    ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance:
@@ -1583,7 +1648,7 @@ please save your work as draft and check that the editorial status of the organi
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
@@ -1642,7 +1707,7 @@ please save your work as draft and check that the editorial status of the organi
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'addressfield',
         'settings' => array(
           'format_handlers' => array(
@@ -1682,18 +1747,19 @@ please save your work as draft and check that the editorial status of the organi
         'default_country' => 'site_default',
         'format_handlers' => array(
           'address' => 'address',
+          'address-optional' => 'address-optional',
           'address-hide-postal-code' => 0,
           'address-hide-street' => 0,
           'address-hide-country' => 0,
           'organisation' => 0,
           'name-full' => 0,
           'name-oneline' => 0,
-          'address-optional' => 0,
         ),
       ),
       'type' => 'addressfield_standard',
       'weight' => 4,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance: 'node-esf_tnc_event-field_esf_event_organiser'.
@@ -1704,7 +1770,7 @@ please save your work as draft and check that the editorial status of the organi
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -1777,11 +1843,11 @@ please save your work as draft and check that the editorial status of the organi
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
-          'image_style' => '',
+          'image_style' => 'medium',
         ),
         'type' => 'image',
         'weight' => 7,
@@ -1805,11 +1871,11 @@ please save your work as draft and check that the editorial status of the organi
       'alt_field' => 0,
       'default_image' => 0,
       'entity_translation_sync' => FALSE,
-      'file_directory' => '',
+      'file_directory' => 'event',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
-      'max_resolution' => '302x201',
-      'min_resolution' => '100x100',
+      'max_resolution' => '1280x960',
+      'min_resolution' => '320x240',
       'title_field' => 0,
       'user_register_form' => FALSE,
     ),
@@ -1843,8 +1909,9 @@ please save your work as draft and check that the editorial status of the organi
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 1,
+      'weight' => 9,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance: 'node-esf_tnc_event-field_esf_event_start_date'.
@@ -1854,18 +1921,18 @@ please save your work as draft and check that the editorial status of the organi
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'date',
         'settings' => array(
-          'format_type' => 'long',
+          'format_type' => 'short',
           'fromto' => 'both',
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
-          'show_remaining_days' => FALSE,
+          'show_remaining_days' => 0,
         ),
         'type' => 'date_default',
-        'weight' => 1,
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -1907,7 +1974,7 @@ please save your work as draft and check that the editorial status of the organi
         'year_range' => '-3:+3',
       ),
       'type' => 'date_select',
-      'weight' => 2,
+      'weight' => 1,
     ),
   );
 
@@ -1919,7 +1986,7 @@ please save your work as draft and check that the editorial status of the organi
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'i18n_taxonomy',
         'settings' => array(),
         'type' => 'i18n_taxonomy_term_reference_link',
@@ -1948,7 +2015,7 @@ please save your work as draft and check that the editorial status of the organi
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 9,
+      'weight' => 0,
     ),
   );
 
@@ -2452,7 +2519,7 @@ please save your work as draft and check that the editorial status of the organi
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -2527,7 +2594,7 @@ please save your work as draft and check that the editorial status of the organi
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 0,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -2546,7 +2613,7 @@ please save your work as draft and check that the editorial status of the organi
           'trim_type' => 'chars',
         ),
         'type' => 'smart_trim_format',
-        'weight' => 0,
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'node',
@@ -2566,7 +2633,7 @@ please save your work as draft and check that the editorial status of the organi
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 4,
+      'weight' => 3,
     ),
   );
 
@@ -2582,7 +2649,7 @@ please save your work as draft and check that the editorial status of the organi
         'module' => 'i18n_taxonomy',
         'settings' => array(),
         'type' => 'i18n_taxonomy_term_reference_link',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -2607,13 +2674,14 @@ please save your work as draft and check that the editorial status of the organi
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 7,
+      'weight' => 0,
     ),
   );
 
   // Exported field_instance: 'node-esf_tnc_news-field_esf_news_attached_doc'.
   $field_instances['node-esf_tnc_news-field_esf_news_attached_doc'] = array(
     'bundle' => 'esf_tnc_news',
+    'default_value' => array(),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -2622,14 +2690,13 @@ please save your work as draft and check that the editorial status of the organi
         'module' => 'file',
         'settings' => array(),
         'type' => 'file_default',
-        'weight' => 2,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'file',
         'settings' => array(),
-        'type' => 'file_default',
-        'weight' => 4,
+        'type' => 'hidden',
+        'weight' => 5,
       ),
     ),
     'entity_type' => 'node',
@@ -2646,7 +2713,7 @@ please save your work as draft and check that the editorial status of the organi
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'media',
+      'module' => 'file',
       'settings' => array(
         'allowed_schemes' => array(
           'node' => 0,
@@ -2665,10 +2732,26 @@ please save your work as draft and check that the editorial status of the organi
           'media_internet' => 0,
           'upload' => 0,
         ),
+        'filefield_sources' => array(
+          'filefield_sources' => array(),
+          'source_attach' => array(
+            'absolute' => 0,
+            'attach_mode' => 'move',
+            'path' => 'file_attach',
+          ),
+          'source_imce' => array(
+            'imce_mode' => 0,
+          ),
+          'source_reference' => array(
+            'autocomplete' => 0,
+          ),
+        ),
+        'progress_indicator' => 'throbber',
       ),
-      'type' => 'media_generic',
+      'type' => 'file_generic',
       'weight' => 5,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance: 'node-esf_tnc_news-field_esf_news_date'.
@@ -2681,26 +2764,26 @@ please save your work as draft and check that the editorial status of the organi
         'label' => 'hidden',
         'module' => 'date',
         'settings' => array(
-          'format_type' => 'long',
+          'format_type' => 'short',
           'fromto' => 'both',
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
-          'show_remaining_days' => FALSE,
+          'show_remaining_days' => 0,
         ),
         'type' => 'date_default',
-        'weight' => 5,
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'date',
         'settings' => array(
-          'format_type' => 'long',
+          'format_type' => 'short',
           'fromto' => 'both',
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
-          'show_remaining_days' => FALSE,
+          'show_remaining_days' => 0,
         ),
         'type' => 'date_default',
         'weight' => 1,
@@ -2709,7 +2792,7 @@ please save your work as draft and check that the editorial status of the organi
     'entity_type' => 'node',
     'field_name' => 'field_esf_news_date',
     'label' => 'Date of news',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'default_value' => 'now',
       'default_value2' => 'same',
@@ -2731,8 +2814,9 @@ please save your work as draft and check that the editorial status of the organi
         'year_range' => '-3:+3',
       ),
       'type' => 'date_select',
-      'weight' => 3,
+      'weight' => 1,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance: 'node-esf_tnc_news-field_esf_news_external_link'.
@@ -2751,10 +2835,9 @@ please save your work as draft and check that the editorial status of the organi
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'link',
         'settings' => array(),
-        'type' => 'link_default',
-        'weight' => 3,
+        'type' => 'hidden',
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'node',
@@ -2805,10 +2888,10 @@ please save your work as draft and check that the editorial status of the organi
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
-          'image_style' => '',
+          'image_style' => 'medium',
         ),
         'type' => 'image',
-        'weight' => 6,
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -2818,7 +2901,7 @@ please save your work as draft and check that the editorial status of the organi
           'image_style' => 'thumbnail',
         ),
         'type' => 'image',
-        'weight' => 5,
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'node',
@@ -2832,8 +2915,8 @@ please save your work as draft and check that the editorial status of the organi
       'file_directory' => '',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
-      'max_resolution' => '302x201',
-      'min_resolution' => '100x100',
+      'max_resolution' => '1280x960',
+      'min_resolution' => '320x240',
       'title_field' => 0,
       'user_register_form' => FALSE,
     ),
@@ -2867,8 +2950,9 @@ please save your work as draft and check that the editorial status of the organi
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 2,
+      'weight' => 4,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance: 'node-esf_tnc_organisation-body'.

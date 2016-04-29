@@ -390,10 +390,10 @@ function esf_tc_content_types_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '0',
+          'weight' => '2',
         ),
         'path' => array(
-          'weight' => '3',
+          'weight' => '10',
         ),
       ),
       'display' => array(),
@@ -506,10 +506,10 @@ function esf_tc_content_types_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '0',
+          'weight' => '2',
         ),
         'path' => array(
-          'weight' => '1',
+          'weight' => '7',
         ),
       ),
       'display' => array(),

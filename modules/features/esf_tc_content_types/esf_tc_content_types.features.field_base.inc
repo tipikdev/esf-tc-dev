@@ -281,6 +281,35 @@ function esf_tc_content_types_field_default_field_bases() {
     'type' => 'file',
   );
 
+  // Exported field_base: 'field_esf_event_country'.
+  $field_bases['field_esf_event_country'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_esf_event_country',
+    'indexes' => array(
+      'tid' => array(
+        0 => 'tid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'taxonomy',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => array(
+          'vocabulary' => 'esf_countries_regions',
+          'parent' => 0,
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'options_list_callback' => 'i18n_taxonomy_allowed_values',
+      'profile2_private' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'taxonomy_term_reference',
+  );
+
   // Exported field_base: 'field_esf_event_external_link'.
   $field_bases['field_esf_event_external_link'] = array(
     'active' => 1,
@@ -471,7 +500,7 @@ function esf_tc_content_types_field_default_field_bases() {
   // Exported field_base: 'field_esf_news_attached_doc'.
   $field_bases['field_esf_news_attached_doc'] = array(
     'active' => 1,
-    'cardinality' => 1,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_esf_news_attached_doc',

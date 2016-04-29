@@ -6,7 +6,7 @@
 jQuery(document).ready(function ($) {
   var $sidebarLeft = $('#sidebar-left');
   $sidebarLeft
-    // Expand/collapse.
+  // Expand/collapse.
     .find('.panel-heading')
     .click(function () {
       var $this = $(this),
