@@ -34,16 +34,16 @@ function esf_tc_content_types_views_api($module = NULL, $api = NULL) {
  */
 function esf_tc_content_types_node_info() {
   $items = array(
-    'esf_tnc_event' => array(
-      'name' => t('Event'),
+    'esf_tnc_call_for_project' => array(
+      'name' => t('Call for project'),
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
-      'title_label' => t('Title'),
+      'title_label' => t('Title in English'),
       'help' => '',
     ),
-    'esf_tnc_global_call' => array(
-      'name' => t('Global call'),
+    'esf_tnc_event' => array(
+      'name' => t('Event'),
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',

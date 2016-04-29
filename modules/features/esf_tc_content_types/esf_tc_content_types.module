@@ -37,18 +37,6 @@ function esf_tc_content_types_node_presave($node) {
     }
   }
 
-  if ($node->type == 'esf_tnc_global_call' && !isset($node->publish_on)) {
-    $organisations = array();
-    // Add all organisations selected in the Thematic details field collection.
-    foreach ($node->field_call_coordinated_calls['und'] as $key_org => $organisations_list) {
-      $organisations[] = array('target_id' => $organisations_list['field_fc_call_ma_ibs_']['und'][0]['target_id']);
-    }
-
-    if (!empty($organisations)) {
-      $node->field_call_content_managers['und'] = $organisations;
-    }
-  }
-
   if ($node->type == 'esf_tnc_tca' && !isset($node->publish_on)) {
     $projects = array();
     // Add all projects selected in the Partner organisation field collection.
@@ -430,77 +418,46 @@ function esf_tc_content_types_project_validate($form, &$form_state) {
 /**
  * Implements hook_form_FORMID_alter().
  *
- * Alter project node form.
+ * Alter call for project node form.
  */
-function esf_tc_content_types_form_esf_tnc_global_call_node_form_alter(&$form, &$form_state, $form_id) {
+function esf_tc_content_types_form_esf_tnc_call_for_project_node_form_alter(&$form, &$form_state, $form_id) {
   // Add custom validate function.
-  $form['#validate'][] = 'esf_tc_content_types_global_call_validate';
+  $form['#validate'][] = 'esf_tc_content_types_call_for_project_validate';
 
-  if (user_access('administer nodes')) {
-    $form['field_call_content_managers']['#states'] = array(
+  // Hide body field.
+  $form['body']['#access'] = FALSE;
+
+  // Show (and required) or hide the Other countries field.
+  $term_other_country = taxonomy_get_term_by_name('Other countries', 'esf_countries_regions');
+  if (!empty($term_other_country)) {
+    $tid = array_pop($term_other_country)->tid;
+    $form['field_call_other_countries']['#states'] = array(
       'visible' => array(
-        ':input[name="field_esf_editorial_status[und]"]' => array('filled' => TRUE),
+        ':input[name="field_call_country[und]"]' => array('value' => $tid),
       ),
-      'disabled' => array(
-        ':input[name="field_esf_editorial_status[und]"]' => array('filled' => TRUE),
+      'required' => array(
+        ':input[name="field_call_country[und]"]' => array('value' => $tid),
       ),
     );
   }
-  else {
-    $form['field_call_content_managers']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_esf_editorial_status[und]"]' => array('filled' => FALSE),
-      ),
-    );
-  }
-
-  $form['field_esf_type_call']['#states'] = array(
-    'required' => array(
-      ':input[name="field_esf_editorial_status[und]"]' => array('value' => 'published'),
-    ),
-  );
-
-  $form['field_call_coordinated_calls']['und'][0]['field_fc_call_ma_ibs_']['#states'] = array(
-    'required' => array(
-      ':input[name="field_esf_editorial_status[und]"]' => array('value' => 'published'),
-    ),
-  );
 }
 
 /**
- * Global call custom validation.
+ * Call for project custom validation.
  */
-function esf_tc_content_types_global_call_validate($form, &$form_state) {
-  if ($form_state['values']['field_esf_editorial_status']['und'][0]['value'] == 'published') {
+function esf_tc_content_types_call_for_project_validate($form, &$form_state) {
+  // Check Other countries field value if a value is required.
+  if(!empty($form_state['values']['field_call_country']['und'])) {
+    $term_other_country = taxonomy_get_term_by_name('Other countries', 'esf_countries_regions');
 
-    if (empty($form_state['values']['field_esf_type_call']['und'][0]['tid'])) {
-      form_set_error('field_esf_type_call', t('!name field is required.', array('!name' => $form['field_esf_type_call']['und']['#title'])));
-    }
-
-    $calls = $form_state['values']['field_call_coordinated_calls']['und'];
-
-    foreach ($calls as $key => $call) {
-      if (is_numeric($key)) {
-        if (empty($call['field_esf_themes_ref']['und'][0]['tid'])) {
-          form_set_error('field_esf_themes_ref', t('!name field is required.', array('!name' => $form['field_call_coordinated_calls']['und'][0]['field_esf_themes_ref']['und']['#title'])));
-        }
-
-        if (empty($call['field_esf_country_ref']['und'][0]['tid'])) {
-          form_set_error('field_esf_country_ref', t('!name field is required.', array('!name' => $form['field_call_coordinated_calls']['und'][0]['field_esf_country_ref']['und']['#title'])));
-        }
-
-        if (empty($call['field_esf_region_ref']['und'][0]['tid'])) {
-          form_set_error('field_esf_region_ref', t('!name field is required.', array('!name' => $form['field_call_coordinated_calls']['und'][0]['field_esf_region_ref']['und']['#title'])));
-        }
-        if (empty($call['field_fc_call_ma_ibs_']['und'][0]['target_id'])) {
-          form_set_error('field_fc_call_ma_ibs_', t('!name field is required.', array('!name' => $form['field_call_coordinated_calls']['und'][0]['field_fc_call_ma_ibs_']['und']['#title'])));
-        }
-
+    if (!empty($term_other_country)) {
+      $tid = array_pop($term_other_country)->tid;
+      if ($form_state['values']['field_call_country']['und'][0]['tid'] == $tid && empty($form_state['values']['field_call_other_countries']['und'][0]['value'])) {
+        form_set_error('field_call_other_countries', t('!name field is required.', array('!name' => $form['field_call_other_countries']['und']['#title'])));
       }
     }
   }
 }
-
 /**
  * Implements hook_form_FORMID_alter().
  *
@@ -749,29 +706,6 @@ function _esf_tc_content_types_get_forum_moderators($forum_term) {
   }
   return $emails;
 }
-
-/**
- * Implements hook_field_default_field_instances_alter().
- *
- * Set the default image.
- */
-/*
-function esf_tc_content_types_field_default_field_instances_alter(&$fields) {
-  // Event default image.
-  if (isset($fields['node-esf_tnc_event-field_esf_event_picture']['settings']['default_image'])) {
-    $variable_name = 'esf_tc_field_esf_event_picture_fid';
-    $fid = $fields['node-esf_tnc_event-field_esf_event_picture']['settings']['default_image'];
-    $fields['field_esf_event_picture']['settings']['default_image'] = variable_get($variable_name, $fid);
-  }
-
-  // News default image.
-  if (isset($fields['node-esf_tnc_event-field_esf_news_picture']['settings']['default_image'])) {
-    $variable_name = 'esf_tc_field_esf_news_picture_fid';
-    $fid = $fields['node-esf_tnc_event-field_esf_news_picture']['settings']['default_image'];
-    $fields['node-esf_tnc_event-field_esf_news_picture']['settings']['default_image'] = variable_get($variable_name, $fid);
-  }
-}
-*/
 
 /**
  * Implements hook_field_default_field_instances_alter().

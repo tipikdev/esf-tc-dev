@@ -33,95 +33,160 @@ function esf_tc_content_types_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_attachments'.
-  $field_bases['field_attachments'] = array(
+  // Exported field_base: 'field_call_attachments'.
+  $field_bases['field_call_attachments'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_attachments',
+    'field_name' => 'field_call_attachments',
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
       ),
     ),
     'locked' => 0,
-    'module' => 'mediafield',
+    'module' => 'file',
     'settings' => array(
-      'entity_translation_sync' => FALSE,
-    ),
-    'translatable' => 0,
-    'type' => 'media',
-  );
-
-  // Exported field_base: 'field_call_content_managers'.
-  $field_bases['field_call_content_managers'] = array(
-    'active' => 1,
-    'cardinality' => -1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_call_content_managers',
-    'indexes' => array(
-      'target_id' => array(
-        0 => 'target_id',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'entityreference',
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'handler' => 'base',
-      'handler_settings' => array(
-        'behaviors' => array(
-          'views-select-list' => array(
-            'status' => 0,
-          ),
-        ),
-        'sort' => array(
-          'type' => 'none',
-        ),
-        'target_bundles' => array(
-          'esf_tnc_organisation' => 'esf_tnc_organisation',
-        ),
+      'display_default' => 0,
+      'display_field' => 0,
+      'entity_translation_sync' => array(
+        0 => 'fid',
       ),
       'profile2_private' => FALSE,
-      'target_type' => 'node',
+      'uri_scheme' => 'public',
     ),
     'translatable' => 0,
-    'type' => 'entityreference',
+    'type' => 'file',
   );
 
-  // Exported field_base: 'field_call_coordinated_calls'.
-  $field_bases['field_call_coordinated_calls'] = array(
-    'active' => 1,
-    'cardinality' => -1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_call_coordinated_calls',
-    'indexes' => array(
-      'revision_id' => array(
-        0 => 'revision_id',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'field_collection',
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'hide_blank_items' => 1,
-      'path' => '',
-      'profile2_private' => FALSE,
-    ),
-    'translatable' => 0,
-    'type' => 'field_collection',
-  );
-
-  // Exported field_base: 'field_call_desc_en'.
-  $field_bases['field_call_desc_en'] = array(
+  // Exported field_base: 'field_call_country'.
+  $field_bases['field_call_country'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_call_desc_en',
+    'field_name' => 'field_call_country',
+    'indexes' => array(
+      'tid' => array(
+        0 => 'tid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'taxonomy',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => array(
+          'vocabulary' => 'esf_countries_regions',
+          'parent' => 0,
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'options_list_callback' => 'i18n_taxonomy_allowed_values',
+      'profile2_private' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'taxonomy_term_reference',
+  );
+
+  // Exported field_base: 'field_call_eligibility_dates'.
+  $field_bases['field_call_eligibility_dates'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_call_eligibility_dates',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'date',
+    'settings' => array(
+      'cache_count' => 4,
+      'cache_enabled' => 0,
+      'entity_translation_sync' => FALSE,
+      'granularity' => array(
+        'day' => 'day',
+        'hour' => 0,
+        'minute' => 0,
+        'month' => 'month',
+        'second' => 0,
+        'year' => 'year',
+      ),
+      'profile2_private' => FALSE,
+      'timezone_db' => '',
+      'todate' => 'required',
+      'tz_handling' => 'none',
+    ),
+    'translatable' => 0,
+    'type' => 'datestamp',
+  );
+
+  // Exported field_base: 'field_call_esf_region'.
+  $field_bases['field_call_esf_region'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_call_esf_region',
+    'indexes' => array(
+      'tid' => array(
+        0 => 'tid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'taxonomy',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => array(
+          'vocabulary' => 'esf_countries_regions',
+          'parent' => 0,
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'options_list_callback' => 'i18n_taxonomy_allowed_values',
+      'profile2_private' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'taxonomy_term_reference',
+  );
+
+  // Exported field_base: 'field_call_links'.
+  $field_bases['field_call_links'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_call_links',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'link',
+    'settings' => array(
+      'attributes' => array(
+        'class' => '',
+        'rel' => '',
+        'target' => 'default',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'entity_translation_sync' => FALSE,
+      'profile2_private' => FALSE,
+      'title' => 'optional',
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+    ),
+    'translatable' => 0,
+    'type' => 'link_field',
+  );
+
+  // Exported field_base: 'field_call_number'.
+  $field_bases['field_call_number'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_call_number',
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -131,37 +196,223 @@ function esf_tc_content_types_field_default_field_bases() {
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
+      'max_length' => 255,
       'profile2_private' => FALSE,
     ),
     'translatable' => 0,
-    'type' => 'text_long',
+    'type' => 'text',
   );
 
-  // Exported field_base: 'field_call_status'.
-  $field_bases['field_call_status'] = array(
+  // Exported field_base: 'field_call_org_involved'.
+  $field_bases['field_call_org_involved'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_call_status',
+    'field_name' => 'field_call_org_involved',
     'indexes' => array(
-      'value' => array(
-        0 => 'value',
+      'target_id' => array(
+        0 => 'target_id',
       ),
     ),
     'locked' => 0,
-    'module' => 'list',
+    'module' => 'entityreference',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'handler' => 'views',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => 'entityreference_ma_organisation',
+          'view_name' => 'published_organisations',
+        ),
+      ),
+      'profile2_private' => FALSE,
+      'target_type' => 'node',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
+  );
+
+  // Exported field_base: 'field_call_other_countries'.
+  $field_bases['field_call_other_countries'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_call_other_countries',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'max_length' => 255,
+      'profile2_private' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
+  // Exported field_base: 'field_call_submission_deadline'.
+  $field_bases['field_call_submission_deadline'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_call_submission_deadline',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'date',
+    'settings' => array(
+      'cache_count' => 4,
+      'cache_enabled' => 0,
+      'entity_translation_sync' => FALSE,
+      'granularity' => array(
+        'day' => 'day',
+        'hour' => 0,
+        'minute' => 0,
+        'month' => 'month',
+        'second' => 0,
+        'year' => 'year',
+      ),
+      'profile2_private' => FALSE,
+      'timezone_db' => '',
+      'todate' => '',
+      'tz_handling' => 'none',
+    ),
+    'translatable' => 0,
+    'type' => 'datestamp',
+  );
+
+  // Exported field_base: 'field_call_themes'.
+  $field_bases['field_call_themes'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_call_themes',
+    'indexes' => array(
+      'tid' => array(
+        0 => 'tid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'taxonomy',
     'settings' => array(
       'allowed_values' => array(
-        'open' => 'Open',
-        'closed' => 'Closed',
+        0 => array(
+          'vocabulary' => 'esf_themes',
+          'parent' => 0,
+        ),
       ),
-      'allowed_values_function' => '',
+      'entity_translation_sync' => FALSE,
+      'options_list_callback' => 'i18n_taxonomy_allowed_values',
+      'profile2_private' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'taxonomy_term_reference',
+  );
+
+  // Exported field_base: 'field_call_title_in_english'.
+  $field_bases['field_call_title_in_english'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_call_title_in_english',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'max_length' => 255,
+      'profile2_private' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
+  // Exported field_base: 'field_call_title_national_lang'.
+  $field_bases['field_call_title_national_lang'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_call_title_national_lang',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'max_length' => 255,
+      'profile2_private' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
+  // Exported field_base: 'field_call_total_budget'.
+  $field_bases['field_call_total_budget'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_call_total_budget',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'number',
+    'settings' => array(
       'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
     'translatable' => 0,
-    'type' => 'list_text',
+    'type' => 'number_integer',
+  );
+
+  // Exported field_base: 'field_call_type'.
+  $field_bases['field_call_type'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_call_type',
+    'indexes' => array(
+      'tid' => array(
+        0 => 'tid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'taxonomy',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => array(
+          'vocabulary' => 'call_types',
+          'parent' => 0,
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'options_list_callback' => 'i18n_taxonomy_allowed_values',
+      'profile2_private' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'taxonomy_term_reference',
   );
 
   // Exported field_base: 'field_editorial_status'.
@@ -764,252 +1015,6 @@ function esf_tc_content_types_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_fc_call_eligibility_end'.
-  $field_bases['field_fc_call_eligibility_end'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_fc_call_eligibility_end',
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'date',
-    'settings' => array(
-      'cache_count' => 4,
-      'cache_enabled' => 0,
-      'entity_translation_sync' => FALSE,
-      'granularity' => array(
-        'day' => 'day',
-        'hour' => 0,
-        'minute' => 0,
-        'month' => 'month',
-        'second' => 0,
-        'year' => 'year',
-      ),
-      'profile2_private' => FALSE,
-      'timezone_db' => '',
-      'todate' => '',
-      'tz_handling' => 'none',
-    ),
-    'translatable' => 0,
-    'type' => 'datestamp',
-  );
-
-  // Exported field_base: 'field_fc_call_eligibility_start'.
-  $field_bases['field_fc_call_eligibility_start'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_fc_call_eligibility_start',
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'date',
-    'settings' => array(
-      'cache_count' => 4,
-      'cache_enabled' => 0,
-      'entity_translation_sync' => FALSE,
-      'granularity' => array(
-        'day' => 'day',
-        'hour' => 0,
-        'minute' => 0,
-        'month' => 'month',
-        'second' => 0,
-        'year' => 'year',
-      ),
-      'profile2_private' => FALSE,
-      'timezone_db' => '',
-      'todate' => '',
-      'tz_handling' => 'none',
-    ),
-    'translatable' => 0,
-    'type' => 'datestamp',
-  );
-
-  // Exported field_base: 'field_fc_call_links'.
-  $field_bases['field_fc_call_links'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_fc_call_links',
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'link',
-    'settings' => array(
-      'attributes' => array(
-        'class' => '',
-        'rel' => '',
-        'target' => 'default',
-      ),
-      'display' => array(
-        'url_cutoff' => 80,
-      ),
-      'enable_tokens' => 1,
-      'entity_translation_sync' => FALSE,
-      'title' => 'optional',
-      'title_maxlength' => 128,
-      'title_value' => '',
-      'url' => 0,
-    ),
-    'translatable' => 0,
-    'type' => 'link_field',
-  );
-
-  // Exported field_base: 'field_fc_call_ma_ibs_'.
-  $field_bases['field_fc_call_ma_ibs_'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_fc_call_ma_ibs_',
-    'indexes' => array(
-      'target_id' => array(
-        0 => 'target_id',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'entityreference',
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'handler' => 'views',
-      'handler_settings' => array(
-        'behaviors' => array(
-          'views-select-list' => array(
-            'status' => 0,
-          ),
-        ),
-        'view' => array(
-          'args' => array(),
-          'display_name' => 'entityreference_ma_organisation',
-          'view_name' => 'published_organisations',
-        ),
-      ),
-      'profile2_private' => FALSE,
-      'target_type' => 'node',
-    ),
-    'translatable' => 0,
-    'type' => 'entityreference',
-  );
-
-  // Exported field_base: 'field_fc_call_num_short_ref'.
-  $field_bases['field_fc_call_num_short_ref'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_fc_call_num_short_ref',
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'max_length' => 255,
-      'profile2_private' => FALSE,
-    ),
-    'translatable' => 0,
-    'type' => 'text',
-  );
-
-  // Exported field_base: 'field_fc_call_other_countries'.
-  $field_bases['field_fc_call_other_countries'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_fc_call_other_countries',
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'max_length' => 255,
-      'profile2_private' => FALSE,
-    ),
-    'translatable' => 0,
-    'type' => 'text',
-  );
-
-  // Exported field_base: 'field_fc_call_sub_deadline'.
-  $field_bases['field_fc_call_sub_deadline'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_fc_call_sub_deadline',
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'date',
-    'settings' => array(
-      'cache_count' => 4,
-      'cache_enabled' => 0,
-      'entity_translation_sync' => FALSE,
-      'granularity' => array(
-        'day' => 'day',
-        'hour' => 0,
-        'minute' => 0,
-        'month' => 'month',
-        'second' => 0,
-        'year' => 'year',
-      ),
-      'profile2_private' => FALSE,
-      'timezone_db' => '',
-      'todate' => '',
-      'tz_handling' => 'none',
-    ),
-    'translatable' => 0,
-    'type' => 'datestamp',
-  );
-
-  // Exported field_base: 'field_fc_call_title_en'.
-  $field_bases['field_fc_call_title_en'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_fc_call_title_en',
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'max_length' => 255,
-      'profile2_private' => FALSE,
-    ),
-    'translatable' => 0,
-    'type' => 'text',
-  );
-
-  // Exported field_base: 'field_fc_call_total_budget'.
-  $field_bases['field_fc_call_total_budget'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_fc_call_total_budget',
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'number',
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'profile2_private' => FALSE,
-    ),
-    'translatable' => 0,
-    'type' => 'number_integer',
-  );
-
   // Exported field_base: 'field_fc_contact_account'.
   $field_bases['field_fc_contact_account'] = array(
     'active' => 1,
@@ -1238,29 +1243,6 @@ function esf_tc_content_types_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'entityreference',
-  );
-
-  // Exported field_base: 'field_fc_title_vo'.
-  $field_bases['field_fc_title_vo'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_fc_title_vo',
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'max_length' => 255,
-      'profile2_private' => FALSE,
-    ),
-    'translatable' => 0,
-    'type' => 'text',
   );
 
   // Exported field_base: 'field_fc_total_budget_'.

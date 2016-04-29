@@ -139,7 +139,7 @@ function esf_tc_content_types_views_default_views() {
   $view->description = '';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'call for project ( project type)';
+  $view->human_name = 'calls for project';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -156,49 +156,40 @@ function esf_tc_content_types_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Relationship: Entity Reference: Referenced Entity */
-  $handler->display->display_options['relationships']['field_project_call_for_projects_target_id']['id'] = 'field_project_call_for_projects_target_id';
-  $handler->display->display_options['relationships']['field_project_call_for_projects_target_id']['table'] = 'field_data_field_project_call_for_projects';
-  $handler->display->display_options['relationships']['field_project_call_for_projects_target_id']['field'] = 'field_project_call_for_projects_target_id';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Field: Content: Call for projects */
-  $handler->display->display_options['fields']['field_call_coordinated_calls']['id'] = 'field_call_coordinated_calls';
-  $handler->display->display_options['fields']['field_call_coordinated_calls']['table'] = 'field_data_field_call_coordinated_calls';
-  $handler->display->display_options['fields']['field_call_coordinated_calls']['field'] = 'field_call_coordinated_calls';
-  $handler->display->display_options['fields']['field_call_coordinated_calls']['label'] = '';
-  $handler->display->display_options['fields']['field_call_coordinated_calls']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_call_coordinated_calls']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_call_coordinated_calls']['type'] = 'field_collection_fields';
-  $handler->display->display_options['fields']['field_call_coordinated_calls']['settings'] = array(
-    'view_mode' => 'full',
-  );
-  $handler->display->display_options['fields']['field_call_coordinated_calls']['delta_offset'] = '0';
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Contextual filter: Field: Country (field_esf_country_ref) */
-  $handler->display->display_options['arguments']['field_esf_country_ref_tid']['id'] = 'field_esf_country_ref_tid';
-  $handler->display->display_options['arguments']['field_esf_country_ref_tid']['table'] = 'field_data_field_esf_country_ref';
-  $handler->display->display_options['arguments']['field_esf_country_ref_tid']['field'] = 'field_esf_country_ref_tid';
-  $handler->display->display_options['arguments']['field_esf_country_ref_tid']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['field_esf_country_ref_tid']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['field_esf_country_ref_tid']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['field_esf_country_ref_tid']['summary_options']['items_per_page'] = '25';
+  /* Field: Content: Type of call */
+  $handler->display->display_options['fields']['field_call_type']['id'] = 'field_call_type';
+  $handler->display->display_options['fields']['field_call_type']['table'] = 'field_data_field_call_type';
+  $handler->display->display_options['fields']['field_call_type']['field'] = 'field_call_type';
+  $handler->display->display_options['fields']['field_call_type']['label'] = '';
+  $handler->display->display_options['fields']['field_call_type']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_call_type']['alter']['text'] = '([field_call_type])';
+  $handler->display->display_options['fields']['field_call_type']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_call_type']['type'] = 'taxonomy_term_reference_plain';
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
+  /* Contextual filter: Content: Country (field_call_country) */
+  $handler->display->display_options['arguments']['field_call_country_tid']['id'] = 'field_call_country_tid';
+  $handler->display->display_options['arguments']['field_call_country_tid']['table'] = 'field_data_field_call_country';
+  $handler->display->display_options['arguments']['field_call_country_tid']['field'] = 'field_call_country_tid';
+  $handler->display->display_options['arguments']['field_call_country_tid']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['field_call_country_tid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_call_country_tid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_call_country_tid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_call_country_tid']['summary_options']['items_per_page'] = '25';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['value'] = '1';
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
   /* Filter criterion: Content: Type */
@@ -206,33 +197,29 @@ function esf_tc_content_types_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'esf_tnc_global_call' => 'esf_tnc_global_call',
+    'esf_tnc_call_for_project' => 'esf_tnc_call_for_project',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Status (field_call_status) */
-  $handler->display->display_options['filters']['field_call_status_value']['id'] = 'field_call_status_value';
-  $handler->display->display_options['filters']['field_call_status_value']['table'] = 'field_data_field_call_status';
-  $handler->display->display_options['filters']['field_call_status_value']['field'] = 'field_call_status_value';
-  $handler->display->display_options['filters']['field_call_status_value']['value'] = array(
-    'open' => 'open',
-  );
 
-  /* Display: Entity Reference */
-  $handler = $view->new_display('entityreference', 'Entity Reference', 'entityreference_1');
+  /* Display: ER by country */
+  $handler = $view->new_display('entityreference', 'ER by country', 'entityreference_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'entityreference_style';
   $handler->display->display_options['style_options']['search_fields'] = array(
     'title' => 'title',
-    'field_call_coordinated_calls' => 'field_call_coordinated_calls',
+    'field_call_type' => 0,
   );
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'entityreference_fields';
   $handler->display->display_options['row_options']['inline'] = array(
-    'field_call_coordinated_calls' => 'field_call_coordinated_calls',
+    'title' => 'title',
+    'field_call_type' => 'field_call_type',
   );
+  $handler->display->display_options['row_options']['separator'] = ' ';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $export['call_for_project'] = $view;
 
