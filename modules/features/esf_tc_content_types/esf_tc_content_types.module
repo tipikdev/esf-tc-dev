@@ -102,19 +102,25 @@ function esf_tc_content_types_form_alter(&$form, &$form_state, $form_id) {
     // Add Submit method
     $form['#submit'][] = 'esf_tc_content_types_projects_database_submit';
     // Hide Select list.
-    $form[$editorial_field_name]['#access'] = FALSE;
+//    $form[$editorial_field_name]['#access'] = FALSE;
     // Create alternative buttons.
     $state = reset($form[$editorial_field_name][LANGUAGE_NONE]['#default_value']);
-    $weight = $form['actions']['submit']['#weight'];
+    $weight = $form['actions']['submit']['#weight'] + 1;
+
+    $form['actions']['submit']['#access'] = _esf_tc_content_types_button_access('submit', $form['type']['#value'], $form['#node'], $state);
 
     if ($state == 'draft') {
       // Save as draft button.
       $form['actions']['submit']['#value'] = t('Save as draft');
+    }
+
+    if ($state != 'published') {
       // Publish button.
       $form['actions']['published'] = $form['actions']['submit'];
       $form['actions']['published']['#value'] = t('Publish');
       $form['actions']['published']['#weight'] = $weight++;
       $form['actions']['published']['#attributes']['class'][] = $color_class['success'];
+      $form['actions']['published']['#access'] = _esf_tc_content_types_button_access('publish', $form['type']['#value'], $form['#node'], $state);
     }
 
     // If node exists.
@@ -130,12 +136,13 @@ function esf_tc_content_types_form_alter(&$form, &$form_state, $form_id) {
       $form['actions']['archive']['#value'] = t('Archive');
       $form['actions']['archive']['#weight'] = $weight++;
       $form['actions']['archive']['#attributes']['class'][] = $color_class['warning'];
-//      $form['actions']['archive']['#access'] = user_access("archive any $type content");
+      $form['actions']['archive']['#access'] = _esf_tc_content_types_button_access('archive', $form['type']['#value'], $form['#node'], $state);
       // Ask for deletion button.
       $form['actions']['ask_deletion'] = $form['actions']['submit'];
       $form['actions']['ask_deletion']['#value'] = t('Ask for deletion');
       $form['actions']['ask_deletion']['#weight'] = $weight++;
       $form['actions']['ask_deletion']['#attributes']['class'][] = $color_class['danger'];
+      $form['actions']['ask_deletion']['#access'] = _esf_tc_content_types_button_access('needs-deletion', $form['type']['#value'], $form['#node'], $state);
     }
     // Delete.
     if ($form['actions']['delete']) {
@@ -557,7 +564,7 @@ function _esf_tc_content_types_button_access($action, $content_type, $node, $sta
   if(in_array($content_type, $content_types)) {
     switch ($action) {
       case 'block':
-        if (in_array($status, array('published','archived'))) {
+        if (in_array($status, array('published','archived','needs-deletion'))) {
           if (user_access("block any $content_type content")) {
             return TRUE;
           } else {
@@ -571,8 +578,8 @@ function _esf_tc_content_types_button_access($action, $content_type, $node, $sta
         if ($status == 'published')
           return user_access("archive any $content_type content");
         break;
-      case 'need-deletion':
-        if (in_array($status, array('draft','need-deletion'))) {
+      case 'needs-deletion':
+        if (!in_array($status, array('draft','needs-deletion'))) {
           if (node_access('update', $node)) {
             return TRUE;
           } else {
@@ -583,7 +590,10 @@ function _esf_tc_content_types_button_access($action, $content_type, $node, $sta
           }
         break;
       case 'publish':
-        if (in_array($status, array('blocked','archived','need-deletion'))) {
+        if ($status == 'draft') {
+          return TRUE;
+        }
+        elseif (in_array($status, array('blocked','archived','needs-deletion'))) {
           if (user_access("republish any $content_type content")) {
             return TRUE;
           } elseif ($status == 'blocked') {
@@ -591,6 +601,11 @@ function _esf_tc_content_types_button_access($action, $content_type, $node, $sta
             $MAs = _esf_tc_content_types_get_responsible_authorities($content_type, $node);
             return _esf_tc_content_types_ma_access($MAs);
           }
+        }
+        break;
+      case 'submit':
+        if ($status == 'archived') {
+          return FALSE;
         }
         break;
     }
