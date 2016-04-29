@@ -7,7 +7,6 @@
 include_once 'esf_tc_content_types.features.inc';
 include_once 'esf_tc_content_types.theme.inc';
 include_once 'esf_tc_content_types.block.inc';
-
 /**
  * Implements hook_permission().
  */
@@ -92,8 +91,6 @@ function esf_tc_content_types_node_presave($node) {
 function esf_tc_content_types_form_alter(&$form, &$form_state, $form_id) {
 
   // Transform editorial status to buttons.
-  // TODO - ADD ACCESS ON FIELDS.
-
   $editorial_field_name = _esf_tc_content_types_get_editorial_status_field_name();
   $color_class = array(
     'success' => 'btn-success',
@@ -412,24 +409,90 @@ function esf_tc_content_types_projects_database_submit(&$form, &$form_state) {
  * Implements hook_node_access_records().
  */
 function esf_tc_content_types_node_access_records($node) {
+  $grants = array();
   // Denied Access for non-public forum node.
   if (is_object($node) && $node->type == 'forum') {
-    $field = field_get_items('node', $node, 'field_topic_public', LANGUAGE_NONE);
-    $public = reset($field)['value'];
-
+    $visibility = field_get_items('node', $node, 'field_topic_public', LANGUAGE_NONE);
+    $public = reset($visibility)['value'];
     if (!$public) {
-      $grants = array();
+      $forum_section_field = field_get_items('node', $node, 'taxonomy_forums', LANGUAGE_NONE);
+      $forum_section = $forum_section_field[0]['tid'];
       $grants[] = array(
         'realm' => 'forum_private',
-        'gid' => 1,
+        'gid' => $forum_section,
         'grant_view' => 1,
-        'grant_update' => 1,
-        'grant_delete' => 1,
+        'grant_update' => 0,
+        'grant_delete' => 0,
         'priority' => 0,
       );
-      return $grants;
     }
   }
+  // ADD user access to referenced users into the project db content type
+  $content_types = _esf_tc_content_types_get_project_database_types();
+
+  if (in_array($node->type, $content_types)) {
+    $uids = array();
+    $nids = array();
+    switch ($node->type) {
+      case 'esf_tnc_organisation':
+        // LEGAL CONTACT.
+        $uids += _esf_tc_content_types_get_references_ids('field_org_contact', $node);
+        // ADDITIONAL CONTACTS.
+        $contacts = field_get_items('node',$node,'field_org_additional_contacts');
+        if (is_array($contacts) && count($contacts)) {
+          $cfids = array();
+          foreach($contacts as $contact) {
+            $cfids[] = $contact['value'];
+          }
+          unset($contact);
+          if (is_array($cfids) && count($cfids)) {
+            $contacts = field_collection_item_load_multiple($cfids);
+            foreach($contacts as $contact) {
+              $uids = array_merge($uids, _esf_tc_content_types_get_references_ids('field_fc_org_contact', $contact, 'field_collection_item'));
+            }
+            unset($contact);
+          }
+        }
+        break;
+      case 'esf_tnc_project':
+        // Get Lead organisation contact.
+        $nids = array_merge($nids, _esf_tc_content_types_get_references_ids('field_project_lead_organisation', $node));
+        // Get Projects Managers ID.
+        $uids = array_merge($uids, _esf_tc_content_types_get_references_ids('field_project_manager', $node));
+        // Get Operational Contact ID.
+        $uids = array_merge($uids, _esf_tc_content_types_get_references_ids('field_project_operat_contact', $node));
+        break;
+      case 'esf_tnc_tca':
+        // TODO ALLOW ALL PARTNERS PROJECT CALLS.
+        break;
+    }
+    // Define realm
+    $grants_template = array(
+      'grant_view' => 1,
+      'grant_update' => 1,
+      'grant_delete' => 0,
+      'priority' => 0 ,
+    );
+    // Define realm projectdb User
+    if (is_array($uids) && count($uids)) {
+      $grants_template['realm'] = 'projectdb';
+      foreach ($uids as $uid) {
+        $grants_template['gid'] = $uid;
+        $grants[] = $grants_template;
+      }
+      unset($uid);
+    }
+    // Define realm projectdb Organisation
+    if (is_array($nids) && count($nids)) {
+      $grants_template['realm'] = 'projectdb_organisation';
+      foreach ($nids as $nid) {
+        $grants_template['gid'] = $nid;
+        $grants[] = $grants_template;
+      }
+      unset($uid);
+    }
+  }
+  return $grants;
 }
 
 /**
@@ -437,9 +500,24 @@ function esf_tc_content_types_node_access_records($node) {
  */
 function esf_tc_content_types_node_grants($account, $op) {
   if ($account->uid) {
-    $grants = array(
-      'forum_private' => array(array(1)),
-    );
+    $grants = array();
+    if ($op == 'view') {
+      // Check permission access to forum section.
+      $wb_user_access_tree = workbench_access_get_user_tree($account);
+      if (!empty($wb_user_access_tree)) {
+        foreach ($wb_user_access_tree as $key => $term) {
+          $grants['forum_private'][] = $key;
+        }
+      }
+    }
+
+    $grants['projectdb'][] = $account->uid;
+    // Related organisations.
+    $org = _esf_tc_content_type_get_organisation($account->uid);
+    if (is_array($org) && count($org)) {
+      $grants['projectdb_organisation'] = $org;
+    }
+
     return $grants;
   }
 }
@@ -555,4 +633,54 @@ function _esf_tc_content_types_ma_access($MAs) {
     unset($MA);
   }
   return FALSE;
+}
+
+/**
+ * Helper function to get entity references IDs.
+ */
+function _esf_tc_content_types_get_references_ids($field_name, $entity, $type='node') {
+  $uids = array();
+  $contacts = field_get_items($type,$entity,$field_name);
+  if (is_array($contacts)) {
+    foreach ($contacts as $contact) {
+      if(isset($contact['target_id']) && $contact['target_id']) {
+        $uids[] = $contact['target_id'];
+      }
+    }
+    unset($contact);
+  }
+  return $uids;
+}
+/**
+ * Helper function to get all organisation of a user.
+ */
+function _esf_tc_content_type_get_organisation($uid) {
+  $nids = array();
+  // Lead organisations.
+  $select = db_select('field_data_field_org_contact', 'c')
+    ->fields('c', array('entity_id'))
+    ->condition('bundle', 'esf_tnc_organisation')
+    ->condition('field_org_contact_target_id', $uid)
+    ->execute()
+    ->fetchCol();
+
+  if (is_array($select) && count($select)) {
+    $nids += $select;
+  }
+  // Additional contacts.
+  $sql = db_select('field_data_field_fc_org_contact', 'fcc')
+    ->condition('field_fc_org_contact_target_id', $uid)
+    ->condition('fcc.bundle', 'field_org_additional_contacts');
+  $sql->join('field_data_field_org_additional_contacts', 'cnt', 'cnt.field_org_additional_contacts_value = fcc.entity_id');
+  $sql->fields('cnt', array('entity_id'));
+
+  $select = $sql->execute()
+    ->fetchCol();
+
+  if (is_array($select) && count($select)) {
+    $nids = array_merge($nids, $select);
+  }
+
+  $nids = array_unique($nids);
+  return $nids;
 }
