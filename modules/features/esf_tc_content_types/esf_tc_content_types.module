@@ -573,7 +573,7 @@ function _esf_tc_content_types_button_access($action, $content_type, $node, $sta
         break;
       case 'need-deletion':
         if (in_array($status, array('draft','need-deletion'))) {
-          if (node_access('edit', $node)) {
+          if (node_access('update', $node)) {
             return TRUE;
           } else {
             // Get all managing authorities linked and check current user.
@@ -627,7 +627,7 @@ function _esf_tc_content_types_get_responsible_authorities($content_type, $node)
 function _esf_tc_content_types_ma_access($MAs) {
   if (is_array($MAs) && count($MAs)) {
     foreach ($MAs as $MA) {
-      if (node_access('edit',$MA))
+      if (node_access('update',$MA))
         return TRUE;
     }
     unset($MA);
