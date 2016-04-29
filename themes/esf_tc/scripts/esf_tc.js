@@ -30,7 +30,7 @@ jQuery(document).ready(function ($) {
     })
     // Add closing cross.
     .end()
-    .find('.panel-body')
+    .find('.block-facetapi .panel-body')
     .append('<span class="glyphicon glyphicon-remove out" />');
 
   // Allows to close left submenu's when clicking outside.
