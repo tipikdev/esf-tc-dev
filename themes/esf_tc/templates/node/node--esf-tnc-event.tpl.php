@@ -41,9 +41,11 @@
       <?php print render($content['field_esf_event_organiser']); ?>
       <?php print render($content['field_esf_event_location']); ?>
       <?php if (isset($content['field_esf_event_attached_doc']['#items']) || isset($content['field_esf_event_external_link']['#items'])): ?>
-        <h3><?php print t('Related info'); ?></h3>
-        <?php print render($content['field_esf_event_attached_doc']); ?>
-        <?php print render($content['field_esf_event_external_link']); ?>
+        <div class='related-info'>
+          <h3><?php print t('Related info'); ?></h3>
+          <?php print render($content['field_esf_event_attached_doc']); ?>
+          <?php print render($content['field_esf_event_external_link']); ?>
+        </div>
       <?php endif; ?>
       <?php print render($content['field_esf_linked_tn']); ?>
     <?php endif; ?>

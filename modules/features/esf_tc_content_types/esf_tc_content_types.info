@@ -340,7 +340,6 @@ features[menu_links][] = menu-left-menu_esf-transnational-cooperation:<front>
 features[menu_links][] = menu-left-menu_events:events
 features[menu_links][] = menu-left-menu_mytnc:user
 features[menu_links][] = menu-left-menu_networking:forum
-features[menu_links][] = menu-left-menu_news--events:<front>
 features[menu_links][] = menu-left-menu_news:news
 features[menu_links][] = menu-left-menu_partner-database:search/partners-search
 features[menu_links][] = menu-left-menu_search-transnational-platform:search/site
