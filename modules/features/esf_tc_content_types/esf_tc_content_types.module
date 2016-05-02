@@ -250,6 +250,49 @@ function esf_tc_content_types_form_esf_tnc_project_node_form_alter(&$form, &$for
       ),
     );
   }
+
+  // Add callback to display calls per selected country.
+  $selected_country = isset($form_state['values']['field_esf_country_ref']) ? $form_state['values']['field_esf_country_ref'][LANGUAGE_NONE][0]['tid'] : '';
+
+  $form['field_esf_country_ref'][LANGUAGE_NONE]['#ajax'] = array(
+    'callback' => '_esf_tc_content_types_project_country_callback',
+    'event' => 'change',
+    'wrapper' => 'call_involved_div',
+  );
+
+  // Manage field to be replace after callback.
+  $form['field_project_call_for_projects'][LANGUAGE_NONE]['#prefix'] = '<div id="call_involved_div">';
+  $form['field_project_call_for_projects'][LANGUAGE_NONE]['#suffix'] = '</div>';
+  $form['field_project_call_for_projects'][LANGUAGE_NONE]['#options'] = _esf_tc_content_types_get_calls_by_country_options($selected_country);
+  $form['field_project_call_for_projects'][LANGUAGE_NONE]['#default_value'] = isset($form_state['values']['field_project_call_for_projects']) ? $form_state['values']['field_project_call_for_projects'] : '';
+}
+
+/**
+ * Custom callback to display MA per selected country.
+ */
+function _esf_tc_content_types_project_country_callback($form, $form_state) {
+  return $form['field_project_call_for_projects'];
+}
+
+/**
+ * Return all calls for project per country as list options.
+ */
+function _esf_tc_content_types_get_calls_by_country_options($country_tid) {
+  $query = db_select('node', 'n')
+    ->fields('n', array('nid', 'title'));
+  $query->join('field_data_field_call_country', 'c', 'n.nid = c.entity_id');
+  $query->condition('c.field_call_country_tid', $country_tid)
+    ->condition('n.status', 1);
+  $query->orderBy('n.title', 'ASC');
+  $result = $query->execute();
+
+  // Add default 1st entry ('select a value').
+  $options = array('_none' => t('- Select a value -'));
+  foreach ($result as $call) {
+    $options[$call->nid] = $call->title;
+  }
+
+  return $options;
 }
 
 /**
@@ -321,13 +364,14 @@ function _esf_tc_content_types_call_country_callback($form, $form_state) {
  * Return all organisations per country as list options.
  */
 function _esf_tc_content_types_get_organisations_by_country_options($country_tid) {
-  // Retrieve the moderators' emails of the network.
   $query = db_select('node', 'n')
     ->fields('n', array('nid', 'title'));
   $query->join('field_data_field_org_is_ma_ib_type', 't', 'n.nid = t.entity_id');
   $query->join('field_data_field_esf_country_ref', 'c', 'n.nid = c.entity_id');
   $query->condition('t.field_org_is_ma_ib_type_value', 1)
-    ->condition('c.field_esf_country_ref_tid', $country_tid);
+    ->condition('c.field_esf_country_ref_tid', $country_tid)
+    ->condition('n.status', 1);
+  $query->orderBy('n.title', 'ASC');
   $result = $query->execute();
 
   // Add default 1st entry ('select a value').

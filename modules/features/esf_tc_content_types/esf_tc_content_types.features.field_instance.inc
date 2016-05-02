@@ -4401,7 +4401,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 21,
+      'weight' => 20,
     ),
   );
 
@@ -4470,7 +4470,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 10,
+      'weight' => 9,
     ),
   );
 
@@ -4563,7 +4563,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 20,
+      'weight' => 19,
     ),
   );
 
@@ -4603,7 +4603,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_buttons',
-      'weight' => 16,
+      'weight' => 15,
     ),
   );
 
@@ -4644,47 +4644,6 @@ function esf_tc_content_types_field_default_field_instances() {
       ),
       'type' => 'options_select',
       'weight' => 19,
-    ),
-  );
-
-  // Exported field_instance: 'node-esf_tnc_project-field_esf_type_call'.
-  $field_instances['node-esf_tnc_project-field_esf_type_call'] = array(
-    'bundle' => 'esf_tnc_project',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_plain',
-        'weight' => 52,
-      ),
-      'teaser' => array(
-        'label' => 'hidden',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_plain',
-        'weight' => 4,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_esf_type_call',
-    'label' => 'Coordinated call or flexible approach?',
-    'required' => 1,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'apply_chosen' => '',
-      ),
-      'type' => 'options_select',
-      'weight' => 5,
     ),
   );
 
@@ -4933,7 +4892,7 @@ function esf_tc_content_types_field_default_field_instances() {
     'bundle' => 'esf_tnc_project',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Please type the title of a call for projects or a related theme to display possible options. If a call is not found, please save your work as draft and check with your Managing Authority.',
+    'description' => 'You must select first a country to display the available calls. If a call is not found, please save your work as draft and check with your Managing Authority.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -5003,6 +4962,7 @@ function esf_tc_content_types_field_default_field_instances() {
       'type' => 'options_select',
       'weight' => 4,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance:
@@ -5705,7 +5665,7 @@ If an organisation is not found, please save your work as draft and check that t
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 13,
+      'weight' => 12,
     ),
   );
 
@@ -5981,7 +5941,7 @@ If an organisation is not found, please save your work as draft and check that t
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 14,
+      'weight' => 13,
     ),
   );
 
@@ -6050,7 +6010,7 @@ If an organisation is not found, please save your work as draft and check that t
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 9,
+      'weight' => 8,
     ),
   );
 
@@ -6120,7 +6080,7 @@ If an organisation is not found, please save your work as draft and check that t
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 12,
+      'weight' => 11,
     ),
   );
 
@@ -6274,7 +6234,7 @@ If an organisation is not found, please save your work as draft and check that t
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 15,
+      'weight' => 14,
     ),
   );
 
@@ -6485,7 +6445,7 @@ If an organisation is not found, please save your work as draft and check that t
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 17,
+      'weight' => 16,
     ),
     'workbench_access_field' => 0,
   );
@@ -6715,7 +6675,7 @@ If an organisation is not found, please save your work as draft and check that t
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 18,
+      'weight' => 17,
     ),
   );
 
@@ -6759,7 +6719,7 @@ If an organisation is not found, please save your work as draft and check that t
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 11,
+      'weight' => 10,
     ),
   );
 
@@ -7992,44 +7952,6 @@ If an organisation is not found, please save your work as draft and check that t
   );
 
   // Exported field_instance:
-  // 'profile2-contact_profile-field_profile_cont_cnt_managers'.
-  $field_instances['profile2-contact_profile-field_profile_cont_cnt_managers'] = array(
-    'bundle' => 'contact_profile',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 11,
-      ),
-    ),
-    'entity_type' => 'profile2',
-    'field_name' => 'field_profile_cont_cnt_managers',
-    'label' => 'Content managers',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'apply_chosen' => '',
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-      ),
-      'type' => 'options_select',
-      'weight' => 12,
-    ),
-  );
-
-  // Exported field_instance:
   // 'profile2-contact_profile-field_profile_cont_email_private'.
   $field_instances['profile2-contact_profile-field_profile_cont_email_private'] = array(
     'bundle' => 'contact_profile',
@@ -8649,8 +8571,6 @@ If an organisation is not found, please save your work as draft and check that t
   t('Budget for transnational activities');
   t('Call for projects');
   t('Contact');
-  t('Content managers');
-  t('Coordinated call or flexible approach?');
   t('Countries looked for (if any preference)');
   t('Country');
   t('Country of submission');
@@ -8725,7 +8645,6 @@ If an organisation is not found, please save your work as draft and check that t
   t('Please type the name of an organisation to display possible options.
 If an organisation is not found, please save your work as draft and check that the editorial status of the organisation is set to Published or create a new organisation.
 ');
-  t('Please type the title of a call for projects or a related theme to display possible options. If a call is not found, please save your work as draft and check with your Managing Authority.');
   t('Problem addressed');
   t('Project Idea summary');
   t('Project lead organisation');
@@ -8756,6 +8675,7 @@ If an organisation is not found, please save your work as draft and check that t
   t('Total budget');
   t('Type of call');
   t('Type of organisation');
+  t('You must select first a country to display the available calls. If a call is not found, please save your work as draft and check with your Managing Authority.');
   t('You must select first a country to display the available organisations.');
   t('country');
 
