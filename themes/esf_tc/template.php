@@ -44,9 +44,6 @@ function esf_tc_facetapi_title($variables) {
     case "Activities":
       return t('Filter by activity');
 
-    case "Activities":
-      return t('Filter by activity');
-
     case "Target groups":
       return t('Filter by target group');
 
@@ -82,4 +79,64 @@ function esf_tc_theme($existing, $type, $theme, $path) {
  */
 function esf_tc_apachesolr_sort_list($variables) {
   return theme('bootstrap_btn_dropdown', $variables);
+}
+
+
+/**
+ * Implements theme_menu_link().
+ */
+function esf_tc_menu_link__menu_left_menu($variables) {
+  $sub_menu = '';
+  $element = $variables['element'];
+  $menu_string = $element['#title'];
+  $menu_item = menu_get_item();
+
+  // Add forum topics in left menu.
+  if ($menu_item['page_callback'] == 'forum_page') {
+    if (module_load_include('inc', 'pathauto', 'pathauto') !== FALSE) {
+      $menu_string = pathauto_cleanstring($menu_string);
+    }
+
+    if ($menu_string == 'networking') {
+      $sub_menu = _esf_tc_get_forum_categories_menu();
+    }
+
+    if ($sub_menu) {
+      $element['#attributes']['class'][] = 'haschildren';
+    }
+  }
+
+  if ($element['#below']) {
+    $sub_menu = drupal_render($element['#below']);
+  }
+
+  $output = l($element['#title'], $element['#href'], $element['#localized_options']);
+  return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
+}
+
+/**
+ * Create a menu of forum topics (taxonomy terms).
+ */
+function _esf_tc_get_forum_categories_menu() {
+  $output = '';
+
+  // Get current category from menu.
+  $menu_item = menu_get_item();
+  $current_category = (isset($menu_item['page_arguments'][0]) ? $menu_item['page_arguments'][0]->tid : 0);
+
+  $vocab = taxonomy_vocabulary_machine_name_load('forums');
+  if (!empty($vocab)) {
+    $tree = taxonomy_get_tree($vocab->vid, 0, 1);
+    if (!empty($tree)) {
+      $output = '<ul class="menu forum-category">';
+      foreach ($tree as $term) {
+        $safe_term = pathauto_cleanstring($term->name);
+        $class = ($current_category == $term->tid) ? 'active' : '';
+        $output .= '<li>' . l($term->name, 'forums/' . $safe_term, array('attributes' => array('class' => $class))) . '</li>';
+      }
+      $output .= '</ul>';
+    }
+  }
+
+  return $output;
 }

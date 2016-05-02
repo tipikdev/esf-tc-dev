@@ -10,6 +10,7 @@
 function esf_tc_core_menu_default_menu_links() {
   $menu_links = array();
 
+  // Exported menu link: main-menu_about-the-esf:<front>.
   $menu_links['main-menu_about-the-esf:<front>'] = array(
     'menu_name' => 'main-menu',
     'link_path' => '<front>',
@@ -42,6 +43,7 @@ function esf_tc_core_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
+  // Exported menu link: main-menu_activities:<front>.
   $menu_links['main-menu_activities:<front>'] = array(
     'menu_name' => 'main-menu',
     'link_path' => '<front>',
@@ -74,7 +76,7 @@ function esf_tc_core_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
-  // http://ec.europa.eu/esf/main.jsp?catId=51&langId=en.
+  // Exported menu link: main-menu_better-education:http://ec.europa.eu/esf/main.jsp?catId=51&langId=en.
   $menu_links['main-menu_better-education:http://ec.europa.eu/esf/main.jsp?catId=51&langId=en'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'http://ec.europa.eu/esf/main.jsp?catId=51&langId=en',
@@ -108,6 +110,7 @@ function esf_tc_core_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'main-menu_activities:<front>',
   );
+  // Exported menu link: main-menu_better-public-services:http://ec.europa.eu/esf/main.jsp?catId=55&langId=en.
   $menu_links['main-menu_better-public-services:http://ec.europa.eu/esf/main.jsp?catId=55&langId=en'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'http://ec.europa.eu/esf/main.jsp?catId=55&langId=en',
@@ -141,6 +144,7 @@ function esf_tc_core_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'main-menu_activities:<front>',
   );
+  // Exported menu link: main-menu_boosting-business:http://ec.europa.eu/esf/main.jsp?catId=457&langId=en.
   $menu_links['main-menu_boosting-business:http://ec.europa.eu/esf/main.jsp?catId=457&langId=en'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'http://ec.europa.eu/esf/main.jsp?catId=457&langId=en',
@@ -174,6 +178,7 @@ function esf_tc_core_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'main-menu_strengthening-employment-and--mobility:http://ec.europa.eu/esf/main.jsp?catId=532&langId=en',
   );
+  // Exported menu link: main-menu_caring-for-careers:http://ec.europa.eu/esf/main.jsp?catId=535&langId=en.
   $menu_links['main-menu_caring-for-careers:http://ec.europa.eu/esf/main.jsp?catId=535&langId=en'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'http://ec.europa.eu/esf/main.jsp?catId=535&langId=en',
@@ -207,7 +212,7 @@ function esf_tc_core_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'main-menu_strengthening-employment-and--mobility:http://ec.europa.eu/esf/main.jsp?catId=532&langId=en',
   );
-
+  // Exported menu link: main-menu_creating-chances-for-youth:http://ec.europa.eu/esf/main.jsp?catId=534&langId=en.
   $menu_links['main-menu_creating-chances-for-youth:http://ec.europa.eu/esf/main.jsp?catId=534&langId=en'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'http://ec.europa.eu/esf/main.jsp?catId=534&langId=en',
@@ -241,7 +246,7 @@ function esf_tc_core_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'main-menu_strengthening-employment-and--mobility:http://ec.europa.eu/esf/main.jsp?catId=532&langId=en',
   );
-
+  // Exported menu link: main-menu_data-and-figures:http://ec.europa.eu/esf/main.jsp?catId=440&langId=en.
   $menu_links['main-menu_data-and-figures:http://ec.europa.eu/esf/main.jsp?catId=440&langId=en'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'http://ec.europa.eu/esf/main.jsp?catId=440&langId=en',
@@ -275,6 +280,7 @@ function esf_tc_core_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'main-menu_more-info:<front>',
   );
+  // Exported menu link: main-menu_fighting-marginalisation:http://ec.europa.eu/esf/main.jsp?catId=63&langId=en.
   $menu_links['main-menu_fighting-marginalisation:http://ec.europa.eu/esf/main.jsp?catId=63&langId=en'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'http://ec.europa.eu/esf/main.jsp?catId=63&langId=en',
@@ -308,6 +314,7 @@ function esf_tc_core_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'main-menu_giving-a-chance-to-all:http://ec.europa.eu/esf/main.jsp?catId=50&langId=en',
   );
+  // Exported menu link: main-menu_giving-a-chance-to-all:http://ec.europa.eu/esf/main.jsp?catId=50&langId=en.
   $menu_links['main-menu_giving-a-chance-to-all:http://ec.europa.eu/esf/main.jsp?catId=50&langId=en'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'http://ec.europa.eu/esf/main.jsp?catId=50&langId=en',
@@ -341,6 +348,7 @@ function esf_tc_core_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'main-menu_activities:<front>',
   );
+  // Exported menu link: main-menu_helping-people-aim-higher:http://ec.europa.eu/esf/main.jsp?catId=530&langId=en.
   $menu_links['main-menu_helping-people-aim-higher:http://ec.europa.eu/esf/main.jsp?catId=530&langId=en'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'http://ec.europa.eu/esf/main.jsp?catId=530&langId=en',
@@ -374,6 +382,7 @@ function esf_tc_core_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'main-menu_better-education:http://ec.europa.eu/esf/main.jsp?catId=51&langId=en',
   );
+  // Exported menu link: main-menu_home:http://ec.europa.eu/esf/home.jsp?langId=en.
   $menu_links['main-menu_home:http://ec.europa.eu/esf/home.jsp?langId=en'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'http://ec.europa.eu/esf/home.jsp?langId=en',
@@ -406,6 +415,7 @@ function esf_tc_core_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
+  // Exported menu link: main-menu_how-the-esf-works:http://ec.europa.eu/esf/main.jsp?catId=525&langId=en.
   $menu_links['main-menu_how-the-esf-works:http://ec.europa.eu/esf/main.jsp?catId=525&langId=en'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'http://ec.europa.eu/esf/main.jsp?catId=525&langId=en',
@@ -439,6 +449,7 @@ function esf_tc_core_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'main-menu_about-the-esf:<front>',
   );
+  // Exported menu link: main-menu_how-to-participate:http://ec.europa.eu/esf/main.jsp?catId=25&langId=en.
   $menu_links['main-menu_how-to-participate:http://ec.europa.eu/esf/main.jsp?catId=25&langId=en'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'http://ec.europa.eu/esf/main.jsp?catId=25&langId=en',
@@ -472,6 +483,7 @@ function esf_tc_core_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'main-menu_about-the-esf:<front>',
   );
+  // Exported menu link: main-menu_inclusive-approaches:http://ec.europa.eu/esf/main.jsp?catId=53&langId=en.
   $menu_links['main-menu_inclusive-approaches:http://ec.europa.eu/esf/main.jsp?catId=53&langId=en'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'http://ec.europa.eu/esf/main.jsp?catId=53&langId=en',
@@ -505,6 +517,7 @@ function esf_tc_core_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'main-menu_giving-a-chance-to-all:http://ec.europa.eu/esf/main.jsp?catId=50&langId=en',
   );
+  // Exported menu link: main-menu_more-effective-institutions:http://ec.europa.eu/esf/main.jsp?catId=526&langId=en.
   $menu_links['main-menu_more-effective-institutions:http://ec.europa.eu/esf/main.jsp?catId=526&langId=en'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'http://ec.europa.eu/esf/main.jsp?catId=526&langId=en',
@@ -538,6 +551,7 @@ function esf_tc_core_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'main-menu_better-public-services:http://ec.europa.eu/esf/main.jsp?catId=55&langId=en',
   );
+  // Exported menu link: main-menu_more-info:<front>.
   $menu_links['main-menu_more-info:<front>'] = array(
     'menu_name' => 'main-menu',
     'link_path' => '<front>',
@@ -570,6 +584,7 @@ function esf_tc_core_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
+  // Exported menu link: main-menu_my-story:http://ec.europa.eu/esf/main.jsp?catId=564&langId=en.
   $menu_links['main-menu_my-story:http://ec.europa.eu/esf/main.jsp?catId=564&langId=en'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'http://ec.europa.eu/esf/main.jsp?catId=564&langId=en',
@@ -603,6 +618,7 @@ function esf_tc_core_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'main-menu_more-info:<front>',
   );
+  // Exported menu link: main-menu_news-and-events:http://ec.europa.eu/esf/main.jsp?catId=60&langId=en.
   $menu_links['main-menu_news-and-events:http://ec.europa.eu/esf/main.jsp?catId=60&langId=en'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'http://ec.europa.eu/esf/main.jsp?catId=60&langId=en',
@@ -636,6 +652,7 @@ function esf_tc_core_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'main-menu_more-info:<front>',
   );
+  // Exported menu link: main-menu_opening-doors-to-learning:http://ec.europa.eu/esf/main.jsp?catId=528&langId=en.
   $menu_links['main-menu_opening-doors-to-learning:http://ec.europa.eu/esf/main.jsp?catId=528&langId=en'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'http://ec.europa.eu/esf/main.jsp?catId=528&langId=en',
@@ -669,6 +686,7 @@ function esf_tc_core_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'main-menu_better-education:http://ec.europa.eu/esf/main.jsp?catId=51&langId=en',
   );
+  // Exported menu link: main-menu_opening-pathways-to-work:http://ec.europa.eu/esf/main.jsp?catId=533&langId=en.
   $menu_links['main-menu_opening-pathways-to-work:http://ec.europa.eu/esf/main.jsp?catId=533&langId=en'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'http://ec.europa.eu/esf/main.jsp?catId=533&langId=en',
@@ -702,6 +720,7 @@ function esf_tc_core_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'main-menu_strengthening-employment-and--mobility:http://ec.europa.eu/esf/main.jsp?catId=532&langId=en',
   );
+  // Exported menu link: main-menu_partnerships-for-progress:http://ec.europa.eu/esf/main.jsp?catId=527&langId=en.
   $menu_links['main-menu_partnerships-for-progress:http://ec.europa.eu/esf/main.jsp?catId=527&langId=en'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'http://ec.europa.eu/esf/main.jsp?catId=527&langId=en',
@@ -735,6 +754,7 @@ function esf_tc_core_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'main-menu_better-public-services:http://ec.europa.eu/esf/main.jsp?catId=55&langId=en',
   );
+  // Exported menu link: main-menu_press-and-media:http://ec.europa.eu/esf/main.jsp?catId=61&langId=en.
   $menu_links['main-menu_press-and-media:http://ec.europa.eu/esf/main.jsp?catId=61&langId=en'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'http://ec.europa.eu/esf/main.jsp?catId=61&langId=en',
@@ -768,6 +788,7 @@ function esf_tc_core_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'main-menu_more-info:<front>',
   );
+  // Exported menu link: main-menu_projects:http://ec.europa.eu/esf/main.jsp?catId=46&langId=en.
   $menu_links['main-menu_projects:http://ec.europa.eu/esf/main.jsp?catId=46&langId=en'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'http://ec.europa.eu/esf/main.jsp?catId=46&langId=en',
@@ -801,6 +822,7 @@ function esf_tc_core_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'main-menu_more-info:<front>',
   );
+  // Exported menu link: main-menu_promoting-social-enterprise:http://ec.europa.eu/esf/main.jsp?catId=531&langId=en.
   $menu_links['main-menu_promoting-social-enterprise:http://ec.europa.eu/esf/main.jsp?catId=531&langId=en'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'http://ec.europa.eu/esf/main.jsp?catId=531&langId=en',
@@ -834,6 +856,7 @@ function esf_tc_core_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'main-menu_giving-a-chance-to-all:http://ec.europa.eu/esf/main.jsp?catId=50&langId=en',
   );
+  // Exported menu link: main-menu_publications:http://ec.europa.eu/esf/main.jsp?catId=3&langId=en.
   $menu_links['main-menu_publications:http://ec.europa.eu/esf/main.jsp?catId=3&langId=en'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'http://ec.europa.eu/esf/main.jsp?catId=3&langId=en',
@@ -867,6 +890,7 @@ function esf_tc_core_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'main-menu_more-info:<front>',
   );
+  // Exported menu link: main-menu_search:search/site.
   $menu_links['main-menu_search:search/site'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'search/site',
@@ -885,6 +909,7 @@ function esf_tc_core_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
+  // Exported menu link: main-menu_strengthening-employment-and--mobility:http://ec.europa.eu/esf/main.jsp?catId=532&langId=en.
   $menu_links['main-menu_strengthening-employment-and--mobility:http://ec.europa.eu/esf/main.jsp?catId=532&langId=en'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'http://ec.europa.eu/esf/main.jsp?catId=532&langId=en',
@@ -918,6 +943,7 @@ function esf_tc_core_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'main-menu_activities:<front>',
   );
+  // Exported menu link: main-menu_support-in-your-country:http://ec.europa.eu/esf/main.jsp?catId=45&langId=en.
   $menu_links['main-menu_support-in-your-country:http://ec.europa.eu/esf/main.jsp?catId=45&langId=en'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'http://ec.europa.eu/esf/main.jsp?catId=45&langId=en',
@@ -950,6 +976,7 @@ function esf_tc_core_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
+  // Exported menu link: main-menu_supporting-local-partnerships:http://ec.europa.eu/esf/main.jsp?catId=54&langId=en.
   $menu_links['main-menu_supporting-local-partnerships:http://ec.europa.eu/esf/main.jsp?catId=54&langId=en'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'http://ec.europa.eu/esf/main.jsp?catId=54&langId=en',
@@ -983,6 +1010,7 @@ function esf_tc_core_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'main-menu_giving-a-chance-to-all:http://ec.europa.eu/esf/main.jsp?catId=50&langId=en',
   );
+  // Exported menu link: main-menu_the-esf-for-experts:http://ec.europa.eu/esf/main.jsp?catId=575&langId=en.
   $menu_links['main-menu_the-esf-for-experts:http://ec.europa.eu/esf/main.jsp?catId=575&langId=en'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'http://ec.europa.eu/esf/main.jsp?catId=575&langId=en',
@@ -1016,6 +1044,7 @@ function esf_tc_core_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'main-menu_about-the-esf:<front>',
   );
+  // Exported menu link: main-menu_training-that-works:http://ec.europa.eu/esf/main.jsp?catId=48&langId=en.
   $menu_links['main-menu_training-that-works:http://ec.europa.eu/esf/main.jsp?catId=48&langId=en'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'http://ec.europa.eu/esf/main.jsp?catId=48&langId=en',
@@ -1049,6 +1078,7 @@ function esf_tc_core_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'main-menu_better-education:http://ec.europa.eu/esf/main.jsp?catId=51&langId=en',
   );
+  // Exported menu link: main-menu_videos--photos:http://ec.europa.eu/esf/main.jsp?catId=59&langId=en.
   $menu_links['main-menu_videos--photos:http://ec.europa.eu/esf/main.jsp?catId=59&langId=en'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'http://ec.europa.eu/esf/main.jsp?catId=59&langId=en',
@@ -1082,6 +1112,7 @@ function esf_tc_core_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'main-menu_more-info:<front>',
   );
+  // Exported menu link: main-menu_what-is-the-esf:http://ec.europa.eu/esf/main.jsp?catId=35&langId=en.
   $menu_links['main-menu_what-is-the-esf:http://ec.europa.eu/esf/main.jsp?catId=35&langId=en'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'http://ec.europa.eu/esf/main.jsp?catId=35&langId=en',
@@ -1115,6 +1146,7 @@ function esf_tc_core_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'main-menu_about-the-esf:<front>',
   );
+  // Exported menu link: menu-breadcrumb-menu_employment-social-affairs--inclusion:http://ec.europa.eu/social/home.jsp?langId=en.
   $menu_links['menu-breadcrumb-menu_employment-social-affairs--inclusion:http://ec.europa.eu/social/home.jsp?langId=en'] = array(
     'menu_name' => 'menu-breadcrumb-menu',
     'link_path' => 'http://ec.europa.eu/social/home.jsp?langId=en',
@@ -1147,6 +1179,7 @@ function esf_tc_core_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
+  // Exported menu link: menu-breadcrumb-menu_european-commission:http://ec.europa.eu/index_en.htm.
   $menu_links['menu-breadcrumb-menu_european-commission:http://ec.europa.eu/index_en.htm'] = array(
     'menu_name' => 'menu-breadcrumb-menu',
     'link_path' => 'http://ec.europa.eu/index_en.htm',
@@ -1180,6 +1213,7 @@ function esf_tc_core_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
+  // Exported menu link: menu-breadcrumb-menu_european-social-fund:http://ec.europa.eu/esf/home.jsp?langId=en.
   $menu_links['menu-breadcrumb-menu_european-social-fund:http://ec.europa.eu/esf/home.jsp?langId=en'] = array(
     'menu_name' => 'menu-breadcrumb-menu',
     'link_path' => 'http://ec.europa.eu/esf/home.jsp?langId=en',
@@ -1212,6 +1246,7 @@ function esf_tc_core_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
+  // Exported menu link: menu-breadcrumb-menu_transnationality:<front>.
   $menu_links['menu-breadcrumb-menu_transnationality:<front>'] = array(
     'menu_name' => 'menu-breadcrumb-menu',
     'link_path' => '<front>',

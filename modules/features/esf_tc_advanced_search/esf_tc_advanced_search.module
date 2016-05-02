@@ -9,11 +9,58 @@ include_once 'esf_tc_advanced_search.block.inc';
 include_once 'esf_tc_advanced_search.theme.inc';
 
 /**
+ * Implements hook_apachesolr_index_document_build_node().
+ */
+function esf_tc_advanced_search_apachesolr_index_document_build_node(ApacheSolrDocument $document, $entity, $entity_type) {
+  if ($entity->type == 'esf_tnc_news') {
+    // Add the start date of the field_esf_news_date field as a sort field
+    // to the SOLR index because we cannot use dm_field_esf_news_date.
+    $news_date = field_get_items('node', $entity, 'field_esf_news_date');
+    if (!empty($news_date)) {
+      $document->addField('ds_esf_news_date', apachesolr_date_iso($news_date[0]['value']));
+    }
+  }
+  elseif ($entity->type == 'esf_tnc_event') {
+    // Add the start date of the field_esf_event_start_date field as a sort field
+    // to the SOLR index because we cannot use dm_field_esf_event_start_date.
+    $event_date = field_get_items('node', $entity, 'field_esf_event_start_date');
+    if (!empty($event_date)) {
+      $document->addField('ds_esf_event_date', apachesolr_date_iso($event_date[0]['value']));
+    }
+  }
+}
+
+/**
+ * Implements hook_apachesolr_query_alter().
+ */
+function esf_tc_advanced_search_apachesolr_query_alter($query) {
+  $context = $query->getcontext();
+
+  if ($context['page_id'] == 'esf_tc_news_search') {
+    // Add news date to query in order to be able to sort.
+    $query->addParam('fl', 'ds_esf_news_date');
+  }
+  elseif ($context['page_id'] == 'esf_tc_event_search') {
+    // Add event date to query in order to be able to sort.
+    $query->addParam('fl', 'ds_esf_event_date');
+  }
+}
+
+/**
  * Implements hook_apachesolr_query_prepare().
  */
 function esf_tc_advanced_search_apachesolr_query_prepare($query) {
-  if (arg(0) == 'search' && arg(1) == 'partners-search') {
-    $query->addFilter('bundle', '( esf_tnc_project OR esf_tnc_tca OR esf_tnc_organisation OR esf_tnc_global_call)', FALSE);
+  $context = $query->getcontext();
+  if ($context['page_id'] == 'partners_search') {
+    $query->addFilter('bundle', '( esf_tnc_project OR esf_tnc_tca OR esf_tnc_organisation OR esf_tnc_call_for_project)', FALSE);
+  }
+  elseif ($context['page_id'] == 'esf_tc_news_search') {
+    $query->addFilter('bundle', 'esf_tnc_news', FALSE);
+    $query->addParam('sort', 'ds_esf_news_date desc');
+  }
+  elseif ($context['page_id'] == 'esf_tc_event_search') {
+    $query->addFilter('bundle', 'esf_tnc_event', FALSE);
+    $query->addParam('sort', 'ds_esf_event_date asc');
   }
 }
 
@@ -24,7 +71,7 @@ function esf_tc_advanced_search_apachesolr_process_results(array &$results, Drup
   // Attach teaser view to result.
   for ($i = 0; $i < count($results); $i++) {
     if ($results[$i]['entity_type'] == 'node') {
-      $view_mode = 'teaser';
+      $view_mode = ($results[$i]['bundle'] == 'esf_tnc_call_for_project' ? 'full' : 'teaser');
       $teaser = node_view(node_load($results[$i]['node']->entity_id), $view_mode);
       $results[$i]['snippet'] = $teaser;
       $results[$i]['info'] = $results[$i]['type'];

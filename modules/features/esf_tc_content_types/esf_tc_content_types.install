@@ -5,6 +5,8 @@
  * Install, update and uninstall functions for esf_tc_content_types module.
  */
 
+include_once 'esf_tc_content_types.install.inc';
+
 /**
  * Implements hook_install().
  */
@@ -79,11 +81,13 @@ function esf_tc_content_types_enable() {
   $t = get_t();
 
   // Enable SolR indexation for content types.
-  multisite_drupal_toolbox_config_solr_bundle('esf_tnc_global_call', 'add');
+  multisite_drupal_toolbox_config_solr_bundle('esf_tnc_call_for_project', 'add');
   multisite_drupal_toolbox_config_solr_bundle('esf_tnc_hp_slide', 'add');
   multisite_drupal_toolbox_config_solr_bundle('esf_tnc_organisation', 'add');
   multisite_drupal_toolbox_config_solr_bundle('esf_tnc_project', 'add');
   multisite_drupal_toolbox_config_solr_bundle('esf_tnc_tca', 'add');
+  multisite_drupal_toolbox_config_solr_bundle('esf_tnc_news', 'add');
+  multisite_drupal_toolbox_config_solr_bundle('esf_tnc_event', 'add');
   multisite_drupal_toolbox_config_solr_bundle('forum', 'add');
 
   drupal_set_message($t("The feature ESF TC content types has been enabled."));
@@ -96,20 +100,68 @@ function esf_tc_content_types_disable() {
   $t = get_t();
 
   // Disable content types.
-  multisite_drupal_toolbox_disable_content_type('esf_tnc_global_call');
+  multisite_drupal_toolbox_disable_content_type('esf_tnc_call_for_project');
   multisite_drupal_toolbox_disable_content_type('esf_tnc_hp_slide');
   multisite_drupal_toolbox_disable_content_type('esf_tnc_organisation');
   multisite_drupal_toolbox_disable_content_type('esf_tnc_project');
   multisite_drupal_toolbox_disable_content_type('esf_tnc_tca');
+  multisite_drupal_toolbox_disable_content_type('esf_tnc_news');
+  multisite_drupal_toolbox_disable_content_type('esf_tnc_event');
   multisite_drupal_toolbox_disable_content_type('forum');
 
   // Disable SolR indexation for content types.
-  multisite_drupal_toolbox_config_solr_bundle('esf_tnc_global_call', 'delete');
+  multisite_drupal_toolbox_config_solr_bundle('esf_tnc_call_for_project', 'delete');
   multisite_drupal_toolbox_config_solr_bundle('esf_tnc_hp_slide', 'delete');
   multisite_drupal_toolbox_config_solr_bundle('esf_tnc_organisation', 'delete');
   multisite_drupal_toolbox_config_solr_bundle('esf_tnc_project', 'delete');
   multisite_drupal_toolbox_config_solr_bundle('esf_tnc_tca', 'delete');
+  multisite_drupal_toolbox_config_solr_bundle('esf_tnc_news', 'delete');
+  multisite_drupal_toolbox_config_solr_bundle('esf_tnc_event', 'delete');
   multisite_drupal_toolbox_config_solr_bundle('forum', 'delete');
 
   drupal_set_message($t("The feature ESF TC content types has been disabled."));
 }
+
+/**
+ * Implements hook_update_N().
+ */
+function esf_tc_content_types_update_7101() {
+  // Delete Global call content type .
+  multisite_drupal_toolbox_disable_content_type('esf_tnc_global_call');
+  multisite_drupal_toolbox_config_solr_bundle('esf_tnc_global_call','delete');
+
+  // Delete unused fields.
+  $fields = array(
+    'field_org_content_managers',
+    'field_tca_content_managers_tca',
+    'field_org_notification',
+  );
+  foreach( $fields as $field) {
+    if (field_info_field($field)) {
+      field_delete_field($field);
+    };
+  }
+}
+
+/**
+ * Implements hook_update_N().
+ */
+
+/*
+function esf_tc_content_types_update_7101() {
+  $folder_path = drupal_get_path('module', 'esf_tc_content_types') . '/default_images/';
+
+  // Update default image on field base.
+  // Event default image.
+  $field_name = 'field_esf_event_picture';
+  $filename = 'default_event.jpg';
+  $source = $folder_path . $filename;
+  _esf_tc_content_types_replace_default_image($field_name, $filename, $source);
+
+  // News default image.
+  $field_name = 'field_esf_news_picture';
+  $filename = 'default_news.jpg';
+  $source = $folder_path . $filename;
+  _esf_tc_content_types_replace_default_image($field_name, $filename, $source);
+}
+*/
