@@ -694,7 +694,7 @@ function _esf_tc_content_types_get_project_database_types() {
   return array(
     'esf_tnc_organisation',
     'esf_tnc_project',
-    'esf_tnc_global_call',
+    'esf_tnc_call_for_project',
     'esf_tnc_tca',
   );
 }
