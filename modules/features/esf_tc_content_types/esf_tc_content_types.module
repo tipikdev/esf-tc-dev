@@ -41,7 +41,7 @@ function esf_tc_content_types_node_presave($node) {
 
   if ($node->type == 'forum' && $node->is_new) {
     // Notify forum moderator on new content.
-    $forum_term = taxonomy_term_load($node->taxonomy_forums['und'][0]['tid']);
+    $forum_term = taxonomy_term_load($node->taxonomy_forums[LANGUAGE_NONE][0]['tid']);
     $emails = _esf_tc_content_types_get_forum_moderators($forum_term);
     if (!empty($emails)) {
       rules_invoke_component('esf_tc_content_types_notify_forum_moderator_on_new_post', $user, $emails, $forum_term, $node);
@@ -57,7 +57,7 @@ function esf_tc_content_types_comment_insert($comment) {
 
   // Notify forum moderator on new comment.
   $node = node_load($comment->nid);
-  $forum_term = taxonomy_term_load($node->taxonomy_forums['und'][0]['tid']);
+  $forum_term = taxonomy_term_load($node->taxonomy_forums[LANGUAGE_NONE][0]['tid']);
   $emails = _esf_tc_content_types_get_forum_moderators($forum_term);
   if (!empty($emails)) {
     rules_invoke_component('esf_tc_content_types_notify_forum_moderator_on_new_comment', $user, $emails, $forum_term, $node, $comment);
@@ -139,8 +139,8 @@ function esf_tc_content_types_form_alter(&$form, &$form_state, $form_id) {
  * Alter organisation node form.
  */
 function esf_tc_content_types_form_esf_tnc_organisation_node_form_alter(&$form, &$form_state, $form_id) {
-  // Add after build function to manage states on field collection.
-  $form['field_org_additional_contacts']['und']['#after_build'][] = 'esf_tc_content_types_field_org_additional_contacts_after_build';
+  // Add afterbuild function to manage states on field collection.
+  $form['field_org_additional_contacts'][LANGUAGE_NONE]['#after_build'][] = 'esf_tc_content_types_field_org_additional_contacts_after_build';
 
   // Add custom validate function.
   $form['#validate'][] = 'esf_tc_content_types_projects_database_draft_validate';
@@ -272,49 +272,49 @@ function esf_tc_content_types_field_org_additional_contacts_after_build($form, &
  */
 function esf_tc_content_types_organisation_validate($form, &$form_state) {
   // Check fields values if the organisation is not MA/IB.
-  if (!$form_state['values']['field_org_is_ma_ib_type']['und'][0]['value']) {
+  if (!$form_state['values']['field_org_is_ma_ib_type'][LANGUAGE_NONE][0]['value']) {
     // Check Organisation type value.
-    if (empty($form_state['values']['field_org_type_of_organisation']['und'][0]['tid'])) {
-      form_set_error('field_org_type_of_organisation', t('!name field is required.', array('!name' => $form['field_org_type_of_organisation']['und']['#title'])));
+    if (empty($form_state['values']['field_org_type_of_organisation'][LANGUAGE_NONE][0]['tid'])) {
+      form_set_error('field_org_type_of_organisation', t('!name field is required.', array('!name' => $form['field_org_type_of_organisation'][LANGUAGE_NONE]['#title'])));
     }
     // Check Other organisation value.
-    if (!empty($form_state['values']['field_org_type_of_organisation']['und'])) {
+    if (!empty($form_state['values']['field_org_type_of_organisation'][LANGUAGE_NONE])) {
       $tid = _esf_tc_content_types_get_term_id_by_vocabulary('Other', 'organisation_types');
       if ($tid != NULL) {
-        if ($form_state['values']['field_org_type_of_organisation']['und'][0]['tid'] == $tid && empty($form_state['values']['field_org_specify_type']['und'][0]['value'])) {
-          form_set_error('field_org_specify_type', t('!name field is required.', array('!name' => $form['field_org_specify_type']['und']['#title'])));
+        if ($form_state['values']['field_org_type_of_organisation'][LANGUAGE_NONE][0]['tid'] == $tid && empty($form_state['values']['field_org_specify_type'][LANGUAGE_NONE][0]['value'])) {
+          form_set_error('field_org_specify_type', t('!name field is required.', array('!name' => $form['field_org_specify_type'][LANGUAGE_NONE]['#title'])));
         }
       }
     }
   }
 
   // Check Other country value.
-  if (!empty($form_state['values']['field_esf_country_ref']['und'])) {
+  if (!empty($form_state['values']['field_esf_country_ref'][LANGUAGE_NONE])) {
     $tid = _esf_tc_content_types_get_term_id_by_vocabulary('Other', 'esf_countries_regions');
     if ($tid != NULL) {
-      if ($form_state['values']['field_esf_country_ref']['und'][0]['tid'] == $tid && empty($form_state['values']['field_org_other_countries']['und'][0]['value'])) {
-        form_set_error('field_org_other_countries', t('!name field is required.', array('!name' => $form['field_org_other_countries']['und']['#title'])));
+      if ($form_state['values']['field_esf_country_ref'][LANGUAGE_NONE][0]['tid'] == $tid && empty($form_state['values']['field_org_other_countries'][LANGUAGE_NONE][0]['value'])) {
+        form_set_error('field_org_other_countries', t('!name field is required.', array('!name' => $form['field_org_other_countries'][LANGUAGE_NONE]['#title'])));
       }
     }
   }
 
-  if ($form_state['values']['field_esf_editorial_status']['und'][0]['value'] == 'published') {
-    $contacts = $form_state['values']['field_org_additional_contacts']['und'];
+  if ($form_state['values']['field_esf_editorial_status'][LANGUAGE_NONE][0]['value'] == 'published') {
+    $contacts = $form_state['values']['field_org_additional_contacts'][LANGUAGE_NONE];
     foreach ($contacts as $key => $contact) {
-      if (is_numeric($key) && empty($contact['field_fc_org_name']['und'][0]['value']) && $contact['field_fc_contact_account']['und'][0]['value'] == 'no') {
-        form_set_error('field_fc_org_name', t('!name field is required.', array('!name' => $form['field_org_additional_contacts']['und'][0]['field_fc_org_name']['und']['#title'])));
+      if (is_numeric($key) && empty($contact['field_fc_org_name'][LANGUAGE_NONE][0]['value']) && $contact['field_fc_contact_account'][LANGUAGE_NONE][0]['value'] == 'no') {
+        form_set_error('field_fc_org_name', t('!name field is required.', array('!name' => $form['field_org_additional_contacts'][LANGUAGE_NONE][0]['field_fc_org_name'][LANGUAGE_NONE]['#title'])));
       }
 
-      if (is_numeric($key) && empty($contact['field_fc_org_email']['und'][0]['value']) && $contact['field_fc_contact_account']['und'][0]['value'] == 'no') {
-        form_set_error('field_fc_org_email', t('!name field is required.', array('!name' => $form['field_org_additional_contacts']['und'][0]['field_fc_org_email']['und']['#title'])));
+      if (is_numeric($key) && empty($contact['field_fc_org_email'][LANGUAGE_NONE][0]['value']) && $contact['field_fc_contact_account'][LANGUAGE_NONE][0]['value'] == 'no') {
+        form_set_error('field_fc_org_email', t('!name field is required.', array('!name' => $form['field_org_additional_contacts'][LANGUAGE_NONE][0]['field_fc_org_email'][LANGUAGE_NONE]['#title'])));
       }
 
-      if (is_numeric($key) && empty($contact['field_fc_org_contact']['und'][0]['target_id']) && $contact['field_fc_contact_account']['und'][0]['value'] == 'yes') {
-        form_set_error('field_fc_org_contact', t('!name field is required.', array('!name' => $form['field_org_additional_contacts']['und'][0]['field_fc_org_contact']['und']['#title'])));
+      if (is_numeric($key) && empty($contact['field_fc_org_contact'][LANGUAGE_NONE][0]['target_id']) && $contact['field_fc_contact_account'][LANGUAGE_NONE][0]['value'] == 'yes') {
+        form_set_error('field_fc_org_contact', t('!name field is required.', array('!name' => $form['field_org_additional_contacts'][LANGUAGE_NONE][0]['field_fc_org_contact'][LANGUAGE_NONE]['#title'])));
       }
 
-      if (is_numeric($key) && empty($contact['field_fc_org_role']['und'][0]['value']) && !empty($contact['field_fc_contact_account']['und'][0]['value'])) {
-        form_set_error('field_fc_org_role', t('!name field is required.', array('!name' => $form['field_org_additional_contacts']['und'][0]['field_fc_org_role']['und']['#title'])));
+      if (is_numeric($key) && empty($contact['field_fc_org_role'][LANGUAGE_NONE][0]['value']) && !empty($contact['field_fc_contact_account'][LANGUAGE_NONE][0]['value'])) {
+        form_set_error('field_fc_org_role', t('!name field is required.', array('!name' => $form['field_org_additional_contacts'][LANGUAGE_NONE][0]['field_fc_org_role'][LANGUAGE_NONE]['#title'])));
       }
     }
   }
@@ -357,11 +357,11 @@ function esf_tc_content_types_form_esf_tnc_project_node_form_alter(&$form, &$for
  */
 function esf_tc_content_types_project_validate($form, &$form_state) {
   // Check Other country value.
-  if (!empty($form_state['values']['field_esf_country_ref']['und'])) {
+  if (!empty($form_state['values']['field_esf_country_ref'][LANGUAGE_NONE])) {
     $tid = _esf_tc_content_types_get_term_id_by_vocabulary('Other', 'esf_countries_regions');
     if ($tid != NULL) {
-      if ($form_state['values']['field_esf_country_ref']['und'][0]['tid'] == $tid && empty($form_state['values']['field_project_other_countries']['und'][0]['value'])) {
-        form_set_error('field_project_other_countries', t('!name field is required.', array('!name' => $form['field_project_other_countries']['und']['#title'])));
+      if ($form_state['values']['field_esf_country_ref'][LANGUAGE_NONE][0]['tid'] == $tid && empty($form_state['values']['field_project_other_countries'][LANGUAGE_NONE][0]['value'])) {
+        form_set_error('field_project_other_countries', t('!name field is required.', array('!name' => $form['field_project_other_countries'][LANGUAGE_NONE]['#title'])));
       }
     }
   }
@@ -370,9 +370,9 @@ function esf_tc_content_types_project_validate($form, &$form_state) {
 /**
  * Implements hook_form_FORMID_alter().
  *
- * Alter call for project node form.
+ * Alter call for call of project node form.
  */
-function esf_tc_content_types_form_esf_tnc_call_for_project_node_form_alter(&$form, &$form_state, $form_id) {
+function esf_tc_content_types_form_esf_tnc_call_for_project_node_form_alter(&$form, &$form_state) {
   // Add custom validate function.
   $form['#validate'][] = 'esf_tc_content_types_projects_database_draft_validate';
   $form['#validate'][] = 'esf_tc_content_types_call_for_project_validate';
@@ -392,17 +392,62 @@ function esf_tc_content_types_form_esf_tnc_call_for_project_node_form_alter(&$fo
       ),
     );
   }
+
+  // Add callback to display MA per selected country.
+  $selected_country = isset($form_state['values']['field_call_country']) ? $form_state['values']['field_call_country'][LANGUAGE_NONE][0]['tid'] : '';
+
+  $form['field_call_country'][LANGUAGE_NONE]['#ajax'] = array(
+    'callback' => '_esf_tc_content_types_call_country_callback',
+    'event' => 'change',
+    'wrapper' => 'org_involved_div',
+  );
+
+  // Manage field to be replace after callback.
+  $form['field_call_org_involved'][LANGUAGE_NONE]['#prefix'] = '<div id="org_involved_div">';
+  $form['field_call_org_involved'][LANGUAGE_NONE]['#suffix'] = '</div>';
+  $form['field_call_org_involved'][LANGUAGE_NONE]['#options'] = _esf_tc_content_types_get_organisations_by_country_options($selected_country);
+  $form['field_call_org_involved'][LANGUAGE_NONE]['#default_value'] = isset($form_state['values']['field_call_org_involved']) ? $form_state['values']['field_call_org_involved'] : '';
+}
+
+/**
+ * Custom callback to display MA per selected country.
+ */
+function _esf_tc_content_types_call_country_callback($form, $form_state) {
+  return $form['field_call_org_involved'];
+}
+
+/**
+ * Return all organisations per country as list options.
+ */
+function _esf_tc_content_types_get_organisations_by_country_options($country_tid) {
+  $query = db_select('node', 'n')
+    ->fields('n', array('nid', 'title'));
+  $query->join('field_data_field_org_is_ma_ib_type', 't', 'n.nid = t.entity_id');
+  $query->join('field_data_field_esf_country_ref', 'c', 'n.nid = c.entity_id');
+  $query->condition('t.field_org_is_ma_ib_type_value', 1)
+    ->condition('c.field_esf_country_ref_tid', $country_tid)
+    ->condition('n.status', 1);
+  $query->orderBy('n.title', 'ASC');
+  $result = $query->execute();
+
+  // Add default 1st entry ('select a value').
+  $options = array('_none' => t('- Select a value -'));
+  foreach ($result as $org) {
+    $options[$org->nid] = $org->title;
+  }
+
+  return $options;
 }
 
 /**
  * Call for project custom validation.
  */
 function esf_tc_content_types_call_for_project_validate($form, &$form_state) {
-  if (!empty($form_state['values']['field_call_country']['und'])) {
+  if (!empty($form_state['values']['field_call_country'][LANGUAGE_NONE])) {
     $tid = _esf_tc_content_types_get_term_id_by_vocabulary('Other', 'esf_countries_regions');
     if ($tid != NULL) {
-      if ($form_state['values']['field_call_country']['und'][0]['tid'] == $tid && empty($form_state['values']['field_call_other_countries']['und'][0]['value'])) {
-        form_set_error('field_call_other_countries', t('!name field is required.', array('!name' => $form['field_call_other_countries']['und']['#title'])));
+      if ($form_state['values']['field_call_country'][LANGUAGE_NONE][0]['tid'] == $tid && empty($form_state['values']['field_call_other_countries'][LANGUAGE_NONE][0]['value'])) {
+        form_set_error('field_call_other_countries', t('!name field is required.', array('!name' => $form['field_call_other_countries'][LANGUAGE_NONE]['#title'])));
       }
     }
   }
@@ -423,21 +468,21 @@ function esf_tc_content_types_form_esf_tnc_tca_node_form_alter(&$form, &$form_st
  * TCA custom validation.
  */
 function esf_tc_content_types_tca_validate($form, &$form_state) {
-  $partners = $form_state['values']['field_tca_partner_organisations']['und'];
-  if ($form_state['values']['field_esf_editorial_status']['und'][0]['value'] == 'published') {
+  $partners = $form_state['values']['field_tca_partner_organisations'][LANGUAGE_NONE];
+  if ($form_state['values']['field_esf_editorial_status'][LANGUAGE_NONE][0]['value'] == 'published') {
     foreach ($partners as $key => $partner) {
       if (is_numeric($key)) {
-        if (empty($partner['field_fc_partner_project']['und'][0]['target_id'])) {
-          form_set_error('field_fc_partner_project', t('!name field is required.', array('!name' => $form['field_tca_partner_organisations']['und'][0]['field_fc_partner_project']['und']['#title'])));
+        if (empty($partner['field_fc_partner_project'][LANGUAGE_NONE][0]['target_id'])) {
+          form_set_error('field_fc_partner_project', t('!name field is required.', array('!name' => $form['field_tca_partner_organisations'][LANGUAGE_NONE][0]['field_fc_partner_project'][LANGUAGE_NONE]['#title'])));
         }
         else {
-          $budgets = $partner['field_fc_budget_activity']['und'];
+          $budgets = $partner['field_fc_budget_activity'][LANGUAGE_NONE];
           foreach ($budgets as $key_b => $budget) {
-            if (is_numeric($key_b) && empty($budget['field_fc_budget_activity1']['und'][0]['value'])) {
-              form_set_error('field_fc_budget_activity1', t('!name field is required.', array('!name' => $form['field_tca_partner_organisations']['und'][0]['field_fc_budget_activity']['und'][0]['field_fc_budget_activity1']['und']['#title'])));
+            if (is_numeric($key_b) && empty($budget['field_fc_budget_activity1'][LANGUAGE_NONE][0]['value'])) {
+              form_set_error('field_fc_budget_activity1', t('!name field is required.', array('!name' => $form['field_tca_partner_organisations'][LANGUAGE_NONE][0]['field_fc_budget_activity'][LANGUAGE_NONE][0]['field_fc_budget_activity1'][LANGUAGE_NONE]['#title'])));
             }
-            if (is_numeric($key_b) && empty($budget['field_fc_budget']['und'][0]['value'])) {
-              form_set_error('field_fc_budget', t('!name field is required.', array('!name' => $form['field_tca_partner_organisations']['und'][0]['field_fc_budget_activity']['und'][0]['field_fc_budget']['und']['#title'])));
+            if (is_numeric($key_b) && empty($budget['field_fc_budget'][LANGUAGE_NONE][0]['value'])) {
+              form_set_error('field_fc_budget', t('!name field is required.', array('!name' => $form['field_tca_partner_organisations'][LANGUAGE_NONE][0]['field_fc_budget_activity'][LANGUAGE_NONE][0]['field_fc_budget'][LANGUAGE_NONE]['#title'])));
             }
           }
         }
@@ -577,7 +622,6 @@ function esf_tc_content_types_node_access_records($node) {
         $uids = array_merge($uids, _esf_tc_content_types_get_references_ids('field_project_operat_contact', $node));
         break;
       case 'esf_tnc_tca':
-        // TODO ALLOW ALL PARTNERS PROJECT CALLS.
         break;
     }
     // Define realm
@@ -642,7 +686,7 @@ function esf_tc_content_types_node_grants($account, $op) {
 function esf_tc_content_types_preprocess_node(&$variables) {
   $node = $variables['node'];
   $content_type = $variables['type'];
-  _esf_tc_content_types_get_responsible_authorities($content_type, $node);
+  $MAs = _esf_tc_content_types_get_responsible_authorities($content_type, $node);
 }
 
 /**
@@ -797,6 +841,7 @@ function _esf_tc_content_types_get_responsible_authorities($content_type, $node)
     if ($sql) {
       $result = $sql->execute()
         ->fetchCol();
+      $result = array_unique($result);
       return $result;
     }
   }
@@ -808,6 +853,7 @@ function _esf_tc_content_types_get_responsible_authorities($content_type, $node)
 function _esf_tc_content_types_ma_access($MAs) {
   if (is_array($MAs) && count($MAs)) {
     foreach ($MAs as $MA) {
+      $MA = node_load($MA);
       if (node_access('update',$MA))
         return TRUE;
     }
@@ -907,6 +953,9 @@ function _esf_tc_content_types_get_forum_moderators($forum_term) {
   return $emails;
 }
 
+/**
+ * Return tid of a term in a specific vocabulary.
+ */
 function _esf_tc_content_types_get_term_id_by_vocabulary($term, $vocabulary) {
   $tid = NULL;
   $term_other_country = taxonomy_get_term_by_name($term, $vocabulary);
