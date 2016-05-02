@@ -82,7 +82,7 @@ function esf_tc_content_types_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Project content in English',
-    'weight' => '19',
+    'weight' => '18',
     'children' => array(
       0 => 'field_project_idea_summary',
       1 => 'field_project_problem_addressed',

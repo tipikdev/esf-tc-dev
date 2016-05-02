@@ -390,7 +390,7 @@ function esf_tc_content_types_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '6',
+          'weight' => '7',
         ),
         'path' => array(
           'weight' => '15',
