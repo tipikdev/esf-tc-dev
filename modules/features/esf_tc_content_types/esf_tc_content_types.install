@@ -134,6 +134,9 @@ function esf_tc_content_types_update_7101() {
     'field_project_ma_responsible',
     'field_esf_type_call',
     'field_profile_cont_cnt_managers',
+    'field_organisation',
+    'field_profile_contact_contact',
+    'field_profile_contat_country',
   );
   foreach( $fields as $field) {
     if (field_info_field($field)) {

@@ -634,6 +634,23 @@ function _esf_tc_content_types_get_term_id_by_vocabulary($term, $vocabulary) {
 }
 
 /**
+ * Implements hook_user_login().
+ */
+function esf_tc_content_types_user_login(&$edit, $account) {
+  if (!isset($_POST['form_id']) || $_POST['form_id'] != 'user_pass_reset' || variable_get('login_destination_immediate_redirect', FALSE)) {
+    // Redirect an authenticated only user or contact user to the profile page
+    // if no profile attached to user.
+    if (in_array('contact', $account->roles) || count($account->roles) == 1) {
+      $contact_profile = profile2_load_by_user($account, 'contact_profile');
+      if (empty($contact_profile)) {
+        drupal_set_message(t('You have been redirected to fill out your contact information. You can also enter the token received in the email to link your account with an organisation.'));
+        drupal_goto("user/$account->uid/edit/contact_profile");
+      }
+    }
+  }
+}
+
+/**
  * Implements hook_field_default_field_instances_alter().
  *
  * Set the default image.

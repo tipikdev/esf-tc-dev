@@ -1866,27 +1866,6 @@ function esf_tc_content_types_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_organisation'.
-  $field_bases['field_organisation'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_organisation',
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'number',
-    'settings' => array(
-      'decimal_separator' => '.',
-      'entity_translation_sync' => FALSE,
-      'precision' => 10,
-      'profile2_private' => 0,
-      'scale' => 0,
-    ),
-    'translatable' => 0,
-    'type' => 'number_decimal',
-  );
-
   // Exported field_base: 'field_place_of_signature'.
   $field_bases['field_place_of_signature'] = array(
     'active' => 1,
@@ -1987,27 +1966,6 @@ function esf_tc_content_types_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_profile_contact_contact'.
-  $field_bases['field_profile_contact_contact'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_profile_contact_contact',
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'number',
-    'settings' => array(
-      'decimal_separator' => '.',
-      'entity_translation_sync' => FALSE,
-      'precision' => 10,
-      'profile2_private' => 0,
-      'scale' => 0,
-    ),
-    'translatable' => 0,
-    'type' => 'number_decimal',
-  );
-
   // Exported field_base: 'field_profile_contact_function'.
   $field_bases['field_profile_contact_function'] = array(
     'active' => 1,
@@ -2103,35 +2061,6 @@ function esf_tc_content_types_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'text',
-  );
-
-  // Exported field_base: 'field_profile_contat_country'.
-  $field_bases['field_profile_contat_country'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_profile_contat_country',
-    'indexes' => array(
-      'tid' => array(
-        0 => 'tid',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'taxonomy',
-    'settings' => array(
-      'allowed_values' => array(
-        0 => array(
-          'vocabulary' => 'ec_world_countries',
-          'parent' => 0,
-        ),
-      ),
-      'entity_translation_sync' => FALSE,
-      'options_list_callback' => 'i18n_taxonomy_allowed_values',
-      'profile2_private' => 0,
-    ),
-    'translatable' => 0,
-    'type' => 'taxonomy_term_reference',
   );
 
   // Exported field_base: 'field_project_acronym'.
@@ -2265,35 +2194,6 @@ function esf_tc_content_types_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'entityreference',
-  );
-
-  // Exported field_base: 'field_project_countries_looked'.
-  $field_bases['field_project_countries_looked'] = array(
-    'active' => 1,
-    'cardinality' => -1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_project_countries_looked',
-    'indexes' => array(
-      'tid' => array(
-        0 => 'tid',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'taxonomy',
-    'settings' => array(
-      'allowed_values' => array(
-        0 => array(
-          'vocabulary' => 'ec_world_countries',
-          'parent' => 0,
-        ),
-      ),
-      'entity_translation_sync' => FALSE,
-      'options_list_callback' => 'i18n_taxonomy_allowed_values',
-      'profile2_private' => FALSE,
-    ),
-    'translatable' => 0,
-    'type' => 'taxonomy_term_reference',
   );
 
   // Exported field_base: 'field_project_end_date_activity'.
