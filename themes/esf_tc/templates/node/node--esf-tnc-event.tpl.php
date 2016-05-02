@@ -24,13 +24,16 @@
     ?>
     <?php if ($view_mode == 'teaser'): ?>
       <?php print render($content['field_esf_event_start_date']); ?>
+      <?php print render($content['field_esf_event_picture']); ?>
+      <div class="news-teaser-wrapper">
       <h2<?php print $title_attributes; ?>><a
           href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
       <div class="news-wrapper">
-        <?php print render($content['field_esf_event_picture']); ?>
         <?php print render($content['body']); ?>
       </div>
       <?php print render($content['field_esf_linked_tn']); ?>
+      <?php print render($content['links']); ?>
+      </div>
     <?php else: ?>
       <?php print render($content['field_esf_event_start_date']); ?>
       <div class="news-wrapper">
@@ -48,10 +51,11 @@
         </div>
       <?php endif; ?>
       <?php print render($content['field_esf_linked_tn']); ?>
+      <?php print render($content['links']); ?>
     <?php endif; ?>
   </div>
 
-  <?php print render($content['links']); ?>
+
 
   <?php print render($content['comments']); ?>
 
