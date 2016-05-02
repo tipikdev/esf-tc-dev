@@ -637,6 +637,15 @@ function esf_tc_content_types_node_grants($account, $op) {
 }
 
 /**
+ * Implements hook_preprocess_node().
+ */
+function esf_tc_content_types_preprocess_node(&$variables) {
+  $node = $variables['node'];
+  $content_type = $variables['type'];
+  _esf_tc_content_types_get_responsible_authorities($content_type, $node);
+}
+
+/**
  * Implements template_preprocess_forums().
  */
 function esf_tc_content_types_preprocess_forums(&$variables) {
@@ -755,8 +764,8 @@ function _esf_tc_content_types_button_access($action, $content_type, $node, $sta
         }
         break;
       case 'submit':
-        if ($status == 'archived') {
-          return FALSE;
+        if ($status != 'archived') {
+          return TRUE;
         }
         break;
     }
@@ -771,21 +780,27 @@ function _esf_tc_content_types_get_responsible_authorities($content_type, $node)
   $content_types = _esf_tc_content_types_get_project_database_types();
 
   if(in_array($content_type, $content_types)) {
+    $sql = db_select('field_data_field_org_is_ma_ib_type', 'MA')
+      ->fields('MA', array('entity_id'))
+      ->condition('field_org_is_ma_ib_type_value','1');
+
+    $sql->join('field_data_field_call_org_involved', 'calls', 'calls.field_call_org_involved_target_id = MA.entity_id');
     switch ($content_type) {
       case 'esf_tnc_organisation':
-        // TODO find if the organisation has a projects in a call and if the user is a MA.
+        $sql->join('field_data_field_project_call_for_projects', 'project', 'project.field_project_call_for_projects_target_id = calls.entity_id');
+        $sql->join('field_data_field_project_lead_organisation', 'pjtorg', 'pjtorg.field_project_lead_organisation_target_id = :nid', array(':nid' => $node->nid));
+        break;
       case 'esf_tnc_project':
-        // TODO find if the project is in a call and if the user is a MA.
-      case 'esf_tnc_global_call':
-        // TODO TO BE CHANGED TO CALLS.
-      case 'esf_tnc_tca':
-        // TODO find if the TCA has an if the user is a MA.
-      default:
-          return array(); // TODO DELETE THIS
+        $sql->join('field_data_field_project_call_for_projects', 'project', 'project.field_project_call_for_projects_target_id = calls.entity_id and project.entity_id = :nid', array(':nid' => $node->nid));
+        break;
+    }
+    if ($sql) {
+      $result = $sql->execute()
+        ->fetchCol();
+      return $result;
     }
   }
-  else
-    return array();
+  return array();
 }
 /**
  * Helper function to check if current user is an Managing Authorities granted.
