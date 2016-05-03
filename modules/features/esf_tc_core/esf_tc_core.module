@@ -5,3 +5,33 @@
  */
 
 include_once 'esf_tc_core.features.inc';
+
+/**
+ * Implements hook_menu().
+ */
+function esf_tc_core_menu() {
+  return array(
+    'my-tnc' => array(
+      'title' => 'myTNC',
+      'access callback' => TRUE,
+      'page callback' => '_esf_tc_core_mytnc_redirect',
+      'menu_name' => 'my-tnc',
+    )
+  );
+}
+
+function _esf_tc_core_mytnc_redirect() {
+  global $user;
+  $_path = array(
+    'workbench' => 'admin/workbench',
+    'login' => 'ecas'
+  );
+  if ($user->uid) {
+    $path = $_path['workbench'];
+    $options = array();
+  } else {
+    $path = $_path['login'];
+    $options = array('query' => array('destination' => $_path['workbench']));
+  }
+  drupal_goto($path, $options);
+}
