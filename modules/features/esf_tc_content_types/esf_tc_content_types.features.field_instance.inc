@@ -126,9 +126,8 @@ function esf_tc_content_types_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'inline',
-        'module' => 'i18n_field',
         'settings' => array(),
-        'type' => 'i18n_list_default',
+        'type' => 'hidden',
         'weight' => 0,
       ),
     ),
@@ -2829,10 +2828,10 @@ function esf_tc_content_types_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'field_collection',
         'settings' => array(
-          'add' => 'Add',
-          'delete' => 'Delete',
-          'description' => 1,
-          'edit' => 'Edit',
+          'add' => '',
+          'delete' => '',
+          'description' => 0,
+          'edit' => '',
           'view_mode' => 'full',
         ),
         'type' => 'field_collection_view',
@@ -2988,11 +2987,9 @@ function esf_tc_content_types_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
-          'links' => 1,
-          'use_content_language' => 1,
-          'view_mode' => 'default',
+          'link' => 1,
         ),
-        'type' => 'entityreference_entity_view',
+        'type' => 'entityreference_label',
         'weight' => 25,
       ),
       'teaser' => array(
@@ -8008,6 +8005,50 @@ If an organisation is not found, please save your work as draft and check that t
   );
 
   // Exported field_instance:
+  // 'profile2-contact_profile-field_profile_contact_country'.
+  $field_instances['profile2-contact_profile-field_profile_contact_country'] = array(
+    'bundle' => 'contact_profile',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_plain',
+        'weight' => 13,
+      ),
+    ),
+    'entity_type' => 'profile2',
+    'field_name' => 'field_profile_contact_country',
+    'label' => 'Country',
+    'required' => 1,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'term_reference_tree',
+      'settings' => array(
+        'cascading_selection' => 0,
+        'filter_view' => '',
+        'leaves_only' => 0,
+        'max_depth' => '',
+        'parent_term_id' => '',
+        'select_parents' => 0,
+        'start_minimized' => 1,
+        'token_display' => '',
+        'track_list' => 0,
+      ),
+      'type' => 'term_reference_tree',
+      'weight' => 5,
+    ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance:
   // 'profile2-contact_profile-field_profile_contact_function'.
   $field_instances['profile2-contact_profile-field_profile_contact_function'] = array(
     'bundle' => 'contact_profile',
@@ -8233,6 +8274,40 @@ If an organisation is not found, please save your work as draft and check that t
       'type' => 'text_textfield',
       'weight' => 2,
     ),
+  );
+
+  // Exported field_instance: 'profile2-contact_profile-field_token_email'.
+  $field_instances['profile2-contact_profile-field_token_email'] = array(
+    'bundle' => 'contact_profile',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 12,
+      ),
+    ),
+    'entity_type' => 'profile2',
+    'field_name' => 'field_token_email',
+    'label' => 'Email',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'email',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'email_textfield',
+      'weight' => 12,
+    ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance:
