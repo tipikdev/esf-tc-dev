@@ -53,18 +53,20 @@ function esf_tc_content_types_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Token',
-    'weight' => '11',
+    'weight' => '8',
     'children' => array(
       0 => 'field_organisation',
       1 => 'field_profile_contact_contact',
+      2 => 'field_token_email',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
       'label' => 'Token',
       'instance_settings' => array(
         'required_fields' => 1,
+        'id' => '',
         'classes' => 'group-profile-contact-token field-group-fieldset',
-        'description' => 'Enter the tokens received in the email to link your account with an organisation.',
+        'description' => 'Enter the token received in the email to link your account with an organisation.',
       ),
       'formatter' => 'open',
     ),

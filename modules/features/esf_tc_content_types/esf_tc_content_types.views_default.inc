@@ -229,6 +229,13 @@ function esf_tc_content_types_views_default_views() {
     'title' => 'title',
   );
   $handler->display->display_options['row_options']['separator'] = ' ';
+  /* Footer: Global: Text area */
+  $handler->display->display_options['footer']['area']['id'] = 'area';
+  $handler->display->display_options['footer']['area']['table'] = 'views';
+  $handler->display->display_options['footer']['area']['field'] = 'area';
+  $handler->display->display_options['footer']['area']['content'] = '<a href="../events/?f[0]=im_field_esf_linked_tn%3A[tid]">More events about [name_i18n]</a>';
+  $handler->display->display_options['footer']['area']['format'] = 'full_html';
+  $handler->display->display_options['footer']['area']['tokenize'] = TRUE;
   /* Relationship: Content: Linked TN (field_esf_linked_tn) */
   $handler->display->display_options['relationships']['field_esf_linked_tn_tid']['id'] = 'field_esf_linked_tn_tid';
   $handler->display->display_options['relationships']['field_esf_linked_tn_tid']['table'] = 'field_data_field_esf_linked_tn';
@@ -255,6 +262,18 @@ function esf_tc_content_types_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Taxonomy term: Name (translated) */
+  $handler->display->display_options['fields']['name_i18n']['id'] = 'name_i18n';
+  $handler->display->display_options['fields']['name_i18n']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['name_i18n']['field'] = 'name_i18n';
+  $handler->display->display_options['fields']['name_i18n']['relationship'] = 'field_esf_linked_tn_tid';
+  $handler->display->display_options['fields']['name_i18n']['exclude'] = TRUE;
+  /* Field: Taxonomy term: Term ID */
+  $handler->display->display_options['fields']['tid']['id'] = 'tid';
+  $handler->display->display_options['fields']['tid']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['tid']['field'] = 'tid';
+  $handler->display->display_options['fields']['tid']['relationship'] = 'field_esf_linked_tn_tid';
+  $handler->display->display_options['fields']['tid']['exclude'] = TRUE;
   /* Sort criterion: Content: Start date -  start date (field_esf_event_start_date) */
   $handler->display->display_options['sorts']['field_esf_event_start_date_value']['id'] = 'field_esf_event_start_date_value';
   $handler->display->display_options['sorts']['field_esf_event_start_date_value']['table'] = 'field_data_field_esf_event_start_date';
@@ -320,6 +339,13 @@ function esf_tc_content_types_views_default_views() {
     'field_esf_news_date' => 'field_esf_news_date',
   );
   $handler->display->display_options['row_options']['separator'] = ' ';
+  /* Footer: Global: Text area */
+  $handler->display->display_options['footer']['area']['id'] = 'area';
+  $handler->display->display_options['footer']['area']['table'] = 'views';
+  $handler->display->display_options['footer']['area']['field'] = 'area';
+  $handler->display->display_options['footer']['area']['content'] = '<a href="../news/?f[0]=im_field_esf_linked_tn%3A[tid]">More news about [name_i18n]</a>';
+  $handler->display->display_options['footer']['area']['format'] = 'full_html';
+  $handler->display->display_options['footer']['area']['tokenize'] = TRUE;
   /* Relationship: Content: Linked TN (field_esf_linked_tn) */
   $handler->display->display_options['relationships']['field_esf_linked_tn_tid']['id'] = 'field_esf_linked_tn_tid';
   $handler->display->display_options['relationships']['field_esf_linked_tn_tid']['table'] = 'field_data_field_esf_linked_tn';
@@ -346,6 +372,18 @@ function esf_tc_content_types_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Taxonomy term: Name (translated) */
+  $handler->display->display_options['fields']['name_i18n']['id'] = 'name_i18n';
+  $handler->display->display_options['fields']['name_i18n']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['name_i18n']['field'] = 'name_i18n';
+  $handler->display->display_options['fields']['name_i18n']['relationship'] = 'field_esf_linked_tn_tid';
+  $handler->display->display_options['fields']['name_i18n']['exclude'] = TRUE;
+  /* Field: Taxonomy term: Term ID */
+  $handler->display->display_options['fields']['tid']['id'] = 'tid';
+  $handler->display->display_options['fields']['tid']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['tid']['field'] = 'tid';
+  $handler->display->display_options['fields']['tid']['relationship'] = 'field_esf_linked_tn_tid';
+  $handler->display->display_options['fields']['tid']['exclude'] = TRUE;
   /* Sort criterion: Content: Date of news (field_esf_news_date) */
   $handler->display->display_options['sorts']['field_esf_news_date_value']['id'] = 'field_esf_news_date_value';
   $handler->display->display_options['sorts']['field_esf_news_date_value']['table'] = 'field_data_field_esf_news_date';

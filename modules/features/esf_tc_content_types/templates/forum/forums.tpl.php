@@ -29,7 +29,7 @@
   <div id="forum">
     <?php print $forums; ?>
     <?php if (isset($topics_title)): ?>
-      <h2><?php print $topics_title; ?></h2>
+      <h2><span class="glyphicon glyphicon-chevron-right"></span><?php print $topics_title; ?></h2>
       <ul class="action-links">
         <?php print render($action_links); ?>
       </ul>

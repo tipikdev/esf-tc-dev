@@ -112,7 +112,7 @@
 
         <?php if (isset($content['field_org_type_of_organisation'])) : ?>
           <tr>
-            <th><?php print render($content['field_org_type_of_organisation']['#title']) ?>
+            <th><?php print render($content['field_org_type_of_organisation']['#title']); ?>
               :
             </th>
             <td><?php if ($content['field_org_type_of_organisation'][0]['#markup'] == t('Other')) : ?>
@@ -126,7 +126,7 @@
 
         <?php if (isset($content['field_esf_country_ref'])) : ?>
           <tr>
-            <th><?php print render($content['field_esf_country_ref']['#title']) ?>
+            <th><?php print render($content['field_esf_country_ref']['#title']); ?>
               :
             </th>
             <td><?php if ($content['field_esf_country_ref'][0]['#markup'] == t('Other')) : ?>

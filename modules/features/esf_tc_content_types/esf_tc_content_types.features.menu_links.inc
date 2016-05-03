@@ -50,6 +50,7 @@ function esf_tc_content_types_menu_default_menu_links() {
     'router_path' => 'events',
     'link_title' => 'Events',
     'options' => array(
+      'identifier' => 'menu-left-menu_events:events',
       'attributes' => array(
         'data-display-title' => 1,
         'data-hide-children' => 0,
@@ -60,22 +61,21 @@ function esf_tc_content_types_menu_default_menu_links() {
         'data-display-title' => 1,
         'data-hide-children' => 0,
         'id' => '',
-        'class' => '',
+        'class' => 'events',
         'data-remove-class' => 0,
         'style' => '',
       ),
-      'identifier' => 'menu-left-menu_events:events',
     ),
     'module' => 'menu',
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 1,
-    'weight' => -49,
+    'weight' => -47,
     'customized' => 1,
     'language' => 'und',
     'menu_links_customized' => 1,
-    'parent_identifier' => 'menu-left-menu_news--events:<front>',
+    'parent_identifier' => 'menu-left-menu_esf-transnational-cooperation:<front>',
   );
   // Exported menu link: menu-left-menu_mytnc:user.
   $menu_links['menu-left-menu_mytnc:user'] = array(
@@ -105,7 +105,7 @@ function esf_tc_content_types_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 1,
-    'weight' => -47,
+    'weight' => -45,
     'customized' => 1,
     'language' => 'und',
     'menu_links_customized' => 1,
@@ -145,19 +145,17 @@ function esf_tc_content_types_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'menu-left-menu_esf-transnational-cooperation:<front>',
   );
-  // Exported menu link: menu-left-menu_news--events:<front>.
-  $menu_links['menu-left-menu_news--events:<front>'] = array(
+  // Exported menu link: menu-left-menu_news:news.
+  $menu_links['menu-left-menu_news:news'] = array(
     'menu_name' => 'menu-left-menu',
-    'link_path' => '<front>',
-    'router_path' => '',
-    'link_title' => 'News & Events',
+    'link_path' => 'news',
+    'router_path' => 'news',
+    'link_title' => 'News',
     'options' => array(
+      'identifier' => 'menu-left-menu_news:news',
       'attributes' => array(
         'data-display-title' => 1,
         'data-hide-children' => 0,
-        'class' => array(
-          0 => 'no-link',
-        ),
         'data-remove-class' => 0,
       ),
       'item_attributes' => array(
@@ -169,52 +167,17 @@ function esf_tc_content_types_menu_default_menu_links() {
         'data-remove-class' => 0,
         'style' => '',
       ),
-      'identifier' => 'menu-left-menu_news--events:<front>',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 1,
-    'has_children' => 1,
-    'expanded' => 1,
-    'weight' => -48,
-    'customized' => 1,
-    'language' => 'und',
-    'menu_links_customized' => 1,
-    'parent_identifier' => 'menu-left-menu_esf-transnational-cooperation:<front>',
-  );
-  // Exported menu link: menu-left-menu_news:news.
-  $menu_links['menu-left-menu_news:news'] = array(
-    'menu_name' => 'menu-left-menu',
-    'link_path' => 'news',
-    'router_path' => 'news',
-    'link_title' => 'News',
-    'options' => array(
-      'attributes' => array(
-        'data-display-title' => 1,
-        'data-hide-children' => 0,
-        'data-remove-class' => 0,
-      ),
-      'item_attributes' => array(
-        'data-image' => '',
-        'data-display-title' => 1,
-        'data-hide-children' => 0,
-        'id' => '',
-        'class' => '',
-        'data-remove-class' => 0,
-        'style' => '',
-      ),
-      'identifier' => 'menu-left-menu_news:news',
     ),
     'module' => 'menu',
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 1,
-    'weight' => -50,
+    'weight' => -48,
     'customized' => 1,
     'language' => 'und',
     'menu_links_customized' => 1,
-    'parent_identifier' => 'menu-left-menu_news--events:<front>',
+    'parent_identifier' => 'menu-left-menu_esf-transnational-cooperation:<front>',
   );
   // Exported menu link: menu-left-menu_partner-database:search/partners-search.
   $menu_links['menu-left-menu_partner-database:search/partners-search'] = array(
@@ -278,7 +241,7 @@ function esf_tc_content_types_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 1,
-    'weight' => -46,
+    'weight' => -44,
     'customized' => 1,
     'language' => 'und',
     'menu_links_customized' => 1,
@@ -291,7 +254,6 @@ function esf_tc_content_types_menu_default_menu_links() {
   t('Events');
   t('Networking');
   t('News');
-  t('News & Events');
   t('Partner database');
   t('Search transnational platform');
   t('myTNC');

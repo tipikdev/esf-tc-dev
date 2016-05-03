@@ -24,13 +24,16 @@
     ?>
     <?php if ($view_mode == 'teaser'): ?>
       <?php print render($content['field_esf_event_start_date']); ?>
+      <?php print render($content['field_esf_event_picture']); ?>
+      <div class="news-teaser-wrapper">
       <h2<?php print $title_attributes; ?>><a
           href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
       <div class="news-wrapper">
-        <?php print render($content['field_esf_event_picture']); ?>
         <?php print render($content['body']); ?>
       </div>
       <?php print render($content['field_esf_linked_tn']); ?>
+      <?php print render($content['links']); ?>
+      </div>
     <?php else: ?>
       <?php print render($content['field_esf_event_start_date']); ?>
       <div class="news-wrapper">
@@ -41,15 +44,18 @@
       <?php print render($content['field_esf_event_organiser']); ?>
       <?php print render($content['field_esf_event_location']); ?>
       <?php if (isset($content['field_esf_event_attached_doc']['#items']) || isset($content['field_esf_event_external_link']['#items'])): ?>
-        <h3><?php print t('Related info'); ?></h3>
-        <?php print render($content['field_esf_event_attached_doc']); ?>
-        <?php print render($content['field_esf_event_external_link']); ?>
+        <div class='related-info'>
+          <h3><?php print t('Related info'); ?></h3>
+          <?php print render($content['field_esf_event_attached_doc']); ?>
+          <?php print render($content['field_esf_event_external_link']); ?>
+        </div>
       <?php endif; ?>
       <?php print render($content['field_esf_linked_tn']); ?>
+      <?php print render($content['links']); ?>
     <?php endif; ?>
   </div>
 
-  <?php print render($content['links']); ?>
+
 
   <?php print render($content['comments']); ?>
 

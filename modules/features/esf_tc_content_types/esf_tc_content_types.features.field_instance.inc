@@ -1610,10 +1610,10 @@ function esf_tc_content_types_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'i18n_taxonomy',
+        'label' => 'inline',
+        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'i18n_taxonomy_term_reference_link',
+        'type' => 'taxonomy_term_reference_plain',
         'weight' => 8,
       ),
       'teaser' => array(
@@ -1860,7 +1860,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
-          'image_style' => 'medium',
+          'image_style' => '',
         ),
         'type' => 'image',
         'weight' => 7,
@@ -1870,7 +1870,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
-          'image_style' => 'thumbnail',
+          'image_style' => '',
         ),
         'type' => 'image',
         'weight' => 2,
@@ -1887,8 +1887,8 @@ function esf_tc_content_types_field_default_field_instances() {
       'file_directory' => 'event',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
-      'max_resolution' => '1280x960',
-      'min_resolution' => '320x240',
+      'max_resolution' => '',
+      'min_resolution' => '266x200',
       'title_field' => 0,
       'user_register_form' => FALSE,
     ),
@@ -2000,16 +2000,16 @@ function esf_tc_content_types_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'i18n_taxonomy',
+        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'i18n_taxonomy_term_reference_link',
+        'type' => 'taxonomy_term_reference_plain',
         'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
+        'type' => 'taxonomy_term_reference_plain',
         'weight' => 1,
       ),
     ),
@@ -2213,16 +2213,16 @@ function esf_tc_content_types_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'i18n_taxonomy',
+        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'i18n_taxonomy_term_reference_link',
+        'type' => 'taxonomy_term_reference_plain',
         'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
+        'type' => 'taxonomy_term_reference_plain',
         'weight' => 2,
       ),
     ),
@@ -2455,7 +2455,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
-          'image_style' => 'medium',
+          'image_style' => '',
         ),
         'type' => 'image',
         'weight' => 1,
@@ -2465,7 +2465,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
-          'image_style' => 'thumbnail',
+          'image_style' => '',
         ),
         'type' => 'image',
         'weight' => 0,
@@ -2482,8 +2482,8 @@ function esf_tc_content_types_field_default_field_instances() {
       'file_directory' => '',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
-      'max_resolution' => '1280x960',
-      'min_resolution' => '320x240',
+      'max_resolution' => '',
+      'min_resolution' => '266x200',
       'title_field' => 0,
       'user_register_form' => FALSE,
     ),
@@ -4963,51 +4963,6 @@ function esf_tc_content_types_field_default_field_instances() {
       'weight' => 4,
     ),
     'workbench_access_field' => 0,
-  );
-
-  // Exported field_instance:
-  // 'node-esf_tnc_project-field_project_countries_looked'.
-  $field_instances['node-esf_tnc_project-field_project_countries_looked'] = array(
-    'bundle' => 'esf_tnc_project',
-    'default_value' => array(
-      0 => array(
-        'tid' => 132,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_plain',
-        'weight' => 27,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 23,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_project_countries_looked',
-    'label' => 'Countries looked for (if any preference)',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'apply_chosen' => '',
-      ),
-      'type' => 'options_select',
-      'weight' => 29,
-    ),
   );
 
   // Exported field_instance:
@@ -7881,7 +7836,7 @@ If an organisation is not found, please save your work as draft and check that t
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
@@ -7904,49 +7859,6 @@ If an organisation is not found, please save your work as draft and check that t
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_select',
-      'weight' => 11,
-    ),
-  );
-
-  // Exported field_instance: 'profile2-contact_profile-field_organisation'.
-  $field_instances['profile2-contact_profile-field_organisation'] = array(
-    'bundle' => 'contact_profile',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 2,
-          'thousand_separator' => ' ',
-        ),
-        'type' => 'number_decimal',
-        'weight' => 8,
-      ),
-    ),
-    'entity_type' => 'profile2',
-    'field_name' => 'field_organisation',
-    'label' => 'Organisation',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'max' => '',
-      'min' => '',
-      'prefix' => '',
-      'suffix' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'number',
-      'settings' => array(
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-      ),
-      'type' => 'number',
       'weight' => 9,
     ),
   );
@@ -7964,7 +7876,7 @@ If an organisation is not found, please save your work as draft and check that t
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
@@ -7987,7 +7899,7 @@ If an organisation is not found, please save your work as draft and check that t
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_select',
-      'weight' => 7,
+      'weight' => 6,
     ),
   );
 
@@ -8004,7 +7916,7 @@ If an organisation is not found, please save your work as draft and check that t
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
@@ -8027,7 +7939,7 @@ If an organisation is not found, please save your work as draft and check that t
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_select',
-      'weight' => 8,
+      'weight' => 7,
     ),
   );
 
@@ -8040,7 +7952,7 @@ If an organisation is not found, please save your work as draft and check that t
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -8091,51 +8003,7 @@ If an organisation is not found, please save your work as draft and check that t
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 5,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'profile2-contact_profile-field_profile_contact_contact'.
-  $field_instances['profile2-contact_profile-field_profile_contact_contact'] = array(
-    'bundle' => 'contact_profile',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 2,
-          'thousand_separator' => ' ',
-        ),
-        'type' => 'number_decimal',
-        'weight' => 9,
-      ),
-    ),
-    'entity_type' => 'profile2',
-    'field_name' => 'field_profile_contact_contact',
-    'label' => 'Contact',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'max' => '',
-      'min' => '',
-      'prefix' => '',
-      'suffix' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'number',
-      'settings' => array(
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-      ),
-      'type' => 'number',
-      'weight' => 10,
+      'weight' => 4,
     ),
   );
 
@@ -8148,7 +8016,7 @@ If an organisation is not found, please save your work as draft and check that t
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -8199,7 +8067,7 @@ If an organisation is not found, please save your work as draft and check that t
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 2,
+      'weight' => 1,
     ),
   );
 
@@ -8212,7 +8080,7 @@ If an organisation is not found, please save your work as draft and check that t
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
@@ -8235,7 +8103,7 @@ If an organisation is not found, please save your work as draft and check that t
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_select',
-      'weight' => 1,
+      'weight' => 0,
     ),
   );
 
@@ -8248,7 +8116,7 @@ If an organisation is not found, please save your work as draft and check that t
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -8299,7 +8167,7 @@ If an organisation is not found, please save your work as draft and check that t
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 4,
+      'weight' => 3,
     ),
   );
 
@@ -8312,7 +8180,7 @@ If an organisation is not found, please save your work as draft and check that t
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -8363,55 +8231,7 @@ If an organisation is not found, please save your work as draft and check that t
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 3,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'profile2-contact_profile-field_profile_contat_country'.
-  $field_instances['profile2-contact_profile-field_profile_contat_country'] = array(
-    'bundle' => 'contact_profile',
-    'default_value' => array(
-      0 => array(
-        'tid' => 132,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'i18n_taxonomy',
-        'settings' => array(),
-        'type' => 'i18n_taxonomy_term_reference_link',
-        'weight' => 5,
-      ),
-    ),
-    'entity_type' => 'profile2',
-    'field_name' => 'field_profile_contat_country',
-    'label' => 'country',
-    'required' => 1,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'term_reference_tree',
-      'settings' => array(
-        'cascading_selection' => 0,
-        'filter_view' => 'ec_world_countries:default',
-        'leaves_only' => 0,
-        'max_depth' => '',
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'parent_term_id' => '',
-        'select_parents' => 0,
-        'start_minimized' => 0,
-        'token_display' => '',
-        'track_list' => 0,
-      ),
-      'type' => 'term_reference_tree',
-      'weight' => 6,
+      'weight' => 2,
     ),
   );
 
@@ -8571,7 +8391,6 @@ If an organisation is not found, please save your work as draft and check that t
   t('Budget for transnational activities');
   t('Call for projects');
   t('Contact');
-  t('Countries looked for (if any preference)');
   t('Country');
   t('Country of submission');
   t('Date of initial signature');
@@ -8621,7 +8440,6 @@ If an organisation is not found, please save your work as draft and check that t
   t('Number / Short reference');
   t('Objectives');
   t('Operational contact');
-  t('Organisation');
   t('Organisation department');
   t('Organisation logo');
   t('Organisation logo (for the promotional section)');
@@ -8677,7 +8495,6 @@ If an organisation is not found, please save your work as draft and check that t
   t('Type of organisation');
   t('You must select first a country to display the available calls. If a call is not found, please save your work as draft and check with your Managing Authority.');
   t('You must select first a country to display the available organisations.');
-  t('country');
 
   return $field_instances;
 }
