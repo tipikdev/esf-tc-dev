@@ -186,15 +186,19 @@
 
           <?php if (isset($content['field_org_contact_account'])) : ?>
             <tr>
-              <th><?php print 'Legal contact' ?>:</th>
+              <th><?php print t('Legal contact'); ?>:</th>
               <td>
-                <?php if ($content['field_org_contact_account'][0]['#markup'] == 'Yes') : ?>
-                  <?php print render($content['field_org_contact'][0]); ?>
-                <?php else : ?>
-                  <?php print render($content['field_org_contact_legal_name']) . ' - ' . render($content['field_org_contact_legal_email'][0]); ?>
+                <?php if (isset($contact_name)) : ?>
+                  <?php print t('Name'); ?>: <?php print $contact_name; ?>
                 <?php endif; ?>
-                <br/> Role
-                : <?php print render($content['field_org_contact_legal_role'][0]); ?>
+                <?php if (isset($contact_email)) : ?>
+                  <br/>
+                  <?php print t('Email'); ?>: <?php print $contact_email; ?>
+                <?php endif; ?>
+                <?php if (isset($contact_role)) : ?>
+                  <br/>
+                  <?php print t('Role'); ?>: <?php print $contact_role; ?>
+                <?php endif; ?>
               </td>
             </tr>
           <?php endif; ?>
