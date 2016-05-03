@@ -81,13 +81,19 @@ function esf_tc_content_types_context_default_contexts() {
           'module' => 'menu',
           'delta' => 'menu-service-tools',
           'region' => 'header_top',
-          'weight' => '-10',
+          'weight' => '-44',
         ),
         'locale-language' => array(
           'module' => 'locale',
           'delta' => 'language',
           'region' => 'header_top',
-          'weight' => '-9',
+          'weight' => '-43',
+        ),
+        'system-user-menu' => array(
+          'module' => 'system',
+          'delta' => 'user-menu',
+          'region' => 'header_top',
+          'weight' => '-10',
         ),
         'easy_breadcrumb-easy_breadcrumb' => array(
           'module' => 'easy_breadcrumb',
@@ -105,7 +111,7 @@ function esf_tc_content_types_context_default_contexts() {
           'module' => 'system',
           'delta' => 'help',
           'region' => 'help',
-          'weight' => '-10',
+          'weight' => '-9',
         ),
         'menu-menu-left-menu' => array(
           'module' => 'menu',
