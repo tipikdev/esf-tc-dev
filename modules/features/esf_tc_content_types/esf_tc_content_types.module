@@ -1043,7 +1043,15 @@ function esf_tc_content_types_user_login(&$edit, $account) {
   if (!isset($_POST['form_id']) || $_POST['form_id'] != 'user_pass_reset' || variable_get('login_destination_immediate_redirect', FALSE)) {
     // Redirect an authenticated only user or contact user to the profile page
     // if no profile attached to user.
+    // Add the role contact to the authenticated only user.
     if (in_array('contact', $account->roles) || count($account->roles) == 1) {
+      if (count($account->roles) == 1) {
+        $user = user_load($account->uid);
+        $role = user_role_load_by_name('contact');
+        $user->roles = $user->roles + array($role->rid => $role->name);
+        user_save($user);
+      }
+
       $contact_profile = profile2_load_by_user($account, 'contact_profile');
       if (empty($contact_profile)) {
         drupal_set_message(t('You have been redirected to fill out your contact information. You can also enter the token received in the email to link your account with an organisation.'));
