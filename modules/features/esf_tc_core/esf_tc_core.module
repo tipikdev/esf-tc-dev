@@ -20,6 +20,9 @@ function esf_tc_core_menu() {
   );
 }
 
+/**
+ * Helper for redirect MyTNC button.
+ */
 function _esf_tc_core_mytnc_redirect() {
   global $user;
   $_path = array(
