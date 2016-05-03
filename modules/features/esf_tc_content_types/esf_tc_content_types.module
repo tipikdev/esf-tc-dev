@@ -128,7 +128,7 @@ function esf_tc_content_types_form_alter(&$form, &$form_state, $form_id) {
       $form['actions']['ask_deletion']['#access'] = _esf_tc_content_types_button_access('needs-deletion', $form['type']['#value'], $form['#node'], $state);
     }
     // Delete.
-    if ($form['actions']['delete']) {
+    if (isset($form['actions']['delete']) && $form['actions']['delete']) {
       $form['actions']['delete']['#attributes']['class'][] = $color_class['danger'];
     }
   }
@@ -542,7 +542,7 @@ function esf_tc_content_types_tca_validate($form, &$form_state) {
  */
 function esf_tc_content_types_projects_database_draft_validate(&$form, &$form_state) {
   $editorial_field_name = _esf_tc_content_types_get_editorial_status_field_name();
-  $state = reset($form_state['values'][$editorial_field_name][LANGUAGE_NONE])['value'];
+  $state = isset($form_state['values'][$editorial_field_name][LANGUAGE_NONE]) ? reset($form_state['values'][$editorial_field_name][LANGUAGE_NONE])['value']: NULL;
 
   $errors = form_get_errors();
 
