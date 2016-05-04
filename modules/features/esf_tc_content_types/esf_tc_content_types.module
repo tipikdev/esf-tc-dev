@@ -147,7 +147,9 @@ function esf_tc_content_types_form_alter(&$form, &$form_state, $form_id) {
     'warning' => 'btn-warning',
     'danger' => 'btn-danger',
   );
-  if (isset($form[$editorial_field_name]) && (!isset($_SERVER['HTTP_X_REQUESTED_WITH']) || $_SERVER['HTTP_X_REQUESTED_WITH'] != 'XMLHttpRequest')) {
+
+  // Avoid checking on ajax refresh.
+  if (isset($form[$editorial_field_name]) && (!isset($form_state['input']['ajax_html_ids']))) {
     // Add Submit method.
     $form['#submit'][] = 'esf_tc_content_types_projects_database_submit';
     // Hide Select list.
