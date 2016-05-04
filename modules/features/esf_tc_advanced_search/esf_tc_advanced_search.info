@@ -120,3 +120,4 @@ features[features_api][] = api:2
 features[variable][] = apachesolr_search_default_search_page
 multisite_version = 2.1
 project path = sites/all/modules/features
+php = 5.4
