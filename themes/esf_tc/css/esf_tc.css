@@ -1437,3 +1437,7 @@ p:empty {
   display: block;
   margin: 10px 0;
 }
+
+.cke_contents {
+  height: 200px !important;
+}

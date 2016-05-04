@@ -200,6 +200,12 @@ function esf_tc_content_types_form_alter(&$form, &$form_state, $form_id) {
       $form['actions']['delete']['#attributes']['class'][] = $color_class['danger'];
     }
   }
+
+  // Hide format text option under text editor.
+  drupal_add_js('jQuery(window).load(function() {jQuery(".filter-wrapper").hide();});', 'inline');
+  // Hide Show row weights link.
+  drupal_add_js('jQuery(window).load(function() {jQuery(".tabledrag-toggle-weight").hide();});', 'inline');
+  drupal_add_js('jQuery(document).ajaxSuccess(function() {jQuery(".tabledrag-toggle-weight").hide();});', 'inline');
 }
 
 /**
@@ -367,7 +373,22 @@ function esf_tc_content_types_organisation_validate($form, &$form_state) {
     }
   }
 
-  if ($form_state['values']['field_esf_editorial_status'][LANGUAGE_NONE][0]['value'] == 'published') {
+  // Check required values if the node (editorial status) is published.
+  if ($form_state['values']['op'] == 'Publish') {
+    // Legal contact.
+    if ($form_state['values']['field_org_contact_account'][LANGUAGE_NONE][0]['value'] == 'yes' && empty($form_state['values']['field_org_contact'][LANGUAGE_NONE][0]['target_id'])) {
+      form_set_error('field_org_contact', t('!name field is required.', array('!name' => $form['field_org_contact'][LANGUAGE_NONE]['#title'])));
+    }
+    elseif ($form_state['values']['field_org_contact_account'][LANGUAGE_NONE][0]['value'] == 'no') {
+      if (empty($form_state['values']['field_org_contact_legal_name']['und'][0]['value'])) {
+        form_set_error('field_org_contact_legal_name', t('!name field is required.', array('!name' => $form['field_org_contact_legal_name'][LANGUAGE_NONE]['#title'])));
+      }
+      if (empty($form_state['values']['field_org_contact_legal_email']['und'][0]['value'])) {
+        form_set_error('field_org_contact_legal_email', t('!name field is required.', array('!name' => $form['field_org_contact_legal_email'][LANGUAGE_NONE]['#title'])));
+      }
+    }
+
+    // Additional contact.
     $contacts = $form_state['values']['field_org_additional_contacts'][LANGUAGE_NONE];
     foreach ($contacts as $key => $contact) {
       if (is_numeric($key) && empty($contact['field_fc_org_name'][LANGUAGE_NONE][0]['value']) && $contact['field_fc_contact_account'][LANGUAGE_NONE][0]['value'] == 'no') {
@@ -581,7 +602,7 @@ function esf_tc_content_types_form_esf_tnc_tca_node_form_alter(&$form, &$form_st
  */
 function esf_tc_content_types_tca_validate($form, &$form_state) {
   $partners = $form_state['values']['field_tca_partner_organisations'][LANGUAGE_NONE];
-  if ($form_state['values']['field_esf_editorial_status'][LANGUAGE_NONE][0]['value'] == 'published') {
+  if ($form_state['values']['op'] == 'Publish') {
     foreach ($partners as $key => $partner) {
       if (is_numeric($key)) {
         if (empty($partner['field_fc_partner_project'][LANGUAGE_NONE][0]['target_id'])) {
@@ -598,13 +619,10 @@ function esf_tc_content_types_tca_validate($form, &$form_state) {
             }
           }
         }
-
       }
-
     }
   }
 }
-
 
 /**
  * Project database (4 content types) custom validation for drafting.
@@ -1214,3 +1232,4 @@ function _esf_tc_content_type_display_message($node, $state) {
       break;
   }
 }
+
