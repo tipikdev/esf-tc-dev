@@ -209,12 +209,11 @@
             <h1 class="title" id="content-title">
               <?php print $title; ?>
             </h1>
+            <?php if (isset($flag_favorites)): ?>
+              <?php print flag_create_link('esf_tc_favorites', $node->nid); ?>
+            <?php endif; ?>
           </div>
         </div>
-        <?php endif; ?>
-
-        <?php if (isset($flag_favorites)): ?>
-          <?php print flag_create_link('esf_tc_favorites', $node->nid); ?>
         <?php endif; ?>
       </div>
       <a id="main-content"></a>
