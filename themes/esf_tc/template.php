@@ -32,12 +32,14 @@ function esf_tc_preprocess_node(&$variables) {
     if (isset($variables['field_org_contact_account'][0])) {
       // Manage legal contact data.
       if ($variables['field_org_contact_account'][0]['value'] == 'yes') {
-        $legal_contact = user_load($variables['field_org_contact'][0]['target_id']);
-        $variables['contact_name'] = $legal_contact->field_firstname[LANGUAGE_NONE][0]['value'] . ' ' . $legal_contact->field_lastname[LANGUAGE_NONE][0]['value'];
-        $contact_profile = profile2_load_by_user($legal_contact, 'contact_profile');
-        if (isset($contact_profile)) {
-          if ($contact_profile->field_profile_cont_email_private[LANGUAGE_NONE][0]['value'] == 'no') {
-            $variables['contact_email'] = $legal_contact->mail;
+        if (!empty($variables['field_org_contact'][0])) {
+          $legal_contact = user_load($variables['field_org_contact'][0]['target_id']);
+          $variables['contact_name'] = $legal_contact->field_firstname[LANGUAGE_NONE][0]['value'] . ' ' . $legal_contact->field_lastname[LANGUAGE_NONE][0]['value'];
+          $contact_profile = profile2_load_by_user($legal_contact, 'contact_profile');
+          if (isset($contact_profile)) {
+            if ($contact_profile->field_profile_cont_email_private[LANGUAGE_NONE][0]['value'] == 'no') {
+              $variables['contact_email'] = $legal_contact->mail;
+            }
           }
         }
       }
