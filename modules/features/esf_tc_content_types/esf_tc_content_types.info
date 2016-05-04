@@ -338,6 +338,7 @@ features[field_instance][] = taxonomy_term-ec_world_countries-iso_3166_1_alpha_2
 features[flag][] = esf_tc_favorites
 features[menu_links][] = menu-left-menu_esf-transnational-cooperation:<front>
 features[menu_links][] = menu-left-menu_events:events
+features[menu_links][] = menu-left-menu_mytnc:my-tnc
 features[menu_links][] = menu-left-menu_networking:forum
 features[menu_links][] = menu-left-menu_news:news
 features[menu_links][] = menu-left-menu_partner-database:search/partners-search

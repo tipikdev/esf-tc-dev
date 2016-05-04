@@ -146,6 +146,11 @@ function esf_tc_content_types_update_7101() {
     };
   }
 
+  // Remove all conditional fields
+  $num_deleted = db_delete('conditional_fields')
+    ->execute();
+
+
   // Delete Global call content type .
   multisite_drupal_toolbox_disable_content_type('esf_tnc_global_call');
   multisite_drupal_toolbox_config_solr_bundle('esf_tnc_global_call','delete');
