@@ -1432,3 +1432,12 @@ p:empty {
 .page-forum- #forum {
   clear:left;
 }
+
+.flag-esf-tc-favorites {
+  display: block;
+  margin: 10px 0;
+}
+
+.cke_contents {
+  height: 200px !important;
+}

@@ -29,6 +29,15 @@ function esf_tc_content_types_user_default_permissions() {
     'module' => 'comment',
   );
 
+  // Exported permission: 'administer flags'.
+  $permissions['administer flags'] = array(
+    'name' => 'administer flags',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'flag',
+  );
+
   // Exported permission: 'administer nodes'.
   $permissions['administer nodes'] = array(
     'name' => 'administer nodes',
@@ -54,6 +63,7 @@ function esf_tc_content_types_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'forum moderator' => 'forum moderator',
+      'webmaster' => 'webmaster',
     ),
     'module' => 'workbench_access',
   );
@@ -80,7 +90,9 @@ function esf_tc_content_types_user_default_permissions() {
   // Exported permission: 'create esf_tnc_event content'.
   $permissions['create esf_tnc_event content'] = array(
     'name' => 'create esf_tnc_event content',
-    'roles' => array(),
+    'roles' => array(
+      'webmaster' => 'webmaster',
+    ),
     'module' => 'node',
   );
 
@@ -96,7 +108,9 @@ function esf_tc_content_types_user_default_permissions() {
   // Exported permission: 'create esf_tnc_news content'.
   $permissions['create esf_tnc_news content'] = array(
     'name' => 'create esf_tnc_news content',
-    'roles' => array(),
+    'roles' => array(
+      'webmaster' => 'webmaster',
+    ),
     'module' => 'node',
   );
 
@@ -152,7 +166,9 @@ function esf_tc_content_types_user_default_permissions() {
   // Exported permission: 'delete any esf_tnc_event content'.
   $permissions['delete any esf_tnc_event content'] = array(
     'name' => 'delete any esf_tnc_event content',
-    'roles' => array(),
+    'roles' => array(
+      'webmaster' => 'webmaster',
+    ),
     'module' => 'node',
   );
 
@@ -168,7 +184,9 @@ function esf_tc_content_types_user_default_permissions() {
   // Exported permission: 'delete any esf_tnc_news content'.
   $permissions['delete any esf_tnc_news content'] = array(
     'name' => 'delete any esf_tnc_news content',
-    'roles' => array(),
+    'roles' => array(
+      'webmaster' => 'webmaster',
+    ),
     'module' => 'node',
   );
 
@@ -208,6 +226,7 @@ function esf_tc_content_types_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'forum moderator' => 'forum moderator',
+      'webmaster' => 'webmaster',
     ),
     'module' => 'node',
   );
@@ -225,7 +244,9 @@ function esf_tc_content_types_user_default_permissions() {
   // Exported permission: 'delete own esf_tnc_event content'.
   $permissions['delete own esf_tnc_event content'] = array(
     'name' => 'delete own esf_tnc_event content',
-    'roles' => array(),
+    'roles' => array(
+      'webmaster' => 'webmaster',
+    ),
     'module' => 'node',
   );
 
@@ -241,7 +262,9 @@ function esf_tc_content_types_user_default_permissions() {
   // Exported permission: 'delete own esf_tnc_news content'.
   $permissions['delete own esf_tnc_news content'] = array(
     'name' => 'delete own esf_tnc_news content',
-    'roles' => array(),
+    'roles' => array(
+      'webmaster' => 'webmaster',
+    ),
     'module' => 'node',
   );
 
@@ -298,7 +321,9 @@ function esf_tc_content_types_user_default_permissions() {
   // Exported permission: 'edit any esf_tnc_event content'.
   $permissions['edit any esf_tnc_event content'] = array(
     'name' => 'edit any esf_tnc_event content',
-    'roles' => array(),
+    'roles' => array(
+      'webmaster' => 'webmaster',
+    ),
     'module' => 'node',
   );
 
@@ -314,7 +339,9 @@ function esf_tc_content_types_user_default_permissions() {
   // Exported permission: 'edit any esf_tnc_news content'.
   $permissions['edit any esf_tnc_news content'] = array(
     'name' => 'edit any esf_tnc_news content',
-    'roles' => array(),
+    'roles' => array(
+      'webmaster' => 'webmaster',
+    ),
     'module' => 'node',
   );
 
@@ -354,6 +381,7 @@ function esf_tc_content_types_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'forum moderator' => 'forum moderator',
+      'webmaster' => 'webmaster',
     ),
     'module' => 'node',
   );
@@ -380,7 +408,9 @@ function esf_tc_content_types_user_default_permissions() {
   // Exported permission: 'edit own esf_tnc_event content'.
   $permissions['edit own esf_tnc_event content'] = array(
     'name' => 'edit own esf_tnc_event content',
-    'roles' => array(),
+    'roles' => array(
+      'webmaster' => 'webmaster',
+    ),
     'module' => 'node',
   );
 
@@ -396,7 +426,9 @@ function esf_tc_content_types_user_default_permissions() {
   // Exported permission: 'edit own esf_tnc_news content'.
   $permissions['edit own esf_tnc_news content'] = array(
     'name' => 'edit own esf_tnc_news content',
-    'roles' => array(),
+    'roles' => array(
+      'webmaster' => 'webmaster',
+    ),
     'module' => 'node',
   );
 
@@ -440,6 +472,15 @@ function esf_tc_content_types_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'flag esf_tc_favorites'.
+  $permissions['flag esf_tc_favorites'] = array(
+    'name' => 'flag esf_tc_favorites',
+    'roles' => array(
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'flag',
+  );
+
   // Exported permission: 'skip comment approval'.
   $permissions['skip comment approval'] = array(
     'name' => 'skip comment approval',
@@ -448,6 +489,15 @@ function esf_tc_content_types_user_default_permissions() {
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'comment',
+  );
+
+  // Exported permission: 'unflag esf_tc_favorites'.
+  $permissions['unflag esf_tc_favorites'] = array(
+    'name' => 'unflag esf_tc_favorites',
+    'roles' => array(
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'flag',
   );
 
   // Exported permission: 'view workbench access information'.

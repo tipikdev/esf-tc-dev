@@ -81,7 +81,6 @@
 <div id="node-<?php print $node->nid; ?>"
      class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
 
-
   <div class="content clearfix"<?php print $content_attributes; ?>>
     <?php if ($prefix_display): ?>
       <div class="node-private label label-default clearfix">
@@ -95,8 +94,6 @@
     hide($content['comments']);
     hide($content['links']);
     ?>
-
-
   </div>
 
   <?php if ($view_mode == 'full'): ?>

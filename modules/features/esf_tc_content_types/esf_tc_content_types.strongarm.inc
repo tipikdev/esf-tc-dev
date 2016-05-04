@@ -356,6 +356,13 @@ function esf_tc_content_types_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_flagging__esf_tc_favorites';
+  $strongarm->value = array();
+  $export['field_bundle_settings_flagging__esf_tc_favorites'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__esf_tnc_call_for_project';
   $strongarm->value = array(
     'view_modes' => array(
@@ -1023,7 +1030,7 @@ function esf_tc_content_types_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_esf_tnc_organisation';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['node_preview_esf_tnc_organisation'] = $strongarm;
 
   $strongarm = new stdClass();

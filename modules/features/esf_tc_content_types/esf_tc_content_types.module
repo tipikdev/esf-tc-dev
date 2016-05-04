@@ -73,14 +73,72 @@ function esf_tc_content_types_comment_insert($comment) {
  * Alter contact profile form.
  */
 function esf_tc_content_types_form_profile2_edit_contact_profile_form_alter(&$form, &$form_state) {
+  $form['actions']['submit']['#submit'][] = '_esf_tc_content_types_contact_submit';
   $form['profile_contact_profile']['field_editorial_status']['#access'] = FALSE;
+}
+
+/**
+ * Custom submit for the contact profile form.
+ */
+function _esf_tc_content_types_contact_submit($form, &$form_state) {
+  $contact_uid = $form_state['user']->uid;
+  // Synchronize the user with all organisation using the token email.
+  $token_email = $form_state['values']['profile_contact_profile']['field_token_email']['und'][0]['email'];
+  if (!empty($token_email)) {
+    // Get all organisations having this email as legal contact and
+    // set unknown contact.
+    $query = db_select('node', 'n')
+      ->fields('n', array('nid'));
+    $query->join('field_data_field_org_contact_legal_email', 'e', 'n.nid = e.entity_id');
+    $query->join('field_data_field_esf_country_ref', 'c', 'n.nid = c.entity_id');
+    $query->condition('e.field_org_contact_legal_email_value', $token_email);
+    $result = $query->execute();
+
+    foreach ($result as $org) {
+      $contact = node_load($org->nid);
+      $contact_wrapper = entity_metadata_wrapper('node', $contact);
+      // Save info about current contact.
+      $contact_wrapper->field_org_contact_account->set('yes');
+      $contact_wrapper->field_org_contact->set($contact_uid);
+      // Reset previous contact value.
+      $contact_wrapper->field_org_contact_legal_name->set('');
+      $contact_wrapper->field_org_contact_legal_email->set('');
+      $contact_wrapper->save();
+    }
+
+    // Get all field collections having this email as legal contact and
+    // set as unknown contact.
+    $query = db_select('field_data_field_fc_org_email', 'e')
+      ->fields('e', array('entity_id'));
+    $query->condition('e.field_fc_org_email_value', $token_email);
+    $result = $query->execute();
+
+    foreach ($result as $coll) {
+      // Load field collection.
+      $contact = field_collection_item_load($coll->entity_id);
+      $contact_wrapper = entity_metadata_wrapper('field_collection_item', $contact);
+      // Save info about current contact.
+      $contact_wrapper->field_fc_contact_account->set('yes');
+      $contact_wrapper->field_fc_org_contact->set($contact_uid);
+      // Reset previous contact value.
+      $contact_wrapper->field_fc_org_name->set('');
+      $contact_wrapper->field_fc_org_email->set('');
+      $contact_wrapper->save();
+    }
+
+    // Reset token value.
+    $form_state['values']['profile_contact_profile']['field_token_email'][LANGUAGE_NONE][0]['email'] = '';
+
+    drupal_set_message('Your account has been synchronized with all organisations that were referencing you.');
+  }
+  profile2_form_submit_handler($form, $form_state);
+  $form_state['redirect'] = 'user/' . $contact_uid;
 }
 
 /**
  * Implements hook_form_alter().
  */
 function esf_tc_content_types_form_alter(&$form, &$form_state, $form_id) {
-
   // Transform editorial status to buttons.
   $editorial_field_name = _esf_tc_content_types_get_editorial_status_field_name();
   $color_class = array(
@@ -143,6 +201,12 @@ function esf_tc_content_types_form_alter(&$form, &$form_state, $form_id) {
       $form['actions']['delete']['#attributes']['class'][] = $color_class['danger'];
     }
   }
+
+  // Hide format text option under text editor.
+  drupal_add_js('jQuery(window).load(function() {jQuery(".filter-wrapper").hide();});', 'inline');
+  // Hide Show row weights link.
+  drupal_add_js('jQuery(window).load(function() {jQuery(".tabledrag-toggle-weight").hide();});', 'inline');
+  drupal_add_js('jQuery(document).ajaxSuccess(function() {jQuery(".tabledrag-toggle-weight").hide();});', 'inline');
 }
 
 /**
@@ -310,7 +374,22 @@ function esf_tc_content_types_organisation_validate($form, &$form_state) {
     }
   }
 
-  if ($form_state['values']['field_esf_editorial_status'][LANGUAGE_NONE][0]['value'] == 'published') {
+  // Check required values if the node (editorial status) is published.
+  if ($form_state['values']['op'] == 'Publish') {
+    // Legal contact.
+    if ($form_state['values']['field_org_contact_account'][LANGUAGE_NONE][0]['value'] == 'yes' && empty($form_state['values']['field_org_contact'][LANGUAGE_NONE][0]['target_id'])) {
+      form_set_error('field_org_contact', t('!name field is required.', array('!name' => $form['field_org_contact'][LANGUAGE_NONE]['#title'])));
+    }
+    elseif ($form_state['values']['field_org_contact_account'][LANGUAGE_NONE][0]['value'] == 'no') {
+      if (empty($form_state['values']['field_org_contact_legal_name']['und'][0]['value'])) {
+        form_set_error('field_org_contact_legal_name', t('!name field is required.', array('!name' => $form['field_org_contact_legal_name'][LANGUAGE_NONE]['#title'])));
+      }
+      if (empty($form_state['values']['field_org_contact_legal_email']['und'][0]['value'])) {
+        form_set_error('field_org_contact_legal_email', t('!name field is required.', array('!name' => $form['field_org_contact_legal_email'][LANGUAGE_NONE]['#title'])));
+      }
+    }
+
+    // Additional contact.
     $contacts = $form_state['values']['field_org_additional_contacts'][LANGUAGE_NONE];
     foreach ($contacts as $key => $contact) {
       if (is_numeric($key) && empty($contact['field_fc_org_name'][LANGUAGE_NONE][0]['value']) && $contact['field_fc_contact_account'][LANGUAGE_NONE][0]['value'] == 'no') {
@@ -362,8 +441,6 @@ function esf_tc_content_types_form_esf_tnc_project_node_form_alter(&$form, &$for
   }
 
   // Add callback to display calls per selected country.
-  $selected_country = isset($form_state['values']['field_esf_country_ref']) ? $form_state['values']['field_esf_country_ref'][LANGUAGE_NONE][0]['tid'] : '';
-
   $form['field_esf_country_ref'][LANGUAGE_NONE]['#ajax'] = array(
     'callback' => '_esf_tc_content_types_project_country_callback',
     'event' => 'change',
@@ -371,10 +448,19 @@ function esf_tc_content_types_form_esf_tnc_project_node_form_alter(&$form, &$for
   );
 
   // Manage field to be replace after callback.
+  $selected_country = isset($form_state['values']['field_esf_country_ref']) ? $form_state['values']['field_esf_country_ref'][LANGUAGE_NONE][0]['tid'] : $form['field_esf_country_ref']['und']['#default_value'];
+  $call_default_value = '';
+  if (isset($form_state['values']['field_project_call_for_projects'])) {
+    $call_default_value = $form_state['values']['field_project_call_for_projects'];
+  }
+  elseif (isset($form['field_project_call_for_projects'][LANGUAGE_NONE]['#default_value'][0])) {
+    $call_default_value = $form['field_project_call_for_projects'][LANGUAGE_NONE]['#default_value'][0];
+  }
+
   $form['field_project_call_for_projects'][LANGUAGE_NONE]['#prefix'] = '<div id="call_involved_div">';
   $form['field_project_call_for_projects'][LANGUAGE_NONE]['#suffix'] = '</div>';
   $form['field_project_call_for_projects'][LANGUAGE_NONE]['#options'] = _esf_tc_content_types_get_calls_by_country_options($selected_country);
-  $form['field_project_call_for_projects'][LANGUAGE_NONE]['#default_value'] = isset($form_state['values']['field_project_call_for_projects']) ? $form_state['values']['field_project_call_for_projects'] : '';
+  $form['field_project_call_for_projects'][LANGUAGE_NONE]['#default_value'] = $call_default_value;
 }
 
 /**
@@ -449,8 +535,6 @@ function esf_tc_content_types_form_esf_tnc_call_for_project_node_form_alter(&$fo
   }
 
   // Add callback to display MA per selected country.
-  $selected_country = isset($form_state['values']['field_call_country']) ? $form_state['values']['field_call_country'][LANGUAGE_NONE][0]['tid'] : '';
-
   $form['field_call_country'][LANGUAGE_NONE]['#ajax'] = array(
     'callback' => '_esf_tc_content_types_call_country_callback',
     'event' => 'change',
@@ -458,10 +542,18 @@ function esf_tc_content_types_form_esf_tnc_call_for_project_node_form_alter(&$fo
   );
 
   // Manage field to be replace after callback.
+  $selected_country = isset($form_state['values']['field_call_country']) ? $form_state['values']['field_call_country'][LANGUAGE_NONE][0]['tid'] : $form['field_call_country']['und']['#default_value'];
+  $org_default_value = '';
+  if (isset($form_state['values']['field_call_org_involved'])) {
+    $org_default_value = $form_state['values']['field_call_org_involved'];
+  }
+  elseif (isset($form['field_call_org_involved'][LANGUAGE_NONE]['#default_value'][0])) {
+    $org_default_value = $form['field_call_org_involved'][LANGUAGE_NONE]['#default_value'][0];
+  }
   $form['field_call_org_involved'][LANGUAGE_NONE]['#prefix'] = '<div id="org_involved_div">';
   $form['field_call_org_involved'][LANGUAGE_NONE]['#suffix'] = '</div>';
   $form['field_call_org_involved'][LANGUAGE_NONE]['#options'] = _esf_tc_content_types_get_organisations_by_country_options($selected_country);
-  $form['field_call_org_involved'][LANGUAGE_NONE]['#default_value'] = isset($form_state['values']['field_call_org_involved']) ? $form_state['values']['field_call_org_involved'] : '';
+  $form['field_call_org_involved'][LANGUAGE_NONE]['#default_value'] = $org_default_value;
 }
 
 /**
@@ -524,7 +616,7 @@ function esf_tc_content_types_form_esf_tnc_tca_node_form_alter(&$form, &$form_st
  */
 function esf_tc_content_types_tca_validate($form, &$form_state) {
   $partners = $form_state['values']['field_tca_partner_organisations'][LANGUAGE_NONE];
-  if ($form_state['values']['field_esf_editorial_status'][LANGUAGE_NONE][0]['value'] == 'published') {
+  if ($form_state['values']['op'] == 'Publish') {
     foreach ($partners as $key => $partner) {
       if (is_numeric($key)) {
         if (empty($partner['field_fc_partner_project'][LANGUAGE_NONE][0]['target_id'])) {
@@ -541,20 +633,17 @@ function esf_tc_content_types_tca_validate($form, &$form_state) {
             }
           }
         }
-
       }
-
     }
   }
 }
-
 
 /**
  * Project database (4 content types) custom validation for drafting.
  */
 function esf_tc_content_types_projects_database_draft_validate(&$form, &$form_state) {
   $editorial_field_name = _esf_tc_content_types_get_editorial_status_field_name();
-  $state = isset($form_state['values'][$editorial_field_name][LANGUAGE_NONE]) ? reset($form_state['values'][$editorial_field_name][LANGUAGE_NONE])['value']: NULL;
+  $state = isset($form_state['values'][$editorial_field_name][LANGUAGE_NONE]) ? reset($form_state['values'][$editorial_field_name][LANGUAGE_NONE])['value'] : NULL;
 
   $errors = form_get_errors();
 
@@ -712,6 +801,7 @@ function esf_tc_content_types_node_access_records($node) {
       'priority' => 0,
     );
     // Define realm projectdb User
+    $uids = array_unique($uids);
     if (is_array($uids) && count($uids)) {
       $grants_template['realm'] = 'projectdb';
       foreach ($uids as $uid) {
@@ -721,6 +811,7 @@ function esf_tc_content_types_node_access_records($node) {
       unset($uid);
     }
     // Define realm projectdb Organisation
+    $nids = array_unique($nids);
     if (is_array($nids) && count($nids)) {
       $grants_template['realm'] = 'projectdb_organisation';
       foreach ($nids as $nid) {
@@ -1110,7 +1201,15 @@ function esf_tc_content_types_user_login(&$edit, $account) {
   if (!isset($_POST['form_id']) || $_POST['form_id'] != 'user_pass_reset' || variable_get('login_destination_immediate_redirect', FALSE)) {
     // Redirect an authenticated only user or contact user to the profile page
     // if no profile attached to user.
+    // Add the role contact to the authenticated only user.
     if (in_array('contact', $account->roles) || count($account->roles) == 1) {
+      if (count($account->roles) == 1) {
+        $user = user_load($account->uid);
+        $role = user_role_load_by_name('contact');
+        $user->roles = $user->roles + array($role->rid => $role->name);
+        user_save($user);
+      }
+
       $contact_profile = profile2_load_by_user($account, 'contact_profile');
       if (empty($contact_profile)) {
         drupal_set_message(t('You have been redirected to fill out your contact information. You can also enter the token received in the email to link your account with an organisation.'));

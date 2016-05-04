@@ -126,9 +126,8 @@ function esf_tc_content_types_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'inline',
-        'module' => 'i18n_field',
         'settings' => array(),
-        'type' => 'i18n_list_default',
+        'type' => 'hidden',
         'weight' => 0,
       ),
     ),
@@ -1555,7 +1554,7 @@ function esf_tc_content_types_field_default_field_instances() {
     'settings' => array(
       'description_field' => 0,
       'entity_translation_sync' => FALSE,
-      'file_directory' => '',
+      'file_directory' => 'events/attachments',
       'file_extensions' => 'jpg jpeg gif png txt pdf xls xlsx doc docx odt ods odp ppt pptx zip tar',
       'max_filesize' => '',
       'user_register_form' => FALSE,
@@ -1564,25 +1563,15 @@ function esf_tc_content_types_field_default_field_instances() {
       'active' => 1,
       'module' => 'file',
       'settings' => array(
-        'allowed_schemes' => array(
-          'node' => 0,
-          'private' => 0,
-          'public' => 'public',
-        ),
-        'allowed_types' => array(
-          'audio' => 0,
-          'document' => 0,
-          'image' => 'image',
-          'video' => 0,
-        ),
-        'browser_plugins' => array(
-          'media_default--media_browser_1' => 0,
-          'media_default--media_browser_my_files' => 0,
-          'media_internet' => 0,
-          'upload' => 0,
-        ),
         'filefield_sources' => array(
-          'filefield_sources' => array(),
+          'filefield_sources' => array(
+            'attach' => 0,
+            'clipboard' => 0,
+            'plupload' => 0,
+            'reference' => 0,
+            'remote' => 0,
+            'upload' => 'upload',
+          ),
           'source_attach' => array(
             'absolute' => 0,
             'attach_mode' => 'move',
@@ -1593,6 +1582,7 @@ function esf_tc_content_types_field_default_field_instances() {
           ),
           'source_reference' => array(
             'autocomplete' => 0,
+            'search_all_fields' => 0,
           ),
         ),
         'progress_indicator' => 'throbber',
@@ -1600,6 +1590,7 @@ function esf_tc_content_types_field_default_field_instances() {
       'type' => 'file_generic',
       'weight' => 7,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance: 'node-esf_tnc_event-field_esf_event_country'.
@@ -1884,7 +1875,7 @@ function esf_tc_content_types_field_default_field_instances() {
       'alt_field' => 0,
       'default_image' => 0,
       'entity_translation_sync' => FALSE,
-      'file_directory' => 'event',
+      'file_directory' => 'events/pictures',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
       'max_resolution' => '',
@@ -2273,7 +2264,7 @@ function esf_tc_content_types_field_default_field_instances() {
     'settings' => array(
       'description_field' => 0,
       'entity_translation_sync' => FALSE,
-      'file_directory' => '',
+      'file_directory' => 'news/attachments',
       'file_extensions' => 'jpg jpeg gif png txt pdf xls xlsx doc docx odt ods odp ppt pptx zip tar',
       'max_filesize' => '',
       'user_register_form' => FALSE,
@@ -2282,25 +2273,15 @@ function esf_tc_content_types_field_default_field_instances() {
       'active' => 1,
       'module' => 'file',
       'settings' => array(
-        'allowed_schemes' => array(
-          'node' => 0,
-          'private' => 0,
-          'public' => 'public',
-        ),
-        'allowed_types' => array(
-          'audio' => 0,
-          'document' => 0,
-          'image' => 'image',
-          'video' => 0,
-        ),
-        'browser_plugins' => array(
-          'media_default--media_browser_1' => 0,
-          'media_default--media_browser_my_files' => 0,
-          'media_internet' => 0,
-          'upload' => 0,
-        ),
         'filefield_sources' => array(
-          'filefield_sources' => array(),
+          'filefield_sources' => array(
+            'attach' => 0,
+            'clipboard' => 0,
+            'plupload' => 0,
+            'reference' => 0,
+            'remote' => 0,
+            'upload' => 'upload',
+          ),
           'source_attach' => array(
             'absolute' => 0,
             'attach_mode' => 'move',
@@ -2311,6 +2292,7 @@ function esf_tc_content_types_field_default_field_instances() {
           ),
           'source_reference' => array(
             'autocomplete' => 0,
+            'search_all_fields' => 0,
           ),
         ),
         'progress_indicator' => 'throbber',
@@ -2479,7 +2461,7 @@ function esf_tc_content_types_field_default_field_instances() {
       'alt_field' => 0,
       'default_image' => 0,
       'entity_translation_sync' => FALSE,
-      'file_directory' => '',
+      'file_directory' => 'news/pictures',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
       'max_resolution' => '',
@@ -2559,7 +2541,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 26,
+      'weight' => 27,
     ),
   );
 
@@ -2588,7 +2570,7 @@ function esf_tc_content_types_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_esf_country_ref',
     'label' => 'Country',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -2610,6 +2592,7 @@ function esf_tc_content_types_field_default_field_instances() {
       'type' => 'term_reference_tree',
       'weight' => 5,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance:
@@ -2653,7 +2636,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 25,
+      'weight' => 26,
     ),
   );
 
@@ -2829,10 +2812,10 @@ function esf_tc_content_types_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'field_collection',
         'settings' => array(
-          'add' => 'Add',
-          'delete' => 'Delete',
-          'description' => 1,
-          'edit' => 'Edit',
+          'add' => '',
+          'delete' => '',
+          'description' => 0,
+          'edit' => '',
           'view_mode' => 'full',
         ),
         'type' => 'field_collection_view',
@@ -2891,7 +2874,7 @@ function esf_tc_content_types_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_org_address',
     'label' => 'Address',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -2904,77 +2887,19 @@ function esf_tc_content_types_field_default_field_instances() {
         'default_country' => 'site_default',
         'format_handlers' => array(
           'address' => 'address',
+          'address-optional' => 'address-optional',
           'address-hide-postal-code' => 0,
           'address-hide-street' => 0,
           'address-hide-country' => 0,
           'organisation' => 0,
           'name-full' => 0,
           'name-oneline' => 0,
-          'address-optional' => 0,
         ),
       ),
       'type' => 'addressfield_standard',
       'weight' => 11,
     ),
-  );
-
-  // Exported field_instance: 'node-esf_tnc_organisation-field_org_attachments'.
-  $field_instances['node-esf_tnc_organisation-field_org_attachments'] = array(
-    'bundle' => 'esf_tnc_organisation',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'mediafield',
-        'settings' => array(
-          'file_view_mode' => 'default',
-        ),
-        'type' => 'media',
-        'weight' => 17,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 26,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_org_attachments',
-    'label' => 'Attachments',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'file_extensions' => 'jpg jpeg gif png txt pdf xls xlsx doc docx 19t tods odp ppt pptx zip tar',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'media',
-      'settings' => array(
-        'allowed_schemes' => array(
-          'node' => 0,
-          'private' => 0,
-          'public' => 'public',
-        ),
-        'allowed_types' => array(
-          'audio' => 0,
-          'document' => 0,
-          'image' => 'image',
-          'video' => 0,
-        ),
-        'browser_plugins' => array(
-          'media_default--media_browser_1' => 0,
-          'media_default--media_browser_my_files' => 0,
-          'media_internet' => 0,
-          'upload' => 0,
-        ),
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-      ),
-      'type' => 'media_generic',
-      'weight' => 24,
-    ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance: 'node-esf_tnc_organisation-field_org_contact'.
@@ -2988,11 +2913,9 @@ function esf_tc_content_types_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
-          'links' => 1,
-          'use_content_language' => 1,
-          'view_mode' => 'default',
+          'link' => 1,
         ),
-        'type' => 'entityreference_entity_view',
+        'type' => 'entityreference_label',
         'weight' => 25,
       ),
       'teaser' => array(
@@ -3068,7 +2991,7 @@ function esf_tc_content_types_field_default_field_instances() {
     'bundle' => 'esf_tnc_organisation',
     'default_value' => array(
       0 => array(
-        'value' => 'no',
+        'value' => 'yes',
       ),
     ),
     'deleted' => 0,
@@ -3091,7 +3014,7 @@ function esf_tc_content_types_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_org_contact_account',
     'label' => 'The contact has an account',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -3103,6 +3026,7 @@ function esf_tc_content_types_field_default_field_instances() {
       'type' => 'options_buttons',
       'weight' => 23,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance:
@@ -3270,7 +3194,7 @@ function esf_tc_content_types_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_org_contact_legal_role',
     'label' => 'Role',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
@@ -3313,6 +3237,7 @@ function esf_tc_content_types_field_default_field_instances() {
       'type' => 'text_textfield',
       'weight' => 27,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance: 'node-esf_tnc_organisation-field_org_experience'.
@@ -3684,6 +3609,7 @@ function esf_tc_content_types_field_default_field_instances() {
   // Exported field_instance: 'node-esf_tnc_organisation-field_org_logo'.
   $field_instances['node-esf_tnc_organisation-field_org_logo'] = array(
     'bundle' => 'esf_tnc_organisation',
+    'default_value' => array(),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -3712,7 +3638,7 @@ function esf_tc_content_types_field_default_field_instances() {
       'alt_field' => 0,
       'default_image' => 0,
       'entity_translation_sync' => FALSE,
-      'file_directory' => '',
+      'file_directory' => 'organisations/pictures',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
       'max_resolution' => '',
@@ -3722,35 +3648,44 @@ function esf_tc_content_types_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'media',
+      'module' => 'image',
       'settings' => array(
-        'allowed_schemes' => array(
-          'node' => 0,
-          'private' => 0,
-          'public' => 'public',
+        'filefield_sources' => array(
+          'filefield_sources' => array(
+            'attach' => 0,
+            'clipboard' => 0,
+            'plupload' => 0,
+            'reference' => 0,
+            'remote' => 0,
+            'upload' => 'upload',
+          ),
+          'source_attach' => array(
+            'absolute' => 0,
+            'attach_mode' => 'move',
+            'path' => 'file_attach',
+          ),
+          'source_imce' => array(
+            'imce_mode' => 0,
+          ),
+          'source_reference' => array(
+            'autocomplete' => 0,
+            'search_all_fields' => 0,
+          ),
         ),
-        'allowed_types' => array(
-          'audio' => 0,
-          'document' => 0,
-          'image' => 'image',
-          'video' => 0,
-        ),
-        'browser_plugins' => array(
-          'media_default--media_browser_1' => 0,
-          'media_default--media_browser_my_files' => 0,
-          'media_internet' => 0,
-          'upload' => 0,
-        ),
+        'preview_image_style' => 'thumbnail',
+        'progress_indicator' => 'throbber',
       ),
-      'type' => 'media_generic',
+      'type' => 'image_image',
       'weight' => 18,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance:
   // 'node-esf_tnc_organisation-field_org_logo_promotional'.
   $field_instances['node-esf_tnc_organisation-field_org_logo_promotional'] = array(
     'bundle' => 'esf_tnc_organisation',
+    'default_value' => array(),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -3779,7 +3714,7 @@ function esf_tc_content_types_field_default_field_instances() {
       'alt_field' => 0,
       'default_image' => 0,
       'entity_translation_sync' => FALSE,
-      'file_directory' => '',
+      'file_directory' => 'organisations/pictures',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
       'max_resolution' => '',
@@ -3789,29 +3724,37 @@ function esf_tc_content_types_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'media',
+      'module' => 'image',
       'settings' => array(
-        'allowed_schemes' => array(
-          'node' => 0,
-          'private' => 0,
-          'public' => 'public',
+        'filefield_sources' => array(
+          'filefield_sources' => array(
+            'attach' => 0,
+            'clipboard' => 0,
+            'plupload' => 0,
+            'reference' => 0,
+            'remote' => 0,
+            'upload' => 'upload',
+          ),
+          'source_attach' => array(
+            'absolute' => 0,
+            'attach_mode' => 'move',
+            'path' => 'file_attach',
+          ),
+          'source_imce' => array(
+            'imce_mode' => 0,
+          ),
+          'source_reference' => array(
+            'autocomplete' => 0,
+            'search_all_fields' => 0,
+          ),
         ),
-        'allowed_types' => array(
-          'audio' => 0,
-          'document' => 0,
-          'image' => 'image',
-          'video' => 0,
-        ),
-        'browser_plugins' => array(
-          'media_default--media_browser_1' => 0,
-          'media_default--media_browser_my_files' => 0,
-          'media_internet' => 0,
-          'upload' => 0,
-        ),
+        'preview_image_style' => 'thumbnail',
+        'progress_indicator' => 'throbber',
       ),
-      'type' => 'media_generic',
+      'type' => 'image_image',
       'weight' => 21,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance:
@@ -3911,7 +3854,7 @@ function esf_tc_content_types_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_org_name_national_lang',
     'label' => 'Name in national language',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
@@ -3954,6 +3897,7 @@ function esf_tc_content_types_field_default_field_instances() {
       'type' => 'text_textfield',
       'weight' => 9,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance:
@@ -4282,6 +4226,73 @@ function esf_tc_content_types_field_default_field_instances() {
       ),
       'type' => 'options_select',
       'weight' => 2,
+    ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance:
+  // 'node-esf_tnc_organisation-field_organisation_attachments'.
+  $field_instances['node-esf_tnc_organisation-field_organisation_attachments'] = array(
+    'bundle' => 'esf_tnc_organisation',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'file',
+        'settings' => array(),
+        'type' => 'file_default',
+        'weight' => 38,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_organisation_attachments',
+    'label' => 'Attachments',
+    'required' => 0,
+    'settings' => array(
+      'description_field' => 0,
+      'entity_translation_sync' => FALSE,
+      'file_directory' => 'organisations/attachments',
+      'file_extensions' => 'jpg jpeg gif png txt pdf xls xlsx doc docx odt ods odp ppt pptx zip tar',
+      'max_filesize' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'file',
+      'settings' => array(
+        'filefield_sources' => array(
+          'filefield_sources' => array(
+            'attach' => 0,
+            'clipboard' => 0,
+            'plupload' => 0,
+            'reference' => 0,
+            'remote' => 0,
+            'upload' => 'upload',
+          ),
+          'source_attach' => array(
+            'absolute' => 0,
+            'attach_mode' => 'move',
+            'path' => 'file_attach',
+          ),
+          'source_imce' => array(
+            'imce_mode' => 0,
+          ),
+          'source_reference' => array(
+            'autocomplete' => 0,
+            'search_all_fields' => 0,
+          ),
+        ),
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'file_generic',
+      'weight' => 24,
     ),
     'workbench_access_field' => 0,
   );
@@ -4647,6 +4658,72 @@ function esf_tc_content_types_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-esf_tnc_project-field_proj_attachments'.
+  $field_instances['node-esf_tnc_project-field_proj_attachments'] = array(
+    'bundle' => 'esf_tnc_project',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'file',
+        'settings' => array(),
+        'type' => 'file_default',
+        'weight' => 58,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_proj_attachments',
+    'label' => 'Attachments',
+    'required' => 0,
+    'settings' => array(
+      'description_field' => 0,
+      'entity_translation_sync' => FALSE,
+      'file_directory' => 'projects/attachments',
+      'file_extensions' => 'jpg jpeg gif png txt pdf xls xlsx doc docx odt ods odp ppt pptx zip tar',
+      'max_filesize' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'file',
+      'settings' => array(
+        'filefield_sources' => array(
+          'filefield_sources' => array(
+            'attach' => 0,
+            'clipboard' => 0,
+            'plupload' => 0,
+            'reference' => 0,
+            'remote' => 0,
+            'upload' => 'upload',
+          ),
+          'source_attach' => array(
+            'absolute' => 0,
+            'attach_mode' => 'move',
+            'path' => 'file_attach',
+          ),
+          'source_imce' => array(
+            'imce_mode' => 0,
+          ),
+          'source_reference' => array(
+            'autocomplete' => 0,
+            'search_all_fields' => 0,
+          ),
+        ),
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'file_generic',
+      'weight' => 32,
+    ),
+    'workbench_access_field' => 0,
+  );
+
   // Exported field_instance: 'node-esf_tnc_project-field_project_acronym'.
   $field_instances['node-esf_tnc_project-field_project_acronym'] = array(
     'bundle' => 'esf_tnc_project',
@@ -4824,65 +4901,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 30,
-    ),
-  );
-
-  // Exported field_instance: 'node-esf_tnc_project-field_project_attachments'.
-  $field_instances['node-esf_tnc_project-field_project_attachments'] = array(
-    'bundle' => 'esf_tnc_project',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'mediafield',
-        'settings' => array(
-          'file_view_mode' => 'default',
-        ),
-        'type' => 'media',
-        'weight' => 30,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 13,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_project_attachments',
-    'label' => 'Attachments',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'file_extensions' => 'jpg jpeg gif png txt pdf xls xlsx doc docx odt ods odp ppt pptx zip tar',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'media',
-      'settings' => array(
-        'allowed_schemes' => array(
-          'node' => 0,
-          'private' => 0,
-          'public' => 'public',
-        ),
-        'allowed_types' => array(
-          'audio' => 0,
-          'document' => 0,
-          'image' => 'image',
-          'video' => 0,
-        ),
-        'browser_plugins' => array(
-          'media_default--media_browser_1' => 0,
-          'media_default--media_browser_my_files' => 0,
-          'media_internet' => 0,
-          'upload' => 0,
-        ),
-      ),
-      'type' => 'media_generic',
-      'weight' => 33,
+      'weight' => 29,
     ),
   );
 
@@ -4916,7 +4935,7 @@ function esf_tc_content_types_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_project_call_for_projects',
     'label' => 'Call for projects',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'nodeaccess_nodereference' => array(
@@ -5678,13 +5697,14 @@ If an organisation is not found, please save your work as draft and check that t
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 32,
+      'weight' => 31,
     ),
   );
 
   // Exported field_instance: 'node-esf_tnc_project-field_project_logo'.
   $field_instances['node-esf_tnc_project-field_project_logo'] = array(
     'bundle' => 'esf_tnc_project',
+    'default_value' => array(),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -5713,7 +5733,7 @@ If an organisation is not found, please save your work as draft and check that t
       'alt_field' => 0,
       'default_image' => 0,
       'entity_translation_sync' => FALSE,
-      'file_directory' => '',
+      'file_directory' => 'projects/pictures',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
       'max_resolution' => '',
@@ -5723,35 +5743,44 @@ If an organisation is not found, please save your work as draft and check that t
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'media',
+      'module' => 'image',
       'settings' => array(
-        'allowed_schemes' => array(
-          'node' => 0,
-          'private' => 0,
-          'public' => 'public',
+        'filefield_sources' => array(
+          'filefield_sources' => array(
+            'attach' => 0,
+            'clipboard' => 0,
+            'plupload' => 0,
+            'reference' => 0,
+            'remote' => 0,
+            'upload' => 'upload',
+          ),
+          'source_attach' => array(
+            'absolute' => 0,
+            'attach_mode' => 'move',
+            'path' => 'file_attach',
+          ),
+          'source_imce' => array(
+            'imce_mode' => 0,
+          ),
+          'source_reference' => array(
+            'autocomplete' => 0,
+            'search_all_fields' => 0,
+          ),
         ),
-        'allowed_types' => array(
-          'audio' => 0,
-          'document' => 0,
-          'image' => 'image',
-          'video' => 0,
-        ),
-        'browser_plugins' => array(
-          'media_default--media_browser_1' => 0,
-          'media_default--media_browser_my_files' => 0,
-          'media_internet' => 0,
-          'upload' => 'upload',
-        ),
+        'preview_image_style' => 'thumbnail',
+        'progress_indicator' => 'throbber',
       ),
-      'type' => 'media_generic',
+      'type' => 'image_image',
       'weight' => 35,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance:
   // 'node-esf_tnc_project-field_project_logo_promo_sec'.
   $field_instances['node-esf_tnc_project-field_project_logo_promo_sec'] = array(
     'bundle' => 'esf_tnc_project',
+    'default_value' => array(),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -5780,7 +5809,7 @@ If an organisation is not found, please save your work as draft and check that t
       'alt_field' => 0,
       'default_image' => 0,
       'entity_translation_sync' => FALSE,
-      'file_directory' => '',
+      'file_directory' => 'projects/pictures',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
       'max_resolution' => '',
@@ -5790,29 +5819,37 @@ If an organisation is not found, please save your work as draft and check that t
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'media',
+      'module' => 'image',
       'settings' => array(
-        'allowed_schemes' => array(
-          'node' => 0,
-          'private' => 0,
-          'public' => 'public',
+        'filefield_sources' => array(
+          'filefield_sources' => array(
+            'attach' => 0,
+            'clipboard' => 0,
+            'plupload' => 0,
+            'reference' => 0,
+            'remote' => 0,
+            'upload' => 'upload',
+          ),
+          'source_attach' => array(
+            'absolute' => 0,
+            'attach_mode' => 'move',
+            'path' => 'file_attach',
+          ),
+          'source_imce' => array(
+            'imce_mode' => 0,
+          ),
+          'source_reference' => array(
+            'autocomplete' => 0,
+            'search_all_fields' => 0,
+          ),
         ),
-        'allowed_types' => array(
-          'audio' => 0,
-          'document' => 0,
-          'image' => 'image',
-          'video' => 0,
-        ),
-        'browser_plugins' => array(
-          'media_default--media_browser_1' => 0,
-          'media_default--media_browser_my_files' => 0,
-          'media_internet' => 0,
-          'upload' => 'upload',
-        ),
+        'preview_image_style' => 'thumbnail',
+        'progress_indicator' => 'throbber',
       ),
-      'type' => 'media_generic',
+      'type' => 'image_image',
       'weight' => 38,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance: 'node-esf_tnc_project-field_project_manager'.
@@ -6259,7 +6296,7 @@ If an organisation is not found, please save your work as draft and check that t
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 31,
+      'weight' => 30,
     ),
   );
 
@@ -7198,6 +7235,7 @@ If an organisation is not found, please save your work as draft and check that t
   // Exported field_instance: 'node-esf_tnc_tca-field_tca_logo'.
   $field_instances['node-esf_tnc_tca-field_tca_logo'] = array(
     'bundle' => 'esf_tnc_tca',
+    'default_value' => array(),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -7236,7 +7274,7 @@ If an organisation is not found, please save your work as draft and check that t
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'media',
+      'module' => 'image',
       'settings' => array(
         'allowed_schemes' => array(
           'node' => 0,
@@ -7255,8 +7293,24 @@ If an organisation is not found, please save your work as draft and check that t
           'media_internet' => 0,
           'upload' => 'upload',
         ),
+        'filefield_sources' => array(
+          'filefield_sources' => array(),
+          'source_attach' => array(
+            'absolute' => 0,
+            'attach_mode' => 'move',
+            'path' => 'file_attach',
+          ),
+          'source_imce' => array(
+            'imce_mode' => 0,
+          ),
+          'source_reference' => array(
+            'autocomplete' => 0,
+          ),
+        ),
+        'preview_image_style' => 'thumbnail',
+        'progress_indicator' => 'throbber',
       ),
-      'type' => 'media_generic',
+      'type' => 'image_image',
       'weight' => 10,
     ),
   );
@@ -7437,6 +7491,7 @@ If an organisation is not found, please save your work as draft and check that t
   // Exported field_instance: 'node-esf_tnc_tca-field_tca_signed_agreement'.
   $field_instances['node-esf_tnc_tca-field_tca_signed_agreement'] = array(
     'bundle' => 'esf_tnc_tca',
+    'default_value' => array(),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -7461,36 +7516,43 @@ If an organisation is not found, please save your work as draft and check that t
     'settings' => array(
       'description_field' => 0,
       'entity_translation_sync' => FALSE,
-      'file_directory' => '',
+      'file_directory' => 'tca/attachments',
       'file_extensions' => 'jpg jpeg gif png txt pdf xls xlsx doc docx odt ods odp ppt pptx zip tar',
       'max_filesize' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'media',
+      'module' => 'file',
       'settings' => array(
-        'allowed_schemes' => array(
-          'node' => 0,
-          'private' => 0,
-          'public' => 'public',
+        'filefield_sources' => array(
+          'filefield_sources' => array(
+            'attach' => 0,
+            'clipboard' => 0,
+            'plupload' => 0,
+            'reference' => 0,
+            'remote' => 0,
+            'upload' => 'upload',
+          ),
+          'source_attach' => array(
+            'absolute' => 0,
+            'attach_mode' => 'move',
+            'path' => 'file_attach',
+          ),
+          'source_imce' => array(
+            'imce_mode' => 0,
+          ),
+          'source_reference' => array(
+            'autocomplete' => 0,
+            'search_all_fields' => 0,
+          ),
         ),
-        'allowed_types' => array(
-          'audio' => 0,
-          'document' => 'document',
-          'image' => 'image',
-          'video' => 0,
-        ),
-        'browser_plugins' => array(
-          'media_default--media_browser_1' => 0,
-          'media_default--media_browser_my_files' => 0,
-          'media_internet' => 0,
-          'upload' => 0,
-        ),
+        'progress_indicator' => 'throbber',
       ),
-      'type' => 'media_generic',
+      'type' => 'file_generic',
       'weight' => 12,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance: 'node-esf_tnc_tca-field_tca_start_date_activity'.
@@ -8008,6 +8070,50 @@ If an organisation is not found, please save your work as draft and check that t
   );
 
   // Exported field_instance:
+  // 'profile2-contact_profile-field_profile_contact_country'.
+  $field_instances['profile2-contact_profile-field_profile_contact_country'] = array(
+    'bundle' => 'contact_profile',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_plain',
+        'weight' => 13,
+      ),
+    ),
+    'entity_type' => 'profile2',
+    'field_name' => 'field_profile_contact_country',
+    'label' => 'Country',
+    'required' => 1,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'term_reference_tree',
+      'settings' => array(
+        'cascading_selection' => 0,
+        'filter_view' => '',
+        'leaves_only' => 0,
+        'max_depth' => '',
+        'parent_term_id' => '',
+        'select_parents' => 0,
+        'start_minimized' => 1,
+        'token_display' => '',
+        'track_list' => 0,
+      ),
+      'type' => 'term_reference_tree',
+      'weight' => 5,
+    ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance:
   // 'profile2-contact_profile-field_profile_contact_function'.
   $field_instances['profile2-contact_profile-field_profile_contact_function'] = array(
     'bundle' => 'contact_profile',
@@ -8233,6 +8339,40 @@ If an organisation is not found, please save your work as draft and check that t
       'type' => 'text_textfield',
       'weight' => 2,
     ),
+  );
+
+  // Exported field_instance: 'profile2-contact_profile-field_token_email'.
+  $field_instances['profile2-contact_profile-field_token_email'] = array(
+    'bundle' => 'contact_profile',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 12,
+      ),
+    ),
+    'entity_type' => 'profile2',
+    'field_name' => 'field_token_email',
+    'label' => 'Email',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'email',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'email_textfield',
+      'weight' => 12,
+    ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance:

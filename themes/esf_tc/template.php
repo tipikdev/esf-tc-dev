@@ -14,6 +14,85 @@ function esf_tc_preprocess_page(&$variables) {
     unset($variables['page']['content']['#children']);
     $variables['regions']['content'] = render($variables['page']['content']);
   }
+
+  // Add favorites flag inside specific content type.
+  if (isset($variables['node'])) {
+    $node = $variables['node'];
+    if ($node->type == 'esf_tnc_organisation' || $node->type == 'esf_tnc_call_for_project' || $node->type == 'esf_tnc_project' || $node->type == 'esf_tnc_call_for_project') {
+      $variables['flag_favorites'] = flag_create_link('esf_tc_favorites', $node->nid);
+    }
+  }
+}
+
+/**
+ * Implements template_preprocess_node().
+ */
+function esf_tc_preprocess_node(&$variables) {
+  if ($variables['type'] == 'esf_tnc_organisation') {
+    if (isset($variables['field_org_contact_account'][0])) {
+      // Manage legal contact data.
+      if ($variables['field_org_contact_account'][0]['value'] == 'yes') {
+        $legal_contact = user_load($variables['field_org_contact'][0]['target_id']);
+        $variables['contact_name'] = $legal_contact->field_firstname[LANGUAGE_NONE][0]['value'] . ' ' . $legal_contact->field_lastname[LANGUAGE_NONE][0]['value'];
+        $contact_profile = profile2_load_by_user($legal_contact, 'contact_profile');
+        if (isset($contact_profile)) {
+          if ($contact_profile->field_profile_cont_email_private[LANGUAGE_NONE][0]['value'] == 'no') {
+            $variables['contact_email'] = $legal_contact->mail;
+          }
+        }
+      }
+      else {
+        if ($variables['field_org_contact_account'][0]['value'] == 'no') {
+          if (!empty($variables['field_org_contact_legal_name'][0]['value'])) {
+            $variables['contact_name'] = $variables['field_org_contact_legal_name'][0]['value'];
+          }
+          if (!empty($variables['field_org_contact_legal_email'][0]['value'])) {
+            $variables['contact_email'] = $variables['field_org_contact_legal_email'][0]['value'];
+          }
+        }
+      }
+    }
+    if (!empty($variables['field_org_contact_legal_role'][0]['value'])) {
+      $variables['contact_role'] = $variables['field_org_contact_legal_role'][0]['value'];
+    }
+  }
+}
+
+/**
+ * Implements template_preprocess_entity().
+ *
+ * Runs a entity specific preprocess function, if it exists.
+ */
+function esf_tc_preprocess_entity(&$variables, $hook) {
+  $function = __FUNCTION__ . '_' . $variables['entity_type'];
+  if (function_exists($function)) {
+    $function($variables, $hook);
+  }
+}
+
+/**
+ * Field Collection-specific implementation of template_preprocess_entity().
+ */
+function esf_tc_preprocess_entity_field_collection_item(&$variables) {
+  if ($variables['elements']['#bundle'] == 'field_org_additional_contacts') {
+    $contact_entity = $variables['elements']['#entity'];
+    if ($contact_entity->field_fc_contact_account[LANGUAGE_NONE][0]['value'] == 'yes') {
+      $contact = $variables['elements']['#entity']->field_fc_org_contact[LANGUAGE_NONE][0]['entity'];
+      $variables['contact_name'] = $contact->field_firstname[LANGUAGE_NONE][0]['value'] . ' ' . $contact->field_lastname[LANGUAGE_NONE][0]['value'];
+      $contact_profile = profile2_load_by_user($contact, 'contact_profile');
+      if (isset($contact_profile)) {
+        if ($contact_profile->field_profile_cont_email_private[LANGUAGE_NONE][0]['value'] == 'no') {
+          $variables['contact_email'] = $contact->mail;
+        }
+      }
+    }
+    else {
+      if ($contact_entity->field_fc_contact_account[LANGUAGE_NONE][0]['value'] == 'no') {
+        $variables['contact_name'] = $variables['field_fc_org_name'][0]['value'];
+        $variables['contact_email'] = $variables['field_fc_org_email'][0]['value'];
+      }
+    }
+  }
 }
 
 /**
