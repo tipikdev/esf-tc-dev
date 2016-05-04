@@ -29,6 +29,15 @@ function esf_tc_content_types_user_default_permissions() {
     'module' => 'comment',
   );
 
+  // Exported permission: 'administer flags'.
+  $permissions['administer flags'] = array(
+    'name' => 'administer flags',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'flag',
+  );
+
   // Exported permission: 'administer nodes'.
   $permissions['administer nodes'] = array(
     'name' => 'administer nodes',
@@ -463,6 +472,15 @@ function esf_tc_content_types_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'flag esf_tc_favorites'.
+  $permissions['flag esf_tc_favorites'] = array(
+    'name' => 'flag esf_tc_favorites',
+    'roles' => array(
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'flag',
+  );
+
   // Exported permission: 'skip comment approval'.
   $permissions['skip comment approval'] = array(
     'name' => 'skip comment approval',
@@ -471,6 +489,15 @@ function esf_tc_content_types_user_default_permissions() {
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'comment',
+  );
+
+  // Exported permission: 'unflag esf_tc_favorites'.
+  $permissions['unflag esf_tc_favorites'] = array(
+    'name' => 'unflag esf_tc_favorites',
+    'roles' => array(
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'flag',
   );
 
   // Exported permission: 'view workbench access information'.

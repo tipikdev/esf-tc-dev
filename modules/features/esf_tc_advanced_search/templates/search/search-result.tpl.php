@@ -10,6 +10,8 @@
     <a href="<?php print $url; ?>"><?php print $title; ?></a>
   </h2>
   <?php print render($title_suffix); ?>
+  <?php global $user; ?>
+  <?php print flag_create_link('esf_tc_favorites', $variables['result']['node']->entity_id); ?>
   <div class="search-snippet-info">
     <?php if ($type = $result['type']): ?>
       <p class="search-info"><?php print $type; ?></p>
