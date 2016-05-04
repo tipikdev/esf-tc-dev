@@ -551,6 +551,7 @@ features[variable][] = workbench_access_taxonomy
 features[views_view][] = all_organisations
 features[views_view][] = contact
 features[views_view][] = esf_events
+features[views_view][] = esf_flag_favorites
 features[views_view][] = esf_news
 features[views_view][] = hp_slider
 features[views_view][] = organisations_selected_in_the_thematic

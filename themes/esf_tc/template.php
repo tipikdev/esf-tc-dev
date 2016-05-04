@@ -16,9 +16,9 @@ function esf_tc_preprocess_page(&$variables) {
   }
 
   // Add favorites flag inside specific content type.
-  if(isset($variables['node'])) {
+  if (isset($variables['node'])) {
     $node = $variables['node'];
-    if($node->type == 'esf_tnc_organisation' || $node->type == 'esf_tnc_call_for_project' || $node->type == 'esf_tnc_project' || $node->type == 'esf_tnc_call_for_project') {
+    if ($node->type == 'esf_tnc_organisation' || $node->type == 'esf_tnc_call_for_project' || $node->type == 'esf_tnc_project' || $node->type == 'esf_tnc_call_for_project') {
       $variables['flag_favorites'] = flag_create_link('esf_tc_favorites', $node->nid);
     }
   }
