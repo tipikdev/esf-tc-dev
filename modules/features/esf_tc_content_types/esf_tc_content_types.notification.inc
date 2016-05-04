@@ -21,7 +21,7 @@ function esf_tc_content_state_notification_form($form, &$form_state, $content_ty
 
   $form['contenttype'] = array(
     '#type' => 'markup',
-    '#markup' => '<h1>' . t($title) . '</h1>',
+    '#markup' => '<h1>' . $title . '</h1>',
   );
 
   // Add notification on editorial status contents.
@@ -42,7 +42,7 @@ function esf_tc_content_state_notification_form($form, &$form_state, $content_ty
 
       $form[$state . 'state'] = array(
         '#type' => 'fieldset',
-        '#title' => t($state),
+        '#title' => $state,
         '#collapsible' => TRUE,
         '#descriptions' => t('Block status'),
         '#group' => 'notifyform',
@@ -102,8 +102,6 @@ function _esf_tc_content_types_mail_text($key, $variables = array(), $language =
                     '@action' => $action,
                   ));
 
-                break;
-
                 case 'body':
 
                   $body = t('The @ctype [node:title] has been @action by [user:name]', array(
@@ -113,10 +111,7 @@ function _esf_tc_content_types_mail_text($key, $variables = array(), $language =
                   if ($variables['action'] != 'deleted') {
                     $body .= PHP_EOL . PHP_EOL . '[node:url]';
                   }
-                  return t($body);
-
-                break;
-
+                  return $body;
               }
             }
           }

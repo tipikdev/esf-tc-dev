@@ -21,8 +21,9 @@ function esf_tc_advanced_search_apachesolr_index_document_build_node(ApacheSolrD
     }
   }
   elseif ($entity->type == 'esf_tnc_event') {
-    // Add the start date of the field_esf_event_start_date field as a sort field
-    // to the SOLR index because we cannot use dm_field_esf_event_start_date.
+    // Add the start date of the field_esf_event_start_date field as a
+    // sort field to the SOLR index because we cannot
+    // use dm_field_esf_event_start_date.
     $event_date = field_get_items('node', $entity, 'field_esf_event_start_date');
     if (!empty($event_date)) {
       $document->addField('ds_esf_event_date', apachesolr_date_iso($event_date[0]['value']));

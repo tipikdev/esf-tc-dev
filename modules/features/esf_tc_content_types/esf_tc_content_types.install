@@ -138,18 +138,17 @@ function esf_tc_content_types_update_7101() {
     'field_profile_contact_contact',
     'field_profile_contat_country',
   );
-  foreach( $fields as $field) {
+  foreach ($fields as $field) {
     if (field_info_field($field)) {
       field_delete_field($field);
     };
   }
 
-  // Remove all conditional fields
+  // Remove all conditional fields.
   $num_deleted = db_delete('conditional_fields')
     ->execute();
 
-
-  // Delete Global call content type .
+  // Delete Global call content type.
   multisite_drupal_toolbox_disable_content_type('esf_tnc_global_call');
-  multisite_drupal_toolbox_config_solr_bundle('esf_tnc_global_call','delete');
+  multisite_drupal_toolbox_config_solr_bundle('esf_tnc_global_call', 'delete');
 }
