@@ -1,5 +1,12 @@
 <?php
+/**
+ * @file
+ * Code for the esf_tc_content_types feature.
+ */
 
+/**
+ * Form system form for notifications settings.
+ */
 function esf_tc_content_state_notification_form($form, &$form_state, $content_type = 'organisation') {
 
   $title = ucfirst($content_type);
@@ -14,11 +21,11 @@ function esf_tc_content_state_notification_form($form, &$form_state, $content_ty
 
   $form['contenttype'] = array(
     '#type' => 'markup',
-    '#markup' => '<h1>' . t($title) .'</h1>',
+    '#markup' => '<h1>' . t($title) . '</h1>',
   );
 
   // Add notification on editorial status contents.
-  if (key_exists($content_type, $_content_types)) {
+  if (array_key_exists($content_type, $_content_types)) {
 
     $options = array(
       'type' => 'editorial_status',
@@ -56,7 +63,7 @@ function esf_tc_content_state_notification_form($form, &$form_state, $content_ty
       );
       $form[$state . 'state'][$key_prefix . '_token'] = array(
         '#theme' => 'token_tree_link',
-        '#token_types' => array('node','user'),
+        '#token_types' => array('node', 'user'),
         '#global_types' => FALSE,
         '#click_insert' => FALSE,
         '#group' => 'notifyform',
@@ -76,7 +83,8 @@ function _esf_tc_content_types_mail_text($key, $variables = array(), $language =
   // Check if message is customized.
   if ($predef_setting = variable_get($key, FALSE)) {
     return $predef_setting;
-  } else {
+  }
+  else {
     // Generate message with options arguments.
     if (isset($variables['type'])) {
       switch ($variables['type']) {
@@ -88,15 +96,27 @@ function _esf_tc_content_types_mail_text($key, $variables = array(), $language =
               $action = strtolower($_states[$variables['action']] ? $_states[$variables['action']] : $variables['action']);
               switch ($input_type) {
                 case 'subject':
-                  return t('The @ctype has been @action', array('@ctype' => $variables['content_type'], '@action' => $action));
-                  break;
+
+                  return t('The @ctype has been @action', array(
+                    '@ctype' => $variables['content_type'],
+                    '@action' => $action,
+                  ));
+
+                break;
+
                 case 'body':
-                  $body = t('The @ctype [node:title] has been @action by [user:name]', array('@ctype' => $variables['content_type'], '@action' => $action));
+
+                  $body = t('The @ctype [node:title] has been @action by [user:name]', array(
+                    '@ctype' => $variables['content_type'],
+                    '@action' => $action,
+                  ));
                   if ($variables['action'] != 'deleted') {
                     $body .= PHP_EOL . PHP_EOL . '[node:url]';
                   }
                   return t($body);
-                  break;
+
+                break;
+
               }
             }
           }
@@ -106,6 +126,7 @@ function _esf_tc_content_types_mail_text($key, $variables = array(), $language =
   }
   return FALSE;
 }
+
 /**
  * Helper to get notification states.
  */
@@ -118,7 +139,6 @@ function _esf_tc_content_type_get_notification_states() {
     'deleted' => 'Deleted',
   );
 }
-
 
 /**
  * Implements hook_mail().

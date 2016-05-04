@@ -613,3 +613,4 @@ features_exclude[field_instance][node-esf_tnc_organisation-field_org_attachments
 features_exclude[field_instance][node-esf_tnc_project-field_project_attachments] = node-esf_tnc_project-field_project_attachments
 multisite_version = 2.1
 project path = sites/all/modules/features
+php = 5.4
