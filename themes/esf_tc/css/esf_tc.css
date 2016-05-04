@@ -47,7 +47,7 @@ body {
 }
 
 .node .field-name-body {
-  border:0;
+  border: 0;
 }
 
 .panel-default {
@@ -55,7 +55,7 @@ body {
 }
 
 .node .field-type-taxonomy-term-reference ul.links {
-  margin:0;
+  margin: 0;
 }
 
 #content-wrapper .panel {
@@ -63,15 +63,15 @@ body {
 }
 
 .panel .panel-body .action-links {
-  margin:24px 0;
+  margin: 24px 0;
 }
 
 .panel .panel-body p {
-  margin:0 0 24px;
+  margin: 0 0 24px;
 }
 
 .panel .panel-body li {
-  margin:3px 0;
+  margin: 3px 0;
 }
 
 #content-wrapper > .action-links {
@@ -599,7 +599,6 @@ p:empty {
 }
 
 #block-menu-menu-left-menu .menu .menu > li > a.active:after {
-
   border-width: 3px;
 }
 
@@ -636,7 +635,7 @@ p:empty {
 }
 
 #block-menu-menu-left-menu .menu .menu .menu {
-  margin-top:-12px;
+  margin-top: -12px;
 }
 
 #block-menu-menu-left-menu .menu .menu .menu > li > a {
@@ -649,9 +648,9 @@ p:empty {
 }
 
 #block-menu-menu-left-menu .menu .menu .menu > li > a:after {
-  width:10px;
-  height:10px;
-  right:11px;
+  width: 10px;
+  height: 10px;
+  right: 11px;
 }
 
 #sidebar-left .block-facetapi {
@@ -814,7 +813,7 @@ p:empty {
   left: 100%;
   z-index: 100;
   width: 738px;
-  min-height:86px;
+  min-height: 86px;
 }
 
 /* MAIN CONTENT GENERAL */
@@ -932,7 +931,7 @@ p:empty {
 }
 
 #content-wrapper table td .field-type-taxonomy-term-reference ul.links li {
-  background:#fff;
+  background: #fff;
 }
 
 #content-wrapper table div {
@@ -1054,7 +1053,7 @@ p:empty {
 #block-esf-tc-advanced-search-partners-search-block + div {
   border-bottom: 1px dashed #0067a3;
   border-radius: 0;
-  margin-top:18px;
+  margin-top: 18px;
   margin-bottom: 12px;
 }
 
@@ -1101,12 +1100,12 @@ p:empty {
 }
 
 #block-views-hp-slider-block .flex-control-nav > li {
-  margin:0 6px;
+  margin: 0 6px;
 }
 
 .flex-control-paging > li a {
-  width:12px;
-  height:12px;
+  width: 12px;
+  height: 12px;
 }
 
 /* PAGE SEARCH */
@@ -1117,7 +1116,7 @@ p:empty {
 }
 
 .search-result .node-teaser {
-  padding:0;
+  padding: 0;
 }
 
 .page-search #content-wrapper .search-result h3 {
@@ -1159,14 +1158,14 @@ p:empty {
 }
 
 .page-search #content-wrapper .search-result table td {
-  background: #3f8fc;
+  background: #f3f8fc;
 }
 
 .page-search #content-wrapper .search-result table p,
 .page-search #content-wrapper .search-result table li,
 .page-search #content-wrapper .search-result table ul {
   margin: 0;
-  overflow:hidden;
+  overflow: hidden;
 }
 
 .page-search .item-list .pager {
@@ -1219,28 +1218,29 @@ p:empty {
 
 /* Detailed pages common */
 .field-name-field-esf-news-picture,
-.field-name-field-esf-event-picture{
-  float:left;
-  margin:0 16px 0 0;
+.field-name-field-esf-event-picture {
+  float: left;
+  margin: 0 16px 0 0;
 }
 
 .field-type-datestamp {
-  margin:0 0 18px;
+  margin: 0 0 18px;
 }
+
 /**/
 
 /* NEWS, EVENTS */
 .news-wrapper .field-name-field-esf-news-picture img,
-.news-wrapper .field-name-field-esf-event-picture img{
-  max-width:320px;
-  max-height:240px;
-  width:auto;
-  height:auto;
+.news-wrapper .field-name-field-esf-event-picture img {
+  max-width: 320px;
+  max-height: 240px;
+  width: auto;
+  height: auto;
 }
 
 #content-title {
   /*margin-bottom:-18px;*/
-  margin:0;
+  margin: 0;
 }
 
 #content-wrapper .news-wrapper h2,
@@ -1248,7 +1248,7 @@ p:empty {
 #content-wrapper .news-wrapper h4,
 #content-wrapper .news-wrapper h5,
 #content-wrapper .news-wrapper h6 {
-  margin:0 0 12px;
+  margin: 0 0 12px;
 }
 
 .news-wrapper h3,
@@ -1256,24 +1256,23 @@ p:empty {
 .news-wrapper h5,
 .news-wrapper h6,
 .news-wrapper li {
-  clear:left;
+  clear: left;
 }
 
 #content-wrapper .news-wrapper p,
 #content-wrapper .news-wrapper li {
-  margin:0 0 12px;
+  margin: 0 0 12px;
 }
-
 
 .node-type-esf-tnc-event .field-name-field-esf-event-country,
 .node-type-esf-tnc-event .field-name-field-esf-event-organiser,
 .node-type-esf-tnc-event .field-name-field-esf-event-location,
 .node-type-esf-tnc-event .field-name-field-esf-linked-tn {
-  clear:left;
-  margin:0 0 12px;
+  clear: left;
+  margin: 0 0 12px;
 }
 
-#content-wrapper  .news-wrapper ul + h2,
+#content-wrapper .news-wrapper ul + h2,
 #content-wrapper .news-wrapper ul + h3,
 #content-wrapper .news-wrapper ul + h4,
 #content-wrapper .news-wrapper ul + h5,
@@ -1288,7 +1287,7 @@ p:empty {
 #content-wrapper .news-wrapper p + h4,
 #content-wrapper .news-wrapper p + h5,
 #content-wrapper .news-wrapper p + h6 {
-  margin-top:24px;
+  margin-top: 24px;
 }
 
 #content-wrapper .related-info {
@@ -1296,15 +1295,15 @@ p:empty {
 }
 
 #content-wrapper .related-info h3 {
-  font:normal 20px Verdana, Geneva, sans-serif;
-  color:#000;
+  font: normal 20px Verdana, Geneva, sans-serif;
+  color: #000;
 }
 
 .related-info .field-type-file .field-item,
 .related-info .field-type-link-field .field-item {
-  border:1px solid #d8e4ed;
-  background:#f2f8fc;
-  margin:0 0 -1px;
+  border: 1px solid #d8e4ed;
+  background: #f2f8fc;
+  margin: 0 0 -1px;
   padding: 8px;
 }
 
@@ -1312,24 +1311,24 @@ p:empty {
   content: url(../images/ext-link.png);
   display: inline-block;
   vertical-align: middle;
-  margin:-1px 6px 0 3px;
+  margin: -1px 6px 0 3px;
 }
 
 .related-info a {
-  font-size:12px;
+  font-size: 12px;
 }
 
 .node .field-type-taxonomy-term-reference {
-  margin:12px 0;
+  margin: 12px 0;
 }
 
 #content-wrapper .field-type-taxonomy-term-reference ul.links li {
-  float:none;
+  float: none;
   display: inline-block;
-  background:#f2f8fc;
-  margin:0 12px 0 0;
-  padding:3px;
-  font-size:10px;
+  background: #f2f8fc;
+  margin: 0 12px 0 0;
+  padding: 3px;
+  font-size: 10px;
 }
 
 .node .field-type-taxonomy-term-reference ul.links li a:link,
@@ -1337,61 +1336,62 @@ p:empty {
 .node .field-type-taxonomy-term-reference ul.links li a:hover,
 .node .field-type-taxonomy-term-reference ul.links li a:active,
 .node .field-type-taxonomy-term-reference ul.links li a:focus {
-  color:#000;
+  color: #000;
 }
-
 
 /* Teasers */
 .search-result .field-name-field-esf-news-picture,
-.search-result .field-name-field-esf-event-picture{
-  float:left;
-  margin-right:6px;
+.search-result .field-name-field-esf-event-picture {
+  float: left;
+  margin-right: 6px;
 }
 
 .search-result .field-name-field-esf-news-picture img,
 .search-result .field-name-field-esf-event-picture img {
-  max-width:79px;
-  height:auto;
-  border:1px solid #0065a2;
-  margin:3px 12px 0 0 ;
+  max-width: 79px;
+  height: auto;
+  border: 1px solid #0065a2;
+  margin: 3px 12px 0 0;
 }
 
 .search-result .news-teaser-wrapper h2 {
-  clear:none;
-  padding:0;
+  clear: none;
+  padding: 0;
 }
 
 #content-wrapper .search-result .news-teaser-wrapper p {
-  margin:0;
+  margin: 0;
 }
 
 .search-result .news-teaser-wrapper .field-type-datestamp {
-  margin-bottom:0;
+  margin-bottom: 0;
 }
 
 .search-result .field-type-taxonomy-term-reference {
-  margin:12px 0 0;
+  margin: 12px 0 0;
 }
 
 .search-result .field-type-taxonomy-term-reference ul.links {
-  margin:0;
+  margin: 0;
 }
 
 #content-wrapper .search-result .news-teaser-wrapper h2 {
-  font-size:14px;
-  margin:0 0 9px;
+  font-size: 14px;
+  margin: 0 0 9px;
 }
+
 .search-results li {
-  border:0;
+  border: 0;
 }
+
 #content-wrapper .search-results > .search-result {
-  padding:12px 0;
-  margin:0;
-  border-top:1px dashed #009ee0;
+  padding: 12px 0;
+  margin: 0;
+  border-top: 1px dashed #009ee0;
 }
 
 #content-wrapper .search-results > .search-result:first-child {
-  border:0;
+  border: 0;
 }
 
 .search-result .field-type-datestamp {
@@ -1399,38 +1399,37 @@ p:empty {
 }
 
 .search-results ul.links {
-  display:block;
-  margin:18px 0 12px 0;
+  display: block;
+  margin: 18px 0 12px 0;
 }
 
 .search-results ul.links > li {
-  display:block;
+  display: block;
   text-align: right;
 }
 
-
 /*Page forums*/
- .page-forum- #block-views-esf-news-block-1,
- .page-forum- #block-views-esf-events-block-1 {
-   width:50%;
-   float:left;
-   margin: 0 15px 0 -15px;
-   border-radius:0;
+.page-forum- #block-views-esf-news-block-1,
+.page-forum- #block-views-esf-events-block-1 {
+  width: 50%;
+  float: left;
+  margin: 0 15px 0 -15px;
+  border-radius: 0;
 }
 
 .page-forum- #block-views-esf-events-block-1 {
-  border-left:1px dashed #0067a3;
+  border-left: 1px dashed #0067a3;
 }
 
 .page-forum- #block-system-main .view-esf-news li,
 .page-forum- #block-system-main .view-esf-events li {
   list-style: none;
-  padding:3px 0;
-  margin:0;
+  padding: 3px 0;
+  margin: 0;
 }
 
 .page-forum- #forum {
-  clear:left;
+  clear: left;
 }
 
 .flag-esf-tc-favorites {

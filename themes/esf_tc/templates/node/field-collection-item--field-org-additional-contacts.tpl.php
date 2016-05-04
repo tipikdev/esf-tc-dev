@@ -9,4 +9,3 @@
 <?php print t('Email'); ?>: <?php print $contact_email; ?>
 <br/>
 <?php print t('Role'); ?>: <?php print $content['field_fc_org_role'][0]['#markup']; ?>
-
