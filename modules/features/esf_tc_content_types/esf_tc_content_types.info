@@ -366,6 +366,7 @@ features[user_permission][] = access workbench access by role
 features[user_permission][] = administer comments
 features[user_permission][] = administer flags
 features[user_permission][] = administer nodes
+features[user_permission][] = administer permissions
 features[user_permission][] = administer users
 features[user_permission][] = administer workbench access
 features[user_permission][] = assign workbench access
