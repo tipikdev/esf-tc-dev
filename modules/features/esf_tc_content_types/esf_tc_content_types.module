@@ -147,7 +147,7 @@ function esf_tc_content_types_form_alter(&$form, &$form_state, $form_id) {
     'warning' => 'btn-warning',
     'danger' => 'btn-danger',
   );
-  if (isset($form[$editorial_field_name])) {
+  if (isset($form[$editorial_field_name]) && (!isset($_SERVER['HTTP_X_REQUESTED_WITH']) || $_SERVER['HTTP_X_REQUESTED_WITH'] != 'XMLHttpRequest')) {
     // Add Submit method.
     $form['#submit'][] = 'esf_tc_content_types_projects_database_submit';
     // Hide Select list.
@@ -648,7 +648,7 @@ function esf_tc_content_types_projects_database_draft_validate(&$form, &$form_st
   $errors = form_get_errors();
 
   // Only skip validation on Save as Draft of a drafted content.
-  if ($state == 'draft' && $form_state['clicked_button']['#value'] == 'Save as draft') {
+  if ($state == 'draft' && isset($form_state['clicked_button']) && $form_state['clicked_button']['#value'] == 'Save as draft') {
     if ($errors) {
       // Clear errors.
       form_clear_error();
