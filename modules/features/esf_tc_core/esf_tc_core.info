@@ -57,3 +57,4 @@ features_exclude[dependencies][menu] = menu
 features_exclude[menu_custom][main-menu] = main-menu
 multisite_version = 2.1
 project path = sites/all/modules/features
+php = 5.4
