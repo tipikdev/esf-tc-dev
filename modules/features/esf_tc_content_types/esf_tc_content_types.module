@@ -440,8 +440,6 @@ function esf_tc_content_types_form_esf_tnc_project_node_form_alter(&$form, &$for
   }
 
   // Add callback to display calls per selected country.
-  $selected_country = isset($form_state['values']['field_esf_country_ref']) ? $form_state['values']['field_esf_country_ref'][LANGUAGE_NONE][0]['tid'] : '';
-
   $form['field_esf_country_ref'][LANGUAGE_NONE]['#ajax'] = array(
     'callback' => '_esf_tc_content_types_project_country_callback',
     'event' => 'change',
@@ -449,10 +447,19 @@ function esf_tc_content_types_form_esf_tnc_project_node_form_alter(&$form, &$for
   );
 
   // Manage field to be replace after callback.
+  $selected_country = isset($form_state['values']['field_esf_country_ref']) ? $form_state['values']['field_esf_country_ref'][LANGUAGE_NONE][0]['tid'] : $form['field_esf_country_ref']['und']['#default_value'];
+  $call_default_value = '';
+  if (isset($form_state['values']['field_project_call_for_projects'])) {
+    $call_default_value = $form_state['values']['field_project_call_for_projects'];
+  }
+  elseif (isset($form['field_project_call_for_projects'][LANGUAGE_NONE]['#default_value'][0])) {
+    $call_default_value = $form['field_project_call_for_projects'][LANGUAGE_NONE]['#default_value'][0];
+  }
+
   $form['field_project_call_for_projects'][LANGUAGE_NONE]['#prefix'] = '<div id="call_involved_div">';
   $form['field_project_call_for_projects'][LANGUAGE_NONE]['#suffix'] = '</div>';
   $form['field_project_call_for_projects'][LANGUAGE_NONE]['#options'] = _esf_tc_content_types_get_calls_by_country_options($selected_country);
-  $form['field_project_call_for_projects'][LANGUAGE_NONE]['#default_value'] = isset($form_state['values']['field_project_call_for_projects']) ? $form_state['values']['field_project_call_for_projects'] : '';
+  $form['field_project_call_for_projects'][LANGUAGE_NONE]['#default_value'] = $call_default_value;
 }
 
 /**
@@ -527,8 +534,6 @@ function esf_tc_content_types_form_esf_tnc_call_for_project_node_form_alter(&$fo
   }
 
   // Add callback to display MA per selected country.
-  $selected_country = isset($form_state['values']['field_call_country']) ? $form_state['values']['field_call_country'][LANGUAGE_NONE][0]['tid'] : '';
-
   $form['field_call_country'][LANGUAGE_NONE]['#ajax'] = array(
     'callback' => '_esf_tc_content_types_call_country_callback',
     'event' => 'change',
@@ -536,10 +541,18 @@ function esf_tc_content_types_form_esf_tnc_call_for_project_node_form_alter(&$fo
   );
 
   // Manage field to be replace after callback.
+  $selected_country = isset($form_state['values']['field_call_country']) ? $form_state['values']['field_call_country'][LANGUAGE_NONE][0]['tid'] : $form['field_call_country']['und']['#default_value'];
+  $org_default_value = '';
+  if (isset($form_state['values']['field_call_org_involved'])) {
+    $org_default_value = $form_state['values']['field_call_org_involved'];
+  }
+  elseif (isset($form['field_call_org_involved'][LANGUAGE_NONE]['#default_value'][0])) {
+    $org_default_value = $form['field_call_org_involved'][LANGUAGE_NONE]['#default_value'][0];
+  }
   $form['field_call_org_involved'][LANGUAGE_NONE]['#prefix'] = '<div id="org_involved_div">';
   $form['field_call_org_involved'][LANGUAGE_NONE]['#suffix'] = '</div>';
   $form['field_call_org_involved'][LANGUAGE_NONE]['#options'] = _esf_tc_content_types_get_organisations_by_country_options($selected_country);
-  $form['field_call_org_involved'][LANGUAGE_NONE]['#default_value'] = isset($form_state['values']['field_call_org_involved']) ? $form_state['values']['field_call_org_involved'] : '';
+  $form['field_call_org_involved'][LANGUAGE_NONE]['#default_value'] = $org_default_value;
 }
 
 /**
