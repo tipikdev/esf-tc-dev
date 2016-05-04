@@ -2874,7 +2874,7 @@ function esf_tc_content_types_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_org_address',
     'label' => 'Address',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -2884,7 +2884,7 @@ function esf_tc_content_types_field_default_field_instances() {
       'module' => 'addressfield',
       'settings' => array(
         'available_countries' => array(),
-        'default_country' => 'site_default',
+        'default_country' => '',
         'format_handlers' => array(
           'address' => 'address',
           'address-optional' => 'address-optional',
@@ -5252,7 +5252,7 @@ function esf_tc_content_types_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_project_general_comments',
-    'label' => 'General comments on expectations, priorities re-transnationality',
+    'label' => 'General comments on expectations, priorities re transnationality',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -5298,6 +5298,7 @@ function esf_tc_content_types_field_default_field_instances() {
       'type' => 'text_textarea',
       'weight' => 27,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance:
@@ -5641,6 +5642,7 @@ If an organisation is not found, please save your work as draft and check that t
       'type' => 'entityreference_autocomplete',
       'weight' => 12,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance: 'node-esf_tnc_project-field_project_links'.
@@ -8552,7 +8554,7 @@ If an organisation is not found, please save your work as draft and check that t
   t('Flag featured organisation');
   t('Flag featured project');
   t('Gender');
-  t('General comments on expectations, priorities re-transnationality');
+  t('General comments on expectations, priorities re transnationality');
   t('Highlight / promotion text');
   t('Highlight / promotion text (for the promotional section)');
   t('ISO 3166-1 alpha-2 code');

@@ -48,6 +48,16 @@ function esf_tc_content_types_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'administer users'.
+  $permissions['administer users'] = array(
+    'name' => 'administer users',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
+    'module' => 'user',
+  );
+
   // Exported permission: 'administer workbench access'.
   $permissions['administer workbench access'] = array(
     'name' => 'administer workbench access',

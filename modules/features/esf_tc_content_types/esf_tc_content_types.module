@@ -83,7 +83,7 @@ function esf_tc_content_types_form_profile2_edit_contact_profile_form_alter(&$fo
 function _esf_tc_content_types_contact_submit($form, &$form_state) {
   $contact_uid = $form_state['user']->uid;
   // Synchronize the user with all organisation using the token email.
-  $token_email = $form_state['values']['profile_contact_profile']['field_token_email']['und'][0]['email'];
+  $token_email = $form_state['values']['profile_contact_profile']['field_token_email'][LANGUAGE_NONE][0]['email'];
   if (!empty($token_email)) {
     // Get all organisations having this email as legal contact and
     // set unknown contact.
@@ -381,10 +381,10 @@ function esf_tc_content_types_organisation_validate($form, &$form_state) {
       form_set_error('field_org_contact', t('!name field is required.', array('!name' => $form['field_org_contact'][LANGUAGE_NONE]['#title'])));
     }
     elseif ($form_state['values']['field_org_contact_account'][LANGUAGE_NONE][0]['value'] == 'no') {
-      if (empty($form_state['values']['field_org_contact_legal_name']['und'][0]['value'])) {
+      if (empty($form_state['values']['field_org_contact_legal_name'][LANGUAGE_NONE][0]['value'])) {
         form_set_error('field_org_contact_legal_name', t('!name field is required.', array('!name' => $form['field_org_contact_legal_name'][LANGUAGE_NONE]['#title'])));
       }
-      if (empty($form_state['values']['field_org_contact_legal_email']['und'][0]['value'])) {
+      if (empty($form_state['values']['field_org_contact_legal_email'][LANGUAGE_NONE][0]['value'])) {
         form_set_error('field_org_contact_legal_email', t('!name field is required.', array('!name' => $form['field_org_contact_legal_email'][LANGUAGE_NONE]['#title'])));
       }
     }
@@ -448,7 +448,7 @@ function esf_tc_content_types_form_esf_tnc_project_node_form_alter(&$form, &$for
   );
 
   // Manage field to be replace after callback.
-  $selected_country = isset($form_state['values']['field_esf_country_ref']) ? $form_state['values']['field_esf_country_ref'][LANGUAGE_NONE][0]['tid'] : $form['field_esf_country_ref']['und']['#default_value'];
+  $selected_country = isset($form_state['values']['field_esf_country_ref']) ? $form_state['values']['field_esf_country_ref'][LANGUAGE_NONE][0]['tid'] : $form['field_esf_country_ref'][LANGUAGE_NONE]['#default_value'];
   $call_default_value = '';
   if (isset($form_state['values']['field_project_call_for_projects'])) {
     $call_default_value = $form_state['values']['field_project_call_for_projects'];
@@ -542,7 +542,7 @@ function esf_tc_content_types_form_esf_tnc_call_for_project_node_form_alter(&$fo
   );
 
   // Manage field to be replace after callback.
-  $selected_country = isset($form_state['values']['field_call_country']) ? $form_state['values']['field_call_country'][LANGUAGE_NONE][0]['tid'] : $form['field_call_country']['und']['#default_value'];
+  $selected_country = isset($form_state['values']['field_call_country']) ? $form_state['values']['field_call_country'][LANGUAGE_NONE][0]['tid'] : $form['field_call_country'][LANGUAGE_NONE]['#default_value'];
   $org_default_value = '';
   if (isset($form_state['values']['field_call_org_involved'])) {
     $org_default_value = $form_state['values']['field_call_org_involved'];

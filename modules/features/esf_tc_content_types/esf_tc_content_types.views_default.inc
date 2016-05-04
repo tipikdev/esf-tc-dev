@@ -323,7 +323,7 @@ function esf_tc_content_types_views_default_views() {
 
   /* Display: Defaults */
   $handler = $view->new_display('default', 'Defaults', 'default');
-  $handler->display->display_options['title'] = 'My bookmarks';
+  $handler->display->display_options['title'] = 'My favorites';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'flag esf_tc_favorites';
@@ -364,10 +364,11 @@ function esf_tc_content_types_views_default_views() {
   $handler->display->display_options['style_options']['sticky'] = TRUE;
   $handler->display->display_options['style_options']['order'] = 'desc';
   /* No results behavior: Global: Text area */
-  $handler->display->display_options['empty']['text']['id'] = 'area';
+  $handler->display->display_options['empty']['text']['id'] = 'text';
   $handler->display->display_options['empty']['text']['table'] = 'views';
   $handler->display->display_options['empty']['text']['field'] = 'area';
-  $handler->display->display_options['empty']['text']['content'] = 'You have not yet bookmarked any content. Click the "Bookmark this" link when viewing a piece of content to add it to this list.';
+  $handler->display->display_options['empty']['text']['empty'] = TRUE;
+  $handler->display->display_options['empty']['text']['content'] = 'You have not yet bookmarked any content.';
   $handler->display->display_options['empty']['text']['format'] = 'plain_text';
   /* Relationship: Flags: esf_tc_favorites */
   $handler->display->display_options['relationships']['flag_content_rel']['id'] = 'flag_content_rel';
@@ -711,17 +712,10 @@ function esf_tc_content_types_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Acronym or short denomination */
-  $handler->display->display_options['fields']['field_org_acronym']['id'] = 'field_org_acronym';
-  $handler->display->display_options['fields']['field_org_acronym']['table'] = 'field_data_field_org_acronym';
-  $handler->display->display_options['fields']['field_org_acronym']['field'] = 'field_org_acronym';
-  $handler->display->display_options['fields']['field_org_acronym']['label'] = '';
-  $handler->display->display_options['fields']['field_org_acronym']['element_label_colon'] = FALSE;
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Sort criterion: Content: TCA Title in English (title_field) */
+  $handler->display->display_options['sorts']['title_field_value']['id'] = 'title_field_value';
+  $handler->display->display_options['sorts']['title_field_value']['table'] = 'field_data_title_field';
+  $handler->display->display_options['sorts']['title_field_value']['field'] = 'title_field_value';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -738,20 +732,13 @@ function esf_tc_content_types_views_default_views() {
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
 
-  /* Display: ER Ma organisations */
-  $handler = $view->new_display('entityreference', 'ER Ma organisations', 'entityreference_ma_organisation');
+  /* Display: ER Organisations */
+  $handler = $view->new_display('entityreference', 'ER Organisations', 'entityreference_published_organisation');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'MA Organisation';
-  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'entityreference_style';
-  $handler->display->display_options['style_options']['grouping'] = array(
-    0 => array(
-      'field' => 'title',
-      'rendered' => 1,
-      'rendered_strip' => 0,
-    ),
-  );
   $handler->display->display_options['style_options']['search_fields'] = array(
     'title' => 'title',
   );

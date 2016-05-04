@@ -2460,20 +2460,17 @@ function esf_tc_content_types_field_default_field_bases() {
     'module' => 'entityreference',
     'settings' => array(
       'entity_translation_sync' => FALSE,
-      'handler' => 'base',
+      'handler' => 'views',
       'handler_settings' => array(
         'behaviors' => array(
           'views-select-list' => array(
             'status' => 0,
           ),
         ),
-        'sort' => array(
-          'direction' => 'ASC',
-          'field' => 'title_field:value',
-          'type' => 'field',
-        ),
-        'target_bundles' => array(
-          'esf_tnc_organisation' => 'esf_tnc_organisation',
+        'view' => array(
+          'args' => array(),
+          'display_name' => 'entityreference_published_organisation',
+          'view_name' => 'published_organisations',
         ),
       ),
       'profile2_private' => FALSE,
