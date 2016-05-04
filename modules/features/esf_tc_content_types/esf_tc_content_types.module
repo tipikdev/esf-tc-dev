@@ -7,6 +7,7 @@
 include_once 'esf_tc_content_types.features.inc';
 include_once 'esf_tc_content_types.theme.inc';
 include_once 'esf_tc_content_types.block.inc';
+include_once 'esf_tc_content_types.notification.inc';
 
 /**
  * Implements hook_permission().
@@ -594,6 +595,8 @@ function esf_tc_content_types_projects_database_draft_validate(&$form, &$form_st
  * Project database (4 content types) custom submit for editorial status.
  */
 function esf_tc_content_types_projects_database_submit(&$form, &$form_state) {
+  $content_type = $form['type']['#value'];
+
   $arr_status = array(
     'publish' => 'published',
     'block' => 'blocked',
@@ -602,17 +605,40 @@ function esf_tc_content_types_projects_database_submit(&$form, &$form_state) {
   );
 
   $field_esf_editorial_status = _esf_tc_content_types_get_editorial_status_field_name();
-  $action = strtolower($form_state['clicked_button']['#value']);
+  if (isset($form_state['clicked_button']['#value'])) {
+    $action = strtolower($form_state['clicked_button']['#value']);
+  }
 
   if ($action && $action != 'draft') {
     // Force publish drupal status.
     $form_state['status'] = 1;
     // Force Editorial status.
-    $new_status = $arr_status[$action];
+
+    $new_status = (isset($arr_status[$action])) ? $arr_status[$action] : NULL;
     if ($new_status) {
       $form_state['values'][$field_esf_editorial_status][LANGUAGE_NONE][0]['value'] = $new_status;
+      // Notify related users.
+      $emails = _esf_tc_content_types_get_associated_email($form_state['node'], TRUE);
+      // Notify webmasters on special status.
+      if (in_array($new_status, array('blocked', 'needs-deletion'))) {
+        $emails = array_merge($emails,_esf_tc_content_types_get_webmasters_email());
+      }
+      if(count($emails)) {
+        // Get approprieted message.
+        $options = array(
+          'type' => 'editorial_status',
+          'content_type' => $content_type,
+          'action' => $new_status,
+          'node' => $form_state['node']
+        );
+        $key_prefix = $content_type . '_notification_' . $new_status;
+
+        foreach ($emails as $email) {
+          drupal_mail('esf_tc_content_types', $key_prefix, $email, language_default(), $options);
+        }
+        unset($email);
+      }
     }
-    // TODO: Notify
   }
 }
 
@@ -766,6 +792,47 @@ function _esf_tc_render_block($block_module, $block_name) {
   return drupal_render($renderable_block);
 }
 
+
+/**
+ * Implements hook_menu().
+ */
+function esf_tc_content_types_menu() {
+  $items = array();
+
+  $_type = array(
+    'organisation' => 'Manage notifications for the organisations',
+    'project' => 'Manage notifications for the projects'
+  );
+
+  $item_template = array(
+    'access arguments' => array('administer nodes'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('esf_tc_content_state_notification_form', 3),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'esf_tc_content_types.notification.inc',
+  );
+
+  // Notifications.
+  $items['admin/config/esf-notifications'] = array(
+    'title' => 'ESF Notifications',
+    'description' => 'Manage email notifications.',
+    'position' => 'right',
+    'weight' => -20,
+    'page callback' => 'system_admin_menu_block_page',
+    'access arguments' => array('administer nodes'),
+    'file' => 'system.admin.inc',
+    'file path' => drupal_get_path('module', 'system'),
+  );
+  foreach($_type as $type => $description) {
+    $item = $item_template;
+    $item['title'] = ucfirst($type);
+    $item['description'] = $description;
+    $items['admin/config/esf-notifications/' . $type] = $item;
+  }
+  unset($type, $description);
+
+  return $items;
+}
 /**
  * Implements hook_menu_alter().
  */
@@ -1144,5 +1211,123 @@ function _esf_tc_content_type_display_message($node, $state) {
     case 'needs-deletion':
       drupal_set_message(t('This content is tagged as needs deletion. Please contact the webmaster if you need change the status'), 'error', TRUE);
       break;
+  }
+}
+
+/**
+ * Helper function to get all associated email to a node.
+ */
+function _esf_tc_content_types_get_associated_email($node, $with_MA = FALSE) {
+  $emails = array();
+  switch ($node->type) {
+    case 'esf_tnc_organisation':
+      // Legal contact.
+      $has_account = field_get_items('node', $node, 'field_org_contact_account');
+      if (is_array($has_account) && isset(reset($has_account)['value'])) {
+        $has_account = reset($has_account)['value'];
+      }
+      if ($has_account == 'no') {
+        $field_value = field_get_items('node', $node, 'field_org_contact_legal_email');
+        if (is_array($field_value) && isset(reset($field_value)['value'])) {
+          $emails = $field_value;
+        }
+      } elseif($has_account == 'yes') {
+        $uids = _esf_tc_content_types_get_references_ids('field_org_contact', $node);
+        if (is_array($uids)) {
+          foreach ($uids as $uid) {
+            $user = user_load($uid);
+            if ($user->mail) {
+              $emails[] = $user->mail;
+            }
+          }
+          unset($uid, $user);
+        }
+      }
+      break;
+    case 'esf_tnc_project':
+      // Lead organisation.
+      $field_value = _esf_tc_content_types_get_references_ids('field_project_lead_organisation', $node);
+      if (is_array($field_value) & count($field_value)) {
+        $nid = reset($field_value);
+        $lead = node_load($nid);
+        $contacts  = _esf_tc_content_types_get_associated_email($lead);
+        if (count($contacts)) {
+          $emails = array_merge($emails, $contacts);
+        }
+      }
+      // Other contacts.
+      $contact_uids = array_merge(_esf_tc_content_types_get_references_ids('field_project_manager', $node), _esf_tc_content_types_get_references_ids('field_project_operat_contact', $node));
+      if (is_array($contact_uids) && count($contact_uids)) {
+        $contacts = array();
+        foreach (user_load_multiple($contact_uids) as $_user) {
+          if ($_user->mail) {
+            $contacts[] = $_user->mail;
+          }
+        }
+        unset($_user);
+      }
+      if (is_array($contacts) && count($contacts)) {
+        $emails = array_merge($emails, $contacts);
+      }
+      break;
+  }
+  // Managing Authorities.
+  if ($with_MA) {
+    $MAs = _esf_tc_content_types_get_responsible_authorities($node->type, $node);
+    if (is_array($MAs) && count($MAs)) {
+      foreach ($MAs as $MA) {
+        $MA = node_load($MA);
+        $contacts = _esf_tc_content_types_get_associated_email($MA, TRUE);
+        if (count($contacts)) {
+          $emails = array_merge($emails, $contacts);
+        }
+      }
+      unset($MA, $contacts);
+    }
+  }
+
+  return array_unique($emails);
+}
+
+/**
+ * Helper function to get Webmasters emails.
+ */
+function _esf_tc_content_types_get_webmasters_email($rolename='webmaster') {
+  // Get Role rid;
+  $role = user_role_load_by_name($rolename);
+  if (is_object($role) && $rid=$role->rid) {
+    $sql = db_select('users_roles','ur')
+      ->fields('usr', array('mail'))
+      ->condition('rid', $rid);
+    $sql->join('users', 'usr', 'usr.uid = ur.uid' );
+
+    return $sql->execute()->fetchCol();
+  }
+}
+
+/**
+ * Implements hook_node_delete().
+ */
+function esf_tc_content_types_node_delete($node) {
+  // Confirm delete notification.
+  if (in_array($node->type, _esf_tc_content_types_get_project_database_types()) && $node->type != 'esf_tnc_call_for_project') {
+    $emails = _esf_tc_content_types_get_associated_email($node, TRUE);
+    $new_status = 'deleted';
+
+    if(count($emails)) {
+      // Get mail message.
+      $options = array(
+        'type' => 'editorial_status',
+        'content_type' => $node->type,
+        'action' => $new_status,
+        'node' => $node
+      );
+      $key_prefix = $node->type . '_notification_' . $new_status;
+
+      foreach ($emails as $email) {
+        drupal_mail('esf_tc_content_types', $key_prefix, $email, language_default(), $options);
+      }
+      unset($email);
+    }
   }
 }
