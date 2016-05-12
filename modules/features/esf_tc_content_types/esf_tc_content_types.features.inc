@@ -8,6 +8,9 @@
  * Implements hook_ctools_plugin_api().
  */
 function esf_tc_content_types_ctools_plugin_api($module = NULL, $api = NULL) {
+  if ($module == "captcha" && $api == "captcha") {
+    return array("version" => "1");
+  }
   if ($module == "context" && $api == "context") {
     return array("version" => "3");
   }
@@ -27,12 +30,71 @@ function esf_tc_content_types_views_api($module = NULL, $api = NULL) {
 }
 
 /**
+ * Implements hook_flag_default_flags().
+ */
+function esf_tc_content_types_flag_default_flags() {
+  $flags = array();
+  // Exported flag: "Favorites".
+  $flags['esf_tc_favorites'] = array(
+    'entity_type' => 'node',
+    'title' => 'Favorites',
+    'global' => 0,
+    'types' => array(
+      0 => 'esf_tnc_call_for_project',
+      1 => 'esf_tnc_organisation',
+      2 => 'esf_tnc_project',
+      3 => 'esf_tnc_tca',
+    ),
+    'flag_short' => 'Add to your favorites',
+    'flag_long' => 'Add this item to your favorites',
+    'flag_message' => '',
+    'unflag_short' => 'Delete from favorites',
+    'unflag_long' => 'Delete this item from your favorites',
+    'unflag_message' => '',
+    'unflag_denied_text' => '',
+    'link_type' => 'toggle',
+    'weight' => 0,
+    'show_in_links' => array(
+      'full' => 0,
+      'teaser' => 0,
+      'rss' => 0,
+      'search_index' => 0,
+      'search_result' => 0,
+      'diff_standard' => 0,
+      'print' => 0,
+      'token' => 0,
+      'revision' => 0,
+    ),
+    'show_as_field' => 0,
+    'show_on_form' => 0,
+    'access_author' => '',
+    'show_contextual_link' => 0,
+    'i18n' => 0,
+    'module' => 'esf_tc_content_types',
+    'locked' => array(
+      0 => 'name',
+    ),
+    'api_version' => 3,
+  );
+  return $flags;
+
+}
+
+/**
  * Implements hook_node_info().
  */
 function esf_tc_content_types_node_info() {
   $items = array(
-    'esf_tnc_global_call' => array(
-      'name' => t('Global call'),
+    'esf_tnc_call_for_project' => array(
+      'name' => t('Call for project'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Title in English'),
+      'help' => '',
+    ),
+    'esf_tnc_event' => array(
+      'name' => t('Event'),
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
@@ -41,6 +103,14 @@ function esf_tc_content_types_node_info() {
     ),
     'esf_tnc_hp_slide' => array(
       'name' => t('Hp_slide'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
+    'esf_tnc_news' => array(
+      'name' => t('News'),
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',

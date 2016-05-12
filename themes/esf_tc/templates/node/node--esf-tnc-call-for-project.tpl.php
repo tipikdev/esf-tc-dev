@@ -100,54 +100,24 @@
       <div
         class="abstract"><?php print render($content['field_call_desc_en']); ?></div>
       <table class="standard-table" cellpadding="0" cellspacing="0">
-        <?php if (isset($content['field_esf_type_call'])) :?>
-          <tr>
-            <th><?php print render($content['field_esf_type_call']['#title']) ?></th>
-            <td><?php print render($content['field_esf_type_call']); ?></td>
-          </tr>
-        <?php endif; ?>
-        <?php if (isset($content['field_call_coordinated_calls'])) :?>
-          <tr>
-            <th><?php print render($content['field_call_coordinated_calls']['#title']) ?></th>
-            <td><?php print render($content['field_call_coordinated_calls']); ?></td>
-          </tr>
-        <?php endif; ?>
-        <?php if (isset($content['field_call_status'])) :?>
-          <tr>
-            <th><?php print render($content['field_call_status']['#title']) ?></th>
-            <td><?php print render($content['field_call_status']); ?></td>
-          </tr>
-        <?php endif; ?>
-
+        <tr>
+          <th><?php print render($content['field_call_type']['#title']); ?></th>
+          <td><?php print render($content['field_call_type'][0]['#term']->name); ?></td>
+        </tr>
+        <tr>
+          <th><?php print t('Call for project'); ?></th>
+          <td>
+            <?php hide($content['field_call_type']); ?>
+            <?php print render($content); ?>
+          </td>
+        </tr>
+        <tr>
+          <th><?php print render($content['field_call_type'][0]['field_global_call_status']['#title']); ?></th>
+          <td><?php print render($content['field_call_type'][0]['field_global_call_status']); ?></td>
+        </tr>
       </table>
     <?php else: ?>
-      <?php if ($view_mode == 'teaser'): ?>
-        <div
-          class="abstract"><?php print render($content['field_call_desc_en']); ?></div>
-        <table class="standard-table" cellpadding="0" cellspacing="0">
-          <?php if (isset($content['field_esf_type_call'])) :?>
-            <tr>
-              <th><?php print render($content['field_esf_type_call']['#title']) ?></th>
-              <td><?php print render($content['field_esf_type_call']); ?></td>
-            </tr>
-          <?php endif; ?>
-          <?php if (isset($content['field_call_coordinated_calls'])) :?>
-            <tr>
-              <th><?php print render($content['field_call_coordinated_calls']['#title']) ?></th>
-              <td><?php print render($content['field_call_coordinated_calls']); ?></td>
-            </tr>
-          <?php endif; ?>
-          <?php if (isset($content['field_call_status'])) :?>
-            <tr>
-              <th><?php print render($content['field_call_status']['#title']) ?></th>
-              <td><?php print render($content['field_call_status']); ?></td>
-            </tr>
-          <?php endif; ?>
-
-        </table>
-      <?php else: ?>
-        <?php print render($content); ?>
-      <?php endif; ?>
+      <?php print render($content); ?>
     <?php endif; ?>
     <?php if ($suffix_display): ?>
       <div class="row node-info">

@@ -135,99 +135,6 @@ function esf_tc_content_types_views_default_views() {
   $export['all_organisations'] = $view;
 
   $view = new view();
-  $view->name = 'call_for_project';
-  $view->description = '';
-  $view->tag = 'default';
-  $view->base_table = 'node';
-  $view->human_name = 'call for project ( project type)';
-  $view->core = 7;
-  $view->api_version = '3.0';
-  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-
-  /* Display: Master */
-  $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'call for project ( project type)';
-  $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['cache']['type'] = 'none';
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
-  $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['row_plugin'] = 'fields';
-  /* Relationship: Entity Reference: Referenced Entity */
-  $handler->display->display_options['relationships']['field_project_call_for_projects_target_id']['id'] = 'field_project_call_for_projects_target_id';
-  $handler->display->display_options['relationships']['field_project_call_for_projects_target_id']['table'] = 'field_data_field_project_call_for_projects';
-  $handler->display->display_options['relationships']['field_project_call_for_projects_target_id']['field'] = 'field_project_call_for_projects_target_id';
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Field: Content: Call for projects */
-  $handler->display->display_options['fields']['field_call_coordinated_calls']['id'] = 'field_call_coordinated_calls';
-  $handler->display->display_options['fields']['field_call_coordinated_calls']['table'] = 'field_data_field_call_coordinated_calls';
-  $handler->display->display_options['fields']['field_call_coordinated_calls']['field'] = 'field_call_coordinated_calls';
-  $handler->display->display_options['fields']['field_call_coordinated_calls']['label'] = '';
-  $handler->display->display_options['fields']['field_call_coordinated_calls']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_call_coordinated_calls']['type'] = 'field_collection_fields';
-  $handler->display->display_options['fields']['field_call_coordinated_calls']['settings'] = array(
-    'view_mode' => 'full',
-  );
-  $handler->display->display_options['fields']['field_call_coordinated_calls']['delta_offset'] = '0';
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'esf_tnc_global_call' => 'esf_tnc_global_call',
-  );
-  $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Status (field_call_status) */
-  $handler->display->display_options['filters']['field_call_status_value']['id'] = 'field_call_status_value';
-  $handler->display->display_options['filters']['field_call_status_value']['table'] = 'field_data_field_call_status';
-  $handler->display->display_options['filters']['field_call_status_value']['field'] = 'field_call_status_value';
-  $handler->display->display_options['filters']['field_call_status_value']['value'] = array(
-    'open' => 'open',
-  );
-
-  /* Display: Entity Reference */
-  $handler = $view->new_display('entityreference', 'Entity Reference', 'entityreference_1');
-  $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'entityreference_style';
-  $handler->display->display_options['style_options']['search_fields'] = array(
-    'title' => 'title',
-    'field_call_coordinated_calls' => 'field_call_coordinated_calls',
-  );
-  $handler->display->display_options['defaults']['style_options'] = FALSE;
-  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['row_plugin'] = 'entityreference_fields';
-  $handler->display->display_options['row_options']['inline'] = array(
-    'field_call_coordinated_calls' => 'field_call_coordinated_calls',
-  );
-  $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $export['call_for_project'] = $view;
-
-  $view = new view();
   $view->name = 'contact';
   $view->description = '';
   $view->tag = 'default';
@@ -293,6 +200,343 @@ function esf_tc_content_types_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'entityreference_fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $export['contact'] = $view;
+
+  $view = new view();
+  $view->name = 'esf_events';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'events';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Events';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '5';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['inline'] = array(
+    'field_esf_event_start_date' => 'field_esf_event_start_date',
+    'title' => 'title',
+  );
+  $handler->display->display_options['row_options']['separator'] = ' ';
+  /* Footer: Global: Text area */
+  $handler->display->display_options['footer']['area']['id'] = 'area';
+  $handler->display->display_options['footer']['area']['table'] = 'views';
+  $handler->display->display_options['footer']['area']['field'] = 'area';
+  $handler->display->display_options['footer']['area']['content'] = '<a href="../events/?f[0]=im_field_esf_linked_tn%3A[tid]">More events about [name_i18n]</a>';
+  $handler->display->display_options['footer']['area']['format'] = 'full_html';
+  $handler->display->display_options['footer']['area']['tokenize'] = TRUE;
+  /* Relationship: Content: Linked TN (field_esf_linked_tn) */
+  $handler->display->display_options['relationships']['field_esf_linked_tn_tid']['id'] = 'field_esf_linked_tn_tid';
+  $handler->display->display_options['relationships']['field_esf_linked_tn_tid']['table'] = 'field_data_field_esf_linked_tn';
+  $handler->display->display_options['relationships']['field_esf_linked_tn_tid']['field'] = 'field_esf_linked_tn_tid';
+  $handler->display->display_options['relationships']['field_esf_linked_tn_tid']['required'] = TRUE;
+  /* Field: Content: Start date */
+  $handler->display->display_options['fields']['field_esf_event_start_date']['id'] = 'field_esf_event_start_date';
+  $handler->display->display_options['fields']['field_esf_event_start_date']['table'] = 'field_data_field_esf_event_start_date';
+  $handler->display->display_options['fields']['field_esf_event_start_date']['field'] = 'field_esf_event_start_date';
+  $handler->display->display_options['fields']['field_esf_event_start_date']['label'] = '';
+  $handler->display->display_options['fields']['field_esf_event_start_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_esf_event_start_date']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'value',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Taxonomy term: Name (translated) */
+  $handler->display->display_options['fields']['name_i18n']['id'] = 'name_i18n';
+  $handler->display->display_options['fields']['name_i18n']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['name_i18n']['field'] = 'name_i18n';
+  $handler->display->display_options['fields']['name_i18n']['relationship'] = 'field_esf_linked_tn_tid';
+  $handler->display->display_options['fields']['name_i18n']['exclude'] = TRUE;
+  /* Field: Taxonomy term: Term ID */
+  $handler->display->display_options['fields']['tid']['id'] = 'tid';
+  $handler->display->display_options['fields']['tid']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['tid']['field'] = 'tid';
+  $handler->display->display_options['fields']['tid']['relationship'] = 'field_esf_linked_tn_tid';
+  $handler->display->display_options['fields']['tid']['exclude'] = TRUE;
+  /* Sort criterion: Content: Start date -  start date (field_esf_event_start_date) */
+  $handler->display->display_options['sorts']['field_esf_event_start_date_value']['id'] = 'field_esf_event_start_date_value';
+  $handler->display->display_options['sorts']['field_esf_event_start_date_value']['table'] = 'field_data_field_esf_event_start_date';
+  $handler->display->display_options['sorts']['field_esf_event_start_date_value']['field'] = 'field_esf_event_start_date_value';
+  $handler->display->display_options['sorts']['field_esf_event_start_date_value']['order'] = 'DESC';
+  /* Contextual filter: Taxonomy term: Name */
+  $handler->display->display_options['arguments']['name']['id'] = 'name';
+  $handler->display->display_options['arguments']['name']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['arguments']['name']['field'] = 'name';
+  $handler->display->display_options['arguments']['name']['relationship'] = 'field_esf_linked_tn_tid';
+  $handler->display->display_options['arguments']['name']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['name']['default_argument_type'] = 'raw';
+  $handler->display->display_options['arguments']['name']['default_argument_options']['index'] = '1';
+  $handler->display->display_options['arguments']['name']['default_argument_options']['use_alias'] = TRUE;
+  $handler->display->display_options['arguments']['name']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['name']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['name']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['name']['limit'] = '0';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'esf_tnc_event' => 'esf_tnc_event',
+  );
+
+  /* Display: Events by networking thematic */
+  $handler = $view->new_display('block', 'Events by networking thematic', 'block_1');
+  $export['esf_events'] = $view;
+
+  $view = new view();
+  $view->name = 'esf_flag_favorites';
+  $view->description = 'A page listing the current user\'s bookmarks at /bookmarks.';
+  $view->tag = 'flag';
+  $view->base_table = 'node';
+  $view->human_name = 'flag_favorites';
+  $view->core = 0;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Defaults */
+  $handler = $view->new_display('default', 'Defaults', 'default');
+  $handler->display->display_options['title'] = 'My favorites';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'flag esf_tc_favorites';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '25';
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['grouping'] = '';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'type' => 'type',
+    'title' => 'title',
+    'name' => 'name',
+    'comment_count' => 'comment_count',
+    'last_comment_timestamp' => 'last_comment_timestamp',
+    'ops' => 'ops',
+  );
+  $handler->display->display_options['style_options']['default'] = 'last_comment_timestamp';
+  $handler->display->display_options['style_options']['info'] = array(
+    'type' => array(
+      'sortable' => TRUE,
+    ),
+    'title' => array(
+      'sortable' => TRUE,
+    ),
+    'name' => array(
+      'sortable' => TRUE,
+    ),
+    'comment_count' => array(
+      'sortable' => TRUE,
+    ),
+    'last_comment_timestamp' => array(
+      'sortable' => TRUE,
+    ),
+  );
+  $handler->display->display_options['style_options']['override'] = FALSE;
+  $handler->display->display_options['style_options']['sticky'] = TRUE;
+  $handler->display->display_options['style_options']['order'] = 'desc';
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['text']['id'] = 'text';
+  $handler->display->display_options['empty']['text']['table'] = 'views';
+  $handler->display->display_options['empty']['text']['field'] = 'area';
+  $handler->display->display_options['empty']['text']['empty'] = TRUE;
+  $handler->display->display_options['empty']['text']['content'] = 'You have not yet bookmarked any content.';
+  $handler->display->display_options['empty']['text']['format'] = 'plain_text';
+  /* Relationship: Flags: esf_tc_favorites */
+  $handler->display->display_options['relationships']['flag_content_rel']['id'] = 'flag_content_rel';
+  $handler->display->display_options['relationships']['flag_content_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['flag_content_rel']['field'] = 'flag_content_rel';
+  $handler->display->display_options['relationships']['flag_content_rel']['label'] = 'bookmarks';
+  $handler->display->display_options['relationships']['flag_content_rel']['flag'] = 'esf_tc_favorites';
+  /* Relationship: Content: Author */
+  $handler->display->display_options['relationships']['uid_1']['id'] = 'uid_1';
+  $handler->display->display_options['relationships']['uid_1']['table'] = 'node';
+  $handler->display->display_options['relationships']['uid_1']['field'] = 'uid';
+  /* Field: Content: Type */
+  $handler->display->display_options['fields']['type']['id'] = 'type';
+  $handler->display->display_options['fields']['type']['table'] = 'node';
+  $handler->display->display_options['fields']['type']['field'] = 'type';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid_1';
+  $handler->display->display_options['fields']['name']['label'] = 'Author';
+  /* Field: Content: Updated date */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'node';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['date_format'] = 'short';
+  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
+  /* Field: Flags: Flag link */
+  $handler->display->display_options['fields']['ops']['id'] = 'ops';
+  $handler->display->display_options['fields']['ops']['table'] = 'flagging';
+  $handler->display->display_options['fields']['ops']['field'] = 'ops';
+  $handler->display->display_options['fields']['ops']['relationship'] = 'flag_content_rel';
+  $handler->display->display_options['fields']['ops']['label'] = 'Action';
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = '0';
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'admin/workbench/bookmarks';
+  $handler->display->display_options['menu']['type'] = 'tab';
+  $handler->display->display_options['menu']['title'] = 'My favorites';
+  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['context'] = 0;
+  $handler->display->display_options['menu']['context_only_inline'] = 0;
+  $export['esf_flag_favorites'] = $view;
+
+  $view = new view();
+  $view->name = 'esf_news';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'news';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'News';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '5';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['inline'] = array(
+    'title' => 'title',
+    'field_esf_news_date' => 'field_esf_news_date',
+  );
+  $handler->display->display_options['row_options']['separator'] = ' ';
+  /* Footer: Global: Text area */
+  $handler->display->display_options['footer']['area']['id'] = 'area';
+  $handler->display->display_options['footer']['area']['table'] = 'views';
+  $handler->display->display_options['footer']['area']['field'] = 'area';
+  $handler->display->display_options['footer']['area']['content'] = '<a href="../news/?f[0]=im_field_esf_linked_tn%3A[tid]">More news about [name_i18n]</a>';
+  $handler->display->display_options['footer']['area']['format'] = 'full_html';
+  $handler->display->display_options['footer']['area']['tokenize'] = TRUE;
+  /* Relationship: Content: Linked TN (field_esf_linked_tn) */
+  $handler->display->display_options['relationships']['field_esf_linked_tn_tid']['id'] = 'field_esf_linked_tn_tid';
+  $handler->display->display_options['relationships']['field_esf_linked_tn_tid']['table'] = 'field_data_field_esf_linked_tn';
+  $handler->display->display_options['relationships']['field_esf_linked_tn_tid']['field'] = 'field_esf_linked_tn_tid';
+  $handler->display->display_options['relationships']['field_esf_linked_tn_tid']['required'] = TRUE;
+  /* Field: Content: Date of news */
+  $handler->display->display_options['fields']['field_esf_news_date']['id'] = 'field_esf_news_date';
+  $handler->display->display_options['fields']['field_esf_news_date']['table'] = 'field_data_field_esf_news_date';
+  $handler->display->display_options['fields']['field_esf_news_date']['field'] = 'field_esf_news_date';
+  $handler->display->display_options['fields']['field_esf_news_date']['label'] = '';
+  $handler->display->display_options['fields']['field_esf_news_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_esf_news_date']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Taxonomy term: Name (translated) */
+  $handler->display->display_options['fields']['name_i18n']['id'] = 'name_i18n';
+  $handler->display->display_options['fields']['name_i18n']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['name_i18n']['field'] = 'name_i18n';
+  $handler->display->display_options['fields']['name_i18n']['relationship'] = 'field_esf_linked_tn_tid';
+  $handler->display->display_options['fields']['name_i18n']['exclude'] = TRUE;
+  /* Field: Taxonomy term: Term ID */
+  $handler->display->display_options['fields']['tid']['id'] = 'tid';
+  $handler->display->display_options['fields']['tid']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['tid']['field'] = 'tid';
+  $handler->display->display_options['fields']['tid']['relationship'] = 'field_esf_linked_tn_tid';
+  $handler->display->display_options['fields']['tid']['exclude'] = TRUE;
+  /* Sort criterion: Content: Date of news (field_esf_news_date) */
+  $handler->display->display_options['sorts']['field_esf_news_date_value']['id'] = 'field_esf_news_date_value';
+  $handler->display->display_options['sorts']['field_esf_news_date_value']['table'] = 'field_data_field_esf_news_date';
+  $handler->display->display_options['sorts']['field_esf_news_date_value']['field'] = 'field_esf_news_date_value';
+  $handler->display->display_options['sorts']['field_esf_news_date_value']['order'] = 'DESC';
+  /* Contextual filter: Taxonomy term: Name */
+  $handler->display->display_options['arguments']['name']['id'] = 'name';
+  $handler->display->display_options['arguments']['name']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['arguments']['name']['field'] = 'name';
+  $handler->display->display_options['arguments']['name']['relationship'] = 'field_esf_linked_tn_tid';
+  $handler->display->display_options['arguments']['name']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['name']['default_argument_type'] = 'raw';
+  $handler->display->display_options['arguments']['name']['default_argument_options']['index'] = '1';
+  $handler->display->display_options['arguments']['name']['default_argument_options']['use_alias'] = TRUE;
+  $handler->display->display_options['arguments']['name']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['name']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['name']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['name']['limit'] = '0';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'esf_tnc_news' => 'esf_tnc_news',
+  );
+
+  /* Display: News by networking thematic */
+  $handler = $view->new_display('block', 'News by networking thematic', 'block_1');
+  $export['esf_news'] = $view;
 
   $view = new view();
   $view->name = 'hp_slider';
@@ -468,17 +712,12 @@ function esf_tc_content_types_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Acronym or short denomination */
-  $handler->display->display_options['fields']['field_org_acronym']['id'] = 'field_org_acronym';
-  $handler->display->display_options['fields']['field_org_acronym']['table'] = 'field_data_field_org_acronym';
-  $handler->display->display_options['fields']['field_org_acronym']['field'] = 'field_org_acronym';
-  $handler->display->display_options['fields']['field_org_acronym']['label'] = '';
-  $handler->display->display_options['fields']['field_org_acronym']['element_label_colon'] = FALSE;
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Sort criterion: Content: TCA Title in English (title_field) */
+  $handler->display->display_options['sorts']['title_field_value']['id'] = 'title_field_value';
+  $handler->display->display_options['sorts']['title_field_value']['table'] = 'field_data_title_field';
+  $handler->display->display_options['sorts']['title_field_value']['field'] = 'title_field_value';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -495,20 +734,13 @@ function esf_tc_content_types_views_default_views() {
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
 
-  /* Display: ER Ma organisations */
-  $handler = $view->new_display('entityreference', 'ER Ma organisations', 'entityreference_ma_organisation');
+  /* Display: ER Organisations */
+  $handler = $view->new_display('entityreference', 'ER Organisations', 'entityreference_published_organisation');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'MA Organisation';
-  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'entityreference_style';
-  $handler->display->display_options['style_options']['grouping'] = array(
-    0 => array(
-      'field' => 'title',
-      'rendered' => 1,
-      'rendered_strip' => 0,
-    ),
-  );
   $handler->display->display_options['style_options']['search_fields'] = array(
     'title' => 'title',
   );
