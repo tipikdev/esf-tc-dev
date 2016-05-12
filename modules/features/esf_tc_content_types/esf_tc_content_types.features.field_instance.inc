@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * esf_tc_content_types.features.field_instance.inc
@@ -766,56 +765,6 @@ function esf_tc_content_types_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-esf_tnc_call_for_project-field_call_country'.
-  $field_instances['node-esf_tnc_call_for_project-field_call_country'] = array(
-    'bundle' => 'esf_tnc_call_for_project',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'inline',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_plain',
-        'weight' => 2,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_call_country',
-    'label' => 'Country',
-    'required' => 1,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'term_reference_tree',
-      'settings' => array(
-        'cascading_selection' => 0,
-        'filter_view' => '',
-        'leaves_only' => 0,
-        'max_depth' => 1,
-        'parent_term_id' => '',
-        'select_parents' => 0,
-        'start_minimized' => 1,
-        'token_display' => '',
-        'track_list' => 0,
-      ),
-      'type' => 'term_reference_tree',
-      'weight' => 3,
-    ),
-    'workbench_access_field' => 0,
-  );
-
-  // Exported field_instance:
   // 'node-esf_tnc_call_for_project-field_call_eligibility_dates'.
   $field_instances['node-esf_tnc_call_for_project-field_call_eligibility_dates'] = array(
     'bundle' => 'esf_tnc_call_for_project',
@@ -1257,56 +1206,6 @@ function esf_tc_content_types_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-esf_tnc_call_for_project-field_call_themes'.
-  $field_instances['node-esf_tnc_call_for_project-field_call_themes'] = array(
-    'bundle' => 'esf_tnc_call_for_project',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'inline',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_plain',
-        'weight' => 12,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_call_themes',
-    'label' => 'Themes',
-    'required' => 1,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'term_reference_tree',
-      'settings' => array(
-        'apply_chosen' => 1,
-        'cascading_selection' => 0,
-        'filter_view' => '',
-        'leaves_only' => 0,
-        'max_depth' => '',
-        'parent_term_id' => '',
-        'select_parents' => 1,
-        'start_minimized' => 1,
-        'token_display' => '',
-        'track_list' => 0,
-      ),
-      'type' => 'term_reference_tree',
-      'weight' => 2,
-    ),
-    'workbench_access_field' => 0,
-  );
-
   // Exported field_instance:
   // 'node-esf_tnc_call_for_project-field_call_title_national_lang'.
   $field_instances['node-esf_tnc_call_for_project-field_call_title_national_lang'] = array(
@@ -1471,6 +1370,108 @@ function esf_tc_content_types_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
+  // Exported field_instance:
+  // 'node-esf_tnc_call_for_project-field_esf_country_ref'.
+  $field_instances['node-esf_tnc_call_for_project-field_esf_country_ref'] = array(
+    'bundle' => 'esf_tnc_call_for_project',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'module' => 'i18n_taxonomy',
+        'settings' => array(),
+        'type' => 'i18n_taxonomy_term_reference_plain',
+        'weight' => 2,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'i18n_taxonomy',
+        'settings' => array(),
+        'type' => 'i18n_taxonomy_term_reference_plain',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_esf_country_ref',
+    'label' => 'Country',
+    'required' => 1,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'term_reference_tree',
+      'settings' => array(
+        'cascading_selection' => 0,
+        'filter_view' => '',
+        'leaves_only' => 0,
+        'max_depth' => 1,
+        'parent_term_id' => '',
+        'select_parents' => 0,
+        'start_minimized' => 1,
+        'token_display' => '',
+        'track_list' => 0,
+      ),
+      'type' => 'term_reference_tree',
+      'weight' => 3,
+    ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance:
+  // 'node-esf_tnc_call_for_project-field_esf_themes_ref'.
+  $field_instances['node-esf_tnc_call_for_project-field_esf_themes_ref'] = array(
+    'bundle' => 'esf_tnc_call_for_project',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'module' => 'i18n_taxonomy',
+        'settings' => array(),
+        'type' => 'i18n_taxonomy_term_reference_plain',
+        'weight' => 12,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_esf_themes_ref',
+    'label' => 'Themes',
+    'required' => 1,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'term_reference_tree',
+      'settings' => array(
+        'apply_chosen' => '',
+        'cascading_selection' => 0,
+        'filter_view' => '',
+        'leaves_only' => 0,
+        'max_depth' => '',
+        'parent_term_id' => '',
+        'select_parents' => 1,
+        'start_minimized' => 1,
+        'token_display' => '',
+        'track_list' => 0,
+      ),
+      'type' => 'term_reference_tree',
+      'weight' => 2,
+    ),
+    'workbench_access_field' => 0,
+  );
+
   // Exported field_instance: 'node-esf_tnc_event-body'.
   $field_instances['node-esf_tnc_event-body'] = array(
     'bundle' => 'esf_tnc_event',
@@ -1603,9 +1604,9 @@ function esf_tc_content_types_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'inline',
-        'module' => 'taxonomy',
+        'module' => 'i18n_taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_plain',
+        'type' => 'i18n_taxonomy_term_reference_plain',
         'weight' => 8,
       ),
       'teaser' => array(
@@ -1992,16 +1993,16 @@ function esf_tc_content_types_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'taxonomy',
+        'module' => 'i18n_taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_plain',
+        'type' => 'i18n_taxonomy_term_reference_plain',
         'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'taxonomy',
+        'module' => 'i18n_taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_plain',
+        'type' => 'i18n_taxonomy_term_reference_plain',
         'weight' => 1,
       ),
     ),
@@ -2205,16 +2206,16 @@ function esf_tc_content_types_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'taxonomy',
+        'module' => 'i18n_taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_plain',
+        'type' => 'i18n_taxonomy_term_reference_plain',
         'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'taxonomy',
+        'module' => 'i18n_taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_plain',
+        'type' => 'i18n_taxonomy_term_reference_plain',
         'weight' => 2,
       ),
     ),
@@ -4628,15 +4629,16 @@ function esf_tc_content_types_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'taxonomy',
+        'module' => 'i18n_taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_plain',
+        'type' => 'i18n_taxonomy_term_reference_plain',
         'weight' => 51,
       ),
       'teaser' => array(
         'label' => 'above',
+        'module' => 'i18n_taxonomy',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'i18n_taxonomy_term_reference_plain',
         'weight' => 18,
       ),
     ),
@@ -4650,13 +4652,23 @@ function esf_tc_content_types_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'options',
+      'module' => 'term_reference_tree',
       'settings' => array(
         'apply_chosen' => '',
+        'cascading_selection' => 0,
+        'filter_view' => '',
+        'leaves_only' => 0,
+        'max_depth' => '',
+        'parent_term_id' => '',
+        'select_parents' => 1,
+        'start_minimized' => 1,
+        'token_display' => '',
+        'track_list' => 0,
       ),
-      'type' => 'options_select',
+      'type' => 'term_reference_tree',
       'weight' => 19,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance: 'node-esf_tnc_project-field_proj_attachments'.
@@ -4875,15 +4887,16 @@ function esf_tc_content_types_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'taxonomy',
+        'module' => 'i18n_taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_plain',
+        'type' => 'i18n_taxonomy_term_reference_plain',
         'weight' => 28,
       ),
       'teaser' => array(
         'label' => 'above',
+        'module' => 'i18n_taxonomy',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'i18n_taxonomy_term_reference_plain',
         'weight' => 22,
       ),
     ),
@@ -6728,15 +6741,16 @@ If an organisation is not found, please save your work as draft and check that t
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'taxonomy',
+        'module' => 'i18n_taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_plain',
+        'type' => 'i18n_taxonomy_term_reference_plain',
         'weight' => 36,
       ),
       'teaser' => array(
         'label' => 'above',
+        'module' => 'i18n_taxonomy',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'i18n_taxonomy_term_reference_plain',
         'weight' => 8,
       ),
     ),

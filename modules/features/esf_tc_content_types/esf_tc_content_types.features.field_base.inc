@@ -60,35 +60,6 @@ function esf_tc_content_types_field_default_field_bases() {
     'type' => 'file',
   );
 
-  // Exported field_base: 'field_call_country'.
-  $field_bases['field_call_country'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_call_country',
-    'indexes' => array(
-      'tid' => array(
-        0 => 'tid',
-      ),
-    ),
-    'locked' => 1,
-    'module' => 'taxonomy',
-    'settings' => array(
-      'allowed_values' => array(
-        0 => array(
-          'vocabulary' => 'esf_countries_regions',
-          'parent' => 0,
-        ),
-      ),
-      'entity_translation_sync' => FALSE,
-      'options_list_callback' => 'i18n_taxonomy_allowed_values',
-      'profile2_private' => FALSE,
-    ),
-    'translatable' => 0,
-    'type' => 'taxonomy_term_reference',
-  );
-
   // Exported field_base: 'field_call_eligibility_dates'.
   $field_bases['field_call_eligibility_dates'] = array(
     'active' => 1,
@@ -292,35 +263,6 @@ function esf_tc_content_types_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'datestamp',
-  );
-
-  // Exported field_base: 'field_call_themes'.
-  $field_bases['field_call_themes'] = array(
-    'active' => 1,
-    'cardinality' => -1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_call_themes',
-    'indexes' => array(
-      'tid' => array(
-        0 => 'tid',
-      ),
-    ),
-    'locked' => 1,
-    'module' => 'taxonomy',
-    'settings' => array(
-      'allowed_values' => array(
-        0 => array(
-          'vocabulary' => 'esf_themes',
-          'parent' => 0,
-        ),
-      ),
-      'entity_translation_sync' => FALSE,
-      'options_list_callback' => 'i18n_taxonomy_allowed_values',
-      'profile2_private' => FALSE,
-    ),
-    'translatable' => 0,
-    'type' => 'taxonomy_term_reference',
   );
 
   // Exported field_base: 'field_call_title_in_english'.
@@ -905,7 +847,7 @@ function esf_tc_content_types_field_default_field_bases() {
         0 => 'tid',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'taxonomy',
     'settings' => array(
       'allowed_values' => array(

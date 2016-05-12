@@ -58,6 +58,9 @@ function esf_tc_preprocess_node(&$variables) {
       $variables['contact_role'] = $variables['field_org_contact_legal_role'][0]['value'];
     }
   }
+
+  // Link the TN tag to related section page with term selected in a facet.
+  _esf_tc_link_tag_to_section($variables);
 }
 
 /**
@@ -220,4 +223,67 @@ function _esf_tc_get_forum_categories_menu() {
   }
 
   return $output;
+}
+
+/**
+ * Link a content to a specific section based on selected tag and content type.
+ *
+ * The tag is also selected in a facet.
+ */
+function _esf_tc_link_tag_to_section(&$variables) {
+  if ($variables['type'] == 'esf_tnc_event') {
+    foreach ($variables['field_esf_linked_tn'] as $id => $term) {
+      $variables['content']['field_esf_linked_tn'][$id]['#markup'] = l($term['taxonomy_term']->name, 'events', array('query' => array('f[0]' => 'im_field_esf_linked_tn:' . $term['tid'])));
+    }
+    foreach ($variables['field_esf_event_country'] as $id => $term) {
+      $variables['content']['field_esf_event_country'][$id]['#markup'] = l($term['taxonomy_term']->name, 'events', array('query' => array('f[0]' => 'im_field_esf_event_country:' . $term['tid'])));
+    }
+  }
+  elseif ($variables['type'] == 'esf_tnc_news') {
+    foreach ($variables['field_esf_linked_tn'] as $id => $term) {
+      $variables['content']['field_esf_linked_tn'][$id]['#markup'] = l($term['taxonomy_term']->name, 'news', array('query' => array('f[0]' => 'im_field_esf_linked_tn:' . $term['tid'])));
+    }
+  }
+  elseif ($variables['type'] == 'esf_tnc_project' || $variables['type'] == 'esf_tnc_call_for_project' || $variables['type'] == 'esf_tnc_organisation') {
+    if (isset($variables['field_project_target_groups'])) {
+      foreach ($variables['field_project_target_groups'] as $id => $term) {
+        $variables['content']['field_project_target_groups'][$id]['#markup'] = l($term['taxonomy_term']->name, 'search/partners-search', array(
+          'query' => array(
+            'f[0]' => 'im_field_project_target_groups:' . $term['tid'],
+            'f[1]' => 'bundle:' . $variables['type'],
+          ),
+        ));
+      }
+    }
+    if (isset($variables['field_project_activities_list'])) {
+      foreach ($variables['field_project_activities_list'] as $id => $term) {
+        $variables['content']['field_project_activities_list'][$id]['#markup'] = l($term['taxonomy_term']->name, 'search/partners-search', array(
+          'query' => array(
+            'f[0]' => 'im_field_project_activities_list:' . $term['tid'],
+            'f[1]' => 'bundle:' . $variables['type'],
+          ),
+        ));
+      }
+    }
+    if (isset($variables['field_esf_themes_ref'])) {
+      foreach ($variables['field_esf_themes_ref'] as $id => $term) {
+        $variables['content']['field_esf_themes_ref'][$id]['#markup'] = l($term['taxonomy_term']->name, 'search/partners-search', array(
+          'query' => array(
+            'f[0]' => 'im_field_esf_themes_ref:' . $term['tid'],
+            'f[1]' => 'bundle:' . $variables['type'],
+          ),
+        ));
+      }
+    }
+    if (isset($variables['field_esf_country_ref'])) {
+      foreach ($variables['field_esf_country_ref'] as $id => $term) {
+        $variables['content']['field_esf_country_ref'][$id]['#markup'] = l($term['taxonomy_term']->name, 'search/partners-search', array(
+          'query' => array(
+            'f[0]' => 'im_field_esf_country_ref:' . $term['tid'],
+            'f[1]' => 'bundle:' . $variables['type'],
+          ),
+        ));
+      }
+    }
+  }
 }
