@@ -93,7 +93,7 @@ function _esf_tc_content_types_mail_text($key, $variables = array(), $language =
             $input_type = explode('_', $key);
             if (is_array($input_type) && count($input_type)) {
               $input_type = end($input_type);
-              $action = strtolower($_states[$variables['action']] ? $_states[$variables['action']] : $variables['action']);
+              $action = drupal_strtolower($_states[$variables['action']] ? $_states[$variables['action']] : $variables['action']);
               switch ($input_type) {
                 case 'subject':
 
