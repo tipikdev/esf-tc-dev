@@ -74,7 +74,6 @@ function esf_tc_core_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
-  // http://ec.europa.eu/esf/main.jsp?catId=51&langId=en.
   $menu_links['main-menu_better-education:http://ec.europa.eu/esf/main.jsp?catId=51&langId=en'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'http://ec.europa.eu/esf/main.jsp?catId=51&langId=en',
@@ -207,7 +206,6 @@ function esf_tc_core_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'main-menu_strengthening-employment-and--mobility:http://ec.europa.eu/esf/main.jsp?catId=532&langId=en',
   );
-
   $menu_links['main-menu_creating-chances-for-youth:http://ec.europa.eu/esf/main.jsp?catId=534&langId=en'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'http://ec.europa.eu/esf/main.jsp?catId=534&langId=en',
@@ -241,7 +239,6 @@ function esf_tc_core_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'main-menu_strengthening-employment-and--mobility:http://ec.europa.eu/esf/main.jsp?catId=532&langId=en',
   );
-
   $menu_links['main-menu_data-and-figures:http://ec.europa.eu/esf/main.jsp?catId=440&langId=en'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'http://ec.europa.eu/esf/main.jsp?catId=440&langId=en',

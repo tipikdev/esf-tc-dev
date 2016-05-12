@@ -81,7 +81,6 @@
 <div id="node-<?php print $node->nid; ?>"
      class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
 
-
   <div class="content clearfix"<?php print $content_attributes; ?>>
     <?php if ($prefix_display): ?>
       <div class="node-private label label-default clearfix">
@@ -95,184 +94,182 @@
     hide($content['comments']);
     hide($content['links']);
     ?>
-
-
   </div>
 
   <?php if ($view_mode == 'full'): ?>
     <div
       class="abstract"><?php print render($content['field_project_idea_summary']); ?></div>
     <table class="standard-table" cellpadding="0" cellspacing="0">
-      <?php if (isset($content['field_esf_country_ref'])) :?>
+      <?php if (isset($content['field_esf_country_ref'])) : ?>
         <tr>
-          <th><?php print render($content['field_esf_country_ref']['#title']) ?></th>
+          <th><?php print render($content['field_esf_country_ref']['#title']); ?></th>
           <td><?php if (['field_esf_country_ref'] == 'Other countries') : ?>
               <?php print render($content['field_project_other_countries']); ?>
-            <?php else :?>
+            <?php else : ?>
               <?php print render($content['field_esf_country_ref']); ?>
             <?php endif; ?>
           </td>
         </tr>
       <?php endif; ?>
-      <?php if (isset($content['field_project_call_for_projects'])) :?>
+      <?php if (isset($content['field_project_call_for_projects'])) : ?>
         <tr>
-          <th><?php print render($content['field_project_call_for_projects']['#title']) ?></th>
+          <th><?php print render($content['field_project_call_for_projects']['#title']); ?></th>
           <td><?php print render($content['field_project_call_for_projects']); ?></td>
         </tr>
       <?php endif; ?>
       <?php if (isset($content['field_esf_type_call'])) : ?>
         <tr>
-          <th><?php print render($content['field_esf_type_call']['#title']) ?></th>
+          <th><?php print render($content['field_esf_type_call']['#title']); ?></th>
           <td><?php print render($content['field_esf_type_call']); ?></td>
         </tr>
       <?php endif; ?>
-      <?php if (isset($content['field_project_title_vo'])) :?>
+      <?php if (isset($content['field_project_title_vo'])) : ?>
         <tr>
-          <th><?php print render($content['field_project_title_vo']['#title']) ?></th>
+          <th><?php print render($content['field_project_title_vo']['#title']); ?></th>
           <td><?php print render($content['field_project_title_vo']); ?></td>
         </tr>
       <?php endif; ?>
-      <?php if (isset($content['field_project_acronym'])) :?>
+      <?php if (isset($content['field_project_acronym'])) : ?>
         <tr>
-          <th><?php print render($content['field_project_acronym']['#title']) ?></th>
+          <th><?php print render($content['field_project_acronym']['#title']); ?></th>
           <td><?php print render($content['field_project_acronym']); ?></td>
         </tr>
       <?php endif; ?>
-      <?php if (isset($content['field_project_ma_responsible'])) :?>
+      <?php if (isset($content['field_project_ma_responsible'])) : ?>
         <tr>
-          <th><?php print render($content['field_project_ma_responsible']['#title']) ?></th>
+          <th><?php print render($content['field_project_ma_responsible']['#title']); ?></th>
           <td><?php print render($content['field_project_ma_responsible']); ?></td>
         </tr>
       <?php endif; ?>
 
-      <?php if (isset($content['field_project_measure_en'])) :?>
+      <?php if (isset($content['field_project_measure_en'])) : ?>
         <tr>
-          <th><?php print render($content['field_project_measure_en']['#title']) ?></th>
+          <th><?php print render($content['field_project_measure_en']['#title']); ?></th>
           <td><?php print render($content['field_project_measure_en']); ?></td>
         </tr>
       <?php endif; ?>
-      <?php if (isset($content['field__project_measure_vo'])) :?>
+      <?php if (isset($content['field__project_measure_vo'])) : ?>
         <tr>
-          <th><?php print render($content['field__project_measure_vo']['#title']) ?></th>
+          <th><?php print render($content['field__project_measure_vo']['#title']); ?></th>
           <td><?php print render($content['field__project_measure_vo']); ?></td>
         </tr>
       <?php endif; ?>
-      <?php if (isset($content['field_project_submitted_ma'])) :?>
+      <?php if (isset($content['field_project_submitted_ma'])) : ?>
         <tr>
-          <th><?php print render($content['field_project_submitted_ma']['#title']) ?></th>
+          <th><?php print render($content['field_project_submitted_ma']['#title']); ?></th>
           <td><?php print render($content['field_project_submitted_ma']); ?></td>
         </tr>
       <?php endif; ?>
-      <?php if (isset($content['field_project_national_number'])) :?>
+      <?php if (isset($content['field_project_national_number'])) : ?>
         <tr>
-          <th><?php print render($content['field_project_national_number']['#title']) ?></th>
+          <th><?php print render($content['field_project_national_number']['#title']); ?></th>
           <td><?php print render($content['field_project_national_number']); ?></td>
         </tr>
       <?php endif; ?>
-      <?php if (isset($content['field_project_lead_organisation'])) :?>
+      <?php if (isset($content['field_project_lead_organisation'])) : ?>
         <tr>
-          <th><?php print render($content['field_project_lead_organisation']['#title']) ?></th>
+          <th><?php print render($content['field_project_lead_organisation']['#title']); ?></th>
           <td><?php print render($content['field_project_lead_organisation']); ?></td>
         </tr>
       <?php endif; ?>
-      <?php if (isset($content['field_project_manager'])) :?>
+      <?php if (isset($content['field_project_manager'])) : ?>
         <tr>
-          <th><?php print render($content['field_project_manager']['#title']) ?></th>
+          <th><?php print render($content['field_project_manager']['#title']); ?></th>
           <td><?php print render($content['field_project_manager']); ?></td>
         </tr>
       <?php endif; ?>
-      <?php if (isset($content['field_project_operat_contact'])) :?>
+      <?php if (isset($content['field_project_operat_contact'])) : ?>
         <tr>
-          <th><?php print render($content['field_project_operat_contact']['#title']) ?></th>
+          <th><?php print render($content['field_project_operat_contact']['#title']); ?></th>
           <td><?php print render($content['field_project_operat_contact']); ?></td>
         </tr>
       <?php endif; ?>
-      <?php if (isset($content['field_esf_languages_ref'])) :?>
+      <?php if (isset($content['field_esf_languages_ref'])) : ?>
         <tr>
-          <th><?php print render($content['field_esf_languages_ref']['#title']) ?></th>
+          <th><?php print render($content['field_esf_languages_ref']['#title']); ?></th>
           <td><?php print render($content['field_esf_languages_ref']); ?><?php print render($content['field_project_other_language'][0]['#markup']); ?></td>
         </tr>
       <?php endif; ?>
 
-      <?php if (isset($content['field_esf_themes_ref'])) :?>
+      <?php if (isset($content['field_esf_themes_ref'])) : ?>
         <tr>
-          <th><?php print render($content['field_esf_themes_ref']['#title']) ?></th>
+          <th><?php print render($content['field_esf_themes_ref']['#title']); ?></th>
           <td><?php print render($content['field_esf_themes_ref']); ?></td>
         </tr>
       <?php endif; ?>
 
-      <?php if (isset($content['field_project_status'])) :?>
+      <?php if (isset($content['field_project_status'])) : ?>
         <tr>
-          <th><?php print render($content['field_project_status']['#title']) ?></th>
+          <th><?php print render($content['field_project_status']['#title']); ?></th>
           <td><?php print render($content['field_project_status']); ?></td>
         </tr>
       <?php endif; ?>
 
-      <?php if (isset($content['field_project_idea_summary'])) :?>
+      <?php if (isset($content['field_project_idea_summary'])) : ?>
         <tr>
-          <th><?php print render($content['field_project_idea_summary']['#title']) ?></th>
+          <th><?php print render($content['field_project_idea_summary']['#title']); ?></th>
           <td><?php print render($content['field_project_idea_summary']); ?></td>
         </tr>
       <?php endif; ?>
-      <?php if (isset($content['field_project_problem_addressed'])) :?>
+      <?php if (isset($content['field_project_problem_addressed'])) : ?>
         <tr>
-          <th><?php print render($content['field_project_problem_addressed']['#title']) ?></th>
+          <th><?php print render($content['field_project_problem_addressed']['#title']); ?></th>
           <td><?php print render($content['field_project_problem_addressed']); ?></td>
         </tr>
       <?php endif; ?>
-      <?php if (isset($content['field_project_objectives'])) :?>
+      <?php if (isset($content['field_project_objectives'])) : ?>
         <tr>
-          <th><?php print render($content['field_project_objectives']['#title']) ?></th>
+          <th><?php print render($content['field_project_objectives']['#title']); ?></th>
           <td><?php print render($content['field_project_objectives']); ?></td>
         </tr>
       <?php endif; ?>
       <?php if (isset($content['field_project_results'])) : ?>
         <tr>
-          <th><?php print render($content['field_project_results']['#title']) ?></th>
+          <th><?php print render($content['field_project_results']['#title']); ?></th>
           <td><?php print render($content['field_project_results']); ?></td>
         </tr>
       <?php endif; ?>
-      <?php if (isset($content['field_project_activities'])) :?>
+      <?php if (isset($content['field_project_activities'])) : ?>
         <tr>
-          <th><?php print render($content['field_project_activities']['#title']) ?></th>
+          <th><?php print render($content['field_project_activities']['#title']); ?></th>
           <td><?php print render($content['field_project_activities']); ?></td>
         </tr>
       <?php endif; ?>
 
-      <?php if (isset($content['field_project_experience'])) :?>
+      <?php if (isset($content['field_project_experience'])) : ?>
         <tr>
-          <th><?php print render($content['field_project_experience']['#title']) ?></th>
+          <th><?php print render($content['field_project_experience']['#title']); ?></th>
           <td><?php print render($content['field_project_experience']); ?></td>
         </tr>
       <?php endif; ?>
       <?php if (isset($content['field_project_expected_partners'])) : ?>
         <tr>
-          <th><?php print render($content['field_project_expected_partners']['#title']) ?></th>
+          <th><?php print render($content['field_project_expected_partners']['#title']); ?></th>
           <td><?php print render($content['field_project_expected_partners']); ?></td>
         </tr>
       <?php endif; ?>
-      <?php if (isset($content['field_project_general_comments'])) :?>
+      <?php if (isset($content['field_project_general_comments'])) : ?>
         <tr>
-          <th><?php print render($content['field_project_general_comments']['#title']) ?></th>
+          <th><?php print render($content['field_project_general_comments']['#title']); ?></th>
           <td><?php print render($content['field_project_general_comments']); ?></td>
         </tr>
       <?php endif; ?>
 
-      <?php if (isset($content['field_project_indicative_budget_'])) :?>
+      <?php if (isset($content['field_project_indicative_budget_'])) : ?>
         <tr>
-          <th><?php print render($content['field_project_indicative_budget_']['#title']) ?></th>
+          <th><?php print render($content['field_project_indicative_budget_']['#title']); ?></th>
           <td><?php print render($content['field_project_indicative_budget_']); ?></td>
         </tr>
       <?php endif; ?>
-      <?php if (isset($content['field_project_countries_looked'])) :?>
+      <?php if (isset($content['field_project_countries_looked'])) : ?>
         <tr>
-          <th><?php print render($content['field_project_countries_looked']['#title']) ?></th>
+          <th><?php print render($content['field_project_countries_looked']['#title']); ?></th>
           <td><?php print render($content['field_project_countries_looked']); ?></td>
         </tr>
       <?php endif; ?>
-      <?php if (isset($content['field_project_activities_list'])) :?>
+      <?php if (isset($content['field_project_activities_list'])) : ?>
         <tr>
-          <th><?php print render($content['field_project_activities_list']['#title']) ?></th>
+          <th><?php print render($content['field_project_activities_list']['#title']); ?></th>
           <td>
             <?php print render($content['field_project_activities_list']);
             if (isset($content['field_project_other_activity'])): print render($content['field_project_other_activity'][0]['#markup']);
@@ -280,33 +277,33 @@
             ?></td>
         </tr>
       <?php endif; ?>
-      <?php if (isset($content['field_project_links'])) :?>
+      <?php if (isset($content['field_project_links'])) : ?>
         <tr>
-          <th><?php print render($content['field_project_links']['#title']) ?></th>
+          <th><?php print render($content['field_project_links']['#title']); ?></th>
           <td><?php print render($content['field_project_links']); ?></td>
         </tr>
       <?php endif; ?>
-      <?php if (isset($content['field_project_attachments'])) :?>
+      <?php if (isset($content['field_project_attachments'])) : ?>
         <tr>
-          <th><?php print render($content['field_project_attachments']['#title']) ?></th>
+          <th><?php print render($content['field_project_attachments']['#title']); ?></th>
           <td><?php print render($content['field_project_attachments']); ?></td>
         </tr>
       <?php endif; ?>
-      <?php if (isset($content['field_project_hight_promo_txt'])) :?>
+      <?php if (isset($content['field_project_hight_promo_txt'])) : ?>
         <tr>
-          <th><?php print render($content['field_project_hight_promo_txt']['#title']) ?></th>
+          <th><?php print render($content['field_project_hight_promo_txt']['#title']); ?></th>
           <td><?php print render($content['field_project_hight_promo_txt']); ?></td>
         </tr>
       <?php endif; ?>
-      <?php if (isset($content['field_project_target_groups'])) :?>
+      <?php if (isset($content['field_project_target_groups'])) : ?>
         <tr>
-          <th><?php print render($content['field_project_target_groups']['#title']) ?></th>
+          <th><?php print render($content['field_project_target_groups']['#title']); ?></th>
           <td><?php print render($content['field_project_target_groups']); ?></td>
         </tr>
       <?php endif; ?>
-      <?php if (isset($content['field_project_end_date_activity'])) :?>
+      <?php if (isset($content['field_project_end_date_activity'])) : ?>
         <tr>
-          <th><?php print render($content['field_project_end_date_activity']['#title']) ?></th>
+          <th><?php print render($content['field_project_end_date_activity']['#title']); ?></th>
           <td><?php print render($content['field_project_end_date_activity']); ?></td>
         </tr>
       <?php endif; ?>
@@ -317,26 +314,26 @@
       <div
         class="abstract"><?php print render($content['field_project_idea_summary']); ?></div>
       <table class="standard-table" cellpadding="0" cellspacing="0">
-        <?php if (isset($content['field_esf_country_ref'])) :?>
+        <?php if (isset($content['field_esf_country_ref'])) : ?>
           <tr>
-            <th><?php print render($content['field_esf_country_ref']['#title']) ?></th>
-            <td><?php if (['field_esf_country_ref'] == 'Other countries') :?>
+            <th><?php print render($content['field_esf_country_ref']['#title']); ?></th>
+            <td><?php if (['field_esf_country_ref'] == 'Other countries') : ?>
                 <?php print render($content['field_project_other_countries']); ?>
-              <?php else :?>
+              <?php else : ?>
                 <?php print render($content['field_esf_country_ref']); ?>
-              <?php endif?>
+              <?php endif ?>
             </td>
           </tr>
         <?php endif; ?>
-        <?php if (isset($content['field_project_call_for_projects'])) :?>
+        <?php if (isset($content['field_project_call_for_projects'])) : ?>
           <tr>
-            <th><?php print render($content['field_project_call_for_projects']['#title']) ?></th>
+            <th><?php print render($content['field_project_call_for_projects']['#title']); ?></th>
             <td><?php print render($content['field_project_call_for_projects']); ?></td>
           </tr>
         <?php endif; ?>
-        <?php if (isset($content['field_esf_type_call'])) :?>
+        <?php if (isset($content['field_esf_type_call'])) : ?>
           <tr>
-            <th><?php print render($content['field_esf_type_call']['#title']) ?></th>
+            <th><?php print render($content['field_esf_type_call']['#title']); ?></th>
             <td><?php print render($content['field_esf_type_call']); ?></td>
           </tr>
         <?php endif; ?>
@@ -365,6 +362,4 @@
   </div>
 
   <?php print render($content['comments']); ?>
-
-</div>
 </div>

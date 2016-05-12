@@ -11,7 +11,7 @@ function esf_tc_content_types_context_default_contexts() {
   $export = array();
 
   $context = new stdClass();
-  $context->disabled = FALSE;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'esf_tc_homepage';
   $context->description = 'context for the ESF home page';
@@ -62,7 +62,7 @@ function esf_tc_content_types_context_default_contexts() {
   $export['esf_tc_homepage'] = $context;
 
   $context = new stdClass();
-  $context->disabled = FALSE;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'esf_tnc_site_wide';
   $context->description = 'global context';
@@ -81,13 +81,19 @@ function esf_tc_content_types_context_default_contexts() {
           'module' => 'menu',
           'delta' => 'menu-service-tools',
           'region' => 'header_top',
-          'weight' => '-10',
+          'weight' => '-44',
         ),
         'locale-language' => array(
           'module' => 'locale',
           'delta' => 'language',
           'region' => 'header_top',
-          'weight' => '-9',
+          'weight' => '-43',
+        ),
+        'system-user-menu' => array(
+          'module' => 'system',
+          'delta' => 'user-menu',
+          'region' => 'header_top',
+          'weight' => '-10',
         ),
         'easy_breadcrumb-easy_breadcrumb' => array(
           'module' => 'easy_breadcrumb',
@@ -105,7 +111,7 @@ function esf_tc_content_types_context_default_contexts() {
           'module' => 'system',
           'delta' => 'help',
           'region' => 'help',
-          'weight' => '-10',
+          'weight' => '-9',
         ),
         'menu-menu-left-menu' => array(
           'module' => 'menu',

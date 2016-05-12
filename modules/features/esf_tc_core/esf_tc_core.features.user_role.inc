@@ -16,6 +16,12 @@ function esf_tc_core_user_default_roles() {
     'weight' => 5,
   );
 
+  // Exported role: forum moderator.
+  $roles['forum moderator'] = (object) array(
+    'name' => 'forum moderator',
+    'weight' => 7,
+  );
+
   // Exported role: webmaster.
   $roles['webmaster'] = (object) array(
     'name' => 'webmaster',

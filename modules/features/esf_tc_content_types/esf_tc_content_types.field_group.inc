@@ -11,7 +11,7 @@ function esf_tc_content_types_field_group_info() {
   $field_groups = array();
 
   $field_group = new stdClass();
-  $field_group->disabled = FALSE;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_org_legal_contact|node|esf_tnc_organisation|form';
   $field_group->group_name = 'group_org_legal_contact';
@@ -21,7 +21,7 @@ function esf_tc_content_types_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Legal contact',
-    'weight' => '11',
+    'weight' => '12',
     'children' => array(
       0 => 'field_org_contact_account',
       1 => 'field_org_contact_legal_name',
@@ -43,7 +43,7 @@ function esf_tc_content_types_field_group_info() {
   $field_groups['group_org_legal_contact|node|esf_tnc_organisation|form'] = $field_group;
 
   $field_group = new stdClass();
-  $field_group->disabled = FALSE;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_profile_contact_token|profile2|contact_profile|form';
   $field_group->group_name = 'group_profile_contact_token';
@@ -53,18 +53,20 @@ function esf_tc_content_types_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Token',
-    'weight' => '11',
+    'weight' => '8',
     'children' => array(
       0 => 'field_organisation',
       1 => 'field_profile_contact_contact',
+      2 => 'field_token_email',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
       'label' => 'Token',
       'instance_settings' => array(
         'required_fields' => 1,
+        'id' => '',
         'classes' => 'group-profile-contact-token field-group-fieldset',
-        'description' => 'Enter the tokens received in the email to link your account with an organisation.',
+        'description' => 'Enter the token received in the email to link your account with an organisation.',
       ),
       'formatter' => 'open',
     ),
@@ -72,7 +74,7 @@ function esf_tc_content_types_field_group_info() {
   $field_groups['group_profile_contact_token|profile2|contact_profile|form'] = $field_group;
 
   $field_group = new stdClass();
-  $field_group->disabled = FALSE;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_project_content_en|node|esf_tnc_project|form';
   $field_group->group_name = 'group_project_content_en';
@@ -82,7 +84,7 @@ function esf_tc_content_types_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Project content in English',
-    'weight' => '19',
+    'weight' => '18',
     'children' => array(
       0 => 'field_project_idea_summary',
       1 => 'field_project_problem_addressed',
@@ -92,21 +94,21 @@ function esf_tc_content_types_field_group_info() {
       5 => 'field_project_experience',
       6 => 'field_project_expected_partners',
       7 => 'field_project_general_comments',
-      8 => 'field_project_countries_looked',
-      9 => 'field_project_activities_list',
-      10 => 'field_project_links',
-      11 => 'field_project_attachments',
-      12 => 'field_project_logo',
-      13 => 'field_project_hight_promo_txt',
-      14 => 'field_project_flag_featured',
-      15 => 'field_project_logo_promo_sec',
-      16 => 'field_project_high_promo_txt',
-      17 => 'field_project_target_groups',
-      18 => 'field_project_other_activity',
-      19 => 'field_project_indicative_budget_',
-      20 => 'field_esf_themes_ref',
-      21 => 'field_project_searching',
-      22 => 'field_project_end_date_activity',
+      8 => 'field_project_activities_list',
+      9 => 'field_project_links',
+      10 => 'field_project_attachments',
+      11 => 'field_project_logo',
+      12 => 'field_project_hight_promo_txt',
+      13 => 'field_project_flag_featured',
+      14 => 'field_project_logo_promo_sec',
+      15 => 'field_project_high_promo_txt',
+      16 => 'field_project_target_groups',
+      17 => 'field_project_other_activity',
+      18 => 'field_project_indicative_budget_',
+      19 => 'field_esf_themes_ref',
+      20 => 'field_project_searching',
+      21 => 'field_project_end_date_activity',
+      22 => 'field_proj_attachments',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
