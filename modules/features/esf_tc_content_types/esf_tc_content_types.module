@@ -887,7 +887,7 @@ function _esf_tc_content_types_render_view($view_name, $view_display, $param) {
   $view->set_arguments(array($param));
   $view->pre_execute();
   $view->execute();
-  if(!empty($view->result)){
+  if (!empty($view->result)) {
     $output = $view->render();
   }
   return $output;

@@ -20,20 +20,29 @@
   <?php if (isset($variables['parents'][0])): ?>
     <?php print $variables['parents'][0]->description; ?>
   <?php endif; ?>
-  <?php if (!empty($news)): ?>
-    <h2 class="section-title">
+
+  <div class="row">
+    <?php if (!empty($news)): ?>
+      <div
+        class="section-wrapper<?php print (!empty($events) ? ' col-lg-6' : ' col-lg-12'); ?> col-sm-12 col-xs-12">
+        <h2 class="section-title">
       <span
         class="glyphicon glyphicon-chevron-right"></span><?php print t('News'); ?>
-    </h2>
-    <?php print $news; ?>
-  <?php endif; ?>
-  <?php if (!empty($events)): ?>
-    <h2 class="section-title">
+        </h2>
+        <?php print $news; ?>
+      </div>
+    <?php endif; ?>
+    <?php if (!empty($events)): ?>
+      <div
+        class="section-wrapper<?php print (!empty($news) ? ' col-lg-6' : ' col-lg-12'); ?> col-sm-12 col-xs-12">
+        <h2 class="section-title">
       <span
         class="glyphicon glyphicon-chevron-right"></span><?php print t('Events'); ?>
-    </h2>
-    <?php print $events; ?>
-  <?php endif; ?>
+        </h2>
+        <?php print $events; ?>
+      </div>
+    <?php endif; ?>
+  </div>
   <div id="forum">
     <?php print $forums; ?>
     <?php if (isset($topics_title)): ?>

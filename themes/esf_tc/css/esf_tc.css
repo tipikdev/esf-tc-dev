@@ -54,6 +54,11 @@ body {
   border: 0;
 }
 
+#content a {
+	color: #0065a2;	
+}
+
+
 .node .field-type-taxonomy-term-reference ul.links {
   margin: 0;
 }
@@ -604,10 +609,10 @@ p:empty {
 
 #block-menu-menu-left-menu .menu .menu > li > a {
   background-color: #6ba6e3;
-  background-position: 48px 50%;
+  background-position: 3px 50%;
   background-repeat: no-repeat;
   font-weight: normal;
-  padding: 12px 30px 12px 78px;
+  padding: 12px 20px 12px 31px;
 }
 
 #block-menu-menu-left-menu .menu .menu > .partner > a {
@@ -640,17 +645,15 @@ p:empty {
 
 #block-menu-menu-left-menu .menu .menu .menu > li > a {
   font-size: 11px;
-  padding: 3px 30px 3px 78px;
+  padding: 3px 30px /*3px 48px*/;
 }
 
 #block-menu-menu-left-menu .menu .menu .menu > li > a.active {
-  text-decoration: underline;
+  font-weight: bold;
 }
 
 #block-menu-menu-left-menu .menu .menu .menu > li > a:after {
-  width: 10px;
-  height: 10px;
-  right: 11px;
+	display:none;
 }
 
 #sidebar-left .block-facetapi {
@@ -716,7 +719,7 @@ p:empty {
 }
 
 .target-groups .panel-heading {
-  background: #397bb0 url("../images/nav/avatar.png") no-repeat scroll 12px 50%;
+  background: #397bb0 url(../images/nav/avatar.png) no-repeat 12px 50%;
 }
 
 .activities,
@@ -725,7 +728,7 @@ p:empty {
 }
 
 .activities .panel-heading {
-  background: #2c384c url("../images/nav/frames.png") no-repeat scroll 12px 50%;
+  background: #2c384c url(../images/nav/frames.png) no-repeat 12px 50%;
 }
 
 .country-submission,
@@ -734,7 +737,7 @@ p:empty {
 }
 
 .country-submission .panel-heading {
-  background: #074a8b url("../images/nav/globe.png") no-repeat scroll 12px 50%;
+  background: #074a8b url(../images/nav/globe.png) no-repeat 12px 50%;
 }
 
 .content-type,
@@ -743,7 +746,7 @@ p:empty {
 }
 
 .content-type .panel-heading {
-  background: #087cec url("../images/nav/files.png") no-repeat scroll 12px 50%;
+  background: #087cec url(../images/nav/files.png) no-repeat 12px 50%;
 }
 
 .themes,
@@ -752,7 +755,7 @@ p:empty {
 }
 
 .themes .panel-heading {
-  background: #a9a9a9 url("../images/nav/pc.png") no-repeat scroll 12px 50%;
+  background: #a9a9a9 url(../images/nav/pc.png) no-repeat 12px 50%;
 }
 
 .searching,
@@ -761,7 +764,7 @@ p:empty {
 }
 
 .searching .panel-heading {
-  background: #06162f url("../images/nav/download.png") no-repeat scroll 12px 50%;
+  background: #06162f url(../images/nav/download.png) no-repeat 12px 50%;
 }
 
 .linked-tn .panel-heading,
@@ -769,9 +772,13 @@ p:empty {
   background-color: #087cec;
 }
 
-.country .panel-heading,
+.country,
 .country .panel-body {
   background-color: #074a8b;
+}
+
+.country .panel-heading {
+  background: #074a8b url(../images/nav/globe.png) no-repeat 12px 50%;
 }
 
 .start-date .panel-heading,
@@ -830,7 +837,7 @@ p:empty {
   color: #074a8b;
   font: bold 16px/16px Verdana, Geneva, sans-serif;
   text-transform: uppercase;
-  margin: 0 0 3px;
+  margin: 0 0 9px;
 }
 
 #content-wrapper h3 {
@@ -854,7 +861,7 @@ p:empty {
 #content-wrapper p,
 #content-wrapper li {
   color: #000;
-  font: normal 12px/16px Verdana, Geneva, sans-serif;
+  font: normal 12px/17px Verdana, Geneva, sans-serif;
 }
 
 /* SEARCH BLOCK */
@@ -932,7 +939,11 @@ p:empty {
 
 #content-wrapper table td .field-type-taxonomy-term-reference ul.links li {
   background: #fff;
+  border:1px dotted #d8e4ed;
+  padding:3px 6px;
 }
+
+
 
 #content-wrapper table div {
   padding: 0;
@@ -942,7 +953,7 @@ p:empty {
 
 #content-wrapper table div.field-label-inline,
 #content-wrapper table div.field-type-field-collection {
-  margin: 0 0 6px;
+  margin: 0 0 9px;
 }
 
 /* BLOC STATISTICS */
@@ -1328,7 +1339,7 @@ p:empty {
   background: #f2f8fc;
   margin: 0 12px 0 0;
   padding: 3px;
-  font-size: 10px;
+  font-size: 11px;
 }
 
 .node .field-type-taxonomy-term-reference ul.links li a:link,
@@ -1336,7 +1347,7 @@ p:empty {
 .node .field-type-taxonomy-term-reference ul.links li a:hover,
 .node .field-type-taxonomy-term-reference ul.links li a:active,
 .node .field-type-taxonomy-term-reference ul.links li a:focus {
-  color: #000;
+  color: #0065a2;
 }
 
 /* Teasers */
@@ -1409,26 +1420,23 @@ p:empty {
 }
 
 /*Page forums*/
-.page-forum- #block-views-esf-news-block-1,
-.page-forum- #block-views-esf-events-block-1 {
-  width: 50%;
-  float: left;
-  margin: 0 15px 0 -15px;
-  border-radius: 0;
-}
-
-.page-forum- #block-views-esf-events-block-1 {
+.page-forum .section-wrapper {
   border-left: 1px dashed #0067a3;
 }
 
-.page-forum- #block-system-main .view-esf-news li,
-.page-forum- #block-system-main .view-esf-events li {
+.page-forum .section-wrapper:first-child {
+	border-left:0;
+	margin:0 0 33px;
+}
+
+.page-forum #block-system-main .view-esf-news li,
+.page-forum #block-system-main .view-esf-events li {
   list-style: none;
   padding: 3px 0;
   margin: 0;
 }
 
-.page-forum- #forum {
+.page-forum #forum {
   clear: left;
 }
 
