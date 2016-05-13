@@ -100,16 +100,6 @@
       <div
         class="abstract"><?php print render($content['field_org_experience']); ?></div>
       <table class="standard-table" cellpadding="0" cellspacing="0">
-        <?php if ($content['field_org_is_ma_ib_type']['#items'][0]['value']) : ?>
-          <tr>
-            <th><?php print t('Type of organisation'); ?>
-              :
-            </th>
-            <td><?php print t('MA/IB'); ?>
-            </td>
-          </tr>
-        <?php endif; ?>
-
         <?php if (isset($content['field_org_type_of_organisation'])) : ?>
           <tr>
             <th><?php print render($content['field_org_type_of_organisation']['#title']); ?>
@@ -120,6 +110,16 @@
               <?php else : ?>
                 <?php print render($content['field_org_type_of_organisation']); ?>
               <?php endif; ?>
+            </td>
+          </tr>
+        <?php endif; ?>
+
+        <?php if (isset($content['field_org_is_ma_ib'])) : ?>
+          <tr>
+            <th><?php print render($content['field_org_is_ma_ib']['#title']); ?>
+              :
+            </th>
+            <td><?php print render($content['field_org_is_ma_ib']); ?>
             </td>
           </tr>
         <?php endif; ?>

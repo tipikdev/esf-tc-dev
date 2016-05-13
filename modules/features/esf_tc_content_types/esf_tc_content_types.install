@@ -161,6 +161,7 @@ function esf_tc_content_types_update_7102() {
   $fields = array(
     'field_call_themes',
     'field_call_country',
+    'field_org_is_ma_ib_type',
   );
   foreach ($fields as $field) {
     if (field_info_field($field)) {
