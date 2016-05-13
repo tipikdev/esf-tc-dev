@@ -36,6 +36,7 @@
       </div>
     <?php else: ?>
       <?php print render($content['field_esf_event_start_date']); ?>
+      <?php print render($content['field_esf_linked_tn']); ?>
       <div class="news-wrapper">
         <?php print render($content['field_esf_event_picture']); ?>
         <?php print render($content['body']); ?>
@@ -50,12 +51,9 @@
           <?php print render($content['field_esf_event_external_link']); ?>
         </div>
       <?php endif; ?>
-      <?php print render($content['field_esf_linked_tn']); ?>
       <?php print render($content['links']); ?>
     <?php endif; ?>
   </div>
-
-
 
   <?php print render($content['comments']); ?>
 

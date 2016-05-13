@@ -528,23 +528,23 @@ function esf_tc_content_types_form_esf_tnc_call_for_project_node_form_alter(&$fo
   if ($tid != NULL) {
     $form['field_call_other_countries']['#states'] = array(
       'visible' => array(
-        ':input[name="field_call_country[und]"]' => array('value' => $tid),
+        ':input[name="field_esf_country_ref[und]"]' => array('value' => $tid),
       ),
       'required' => array(
-        ':input[name="field_call_country[und]"]' => array('value' => $tid),
+        ':input[name="field_esf_country_ref[und]"]' => array('value' => $tid),
       ),
     );
   }
 
   // Add callback to display MA per selected country.
-  $form['field_call_country'][LANGUAGE_NONE]['#ajax'] = array(
+  $form['field_esf_country_ref'][LANGUAGE_NONE]['#ajax'] = array(
     'callback' => '_esf_tc_content_types_call_country_callback',
     'event' => 'change',
     'wrapper' => 'org_involved_div',
   );
 
   // Manage field to be replace after callback.
-  $selected_country = isset($form_state['values']['field_call_country']) ? $form_state['values']['field_call_country'][LANGUAGE_NONE][0]['tid'] : $form['field_call_country'][LANGUAGE_NONE]['#default_value'];
+  $selected_country = isset($form_state['values']['field_esf_country_ref']) ? $form_state['values']['field_esf_country_ref'][LANGUAGE_NONE][0]['tid'] : $form['field_esf_country_ref'][LANGUAGE_NONE]['#default_value'];
   $org_default_value = '';
   if (isset($form_state['values']['field_call_org_involved'])) {
     $org_default_value = $form_state['values']['field_call_org_involved'];
