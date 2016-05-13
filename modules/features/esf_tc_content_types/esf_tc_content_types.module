@@ -129,7 +129,7 @@ function _esf_tc_content_types_contact_submit($form, &$form_state) {
     // Reset token value.
     $form_state['values']['profile_contact_profile']['field_token_email'][LANGUAGE_NONE][0]['email'] = '';
 
-    drupal_set_message('Your account has been synchronized with all organisations that were referencing you.');
+    drupal_set_message(t('Your account has been synchronized with all organisations that were referencing you.'));
   }
   profile2_form_submit_handler($form, $form_state);
   $form_state['redirect'] = 'user/' . $contact_uid;
