@@ -20,16 +20,26 @@
   <?php if (isset($variables['parents'][0])): ?>
     <?php print $variables['parents'][0]->description; ?>
   <?php endif; ?>
-  <?php if (isset($news)): ?>
+  <?php if (!empty($news)): ?>
+    <h2 class="section-title">
+      <span
+        class="glyphicon glyphicon-chevron-right"></span><?php print t('News'); ?>
+    </h2>
     <?php print $news; ?>
   <?php endif; ?>
-  <?php if (isset($events)): ?>
+  <?php if (!empty($events)): ?>
+    <h2 class="section-title">
+      <span
+        class="glyphicon glyphicon-chevron-right"></span><?php print t('Events'); ?>
+    </h2>
     <?php print $events; ?>
   <?php endif; ?>
   <div id="forum">
     <?php print $forums; ?>
     <?php if (isset($topics_title)): ?>
-      <h2><span class="glyphicon glyphicon-chevron-right"></span><?php print $topics_title; ?></h2>
+      <h2><span
+          class="glyphicon glyphicon-chevron-right"></span><?php print $topics_title; ?>
+      </h2>
       <ul class="action-links">
         <?php print render($action_links); ?>
       </ul>

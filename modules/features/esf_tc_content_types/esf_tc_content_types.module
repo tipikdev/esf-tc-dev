@@ -871,22 +871,27 @@ function esf_tc_content_types_preprocess_forums(&$variables) {
   // Add custom content to forum page.
   if ($variables['tid'] != 0) {
     $variables['topics_title'] = t('Discussions');
-    $variables['news'] = _esf_tc_render_block('views', 'esf_news-block_1');
-    $variables['events'] = _esf_tc_render_block('views', 'esf_events-block_1');
+    $variables['news'] = _esf_tc_content_types_render_view('esf_news', 'block_1', $variables['tid']);
+    $variables['events'] = _esf_tc_content_types_render_view('esf_events', 'block_1', $variables['tid']);
     $variables['action_links'] = menu_local_actions();
   }
 }
 
 /**
- * Render block.
+ * Render view.
  */
-function _esf_tc_render_block($block_module, $block_name) {
-  $block_load = block_load($block_module, $block_name);
-  $render_blocks = _block_render_blocks(array($block_load));
-  $renderable_block = _block_get_renderable_array($render_blocks);
-  return drupal_render($renderable_block);
+function _esf_tc_content_types_render_view($view_name, $view_display, $param) {
+  $output = '';
+  $view = views_get_view($view_name);
+  $view->set_display($view_display);
+  $view->set_arguments(array($param));
+  $view->pre_execute();
+  $view->execute();
+  if(!empty($view->result)){
+    $output = $view->render();
+  }
+  return $output;
 }
-
 
 /**
  * Implements hook_menu().
