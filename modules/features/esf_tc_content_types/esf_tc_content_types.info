@@ -368,6 +368,7 @@ features[user_permission][] = administer users
 features[user_permission][] = administer workbench access
 features[user_permission][] = assign workbench access
 features[user_permission][] = batch update workbench access
+features[user_permission][] = bypass workbench moderation
 features[user_permission][] = create esf_tnc_call_for_project content
 features[user_permission][] = create esf_tnc_event content
 features[user_permission][] = create esf_tnc_hp_slide content
@@ -609,4 +610,3 @@ features_exclude[field_instance][node-esf_tnc_organisation-field_org_attachments
 features_exclude[field_instance][node-esf_tnc_project-field_project_attachments] = node-esf_tnc_project-field_project_attachments
 multisite_version = 2.1
 project path = sites/all/modules/features
-php = 5.4

@@ -97,6 +97,16 @@ function esf_tc_content_types_user_default_permissions() {
     'module' => 'workbench_access',
   );
 
+  // Exported permission: 'bypass workbench moderation'.
+  $permissions['bypass workbench moderation'] = array(
+    'name' => 'bypass workbench moderation',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'workbench_moderation',
+  );
+
   // Exported permission: 'create esf_tnc_call_for_project content'.
   $permissions['create esf_tnc_call_for_project content'] = array(
     'name' => 'create esf_tnc_call_for_project content',
