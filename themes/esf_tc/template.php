@@ -15,10 +15,10 @@ function esf_tc_preprocess_page(&$variables) {
     $variables['regions']['content'] = render($variables['page']['content']);
   }
 
-  // Add favorites flag inside specific content type.
+  // Add favorites flag inside specific published content.
   if (isset($variables['node'])) {
     $node = $variables['node'];
-    if ($node->type == 'esf_tnc_organisation' || $node->type == 'esf_tnc_call_for_project' || $node->type == 'esf_tnc_project' || $node->type == 'esf_tnc_call_for_project') {
+    if ($node->status && ($node->type == 'esf_tnc_organisation' || $node->type == 'esf_tnc_call_for_project' || $node->type == 'esf_tnc_project' || $node->type == 'esf_tnc_call_for_project')) {
       $variables['flag_favorites'] = flag_create_link('esf_tc_favorites', $node->nid);
     }
   }
