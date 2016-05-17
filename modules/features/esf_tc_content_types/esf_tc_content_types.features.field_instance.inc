@@ -2009,7 +2009,7 @@ function esf_tc_content_types_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_esf_linked_tn',
     'label' => 'Linked TN',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
