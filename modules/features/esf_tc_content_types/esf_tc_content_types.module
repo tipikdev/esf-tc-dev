@@ -697,12 +697,12 @@ function esf_tc_content_types_projects_database_submit(&$form, &$form_state) {
 
   $field_esf_editorial_status = _esf_tc_content_types_get_editorial_status_field_name();
   if (isset($form_state['clicked_button']['#value'])) {
-    $action = strtolower($form_state['clicked_button']['#value']);
+    $action = drupal_strtolower($form_state['clicked_button']['#value']);
   }
 
   if ($action && $action != 'draft') {
     // Force publish drupal status.
-    $form_state['status'] = 1;
+    $form_state['status'] = $form_state['values']['status'] = 1;
     // Force Editorial status.
     $new_status = (isset($arr_status[$action])) ? $arr_status[$action] : NULL;
     if ($new_status) {
@@ -724,7 +724,9 @@ function esf_tc_content_types_projects_database_submit(&$form, &$form_state) {
         $key_prefix = $content_type . '_notification_' . $new_status;
 
         foreach ($emails as $email) {
-          drupal_mail('esf_tc_content_types', $key_prefix, $email, language_default(), $options);
+          if (valid_email_address($email)) {
+            drupal_mail('esf_tc_content_types', $key_prefix, $email, language_default(), $options);
+          }
         }
         unset($email);
       }
@@ -886,7 +888,6 @@ function _esf_tc_render_block($block_module, $block_name) {
   $renderable_block = _block_get_renderable_array($render_blocks);
   return drupal_render($renderable_block);
 }
-
 
 /**
  * Implements hook_menu().
@@ -1320,7 +1321,7 @@ function _esf_tc_content_types_get_associated_email($node, $with_ma = FALSE) {
       if ($has_account == 'no') {
         $field_value = field_get_items('node', $node, 'field_org_contact_legal_email');
         if (is_array($field_value) && isset(reset($field_value)['value'])) {
-          $emails = $field_value;
+          $emails[] = reset($field_value)['value'];
         }
       }
       elseif ($has_account == 'yes') {
@@ -1418,7 +1419,9 @@ function esf_tc_content_types_node_delete($node) {
       $key_prefix = $node->type . '_notification_' . $new_status;
 
       foreach ($emails as $email) {
-        drupal_mail('esf_tc_content_types', $key_prefix, $email, language_default(), $options);
+        if (valid_email_address($email)) {
+          drupal_mail('esf_tc_content_types', $key_prefix, $email, language_default(), $options);
+        }
       }
       unset($email);
     }
