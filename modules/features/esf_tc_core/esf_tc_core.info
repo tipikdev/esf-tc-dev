@@ -2,7 +2,6 @@ name = [ESF] TC Core
 description = Feature to initiate ESF TC core
 core = 7.x
 package = ESF
-version = 7.x-1.1
 project = esf_tc_core
 dependencies[] = block
 dependencies[] = cce_basic_config
