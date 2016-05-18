@@ -1513,31 +1513,31 @@ function esf_tc_content_types_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_org_is_ma_ib_type'.
-  $field_bases['field_org_is_ma_ib_type'] = array(
+  // Exported field_base: 'field_org_is_ma_ib'.
+  $field_bases['field_org_is_ma_ib'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_org_is_ma_ib_type',
+    'field_name' => 'field_org_is_ma_ib',
     'indexes' => array(
       'value' => array(
         0 => 'value',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        0 => 'Is not MA/IB type',
-        1 => 'Is MA/IB type',
+        0 => 'No',
+        1 => 'Yes',
       ),
       'allowed_values_function' => '',
       'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
     'translatable' => 0,
-    'type' => 'list_boolean',
+    'type' => 'list_text',
   );
 
   // Exported field_base: 'field_org_links'.
