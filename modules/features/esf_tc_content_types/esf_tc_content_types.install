@@ -154,7 +154,6 @@ function esf_tc_content_types_update_7101() {
 }
 
 /**
- * Implements hook_update_N().
  */
 function esf_tc_content_types_update_7102() {
   // Delete unused fields.
@@ -162,6 +161,7 @@ function esf_tc_content_types_update_7102() {
     'field_call_themes',
     'field_call_country',
     'field_org_is_ma_ib_type',
+    'field_editorial_status',
   );
   foreach ($fields as $field) {
     if (field_info_field($field)) {

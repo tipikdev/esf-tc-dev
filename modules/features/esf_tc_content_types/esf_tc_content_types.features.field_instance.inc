@@ -7899,45 +7899,6 @@ If an organisation is not found, please save your work as draft and check that t
     ),
   );
 
-  // Exported field_instance: 'profile2-contact_profile-field_editorial_status'.
-  $field_instances['profile2-contact_profile-field_editorial_status'] = array(
-    'bundle' => 'contact_profile',
-    'default_value' => array(
-      0 => array(
-        'value' => 'published',
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'inline',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 10,
-      ),
-    ),
-    'entity_type' => 'profile2',
-    'field_name' => 'field_editorial_status',
-    'label' => 'Editorial status',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'apply_chosen' => '',
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-      ),
-      'type' => 'options_select',
-      'weight' => 9,
-    ),
-  );
-
   // Exported field_instance:
   // 'profile2-contact_profile-field_profile_cont_email_private'.
   $field_instances['profile2-contact_profile-field_profile_cont_email_private'] = array(
