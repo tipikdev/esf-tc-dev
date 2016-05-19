@@ -79,7 +79,7 @@ function esf_tc_advanced_search_apachesolr_search_default_searchers() {
   $searcher->page_id = 'partners_search';
   $searcher->label = 'Partners search';
   $searcher->description = '';
-  $searcher->search_path = 'search/partners-search';
+  $searcher->search_path = 'partners-search';
   $searcher->page_title = 'Partners Search';
   $searcher->env_id = 'solr';
   $searcher->settings = array(

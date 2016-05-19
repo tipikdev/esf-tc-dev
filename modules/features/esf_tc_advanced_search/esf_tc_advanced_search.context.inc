@@ -19,7 +19,7 @@ function esf_tc_advanced_search_context_default_contexts() {
   $context->conditions = array(
     'path' => array(
       'values' => array(
-        'search/partners-search*' => 'search/partners-search*',
+        'partners-search*' => 'partners-search*',
       ),
     ),
   );
