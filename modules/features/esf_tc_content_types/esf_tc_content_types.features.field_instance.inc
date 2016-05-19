@@ -723,7 +723,7 @@ function esf_tc_content_types_field_default_field_instances() {
     'label' => 'Attachments',
     'required' => 0,
     'settings' => array(
-      'description_field' => 0,
+      'description_field' => 1,
       'entity_translation_sync' => FALSE,
       'file_directory' => 'calls/attachments',
       'file_extensions' => 'jpg jpeg gif png txt pdf xls xlsx doc docx odt ods odp ppt pptx zip tar',
@@ -1554,7 +1554,7 @@ function esf_tc_content_types_field_default_field_instances() {
     'label' => 'Attached document',
     'required' => 0,
     'settings' => array(
-      'description_field' => 0,
+      'description_field' => 1,
       'entity_translation_sync' => FALSE,
       'file_directory' => 'events/attachments',
       'file_extensions' => 'jpg jpeg gif png txt pdf xls xlsx doc docx odt ods odp ppt pptx zip tar',
@@ -2009,7 +2009,7 @@ function esf_tc_content_types_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_esf_linked_tn',
     'label' => 'Linked TN',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -2264,7 +2264,7 @@ function esf_tc_content_types_field_default_field_instances() {
     'label' => 'Attached document',
     'required' => 0,
     'settings' => array(
-      'description_field' => 0,
+      'description_field' => 1,
       'entity_translation_sync' => FALSE,
       'file_directory' => 'news/attachments',
       'file_extensions' => 'jpg jpeg gif png txt pdf xls xlsx doc docx odt ods odp ppt pptx zip tar',
@@ -4255,7 +4255,7 @@ function esf_tc_content_types_field_default_field_instances() {
     'label' => 'Attachments',
     'required' => 0,
     'settings' => array(
-      'description_field' => 0,
+      'description_field' => 1,
       'entity_translation_sync' => FALSE,
       'file_directory' => 'organisations/attachments',
       'file_extensions' => 'jpg jpeg gif png txt pdf xls xlsx doc docx odt ods odp ppt pptx zip tar',
@@ -4693,7 +4693,7 @@ function esf_tc_content_types_field_default_field_instances() {
     'label' => 'Attachments',
     'required' => 0,
     'settings' => array(
-      'description_field' => 0,
+      'description_field' => 1,
       'entity_translation_sync' => FALSE,
       'file_directory' => 'projects/attachments',
       'file_extensions' => 'jpg jpeg gif png txt pdf xls xlsx doc docx odt ods odp ppt pptx zip tar',
@@ -7528,7 +7528,7 @@ If an organisation is not found, please save your work as draft and check that t
     'label' => 'Signed agreement',
     'required' => 0,
     'settings' => array(
-      'description_field' => 0,
+      'description_field' => 1,
       'entity_translation_sync' => FALSE,
       'file_directory' => 'tca/attachments',
       'file_extensions' => 'jpg jpeg gif png txt pdf xls xlsx doc docx odt ods odp ppt pptx zip tar',

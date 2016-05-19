@@ -78,7 +78,6 @@ function esf_tc_content_state_notification_form($form, &$form_state, $content_ty
  * Helper - Define default notification text.
  */
 function _esf_tc_content_types_mail_text($key, $variables = array(), $language = LANGUAGE_NONE) {
-
   $_states = _esf_tc_content_type_get_notification_states();
   // Check if message is customized.
   if ($predef_setting = variable_get($key, FALSE)) {
@@ -91,21 +90,21 @@ function _esf_tc_content_types_mail_text($key, $variables = array(), $language =
         case 'editorial_status':
           if (isset($variables['content_type']) && isset($variables['action'])) {
             $input_type = explode('_', $key);
+            $info = node_type_get_type($variables['content_type']);
+            $content_type = is_object($info) && isset($info->name) ? drupal_strtolower($info->name) : $variables['content_type'];
             if (is_array($input_type) && count($input_type)) {
               $input_type = end($input_type);
-              $action = strtolower($_states[$variables['action']] ? $_states[$variables['action']] : $variables['action']);
+              $action = drupal_strtolower($_states[$variables['action']] ? $_states[$variables['action']] : $variables['action']);
               switch ($input_type) {
                 case 'subject':
-
                   return t('The @ctype has been @action', array(
-                    '@ctype' => $variables['content_type'],
+                    '@ctype' => $content_type,
                     '@action' => $action,
                   ));
 
                 case 'body':
-
                   $body = t('The @ctype [node:title] has been @action by [user:name]', array(
-                    '@ctype' => $variables['content_type'],
+                    '@ctype' => $content_type,
                     '@action' => $action,
                   ));
                   if ($variables['action'] != 'deleted') {
@@ -145,7 +144,7 @@ function esf_tc_content_types_mail($key, &$message, $params) {
       'node' => $params['node'],
       'user' => $user,
     );
-    $message['subject'] = token_replace(_esf_tc_content_types_mail_text($key . '_subject'), $tokens);
-    $message['body'][] = token_replace(_esf_tc_content_types_mail_text($key . '_body'), $tokens);
+    $message['subject'] = token_replace(_esf_tc_content_types_mail_text($key . '_subject', $params), $tokens);
+    $message['body'][] = token_replace(_esf_tc_content_types_mail_text($key . '_body', $params), $tokens);
   }
 }

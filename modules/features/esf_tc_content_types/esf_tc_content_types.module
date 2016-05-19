@@ -679,12 +679,12 @@ function esf_tc_content_types_projects_database_submit(&$form, &$form_state) {
 
   $field_esf_editorial_status = _esf_tc_content_types_get_editorial_status_field_name();
   if (isset($form_state['clicked_button']['#value'])) {
-    $action = strtolower($form_state['clicked_button']['#value']);
+    $action = drupal_strtolower($form_state['clicked_button']['#value']);
   }
 
   if ($action && $action != 'draft') {
     // Force publish drupal status.
-    $form_state['status'] = 1;
+    $form_state['status'] = $form_state['values']['status'] = 1;
     // Force Editorial status.
     $new_status = (isset($arr_status[$action])) ? $arr_status[$action] : NULL;
     if ($new_status) {
@@ -706,7 +706,9 @@ function esf_tc_content_types_projects_database_submit(&$form, &$form_state) {
         $key_prefix = $content_type . '_notification_' . $new_status;
 
         foreach ($emails as $email) {
-          drupal_mail('esf_tc_content_types', $key_prefix, $email, language_default(), $options);
+          if (valid_email_address($email)) {
+            drupal_mail('esf_tc_content_types', $key_prefix, $email, language_default(), $options);
+          }
         }
         unset($email);
       }
@@ -788,6 +790,10 @@ function esf_tc_content_types_node_access_records($node) {
     );
     // Define realm projectdb User.
     $uids = array_unique($uids);
+    // Grant edit to author if not included.
+    if (!in_array($node->uid, $uids)) {
+      $uids[] = $node->uid;
+    }
     if (is_array($uids) && count($uids)) {
       $grants_template['realm'] = 'projectdb';
       foreach ($uids as $uid) {
@@ -806,6 +812,17 @@ function esf_tc_content_types_node_access_records($node) {
       }
       unset($uid);
     }
+    // View published content by anonymous.
+    if ($node->status) {
+      $grants[] = array(
+        'realm' => 'projectdb_published',
+        'gid' => 1,
+        'grant_view' => 1,
+        'grant_update' => 0,
+        'grant_delete' => 0,
+        'priority' => 0,
+      );
+    }
   }
   return $grants;
 }
@@ -814,8 +831,8 @@ function esf_tc_content_types_node_access_records($node) {
  * Implements hook_node_grants().
  */
 function esf_tc_content_types_node_grants($account, $op) {
+  $grants = array();
   if ($account->uid) {
-    $grants = array();
     if ($op == 'view') {
       // Check permission access to forum section.
       $wb_user_access_tree = workbench_access_get_user_tree($account);
@@ -825,16 +842,15 @@ function esf_tc_content_types_node_grants($account, $op) {
         }
       }
     }
-
     $grants['projectdb'][] = $account->uid;
     // Related organisations.
     $org = _esf_tc_content_type_get_organisation($account->uid);
     if (is_array($org) && count($org)) {
       $grants['projectdb_organisation'] = $org;
     }
-
-    return $grants;
   }
+  $grants['projectdb_published'][] = intval(user_access('access content'));
+  return $grants;
 }
 
 /**
@@ -1307,7 +1323,7 @@ function _esf_tc_content_types_get_associated_email($node, $with_ma = FALSE) {
       if ($has_account == 'no') {
         $field_value = field_get_items('node', $node, 'field_org_contact_legal_email');
         if (is_array($field_value) && isset(reset($field_value)['value'])) {
-          $emails = $field_value;
+          $emails[] = reset($field_value)['value'];
         }
       }
       elseif ($has_account == 'yes') {
@@ -1405,7 +1421,9 @@ function esf_tc_content_types_node_delete($node) {
       $key_prefix = $node->type . '_notification_' . $new_status;
 
       foreach ($emails as $email) {
-        drupal_mail('esf_tc_content_types', $key_prefix, $email, language_default(), $options);
+        if (valid_email_address($email)) {
+          drupal_mail('esf_tc_content_types', $key_prefix, $email, language_default(), $options);
+        }
       }
       unset($email);
     }
