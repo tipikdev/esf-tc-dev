@@ -498,25 +498,12 @@ function esf_tc_content_types_project_validate($form, &$form_state) {
  * Alter call for call of project node form.
  */
 function esf_tc_content_types_form_esf_tnc_call_for_project_node_form_alter(&$form, &$form_state) {
-  // Add custom validate function.
+  // Add custom after build and validate function.
+  $form['#after_build'][] = '_esf_tc_content_types_call_for_project_after_build';
   $form['#validate'][] = 'esf_tc_content_types_projects_database_draft_validate';
-  $form['#validate'][] = 'esf_tc_content_types_call_for_project_validate';
 
   // Hide body field.
   $form['body']['#access'] = FALSE;
-
-  // Other countries field states.
-  $tid = _esf_tc_content_types_get_term_id_by_vocabulary('Other', 'esf_countries_regions');
-  if ($tid != NULL) {
-    $form['field_call_other_countries']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_esf_country_ref[und]"]' => array('value' => $tid),
-      ),
-      'required' => array(
-        ':input[name="field_esf_country_ref[und]"]' => array('value' => $tid),
-      ),
-    );
-  }
 
   // Add callback to display MA per selected country.
   $form['field_esf_country_ref'][LANGUAGE_NONE]['#ajax'] = array(
@@ -548,6 +535,18 @@ function _esf_tc_content_types_call_country_callback($form, $form_state) {
 }
 
 /**
+ * Custom after build function for call for project.
+ */
+function _esf_tc_content_types_call_for_project_after_build($form, &$form_state) {
+  // Remove Other option form country list.
+  $other_country_term_tid = _esf_tc_content_types_get_term_id_by_vocabulary('Other', 'esf_countries_regions');
+  if ($other_country_term_tid) {
+    unset($form['field_esf_country_ref'][LANGUAGE_NONE][0][$other_country_term_tid]);
+  }
+  return $form;
+}
+
+/**
  * Return all organisations per country as list options.
  */
 function _esf_tc_content_types_get_organisations_by_country_options($country_tid) {
@@ -568,20 +567,6 @@ function _esf_tc_content_types_get_organisations_by_country_options($country_tid
   }
 
   return $options;
-}
-
-/**
- * Call for project custom validation.
- */
-function esf_tc_content_types_call_for_project_validate($form, &$form_state) {
-  if (!empty($form_state['values']['field_esf_country_ref'][LANGUAGE_NONE])) {
-    $tid = _esf_tc_content_types_get_term_id_by_vocabulary('Other', 'esf_countries_regions');
-    if ($tid != NULL) {
-      if ($form_state['values']['field_esf_country_ref'][LANGUAGE_NONE][0]['tid'] == $tid && empty($form_state['values']['field_call_other_countries'][LANGUAGE_NONE][0]['value'])) {
-        form_set_error('field_call_other_countries', t('!name field is required.', array('!name' => $form['field_call_other_countries'][LANGUAGE_NONE]['#title'])));
-      }
-    }
-  }
 }
 
 /**

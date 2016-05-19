@@ -160,6 +160,7 @@ function esf_tc_content_types_update_7102() {
   $fields = array(
     'field_call_themes',
     'field_call_country',
+    'field_call_other_countries',
     'field_org_is_ma_ib_type',
     'field_editorial_status',
   );
