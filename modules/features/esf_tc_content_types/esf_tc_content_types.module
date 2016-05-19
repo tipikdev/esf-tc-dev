@@ -1414,3 +1414,13 @@ function esf_tc_content_types_node_delete($node) {
     }
   }
 }
+
+/**
+ * Implements hook_form_FORMID_alter().
+ *
+ * Alter WB Access editor form.
+ */
+function esf_tc_content_types_form_workbench_access_editor_form_alter(&$form, &$form_state) {
+  // Add description to better select a user.
+  $form['add_user']['#description'] = t('Type first letters of a username.');
+}
