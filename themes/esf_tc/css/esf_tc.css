@@ -1060,6 +1060,10 @@ p:empty {
   float: left;
 }
 
+#block-apachesolr-search-sort .panel-heading {
+  display: none;
+}
+
 /* HOME */
 #block-esf-tc-advanced-search-partners-search-block + div {
   border-bottom: 1px dashed #0067a3;

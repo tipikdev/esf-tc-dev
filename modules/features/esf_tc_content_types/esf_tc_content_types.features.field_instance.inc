@@ -7871,10 +7871,9 @@ If an organisation is not found, please save your work as draft and check that t
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 12,
+        'type' => 'hidden',
+        'weight' => 2,
       ),
       'full' => array(
         'label' => 'above',

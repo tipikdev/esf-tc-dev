@@ -58,6 +58,24 @@ function esf_tc_content_types_user_default_permissions() {
     'module' => 'user',
   );
 
+  // Exported permission: 'administer profile types'.
+  $permissions['administer profile types'] = array(
+    'name' => 'administer profile types',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'profile2',
+  );
+
+  // Exported permission: 'administer profiles'.
+  $permissions['administer profiles'] = array(
+    'name' => 'administer profiles',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'profile2',
+  );
+
   // Exported permission: 'administer users'.
   $permissions['administer users'] = array(
     'name' => 'administer users',
@@ -338,6 +356,16 @@ function esf_tc_content_types_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'edit any contact_profile profile'.
+  $permissions['edit any contact_profile profile'] = array(
+    'name' => 'edit any contact_profile profile',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
+    'module' => 'profile2',
+  );
+
   // Exported permission: 'edit any esf_tnc_call_for_project content'.
   $permissions['edit any esf_tnc_call_for_project content'] = array(
     'name' => 'edit any esf_tnc_call_for_project content',
@@ -423,6 +451,17 @@ function esf_tc_content_types_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'comment',
+  );
+
+  // Exported permission: 'edit own contact_profile profile'.
+  $permissions['edit own contact_profile profile'] = array(
+    'name' => 'edit own contact_profile profile',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+      'contact' => 'contact',
+    ),
+    'module' => 'profile2',
   );
 
   // Exported permission: 'edit own esf_tnc_call_for_project content'.
@@ -528,6 +567,25 @@ function esf_tc_content_types_user_default_permissions() {
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'flag',
+  );
+
+  // Exported permission: 'view any contact_profile profile'.
+  $permissions['view any contact_profile profile'] = array(
+    'name' => 'view any contact_profile profile',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'profile2',
+  );
+
+  // Exported permission: 'view own contact_profile profile'.
+  $permissions['view own contact_profile profile'] = array(
+    'name' => 'view own contact_profile profile',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'profile2',
   );
 
   // Exported permission: 'view workbench access information'.
