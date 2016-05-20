@@ -57,15 +57,20 @@
   <div class="content panel-body"<?php print $content_attributes; ?>>
     <?php if (is_array($content) && count($content)): ?>
       <?php foreach ($content as $item): ?>
-
-        <div class="count">
-          <div class="tr">
-            <h3 class="td"><?php print $item['title']; ?></h3>
+        <?php if ($item['count'] && $item['link']): ?>
+        <a href="<?php print $item['link']?>">
+        <?php endif; ?>
+          <div class="count">
+            <div class="tr">
+              <h3 class="td"><?php print $item['title']; ?></h3>
+            </div>
+            <div class="tr">
+              <p class="td"><?php print $item['count']; ?></p>
+            </div>
           </div>
-          <div class="tr">
-            <p class="td"><?php print $item['count']; ?></p>
-          </div>
-        </div>
+        <?php if ($item['count'] && $item['link']): ?>
+        </a>
+        <?php endif; ?>
         <?php
       endforeach;
       unset($item);
