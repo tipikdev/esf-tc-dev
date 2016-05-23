@@ -668,8 +668,7 @@ function esf_tc_content_types_projects_database_submit(&$form, &$form_state) {
   if (isset($form_state['clicked_button']['#value'])) {
     $action = drupal_strtolower($form_state['clicked_button']['#value']);
   }
-
-  if ($action && $action != 'draft') {
+  if ($action && ($action != 'save as draft')) {
     // Force publish drupal status.
     $form_state['status'] = $form_state['values']['status'] = 1;
     // Force Editorial status.
