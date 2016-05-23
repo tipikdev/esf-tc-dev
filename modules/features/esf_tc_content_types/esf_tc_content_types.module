@@ -149,7 +149,7 @@ function esf_tc_content_types_form_alter(&$form, &$form_state, $form_id) {
   );
 
   // Avoid checking on ajax refresh.
-  if (isset($form[$editorial_field_name]) && (!isset($form_state['input']['ajax_html_ids']))) {
+  if (isset($form[$editorial_field_name])) {
     // Add Submit method.
     $form['#submit'][] = 'esf_tc_content_types_projects_database_submit';
     // Hide Select list.
@@ -159,7 +159,9 @@ function esf_tc_content_types_form_alter(&$form, &$form_state, $form_id) {
     $weight = $form['actions']['submit']['#weight'] + 1;
 
     // Alert if status is not published.
-    _esf_tc_content_type_display_message($form['#node'], $state);
+    if ((!isset($form_state['input']['ajax_html_ids']))) {
+      _esf_tc_content_type_display_message($form['#node'], $state);
+    }
 
     $form['actions']['submit']['#access'] = _esf_tc_content_types_button_access('submit', $form['type']['#value'], $form['#node'], $state);
 
