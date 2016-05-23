@@ -100,6 +100,9 @@
     <div
       class="abstract"><?php print render($content['field_project_idea_summary']); ?></div>
     <table class="standard-table" cellpadding="0" cellspacing="0">
+      <tr>
+        <th colspan="2"><strong>TPI-<?php print $node->nid; ?></strong></th>
+      </tr>
       <?php if (isset($content['field_esf_country_ref'])) : ?>
         <tr>
           <th><?php print render($content['field_esf_country_ref']['#title']); ?></th>
@@ -314,6 +317,7 @@
       <div
         class="abstract"><?php print render($content['field_project_idea_summary']); ?></div>
       <table class="standard-table" cellpadding="0" cellspacing="0">
+        <th colspan="2"><strong>TPI-<?php print $node->nid; ?></strong></th>
         <?php if (isset($content['field_esf_country_ref'])) : ?>
           <tr>
             <th><?php print render($content['field_esf_country_ref']['#title']); ?></th>
