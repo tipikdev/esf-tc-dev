@@ -8,6 +8,16 @@
  * Implements template_preprocess_page().
  */
 function esf_tc_preprocess_page(&$variables) {
+  // Change sidebar left grid size.
+
+  $regions = array(
+    'sidebar_left' => (isset($variables['page']['sidebar_left']) ? render($variables['page']['sidebar_left']) : ''),
+    'sidebar_right' => (isset($variables['page']['sidebar_right']) ? render($variables['page']['sidebar_right']) : ''),
+  );
+
+  $variables['cols']['sidebar_left']['md'] = (!empty($regions['sidebar_left']) ? 3 : 0);
+  $variables['cols']['content_main']['md'] = ($variables['cols']['sidebar_right']['md'] == 4 ? 8 : 12 - $variables['cols']['sidebar_left']['md']);
+
   if (drupal_is_front_page()) {
     // Remove system_main content.
     unset($variables['page']['content']['system_main']['default_message']);
@@ -164,7 +174,6 @@ function esf_tc_theme($existing, $type, $theme, $path) {
 function esf_tc_apachesolr_sort_list($variables) {
   return theme('bootstrap_btn_dropdown', $variables);
 }
-
 
 /**
  * Implements theme_menu_link().
