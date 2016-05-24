@@ -179,14 +179,14 @@ function esf_tc_content_types_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'menu-left-menu_esf-transnational-cooperation:<front>',
   );
-  // Exported menu link: menu-left-menu_partner-database:search/partners-search.
-  $menu_links['menu-left-menu_partner-database:search/partners-search'] = array(
+  // Exported menu link: menu-left-menu_partner-database:partners-search.
+  $menu_links['menu-left-menu_partner-database:partners-search'] = array(
     'menu_name' => 'menu-left-menu',
-    'link_path' => 'search/partners-search',
-    'router_path' => 'search/partners-search',
+    'link_path' => 'partners-search',
+    'router_path' => 'partners-search',
     'link_title' => 'Partner database',
     'options' => array(
-      'identifier' => 'menu-left-menu_partner-database:search/partners-search',
+      'identifier' => 'menu-left-menu_partner-database:partners-search',
       'attributes' => array(
         'data-display-title' => 1,
         'data-hide-children' => 0,
