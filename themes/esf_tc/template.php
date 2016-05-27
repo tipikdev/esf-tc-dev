@@ -38,13 +38,21 @@ function esf_tc_preprocess_page(&$variables) {
  * Implements template_preprocess_node().
  */
 function esf_tc_preprocess_node(&$variables) {
+  $resend = array(
+    'role' => 'legal contact',
+    'nid' => $variables['nid'],
+  );
+
   if ($variables['type'] == 'esf_tnc_organisation') {
     if (isset($variables['field_org_contact_account'][0])) {
       // Manage legal contact data.
       if ($variables['field_org_contact_account'][0]['value'] == 'yes') {
+        $resend['type'] = 'ecas';
         if (!empty($variables['field_org_contact'][0])) {
           $legal_contact = user_load($variables['field_org_contact'][0]['target_id']);
           $variables['contact_name'] = $legal_contact->field_firstname[LANGUAGE_NONE][0]['value'] . ' ' . $legal_contact->field_lastname[LANGUAGE_NONE][0]['value'];
+          $resend['name'] = format_username($legal_contact);
+          $resend['email'] = $legal_contact->mail;
           $contact_profile = profile2_load_by_user($legal_contact, 'contact_profile');
           if (isset($contact_profile)) {
             if ($contact_profile->field_profile_cont_email_private[LANGUAGE_NONE][0]['value'] == 'no') {
@@ -54,18 +62,35 @@ function esf_tc_preprocess_node(&$variables) {
         }
       }
       else {
+        $resend['type'] = 'simple';
         if ($variables['field_org_contact_account'][0]['value'] == 'no') {
           if (!empty($variables['field_org_contact_legal_name'][0]['value'])) {
             $variables['contact_name'] = $variables['field_org_contact_legal_name'][0]['value'];
+            $resend['name'] = $variables['contact_name'];
           }
           if (!empty($variables['field_org_contact_legal_email'][0]['value'])) {
             $variables['contact_email'] = $variables['field_org_contact_legal_email'][0]['value'];
+            $resend['email'] = $variables['contact_email'];
           }
         }
       }
     }
     if (!empty($variables['field_org_contact_legal_role'][0]['value'])) {
       $variables['contact_role'] = $variables['field_org_contact_legal_role'][0]['value'];
+    }
+    // Add link to notify contact again.
+    // Check if array is fully filled.
+    if (count($resend) == 5 && node_access('update', $variables['node'])) {
+      $variables['contact_notify_link'] = l(t('Send invitation again'), drupal_encode_path(format_string('esf/notify/contact/@type/@nid/@name/@role/@email',
+        array(
+          '@type' => $variables['type'],
+          '@nid' => $variables['nid'],
+          '@name' => $variables['name'],
+          '@role' => $variables['role'],
+          '@email' => $variables['email'],
+        ))),
+        array('query' => array('destination' => current_path()))
+      );
     }
   }
 

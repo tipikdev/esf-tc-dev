@@ -27,6 +27,12 @@ function esf_tc_content_state_notification_form($form, &$form_state, $content_ty
   // Add notification on editorial status contents.
   if (array_key_exists($content_type, $_content_types)) {
 
+    $_title = 'Status';
+    $form['contenttype_status'] = array(
+      '#type' => 'markup',
+      '#markup' => '<h2>' . $_title . '</h2>',
+    );
+
     $options = array(
       'type' => 'editorial_status',
       'content_type' => $content_type,
@@ -71,6 +77,62 @@ function esf_tc_content_state_notification_form($form, &$form_state, $content_ty
     }
     unset($state);
   }
+  // Specific menu.
+  switch ($content_type) {
+    case 'organisation':
+    case 'project':
+      $_title = 'Contact';
+      $form['contenttype_contact'] = array(
+        '#type' => 'markup',
+        '#markup' => '<h2>' . $_title . '</h2>',
+      );
+      // Contact notification.
+      $form['notifycontact'] = array(
+        '#type' => 'vertical_tabs',
+      );
+
+      $keys = array(
+        'contact_ecas' => 'ECAS account',
+        'contact_simple' => 'Without ECAS account',
+      );
+
+      $options['type'] = 'contact';
+
+      foreach ($keys as $key => $value) {
+        $key_prefix = $_content_types[$content_type] . '_notification_' . $key;
+        $form[$key] = array(
+          '#type' => 'fieldset',
+          '#title' => $value,
+          '#collapsible' => TRUE,
+          '#descriptions' => t('Block status'),
+          '#group' => 'notifycontact',
+        );
+        $form[$key][$key_prefix . '_subject'] = array(
+          '#type' => 'textfield',
+          '#title' => t('Subject'),
+          '#required' => 'true',
+          '#group' => 'notifyform',
+          '#default_value' => _esf_tc_content_types_mail_text($key_prefix . '_subject', $options),
+        );
+        $form[$key][$key_prefix . '_body'] = array(
+          '#type' => 'textarea',
+          '#title' => t('Body'),
+          '#required' => 'true',
+          '#group' => 'notifyform',
+          '#default_value' => _esf_tc_content_types_mail_text($key_prefix . '_body', $options),
+        );
+        $form[$key][$key_prefix . '_token'] = array(
+          '#theme' => 'token_tree_link',
+          '#token_types' => array('node', 'user', 'site', 'contact'),
+          '#global_types' => FALSE,
+          '#click_insert' => FALSE,
+          '#group' => 'notifyform',
+        );
+      }
+      unset($key);
+      break;
+  }
+
   return system_settings_form($form);
 }
 
@@ -115,6 +177,39 @@ function _esf_tc_content_types_mail_text($key, $variables = array(), $language =
             }
           }
           break;
+
+        case 'contact':
+          $keys = explode('_', $key);
+          if (is_array($keys) && count($keys)) {
+            $input_type = array_pop($keys);
+            $type = array_pop($keys);
+
+            switch ($input_type) {
+              case 'subject':
+                return t('[ESF Transnationality] – Invitation to EU ESF transnationality cooperation platform on [node:content-type] "[node:title]"');
+
+              case 'body':
+
+                $body = 'Dear [contact:name],' . PHP_EOL . PHP_EOL .
+                        'On the ESF Transnationality Cooperation platform of the European Commission, [user:field-firstname] [user:field-lastname] invites you with an active contributing role as [contact:role] of [node:title] on [node:url].' . PHP_EOL . PHP_EOL;
+
+                if ($type == 'simple') {
+                  $body .= 'Please validate your invitation by clicking on the following link (or please make to copy all the elements of that link and paste it in your Internet browser).' . PHP_EOL .
+                    'You will be asked to connect using your ECAS account, the login system to the websites of the European institutions.' . PHP_EOL .
+                    'Invitation link:' . PHP_EOL .
+                    '[site:url]/my-tnc' . PHP_EOL . PHP_EOL .
+                    'Token email:' . PHP_EOL .
+                    '[contact:email]' . PHP_EOL . PHP_EOL .
+                    'In case you don’t have a user ECAS account yet, please create one first on https://ecas.ec.europa.eu/cas/eim/external/register.cgi, and then, come back to the present email and click on the above invitation link.' . PHP_EOL . PHP_EOL .
+                    'If you need any further information, you may find more details on the Partner search tool and the Transnationality cooperation activities of the European Social Fund on the European Commission website at http://ec.europa.eu/esf/main.jsp?catId=56&langId=en.';
+                }
+
+                $body .= PHP_EOL . PHP_EOL . 'Welcome to the Transnationality Cooperation platform of the ESF!';
+                return $body;
+
+            }
+          }
+          break;
       }
     }
   }
@@ -139,11 +234,14 @@ function _esf_tc_content_type_get_notification_states() {
  */
 function esf_tc_content_types_mail($key, &$message, $params) {
   global $user;
-  if ($params['type'] == 'editorial_status') {
+  if ($params['type'] == 'editorial_status' || $params['type'] == 'contact') {
     $tokens = array(
       'node' => $params['node'],
       'user' => $user,
     );
+    if (isset($params['contact'])) {
+      $tokens['contact'] = $params['contact'];
+    }
     $message['subject'] = token_replace(_esf_tc_content_types_mail_text($key . '_subject', $params), $tokens);
     $message['body'][] = token_replace(_esf_tc_content_types_mail_text($key . '_body', $params), $tokens);
   }

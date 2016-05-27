@@ -7,6 +7,7 @@
 include_once 'esf_tc_content_types.features.inc';
 include_once 'esf_tc_content_types.theme.inc';
 include_once 'esf_tc_content_types.block.inc';
+include_once 'esf_tc_content_types.tokens.inc';
 include_once 'esf_tc_content_types.notification.inc';
 
 /**
@@ -41,6 +42,8 @@ function esf_tc_content_types_permission() {
 function esf_tc_content_types_node_presave($node) {
   global $user;
 
+  $content_types = _esf_tc_content_types_get_project_database_types();
+
   if ($node->type == 'forum' && $node->is_new) {
     // Notify forum moderator on new content.
     $forum_term = taxonomy_term_load($node->taxonomy_forums[LANGUAGE_NONE][0]['tid']);
@@ -48,6 +51,253 @@ function esf_tc_content_types_node_presave($node) {
     if (!empty($emails)) {
       rules_invoke_component('esf_tc_content_types_notify_forum_moderator_on_new_post', $user, $emails, $forum_term, $node);
     }
+  }
+
+  // Projects databases notifications.
+  if (in_array($node->type, $content_types)) {
+    $fieldname = _esf_tc_content_types_get_editorial_status_field_name();
+
+    // Status.
+    $field = field_get_items('node', $node, $fieldname);
+    if (is_array($field) && reset($field)['value']) {
+      $status = reset($field)['value'];
+    }
+    // Old status.
+    $old_status = "";
+    if (isset($node->original)) {
+      $field = field_get_items('node', $node->original, $fieldname);
+      if (is_array($field) && reset($field)['value']) {
+        $old_status = reset($field)['value'];
+      }
+    }
+
+    if ($status && $status != 'draft') {
+      // Status notifications.
+      if ($status != $old_status) {
+        // Notify related users.
+        $emails = _esf_tc_content_types_get_associated_email($node, TRUE);
+        // Notify webmasters on special status.
+        if (in_array($status, array('blocked', 'needs-deletion'))) {
+          $emails = array_merge($emails, _esf_tc_content_types_get_webmasters_email());
+        }
+        if (count($emails)) {
+          // Get approprieted message.
+          $options = array(
+            'type' => 'editorial_status',
+            'content_type' => $node->type,
+            'action' => $status,
+            'node' => $node,
+          );
+          $key_prefix = $node->type . '_notification_' . $status;
+          foreach ($emails as $email) {
+            if (valid_email_address($email)) {
+              drupal_mail('esf_tc_content_types', $key_prefix, $email, language_default(), $options);
+            }
+          }
+          unset($email, $emails);
+        }
+      }
+    }
+
+    // Notify contact to the content if new or changed.
+    $force_notify = $node->is_new;
+    $default_role = 'member';
+    $contacts = array(
+      'simple' => array(),
+      'ecas' => array(),
+    );
+    switch ($node->type) {
+      case 'esf_tnc_organisation':
+        // Legal contact.
+        // Role.
+        $role = field_get_items('node', $node, 'field_org_contact_legal_role');
+        $role = is_array($role) && isset(reset($role)['value']) ? reset($role)['value'] : $default_role;
+
+        if (isset($node->original) && $node->field_org_contact_account !== $node->original->field_org_contact_account) {
+          $force_notify = TRUE;
+        }
+
+        $has_account = field_get_items('node', $node, 'field_org_contact_account');
+
+        if (is_array($has_account) && isset(reset($has_account)['value'])) {
+          $has_account = reset($has_account)['value'];
+        }
+        if ($has_account == 'no') {
+          if ($force_notify || $node->field_org_contact_legal_email[LANGUAGE_NONE][0]['value'] !== $node->original->field_org_contact_legal_email[LANGUAGE_NONE][0]['value']) {
+            // Email.
+            $field_value = field_get_items('node', $node, 'field_org_contact_legal_email');
+            if (is_array($field_value) && isset(reset($field_value)['value'])) {
+              $email = reset($field_value)['value'];
+            }
+            // Name.
+            $field_value = field_get_items('node', $node, 'field_org_contact_legal_name');
+            if (is_array($field_value) && isset(reset($field_value)['value'])) {
+              $name = reset($field_value)['value'];
+            }
+            // Add contact to simple email list.
+            if ($user->mail != $email) {
+              $contacts['simple'][] = array(
+                'name' => $name,
+                'role' => $role,
+                'email' => $email,
+              );
+            }
+          }
+        }
+        elseif ($has_account == 'yes') {
+          if ($node->field_org_contact !== $node->original->field_org_contact || $force_notify) {
+            $uids = _esf_tc_content_types_get_references_ids('field_org_contact', $node);
+            if (is_array($uids)) {
+              foreach ($uids as $uid) {
+                $usr = user_load($uid);
+                if ($usr->mail) {
+                  // Add contact to ecas list.
+                  if ($usr->mail != $user->mail) {
+                    $contacts['ecas'][] = array(
+                      'name' => format_username($usr),
+                      'role' => $role,
+                      'email' => $usr->mail,
+                    );
+                  }
+                }
+              }
+              unset($uid, $usr);
+            }
+          }
+        }
+        break;
+
+      case 'esf_tnc_project':
+        $emails = _esf_tc_content_types_get_associated_email($node);
+        if (!$force_notify) {
+          $emails = array_diff($emails, _esf_tc_content_types_get_associated_email($node->original));
+          if (is_array($emails) && count($emails)) {
+            foreach ($emails as $email) {
+              if (valid_email_address($email)) {
+                $usr = user_load_by_mail($email);
+                if ($usr->uid && $email != $user->mail) {
+                  $contacts['ecas'][] = array(
+                    'name' => format_username($usr),
+                    'role' => 'a ' . $default_role,
+                    'email' => $email,
+                  );
+                }
+              }
+            }
+            unset($email);
+          }
+        }
+        break;
+    }
+    // Get approprieted message.
+    $options = array(
+      'type' => 'contact',
+      'content_type' => $node->type,
+      'node' => $node,
+    );
+
+    // Send notifications.
+    $keys = array_keys($contacts);
+    foreach ($keys as $key) {
+      $key_prefix = $node->type . '_notification_' . $key;
+      foreach ($contacts[$key] as $contact) {
+        $email = $contact['email'];
+        if (valid_email_address($email)) {
+          $options['contact'] = $contact;
+          drupal_mail('esf_tc_content_types', $key_prefix, $email, language_default(), $options);
+        }
+      }
+      unset($contact);
+    }
+    unset($key);
+
+  }
+}
+
+/**
+ * Implements hook_field_collection_item_presave().
+ */
+function esf_tc_content_types_field_collection_item_presave(FieldCollectionItemEntity $field_collection_item) {
+  // Contact of organisation.
+  if ($field_collection_item->field_name == 'field_org_additional_contacts') {
+    $force_notify = $field_collection_item->is_new;
+    $default_role = 'member';
+    $contacts = array(
+      'simple' => array(),
+      'ecas' => array(),
+    );
+    $node = $field_collection_item->hostEntity();
+    $role = $field_collection_item;
+    $role = is_array($role) && isset(reset($role)['value']) ? reset($role)['value'] : $default_role;
+
+    if (isset($field_collection_item->original) && $field_collection_item->field_fc_contact_account !== $field_collection_item->original->field_fc_contact_account) {
+      $force_notify = TRUE;
+    }
+
+    $has_account = field_get_items('field_collection_item', $field_collection_item, 'field_fc_contact_account');
+
+    if (is_array($has_account) && isset(reset($has_account)['value'])) {
+      $has_account = reset($has_account)['value'];
+    }
+    if ($has_account == 'no') {
+      if ($force_notify || $field_collection_item->field_fc_org_email[LANGUAGE_NONE][0]['value'] !== $field_collection_item->original->field_fc_org_email[LANGUAGE_NONE][0]['value']) {
+        // Email.
+        $field_value = field_get_items('field_collection_item', $field_collection_item, 'field_fc_org_email');
+        if (is_array($field_value) && isset(reset($field_value)['value'])) {
+          $email = reset($field_value)['value'];
+        }
+        // Name.
+        $field_value = field_get_items('field_collection_item', $field_collection_item, 'field_fc_org_name');
+        if (is_array($field_value) && isset(reset($field_value)['value'])) {
+          $name = reset($field_value)['value'];
+        }
+        // Add contact to simple email list.
+        $contacts['simple'][] = array(
+          'name' => $name,
+          'role' => $role,
+          'email' => $email,
+        );
+      }
+    }
+    elseif ($has_account == 'yes') {
+      if ($field_collection_item->field_fc_org_contact !== $field_collection_item->original->field_fc_org_contact || $force_notify) {
+        $uids = _esf_tc_content_types_get_references_ids('field_fc_org_contact', $field_collection_item, 'field_collection_item');
+        if (is_array($uids)) {
+          foreach ($uids as $uid) {
+            $user = user_load($uid);
+            if ($user->mail) {
+              // Add contact to ecas list.
+              $contacts['ecas'][] = array(
+                'name' => format_username($user),
+                'role' => $role,
+                'email' => $user->mail,
+              );
+            }
+          }
+          unset($uid, $user);
+        }
+      }
+    }
+    // Get approprieted message.
+    $options = array(
+      'type' => 'contact',
+      'content_type' => $node->type,
+      'node' => $node,
+    );
+    // Send notifications.
+    $keys = array_keys($contacts);
+    foreach ($keys as $key) {
+      $key_prefix = $node->type . '_notification_contact_' . $key;
+      foreach ($contacts[$key] as $contact) {
+        $email = $contact['email'];
+        if (valid_email_address($email)) {
+          $options['contact'] = $contact;
+          drupal_mail('esf_tc_content_types', $key_prefix, $email, language_default(), $options);
+        }
+      }
+      unset($contact);
+    }
+    unset($key);
   }
 }
 
@@ -675,29 +925,6 @@ function esf_tc_content_types_projects_database_submit(&$form, &$form_state) {
     $new_status = (isset($arr_status[$action])) ? $arr_status[$action] : NULL;
     if ($new_status) {
       $form_state['values'][$field_esf_editorial_status][LANGUAGE_NONE][0]['value'] = $new_status;
-      // Notify related users.
-      $emails = _esf_tc_content_types_get_associated_email($form_state['node'], TRUE);
-      // Notify webmasters on special status.
-      if (in_array($new_status, array('blocked', 'needs-deletion'))) {
-        $emails = array_merge($emails, _esf_tc_content_types_get_webmasters_email());
-      }
-      if (count($emails)) {
-        // Get approprieted message.
-        $options = array(
-          'type' => 'editorial_status',
-          'content_type' => $content_type,
-          'action' => $new_status,
-          'node' => $form_state['node'],
-        );
-        $key_prefix = $content_type . '_notification_' . $new_status;
-
-        foreach ($emails as $email) {
-          if (valid_email_address($email)) {
-            drupal_mail('esf_tc_content_types', $key_prefix, $email, language_default(), $options);
-          }
-        }
-        unset($email);
-      }
     }
   }
 }
@@ -915,6 +1142,13 @@ function esf_tc_content_types_menu() {
   }
   unset($type, $description);
 
+  $items['esf/notify/contact/%/%node/%/%/%'] = array(
+    'title' => 'ESF notify contact',
+    'type' => MENU_CALLBACK,
+    'page callback' => '_esf_tc_content_types_notify_contact',
+    'page arguments' => array(3, 4, 5, 6, 7),
+    'access callback' => 'user_is_logged_in',
+  );
   return $items;
 }
 
@@ -1059,11 +1293,12 @@ function _esf_tc_content_types_get_responsible_authorities($content_type, $node)
     switch ($content_type) {
       case 'esf_tnc_organisation':
         $sql->join('field_data_field_project_call_for_projects', 'project', 'project.field_project_call_for_projects_target_id = calls.entity_id');
-        $sql->join('field_data_field_project_lead_organisation', 'pjtorg', 'pjtorg.field_project_lead_organisation_target_id = :nid', array(':nid' => $node->nid));
+        $sql->join('field_data_field_project_lead_organisation', 'pjtorg', 'pjtorg.field_project_lead_organisation_target_id = :nid', array(':nid' => intval($node->nid)));
         break;
 
       case 'esf_tnc_project':
-        $sql->join('field_data_field_project_call_for_projects', 'project', 'project.field_project_call_for_projects_target_id = calls.entity_id and project.entity_id = :nid', array(':nid' => $node->nid));
+        $cid = intval($node->field_project_call_for_projects_target_id[LANGUAGE_NONE][0]['value']);
+        $sql->join('field_data_field_project_call_for_projects', 'project', 'calls.entity_id = :cid', array(':cid' => $cid));
         break;
     }
     if ($sql) {
@@ -1424,4 +1659,90 @@ function esf_tc_content_types_node_delete($node) {
 function esf_tc_content_types_form_workbench_access_editor_form_alter(&$form, &$form_state) {
   // Add description to better select a user.
   $form['add_user']['#description'] = t('Type first letters of a username.');
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function esf_tc_content_types_preprocess_field(&$variables) {
+  if ($variables['element']['#field_type'] == 'field_collection' && $variables['element']['#field_name'] == 'field_org_additional_contacts') {
+    if (is_array($variables['items']) && count($variables['items'])) {
+      foreach ($variables['items'] as &$item) {
+        $fc = reset($item['entity']['field_collection_item'])['#entity'];
+        $fc_wrapper = entity_metadata_wrapper('field_collection_item', $fc);
+        $has_account = $fc_wrapper->field_fc_contact_account->value();
+
+        if ($has_account == 'yes') {
+          $type = 'ecas';
+          $account = $fc_wrapper->field_fc_org_contact->value();
+          $name = format_username($account);
+          $email = $account->mail;
+        }
+        else {
+          $type = 'simple';
+          $name = $fc_wrapper->field_fc_org_name->value();
+          $email = $fc_wrapper->field_fc_org_email->value();
+        }
+
+        $role = $fc_wrapper->field_fc_org_role->value();
+        $nid = $fc->hostEntityId();
+        if (node_access('update', $fc->hostEntity())) {
+          $item['links']['#links']['resend'] = array(
+            'title' => t('Send invitation again'),
+            'href' => drupal_encode_path(format_string('esf/notify/contact/@type/@nid/@name/@role/@email',
+              array(
+                '@type' => $type,
+                '@nid' => $nid,
+                '@name' => $name,
+                '@role' => $role,
+                '@email' => $email,
+              )
+            )),
+            'query' => array('destination' => current_path()),
+          );
+        }
+      }
+      unset($item);
+    }
+  }
+}
+
+/**
+ * Helper function to send notification to a contact.
+ */
+function _esf_tc_content_types_notify_contact($key, $node, $name, $role, $email) {
+  $error = TRUE;
+  $name = urldecode($name);
+  $role = urldecode($role);
+  $email = urldecode($email);
+
+  if (isset($node->type)) {
+    $options = array(
+      'type' => 'contact',
+      'content_type' => $node->type,
+      'node' => $node,
+      'contact' => array(
+        'name' => $name,
+        'role' => $role,
+        'email' => $email,
+      ),
+    );
+
+    $key_prefix = $node->type . '_notification_contact_' . $key;
+    if (valid_email_address($email)) {
+      drupal_mail('esf_tc_content_types', $key_prefix, $email, language_default(), $options);
+      $error = FALSE;
+    }
+  }
+
+  if ($error) {
+    $message = t('The invitation could not be send');
+    $type = 'error';
+  }
+  else {
+    $message = t('The invitation was sent to @email', array('@email' => $email));
+    $type = 'status';
+  }
+  drupal_set_message($message, $type);
+  drupal_goto(drupal_get_destination());
 }

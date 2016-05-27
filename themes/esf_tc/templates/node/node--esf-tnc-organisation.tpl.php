@@ -199,6 +199,11 @@
                   <br/>
                   <?php print t('Role'); ?>: <?php print $contact_role; ?>
                 <?php endif; ?>
+                <?php if (isset($contact_notify_link)) : ?>
+                  <p>
+                    <?php print $contact_notify_link; ?>
+                  </p>
+                <?php endif; ?>
               </td>
             </tr>
           <?php endif; ?>
