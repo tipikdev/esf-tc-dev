@@ -1239,7 +1239,7 @@ function _esf_tc_content_types_button_access($action, $content_type, $node, $sta
         break;
 
       case 'needs-deletion':
-        if (!in_array($status, array('draft', 'needs-deletion'))) {
+        if (!in_array($status, array('needs-deletion'))) {
           if (node_access('update', $node)) {
             return TRUE;
           }
