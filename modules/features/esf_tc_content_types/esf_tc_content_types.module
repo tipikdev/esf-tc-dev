@@ -719,7 +719,8 @@ function _esf_tc_content_types_get_calls_by_country_options($country_tid) {
   $query = db_select('node', 'n')
     ->fields('n', array('nid', 'title'));
   $query->join('field_data_field_esf_country_ref', 'c', 'n.nid = c.entity_id');
-  $query->condition('c.field_esf_country_ref_tid', $country_tid)
+  $query->condition('n.type', 'esf_tnc_call_for_project', '=')
+    ->condition('c.field_esf_country_ref_tid', $country_tid)
     ->condition('n.status', 1);
   $query->orderBy('n.title', 'ASC');
   $result = $query->execute();
