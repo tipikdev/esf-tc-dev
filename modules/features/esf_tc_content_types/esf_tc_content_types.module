@@ -481,7 +481,7 @@ function esf_tc_content_types_form_esf_tnc_organisation_node_form_alter(&$form, 
   $form['body']['#access'] = FALSE;
 
   // Hide MA For users which are not webmaster.
-  if (!in_array('webmaster', $user->roles)) {
+  if (!in_array('webmaster', $user->roles) && !in_array('administrator', $user->roles)) {
     $form['field_org_is_ma_ib']['#access'] = FALSE;
   }
 
