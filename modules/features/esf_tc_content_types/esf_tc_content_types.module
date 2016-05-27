@@ -469,6 +469,7 @@ function esf_tc_content_types_form_alter(&$form, &$form_state, $form_id) {
  * Alter organisation node form.
  */
 function esf_tc_content_types_form_esf_tnc_organisation_node_form_alter(&$form, &$form_state, $form_id) {
+  global $user;
   // Add afterbuild function to manage states on field collection.
   $form['field_org_additional_contacts'][LANGUAGE_NONE]['#after_build'][] = 'esf_tc_content_types_field_org_additional_contacts_after_build';
 
@@ -478,6 +479,11 @@ function esf_tc_content_types_form_esf_tnc_organisation_node_form_alter(&$form, 
 
   // Hide body field.
   $form['body']['#access'] = FALSE;
+
+  // Hide MA For users which are not webmaster.
+  if (!in_array('webmaster', $user->roles)) {
+    $form['field_org_is_ma_ib']['#access'] = FALSE;
+  }
 
   // Other countries field states.
   $other_country_term_tid = _esf_tc_content_types_get_term_id_by_vocabulary('Other', 'esf_countries_regions');
