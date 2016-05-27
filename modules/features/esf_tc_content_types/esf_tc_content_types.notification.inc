@@ -204,7 +204,11 @@ function _esf_tc_content_types_mail_text($key, $variables = array(), $language =
                     'If you need any further information, you may find more details on the Partner search tool and the Transnationality cooperation activities of the European Social Fund on the European Commission website at http://ec.europa.eu/esf/main.jsp?catId=56&langId=en.';
                 }
 
-                $body .= PHP_EOL . PHP_EOL . 'Welcome to the Transnationality Cooperation platform of the ESF!';
+                $body .= PHP_EOL . PHP_EOL .
+                  'Welcome to the ESF Transnational Platform!' . PHP_EOL .
+                  'Brice Gatelet, Partner Search Database Manager' . PHP_EOL .
+                  'bga@aeidl.eu' . PHP_EOL .
+                  '+32 2 736 1890' . PHP_EOL;
                 return $body;
 
             }
