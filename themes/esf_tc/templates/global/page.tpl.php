@@ -214,8 +214,8 @@
             <?php endif; ?>
           </div>
         </div>
-        <?php endif; ?>
       </div>
+      <?php endif; ?>
       <a id="main-content"></a>
 
       <?php if ($tabs): ?>
