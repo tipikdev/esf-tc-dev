@@ -81,6 +81,61 @@ function esf_tc_content_types_flag_default_flags() {
 }
 
 /**
+ * Implements hook_image_default_styles().
+ */
+function esf_tc_content_types_image_default_styles() {
+  $styles = array();
+
+  // Exported image style: esf_database_4_3.
+  $styles['esf_database_4_3'] = array(
+    'label' => 'esf_database_4_3',
+    'effects' => array(
+      1 => array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 266,
+          'height' => 199,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  // Exported image style: esf_database_4_3_thumbnail.
+  $styles['esf_database_4_3_thumbnail'] = array(
+    'label' => 'esf_database_4_3_thumbnail',
+    'effects' => array(
+      2 => array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 79,
+          'height' => 55,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  // Exported image style: esf_database_logo.
+  $styles['esf_database_logo'] = array(
+    'label' => 'esf_database_logo',
+    'effects' => array(
+      3 => array(
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 150,
+          'height' => 150,
+          'upscale' => 0,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  return $styles;
+}
+
+/**
  * Implements hook_node_info().
  */
 function esf_tc_content_types_node_info() {

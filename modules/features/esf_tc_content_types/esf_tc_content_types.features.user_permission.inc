@@ -95,6 +95,34 @@ function esf_tc_content_types_user_default_permissions() {
     'module' => 'workbench_access',
   );
 
+  // Exported permission: 'archive any esf_tnc_call_for_project content'.
+  $permissions['archive any esf_tnc_call_for_project content'] = array(
+    'name' => 'archive any esf_tnc_call_for_project content',
+    'roles' => array(),
+    'module' => 'esf_tc_content_types',
+  );
+
+  // Exported permission: 'archive any esf_tnc_organisation content'.
+  $permissions['archive any esf_tnc_organisation content'] = array(
+    'name' => 'archive any esf_tnc_organisation content',
+    'roles' => array(),
+    'module' => 'esf_tc_content_types',
+  );
+
+  // Exported permission: 'archive any esf_tnc_project content'.
+  $permissions['archive any esf_tnc_project content'] = array(
+    'name' => 'archive any esf_tnc_project content',
+    'roles' => array(),
+    'module' => 'esf_tc_content_types',
+  );
+
+  // Exported permission: 'archive any esf_tnc_tca content'.
+  $permissions['archive any esf_tnc_tca content'] = array(
+    'name' => 'archive any esf_tnc_tca content',
+    'roles' => array(),
+    'module' => 'esf_tc_content_types',
+  );
+
   // Exported permission: 'assign workbench access'.
   $permissions['assign workbench access'] = array(
     'name' => 'assign workbench access',
@@ -113,6 +141,34 @@ function esf_tc_content_types_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'workbench_access',
+  );
+
+  // Exported permission: 'block any esf_tnc_call_for_project content'.
+  $permissions['block any esf_tnc_call_for_project content'] = array(
+    'name' => 'block any esf_tnc_call_for_project content',
+    'roles' => array(),
+    'module' => 'esf_tc_content_types',
+  );
+
+  // Exported permission: 'block any esf_tnc_organisation content'.
+  $permissions['block any esf_tnc_organisation content'] = array(
+    'name' => 'block any esf_tnc_organisation content',
+    'roles' => array(),
+    'module' => 'esf_tc_content_types',
+  );
+
+  // Exported permission: 'block any esf_tnc_project content'.
+  $permissions['block any esf_tnc_project content'] = array(
+    'name' => 'block any esf_tnc_project content',
+    'roles' => array(),
+    'module' => 'esf_tc_content_types',
+  );
+
+  // Exported permission: 'block any esf_tnc_tca content'.
+  $permissions['block any esf_tnc_tca content'] = array(
+    'name' => 'block any esf_tnc_tca content',
+    'roles' => array(),
+    'module' => 'esf_tc_content_types',
   );
 
   // Exported permission: 'bypass workbench moderation'.
@@ -548,6 +604,34 @@ function esf_tc_content_types_user_default_permissions() {
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'flag',
+  );
+
+  // Exported permission: 'republish any esf_tnc_call_for_project content'.
+  $permissions['republish any esf_tnc_call_for_project content'] = array(
+    'name' => 'republish any esf_tnc_call_for_project content',
+    'roles' => array(),
+    'module' => 'esf_tc_content_types',
+  );
+
+  // Exported permission: 'republish any esf_tnc_organisation content'.
+  $permissions['republish any esf_tnc_organisation content'] = array(
+    'name' => 'republish any esf_tnc_organisation content',
+    'roles' => array(),
+    'module' => 'esf_tc_content_types',
+  );
+
+  // Exported permission: 'republish any esf_tnc_project content'.
+  $permissions['republish any esf_tnc_project content'] = array(
+    'name' => 'republish any esf_tnc_project content',
+    'roles' => array(),
+    'module' => 'esf_tc_content_types',
+  );
+
+  // Exported permission: 'republish any esf_tnc_tca content'.
+  $permissions['republish any esf_tnc_tca content'] = array(
+    'name' => 'republish any esf_tnc_tca content',
+    'roles' => array(),
+    'module' => 'esf_tc_content_types',
   );
 
   // Exported permission: 'skip comment approval'.

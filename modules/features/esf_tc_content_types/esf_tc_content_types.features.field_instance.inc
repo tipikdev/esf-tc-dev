@@ -133,7 +133,7 @@ function esf_tc_content_types_field_default_field_instances() {
     ),
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_fc_contact_account',
-    'label' => 'The contact has an account',
+    'label' => 'The contact already has an account on myTNC',
     'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -148,6 +148,7 @@ function esf_tc_content_types_field_default_field_instances() {
       'type' => 'options_buttons',
       'weight' => 0,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance:
@@ -162,7 +163,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'label' => 'inline',
         'module' => 'entityreference',
         'settings' => array(
-          'links' => 0,
+          'links' => 1,
           'use_content_language' => 0,
           'view_mode' => 'default',
         ),
@@ -1782,7 +1783,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
-          'image_style' => '',
+          'image_style' => 'esf_database_4_3',
         ),
         'type' => 'image',
         'weight' => 7,
@@ -1792,7 +1793,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
-          'image_style' => '',
+          'image_style' => 'esf_database_4_3_thumbnail',
         ),
         'type' => 'image',
         'weight' => 2,
@@ -1808,9 +1809,9 @@ function esf_tc_content_types_field_default_field_instances() {
       'entity_translation_sync' => FALSE,
       'file_directory' => 'events/pictures',
       'file_extensions' => 'png gif jpg jpeg',
-      'max_filesize' => '',
-      'max_resolution' => '',
-      'min_resolution' => '266x200',
+      'max_filesize' => '5 MB',
+      'max_resolution' => '2048x1536',
+      'min_resolution' => '266x199',
       'title_field' => 0,
       'user_register_form' => FALSE,
     ),
@@ -1840,7 +1841,7 @@ function esf_tc_content_types_field_default_field_instances() {
             'search_all_fields' => 0,
           ),
         ),
-        'preview_image_style' => 'thumbnail',
+        'preview_image_style' => 'esf_database_4_3',
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
@@ -2368,7 +2369,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
-          'image_style' => '',
+          'image_style' => 'esf_database_4_3',
         ),
         'type' => 'image',
         'weight' => 1,
@@ -2378,7 +2379,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
-          'image_style' => '',
+          'image_style' => 'esf_database_4_3_thumbnail',
         ),
         'type' => 'image',
         'weight' => 0,
@@ -2394,8 +2395,8 @@ function esf_tc_content_types_field_default_field_instances() {
       'entity_translation_sync' => FALSE,
       'file_directory' => 'news/pictures',
       'file_extensions' => 'png gif jpg jpeg',
-      'max_filesize' => '',
-      'max_resolution' => '',
+      'max_filesize' => '5 MB',
+      'max_resolution' => '2048x1536',
       'min_resolution' => '266x200',
       'title_field' => 0,
       'user_register_form' => FALSE,
@@ -2426,7 +2427,7 @@ function esf_tc_content_types_field_default_field_instances() {
             'search_all_fields' => 0,
           ),
         ),
-        'preview_image_style' => 'thumbnail',
+        'preview_image_style' => 'esf_database_4_3',
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
@@ -2944,7 +2945,7 @@ function esf_tc_content_types_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_org_contact_account',
-    'label' => 'The contact has an account',
+    'label' => 'The contact already has an account on myTNC',
     'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -3546,7 +3547,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
-          'image_style' => '',
+          'image_style' => 'esf_database_logo',
         ),
         'type' => 'image',
         'weight' => 9,
@@ -3568,9 +3569,9 @@ function esf_tc_content_types_field_default_field_instances() {
       'entity_translation_sync' => FALSE,
       'file_directory' => 'organisations/pictures',
       'file_extensions' => 'png gif jpg jpeg',
-      'max_filesize' => '',
-      'max_resolution' => '',
-      'min_resolution' => '',
+      'max_filesize' => '5 MB',
+      'max_resolution' => '600x600',
+      'min_resolution' => '150x150',
       'title_field' => 0,
       'user_register_form' => FALSE,
     ),
@@ -3600,7 +3601,7 @@ function esf_tc_content_types_field_default_field_instances() {
             'search_all_fields' => 0,
           ),
         ),
-        'preview_image_style' => 'thumbnail',
+        'preview_image_style' => 'esf_database_logo',
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
@@ -3622,7 +3623,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
-          'image_style' => '',
+          'image_style' => 'esf_database_logo',
         ),
         'type' => 'image',
         'weight' => 12,
@@ -3644,9 +3645,9 @@ function esf_tc_content_types_field_default_field_instances() {
       'entity_translation_sync' => FALSE,
       'file_directory' => 'organisations/pictures',
       'file_extensions' => 'png gif jpg jpeg',
-      'max_filesize' => '',
-      'max_resolution' => '',
-      'min_resolution' => '',
+      'max_filesize' => '5 MB',
+      'max_resolution' => '600x600',
+      'min_resolution' => '150x150',
       'title_field' => 0,
       'user_register_form' => FALSE,
     ),
@@ -3676,7 +3677,7 @@ function esf_tc_content_types_field_default_field_instances() {
             'search_all_fields' => 0,
           ),
         ),
-        'preview_image_style' => 'thumbnail',
+        'preview_image_style' => 'esf_database_logo',
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
@@ -5655,7 +5656,7 @@ If an organisation is not found, please save your work as draft and check that t
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
-          'image_style' => '',
+          'image_style' => 'esf_database_logo',
         ),
         'type' => 'image',
         'weight' => 31,
@@ -5677,9 +5678,9 @@ If an organisation is not found, please save your work as draft and check that t
       'entity_translation_sync' => FALSE,
       'file_directory' => 'projects/pictures',
       'file_extensions' => 'png gif jpg jpeg',
-      'max_filesize' => '',
-      'max_resolution' => '',
-      'min_resolution' => '',
+      'max_filesize' => '5 MB',
+      'max_resolution' => '600x600',
+      'min_resolution' => '150x150',
       'title_field' => 0,
       'user_register_form' => FALSE,
     ),
@@ -5709,7 +5710,7 @@ If an organisation is not found, please save your work as draft and check that t
             'search_all_fields' => 0,
           ),
         ),
-        'preview_image_style' => 'thumbnail',
+        'preview_image_style' => 'esf_database_logo',
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
@@ -5731,7 +5732,7 @@ If an organisation is not found, please save your work as draft and check that t
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
-          'image_style' => '',
+          'image_style' => 'esf_database_logo',
         ),
         'type' => 'image',
         'weight' => 34,
@@ -5753,9 +5754,9 @@ If an organisation is not found, please save your work as draft and check that t
       'entity_translation_sync' => FALSE,
       'file_directory' => 'projects/pictures',
       'file_extensions' => 'png gif jpg jpeg',
-      'max_filesize' => '',
-      'max_resolution' => '',
-      'min_resolution' => '',
+      'max_filesize' => '5 MB',
+      'max_resolution' => '600x600',
+      'min_resolution' => '150x150',
       'title_field' => 0,
       'user_register_form' => FALSE,
     ),
@@ -5785,7 +5786,7 @@ If an organisation is not found, please save your work as draft and check that t
             'search_all_fields' => 0,
           ),
         ),
-        'preview_image_style' => 'thumbnail',
+        'preview_image_style' => 'esf_database_logo',
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
@@ -7187,7 +7188,7 @@ If an organisation is not found, please save your work as draft and check that t
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
-          'image_style' => '',
+          'image_style' => 'esf_database_logo',
         ),
         'type' => 'image',
         'weight' => 3,
@@ -7209,9 +7210,9 @@ If an organisation is not found, please save your work as draft and check that t
       'entity_translation_sync' => FALSE,
       'file_directory' => '',
       'file_extensions' => 'png gif jpg jpeg',
-      'max_filesize' => '',
-      'max_resolution' => '',
-      'min_resolution' => '',
+      'max_filesize' => '5 MB',
+      'max_resolution' => '600x600',
+      'min_resolution' => '150x150',
       'title_field' => 0,
       'user_register_form' => FALSE,
     ),
@@ -7219,25 +7220,15 @@ If an organisation is not found, please save your work as draft and check that t
       'active' => 1,
       'module' => 'image',
       'settings' => array(
-        'allowed_schemes' => array(
-          'node' => 0,
-          'private' => 0,
-          'public' => 'public',
-        ),
-        'allowed_types' => array(
-          'audio' => 0,
-          'document' => 0,
-          'image' => 'image',
-          'video' => 0,
-        ),
-        'browser_plugins' => array(
-          'media_default--media_browser_1' => 0,
-          'media_default--media_browser_my_files' => 0,
-          'media_internet' => 0,
-          'upload' => 'upload',
-        ),
         'filefield_sources' => array(
-          'filefield_sources' => array(),
+          'filefield_sources' => array(
+            'attach' => 0,
+            'clipboard' => 0,
+            'plupload' => 0,
+            'reference' => 0,
+            'remote' => 0,
+            'upload' => 'upload',
+          ),
           'source_attach' => array(
             'absolute' => 0,
             'attach_mode' => 'move',
@@ -7248,14 +7239,16 @@ If an organisation is not found, please save your work as draft and check that t
           ),
           'source_reference' => array(
             'autocomplete' => 0,
+            'search_all_fields' => 0,
           ),
         ),
-        'preview_image_style' => 'thumbnail',
+        'preview_image_style' => 'esf_database_logo',
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
       'weight' => 10,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance: 'node-esf_tnc_tca-field_tca_main_contact_point'.
@@ -8260,7 +8253,7 @@ If an organisation is not found, please save your work as draft and check that t
     ),
     'entity_type' => 'profile2',
     'field_name' => 'field_token_email',
-    'label' => 'Email',
+    'label' => 'token',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -8528,7 +8521,7 @@ If an organisation is not found, please save your work as draft and check that t
   t('TCA acronym');
   t('TCA status');
   t('Target groups');
-  t('The contact has an account');
+  t('The contact already has an account on myTNC');
   t('Themes');
   t('Title in English');
   t('Title in the national language');
@@ -8538,6 +8531,7 @@ If an organisation is not found, please save your work as draft and check that t
   t('Type of organisation');
   t('You must select first a country to display the available calls. If a call is not found, please save your work as draft and check with your Managing Authority.');
   t('You must select first a country to display the available organisations.');
+  t('token');
 
   return $field_instances;
 }

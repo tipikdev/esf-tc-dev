@@ -99,45 +99,5 @@ function esf_tc_content_types_default_rules_configuration() {
       ]
     }
   }');
-  $items['rules_notification_known_user_selected_as_organisation_contact'] = entity_import('rules_config', '{ "rules_notification_known_user_selected_as_organisation_contact" : {
-      "LABEL" : "Notify known user when selected as organisation contact ",
-      "PLUGIN" : "reaction rule",
-      "OWNER" : "rules",
-      "REQUIRES" : [ "rules", "field_collection" ],
-      "ON" : { "field_collection_item_insert" : [] },
-      "IF" : [
-        { "entity_field_access" : {
-            "entity" : [ "field-collection-item" ],
-            "field" : "field_fc_org_contact",
-            "account" : [ "site:current-user" ]
-          }
-        }
-      ],
-      "DO" : [
-        { "mail" : {
-            "to" : "[field-collection-item:field_fc_org_contact]",
-            "subject" : "Notify known user when selected as organisation contact ",
-            "message" : "Notify known user when selected as organisation contact ",
-            "language" : [ "field-collection-item:field-name" ]
-          }
-        }
-      ]
-    }
-  }');
-  $items['rules_notify_contacts_when_the_organisation_is_published'] = entity_import('rules_config', '{ "rules_notify_contacts_when_the_organisation_is_published" : {
-      "LABEL" : "Notify contacts when the organisation is published",
-      "PLUGIN" : "reaction rule",
-      "OWNER" : "rules",
-      "REQUIRES" : [ "rules" ],
-      "ON" : {
-        "node_insert--esf_tnc_organisation" : { "bundle" : "esf_tnc_organisation" },
-        "node_update--esf_tnc_organisation" : { "bundle" : "esf_tnc_organisation" }
-      },
-      "IF" : [
-        { "data_is" : { "data" : [ "node:field-esf-editorial-status" ], "value" : "published" } }
-      ],
-      "DO" : []
-    }
-  }');
   return $items;
 }
