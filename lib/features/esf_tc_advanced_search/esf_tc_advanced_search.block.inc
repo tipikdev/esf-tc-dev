@@ -59,7 +59,7 @@ function esf_tc_custom_partner_search_form($form, &$form_state) {
   $form['keys'] = array(
     '#type' => 'textfield',
     '#name' => 'keys',
-    '#attributes' => array('placeholder' => t('Search in the database')),
+    '#attributes' => array('placeholder' => t('Search in the databases')),
     '#prefix' => '<div class=form-group >',
     '#suffix' => '</div>',
   );
