@@ -274,6 +274,10 @@ function _esf_tc_get_forum_categories_menu() {
  * The tag is also selected in a facet.
  */
 function _esf_tc_link_tag_to_section(&$variables) {
+
+  $solr_page = apachesolr_search_page_load(apachesolr_search_default_search_page());
+  $solr_path = $solr_page['search_path'];
+
   if ($variables['type'] == 'esf_tnc_event') {
     foreach ($variables['field_esf_linked_tn'] as $id => $term) {
       $variables['content']['field_esf_linked_tn'][$id]['#markup'] = l($term['taxonomy_term']->name, 'events', array('query' => array('f[0]' => 'im_field_esf_linked_tn:' . $term['tid'])));
@@ -290,7 +294,7 @@ function _esf_tc_link_tag_to_section(&$variables) {
   elseif ($variables['type'] == 'esf_tnc_project' || $variables['type'] == 'esf_tnc_call_for_project' || $variables['type'] == 'esf_tnc_organisation') {
     if (isset($variables['field_project_target_groups'])) {
       foreach ($variables['field_project_target_groups'] as $id => $term) {
-        $variables['content']['field_project_target_groups'][$id]['#markup'] = l($term['taxonomy_term']->name, 'search/partners-search', array(
+        $variables['content']['field_project_target_groups'][$id]['#markup'] = l($term['taxonomy_term']->name, $solr_path, array(
           'query' => array(
             'f[0]' => 'im_field_project_target_groups:' . $term['tid'],
             'f[1]' => 'bundle:' . $variables['type'],
@@ -300,7 +304,7 @@ function _esf_tc_link_tag_to_section(&$variables) {
     }
     if (isset($variables['field_project_activities_list'])) {
       foreach ($variables['field_project_activities_list'] as $id => $term) {
-        $variables['content']['field_project_activities_list'][$id]['#markup'] = l($term['taxonomy_term']->name, 'search/partners-search', array(
+        $variables['content']['field_project_activities_list'][$id]['#markup'] = l($term['taxonomy_term']->name, $solr_path, array(
           'query' => array(
             'f[0]' => 'im_field_project_activities_list:' . $term['tid'],
             'f[1]' => 'bundle:' . $variables['type'],
@@ -310,7 +314,7 @@ function _esf_tc_link_tag_to_section(&$variables) {
     }
     if (isset($variables['field_esf_themes_ref'])) {
       foreach ($variables['field_esf_themes_ref'] as $id => $term) {
-        $variables['content']['field_esf_themes_ref'][$id]['#markup'] = l($term['taxonomy_term']->name, 'search/partners-search', array(
+        $variables['content']['field_esf_themes_ref'][$id]['#markup'] = l($term['taxonomy_term']->name, $solr_path, array(
           'query' => array(
             'f[0]' => 'im_field_esf_themes_ref:' . $term['tid'],
             'f[1]' => 'bundle:' . $variables['type'],
@@ -320,7 +324,7 @@ function _esf_tc_link_tag_to_section(&$variables) {
     }
     if (isset($variables['field_esf_country_ref'])) {
       foreach ($variables['field_esf_country_ref'] as $id => $term) {
-        $variables['content']['field_esf_country_ref'][$id]['#markup'] = l($term['taxonomy_term']->name, 'search/partners-search', array(
+        $variables['content']['field_esf_country_ref'][$id]['#markup'] = l($term['taxonomy_term']->name, $solr_path, array(
           'query' => array(
             'f[0]' => 'im_field_esf_country_ref:' . $term['tid'],
             'f[1]' => 'bundle:' . $variables['type'],
