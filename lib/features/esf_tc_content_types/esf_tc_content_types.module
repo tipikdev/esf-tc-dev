@@ -397,7 +397,9 @@ function esf_tc_content_types_organisation_validate($form, &$form_state) {
   }
 
   // Check required values if the node (editorial status) is published.
-  if ($form_state['values']['op'] == 'Publish') {
+  $status_fieldname = _esf_tc_content_types_get_editorial_status_field_name();
+  $status = $form_state['values'][$status_fieldname][LANGUAGE_NONE][0]['value'];
+  if ($form_state['values']['op'] == 'Publish' || ($form_state['values']['op'] == 'Save' && $status == 'published')) {
     // Legal contact.
     if ($form_state['values']['field_org_contact_account'][LANGUAGE_NONE][0]['value'] == 'yes' && empty($form_state['values']['field_org_contact'][LANGUAGE_NONE][0]['target_id'])) {
       form_set_error('field_org_contact', t('!name field is required.', array('!name' => $form['field_org_contact'][LANGUAGE_NONE]['#title'])));
@@ -411,6 +413,13 @@ function esf_tc_content_types_organisation_validate($form, &$form_state) {
       }
     }
 
+    // Legal contact.
+    if (!empty($form_state['values']['field_org_contact_legal_email'][LANGUAGE_NONE][0]['value'])) {
+      $email_value = $form_state['values']['field_org_contact_legal_email'][LANGUAGE_NONE][0]['value'];
+      if (!valid_email_address($email_value)) {
+        form_set_error('field_org_contact_legal_email', t('!email is not a valid email.', array('!email' => $email_value)));
+      }
+    }
     // Additional contact.
     $contacts = $form_state['values']['field_org_additional_contacts'][LANGUAGE_NONE];
     foreach ($contacts as $key => $contact) {
@@ -422,6 +431,9 @@ function esf_tc_content_types_organisation_validate($form, &$form_state) {
         form_set_error('field_fc_org_email', t('!name field is required.', array('!name' => $form['field_org_additional_contacts'][LANGUAGE_NONE][0]['field_fc_org_email'][LANGUAGE_NONE]['#title'])));
       }
 
+      if (is_numeric($key) && !empty($contact['field_fc_org_email'][LANGUAGE_NONE][0]['value']) && $contact['field_fc_contact_account'][LANGUAGE_NONE][0]['value'] == 'no' && !valid_email_address($contact['field_fc_org_email'][LANGUAGE_NONE][0]['value'])) {
+        form_set_error('field_fc_org_email', t('!email is not a valid email.', array('!email' => $contact['field_fc_org_email'][LANGUAGE_NONE][0]['value'])));
+      }
       if (is_numeric($key) && empty($contact['field_fc_org_contact'][LANGUAGE_NONE][0]['target_id']) && $contact['field_fc_contact_account'][LANGUAGE_NONE][0]['value'] == 'yes') {
         form_set_error('field_fc_org_contact', t('!name field is required.', array('!name' => $form['field_org_additional_contacts'][LANGUAGE_NONE][0]['field_fc_org_contact'][LANGUAGE_NONE]['#title'])));
       }
