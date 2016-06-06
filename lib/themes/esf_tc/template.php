@@ -18,13 +18,6 @@ function esf_tc_preprocess_page(&$variables) {
   $variables['cols']['sidebar_left']['md'] = (!empty($regions['sidebar_left']) ? 3 : 0);
   $variables['cols']['content_main']['md'] = ($variables['cols']['sidebar_right']['md'] == 4 ? 8 : 12 - $variables['cols']['sidebar_left']['md']);
 
-  if (drupal_is_front_page()) {
-    // Remove system_main content.
-    unset($variables['page']['content']['system_main']['default_message']);
-    unset($variables['page']['content']['#children']);
-    $variables['regions']['content'] = render($variables['page']['content']);
-  }
-
   // Add favorites flag inside specific published content.
   if (isset($variables['node'])) {
     $node = $variables['node'];
@@ -32,6 +25,22 @@ function esf_tc_preprocess_page(&$variables) {
       $variables['flag_favorites'] = flag_create_link('esf_tc_favorites', $node->nid);
     }
   }
+}
+
+/**
+ * Implements hook_menu_alter().
+ */
+function esf_tc_menu_alter(&$items) {
+  // Change homepage (node) page callback.
+  $items['node']['page callback'] = '_esf_tc_page_callback';
+}
+
+/**
+ * Helper to remove Home page system default_message + set title.
+ */
+function _esf_tc_page_callback() {
+  drupal_set_title(t('Welcome to @sitename', array('@sitename' => variable_get('site_name'))));
+  return array();
 }
 
 /**
