@@ -90,13 +90,13 @@ function esf_tc_preprocess_node(&$variables) {
     // Add link to notify contact again.
     // Check if array is fully filled.
     if (count($resend) == 5 && node_access('update', $variables['node'])) {
-      $variables['contact_notify_link'] = l(t('Send invitation again'), drupal_encode_path(format_string('esf/notify/contact/@type/@nid/@name/@role/@email',
+      $variables['contact_notify_link'] = l(t('Resend invitation'), drupal_encode_path(format_string('esf/notify/contact/@type/@nid/@name/@role/@email',
         array(
           '@type' => $variables['type'],
           '@nid' => $variables['nid'],
-          '@name' => $variables['name'],
-          '@role' => $variables['role'],
-          '@email' => $variables['email'],
+          '@name' => $resend['name'],
+          '@role' => $variables['contact_role'],
+          '@email' => $resend['email'],
         ))),
         array('query' => array('destination' => current_path()))
       );
