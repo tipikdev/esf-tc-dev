@@ -84,12 +84,13 @@ function _esf_tc_build_stats_block() {
   );
 
   // Count number of Calls.
-  $count = _esf_tc_helper_count_published_content('esf_tnc_global_call');
+  $count = _esf_tc_helper_count_published_content('esf_tnc_call_for_project');
 
-  $facet = array('f' => array('bundle:esf_tnc_global_call'));
+  $facet = array('f' => array('bundle:esf_tnc_call_for_project'));
   $info['calls'] = array(
     'title' => t('Calls'),
     'count' => $count,
+    'link' => url($search_path, array('query' => $facet)),
   );
 
   return array('#children' => $info);
