@@ -183,6 +183,9 @@ function esf_tc_facetapi_title($variables) {
     case "Content type":
       return t('Filter by domain');
 
+    case "Linked TN":
+      return t('Filter by Thematic Network');
+
     default:
       return t('Filter by @title', array('@title' => drupal_strtolower($variables['title'])));
   }

@@ -794,7 +794,9 @@ p:empty {
 }
 
 .content-type,
-.content-type .panel-body {
+.content-type .panel-body,
+.linked-tn,
+.linked-tn .panel-body {
   background: #087cec;
 }
 
@@ -803,7 +805,9 @@ p:empty {
 }
 
 .themes,
-.themes .panel-body {
+.themes .panel-body,
+.start-date,
+.start-date .panel-body {
   background: #a9a9a9;
 }
 
