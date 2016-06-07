@@ -32,14 +32,14 @@ function esf_tc_preprocess_page(&$variables) {
  */
 function esf_tc_menu_alter(&$items) {
   // Change homepage (node) page callback.
-  $items['node']['page callback'] = '_esf_tc_page_callback';
+  $items['node']['page callback'] = '_esf_tc_homepage_callback';
 }
 
 /**
  * Helper to remove Home page system default_message + set title.
  */
-function _esf_tc_page_callback() {
-  drupal_set_title(t('Welcome to @sitename', array('@sitename' => variable_get('site_name'))));
+function _esf_tc_homepage_callback() {
+  drupal_set_title(t('Welcome to the website of the ESF Transnational Platform'));
   return array();
 }
 
