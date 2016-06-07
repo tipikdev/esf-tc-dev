@@ -243,6 +243,14 @@
               <td><?php print render($content['field_org_other_language']); ?></td>
             </tr>
           <?php endif; ?>
+
+          <?php if (isset($content['field_organisation_attachments'])) : ?>
+            <tr>
+              <th><?php print render($content['field_organisation_attachments']['#title']); ?></th>
+              <td><?php print render($content['field_organisation_attachments']); ?></td>
+            </tr>
+          <?php endif; ?>
+          
         <?php endif; ?>
       </table>
     <?php else: ?>

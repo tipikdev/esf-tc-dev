@@ -286,10 +286,10 @@
           <td><?php print render($content['field_project_links']); ?></td>
         </tr>
       <?php endif; ?>
-      <?php if (isset($content['field_project_attachments'])) : ?>
+      <?php if (isset($content['field_proj_attachments'])) : ?>
         <tr>
-          <th><?php print render($content['field_project_attachments']['#title']); ?></th>
-          <td><?php print render($content['field_project_attachments']); ?></td>
+          <th><?php print render($content['field_proj_attachments']['#title']); ?></th>
+          <td><?php print render($content['field_proj_attachments']); ?></td>
         </tr>
       <?php endif; ?>
       <?php if (isset($content['field_project_hight_promo_txt'])) : ?>
