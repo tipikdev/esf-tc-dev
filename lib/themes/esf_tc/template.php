@@ -9,7 +9,6 @@
  */
 function esf_tc_preprocess_page(&$variables) {
   // Change sidebar left grid size.
-
   $regions = array(
     'sidebar_left' => (isset($variables['page']['sidebar_left']) ? render($variables['page']['sidebar_left']) : ''),
     'sidebar_right' => (isset($variables['page']['sidebar_right']) ? render($variables['page']['sidebar_right']) : ''),
