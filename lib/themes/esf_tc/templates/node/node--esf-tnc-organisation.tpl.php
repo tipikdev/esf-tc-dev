@@ -97,6 +97,9 @@
     ?>
 
     <?php if ($view_mode == 'full' || $view_mode == 'teaser'): ?>
+      <?php if (isset($content['field_org_logo'])) : ?>
+        <?php print render($content['field_org_logo']); ?>
+      <?php endif; ?>
       <div
         class="abstract"><?php print render($content['field_org_experience']); ?></div>
       <table class="standard-table" cellpadding="0" cellspacing="0">

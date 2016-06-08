@@ -95,8 +95,11 @@
     hide($content['links']);
     ?>
   </div>
-
+  <?php if (isset($content['field_project_logo'])) : ?>
+    <?php print render($content['field_project_logo']); ?>
+  <?php endif; ?>
   <?php if ($view_mode == 'full'): ?>
+
     <div
       class="abstract"><?php print render($content['field_project_idea_summary']); ?></div>
     <table class="standard-table" cellpadding="0" cellspacing="0">

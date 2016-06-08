@@ -1805,7 +1805,7 @@ function esf_tc_content_types_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
-      'default_image' => 0,
+      'default_image' => 6,
       'entity_translation_sync' => FALSE,
       'file_directory' => 'events/pictures',
       'file_extensions' => 'png gif jpg jpeg',
@@ -2391,7 +2391,7 @@ function esf_tc_content_types_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
-      'default_image' => 0,
+      'default_image' => 6,
       'entity_translation_sync' => FALSE,
       'file_directory' => 'news/pictures',
       'file_extensions' => 'png gif jpg jpeg',
@@ -3543,7 +3543,7 @@ function esf_tc_content_types_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
@@ -3553,7 +3553,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'weight' => 9,
       ),
       'teaser' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 24,
@@ -5662,7 +5662,7 @@ If an organisation is not found, please save your work as draft and check that t
         'weight' => 31,
       ),
       'teaser' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 14,
