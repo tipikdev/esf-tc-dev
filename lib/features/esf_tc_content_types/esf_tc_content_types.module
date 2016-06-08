@@ -1545,3 +1545,24 @@ function _esf_tc_content_types_notify_contact($key, $node, $name, $role, $email)
   drupal_set_message($message, $type);
   drupal_goto(drupal_get_destination());
 }
+
+/**
+ * Implements hook_field_default_field_instances_alter().
+ */
+function esf_tc_content_types_field_default_field_instances_alter(&$fields) {
+  // 4/3 default image.
+  $variable_name = 'esf_tnc_4_3_default_image_fid';
+  $fields_name = array(
+    'esf_tnc_event' => 'field_esf_event_picture',
+    'esf_tnc_news' => 'field_esf_news_picture',
+  );
+
+  foreach ($fields_name as $bundle => $field_name) {
+    $identifier = 'node-' . $bundle . '-' . $field_name;
+    if (isset($fields[$identifier]['settings']['default_image'])) {
+      $current_fid = $fields[$identifier]['settings']['default_image'];
+      $fields[$identifier]['settings']['default_image'] = variable_get($variable_name, $current_fid);
+    }
+  }
+  unset($bundle, $field_name);
+}

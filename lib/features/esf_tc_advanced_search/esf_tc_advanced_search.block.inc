@@ -35,7 +35,6 @@ function esf_tc_advanced_search_block_view($delta = '') {
   }
 }
 
-
 /**
  * Custom Search Block for parners.
  */
@@ -51,6 +50,7 @@ function _esf_tc_helper_get_solr_default_page_path() {
   $solr_page = apachesolr_search_page_load(apachesolr_search_default_search_page());
   return $solr_page['search_path'];
 }
+
 /**
  * Override Custom Search Block for parners.
  */
@@ -71,6 +71,7 @@ function esf_tc_custom_partner_search_form($form, &$form_state) {
   return $form;
 
 }
+
 /**
  * Submit handler for custom Search Block for parners.
  */

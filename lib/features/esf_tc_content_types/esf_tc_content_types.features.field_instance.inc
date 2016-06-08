@@ -4167,14 +4167,14 @@ function esf_tc_content_types_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'file',
         'settings' => array(),
         'type' => 'file_default',
         'weight' => 28,
       ),
       'teaser' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 7,
@@ -7803,6 +7803,12 @@ If an organisation is not found, please save your work as draft and check that t
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'node',
     'field_name' => 'field_topic_public',
@@ -7858,46 +7864,6 @@ If an organisation is not found, please save your work as draft and check that t
       ),
       'type' => 'options_select',
       'weight' => 6,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'profile2-contact_profile-field_profile_cont_informed_esf'.
-  $field_instances['profile2-contact_profile-field_profile_cont_informed_esf'] = array(
-    'bundle' => 'contact_profile',
-    'default_value' => array(
-      0 => array(
-        'value' => 'No',
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'inline',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 7,
-      ),
-    ),
-    'entity_type' => 'profile2',
-    'field_name' => 'field_profile_cont_informed_esf',
-    'label' => 'Keep me informed of ESF-TNC activities',
-    'required' => 1,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'apply_chosen' => '',
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-      ),
-      'type' => 'options_select',
-      'weight' => 7,
     ),
   );
 
@@ -8453,7 +8419,6 @@ If an organisation is not found, please save your work as draft and check that t
   t('Highlight / promotion text (for the promotional section)');
   t('ISO 3166-1 alpha-2 code');
   t('Indicative budget for transnational activities');
-  t('Keep me informed of ESF-TNC activities');
   t('Keep my email private');
   t('Languages spoken by the project team');
   t('Languages spoken in the organisation');

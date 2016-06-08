@@ -1811,33 +1811,6 @@ function esf_tc_content_types_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_profile_cont_informed_esf'.
-  $field_bases['field_profile_cont_informed_esf'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_profile_cont_informed_esf',
-    'indexes' => array(
-      'value' => array(
-        0 => 'value',
-      ),
-    ),
-    'locked' => 1,
-    'module' => 'list',
-    'settings' => array(
-      'allowed_values' => array(
-        'yes' => 'Yes',
-        'no' => 'No',
-      ),
-      'allowed_values_function' => '',
-      'entity_translation_sync' => FALSE,
-      'profile2_private' => 0,
-    ),
-    'translatable' => 0,
-    'type' => 'list_text',
-  );
-
   // Exported field_base: 'field_profile_conta_phone_mobile'.
   $field_bases['field_profile_conta_phone_mobile'] = array(
     'active' => 1,

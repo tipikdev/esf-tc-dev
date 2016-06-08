@@ -154,6 +154,7 @@ function esf_tc_content_types_update_7101() {
 }
 
 /**
+ * Implements hook_update_N().
  */
 function esf_tc_content_types_update_7102() {
   // Delete unused fields.
@@ -163,10 +164,27 @@ function esf_tc_content_types_update_7102() {
     'field_call_other_countries',
     'field_org_is_ma_ib_type',
     'field_editorial_status',
+    'field_profile_cont_informed_esf',
   );
   foreach ($fields as $field) {
     if (field_info_field($field)) {
       field_delete_field($field);
     };
+  }
+  // Insert default image 4/3 format.
+  $folder_path = drupal_get_path('module', 'esf_tc_content_types') . '/default_images/';
+  $filename = 'default_image-4_3-640x360.png';
+  $source = $folder_path . $filename;
+  // Create new file.
+  if (file_exists($source)) {
+    $file = new stdClass();
+    $file->filename = $filename;
+    $file->timestamp = REQUEST_TIME;
+    $file->uri = $source;
+    $file->filemime = file_get_mimetype($source);
+    $file->uid = 1;
+    $file->status = FILE_STATUS_PERMANENT;
+    $file = file_copy($file, 'public://default_images', FILE_EXISTS_REPLACE);
+    variable_set('esf_tnc_4_3_default_image_fid', $file->fid);
   }
 }

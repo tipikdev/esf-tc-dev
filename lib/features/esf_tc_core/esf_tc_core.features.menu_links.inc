@@ -1153,17 +1153,7 @@ function esf_tc_core_menu_default_menu_links() {
       'alter' => TRUE,
       'attributes' => array(
         'data-display-title' => 1,
-        'data-hide-children' => 0,
         'data-remove-class' => 1,
-      ),
-      'item_attributes' => array(
-        'data-image' => '',
-        'data-display-title' => 1,
-        'data-hide-children' => 0,
-        'id' => '',
-        'class' => '',
-        'data-remove-class' => 0,
-        'style' => '',
       ),
       'identifier' => 'menu-breadcrumb-menu_european-commission:http://ec.europa.eu/index_en.htm',
     ),

@@ -10,6 +10,41 @@
 function esf_tc_content_types_user_default_permissions() {
   $permissions = array();
 
+  // Exported permission: 'access administration menu'.
+  $permissions['access administration menu'] = array(
+    'name' => 'access administration menu',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'editorial team member' => 'editorial team member',
+      'webmaster' => 'webmaster',
+    ),
+    'module' => 'admin_menu',
+  );
+
+  // Exported permission: 'access administration pages'.
+  $permissions['access administration pages'] = array(
+    'name' => 'access administration pages',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+      'editorial team member' => 'editorial team member',
+      'webmaster' => 'webmaster',
+    ),
+    'module' => 'system',
+  );
+
+  // Exported permission: 'access media browser'.
+  $permissions['access media browser'] = array(
+    'name' => 'access media browser',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+      'contributor' => 'contributor',
+      'editor' => 'editor',
+    ),
+    'module' => 'media',
+  );
+
   // Exported permission: 'access workbench access by role'.
   $permissions['access workbench access by role'] = array(
     'name' => 'access workbench access by role',
@@ -20,6 +55,16 @@ function esf_tc_content_types_user_default_permissions() {
     'module' => 'workbench_access',
   );
 
+  // Exported permission: 'add media from remote sources'.
+  $permissions['add media from remote sources'] = array(
+    'name' => 'add media from remote sources',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'media_internet',
+  );
+
   // Exported permission: 'administer comments'.
   $permissions['administer comments'] = array(
     'name' => 'administer comments',
@@ -27,6 +72,25 @@ function esf_tc_content_types_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'comment',
+  );
+
+  // Exported permission: 'administer file types'.
+  $permissions['administer file types'] = array(
+    'name' => 'administer file types',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'file_entity',
+  );
+
+  // Exported permission: 'administer files'.
+  $permissions['administer files'] = array(
+    'name' => 'administer files',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
+    'module' => 'file_entity',
   );
 
   // Exported permission: 'administer flags'.
@@ -98,28 +162,40 @@ function esf_tc_content_types_user_default_permissions() {
   // Exported permission: 'archive any esf_tnc_call_for_project content'.
   $permissions['archive any esf_tnc_call_for_project content'] = array(
     'name' => 'archive any esf_tnc_call_for_project content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
     'module' => 'esf_tc_content_types',
   );
 
   // Exported permission: 'archive any esf_tnc_organisation content'.
   $permissions['archive any esf_tnc_organisation content'] = array(
     'name' => 'archive any esf_tnc_organisation content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
     'module' => 'esf_tc_content_types',
   );
 
   // Exported permission: 'archive any esf_tnc_project content'.
   $permissions['archive any esf_tnc_project content'] = array(
     'name' => 'archive any esf_tnc_project content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
     'module' => 'esf_tc_content_types',
   );
 
   // Exported permission: 'archive any esf_tnc_tca content'.
   $permissions['archive any esf_tnc_tca content'] = array(
     'name' => 'archive any esf_tnc_tca content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
     'module' => 'esf_tc_content_types',
   );
 
@@ -146,29 +222,50 @@ function esf_tc_content_types_user_default_permissions() {
   // Exported permission: 'block any esf_tnc_call_for_project content'.
   $permissions['block any esf_tnc_call_for_project content'] = array(
     'name' => 'block any esf_tnc_call_for_project content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
     'module' => 'esf_tc_content_types',
   );
 
   // Exported permission: 'block any esf_tnc_organisation content'.
   $permissions['block any esf_tnc_organisation content'] = array(
     'name' => 'block any esf_tnc_organisation content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
     'module' => 'esf_tc_content_types',
   );
 
   // Exported permission: 'block any esf_tnc_project content'.
   $permissions['block any esf_tnc_project content'] = array(
     'name' => 'block any esf_tnc_project content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
     'module' => 'esf_tc_content_types',
   );
 
   // Exported permission: 'block any esf_tnc_tca content'.
   $permissions['block any esf_tnc_tca content'] = array(
     'name' => 'block any esf_tnc_tca content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
     'module' => 'esf_tc_content_types',
+  );
+
+  // Exported permission: 'bypass file access'.
+  $permissions['bypass file access'] = array(
+    'name' => 'bypass file access',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'file_entity',
   );
 
   // Exported permission: 'bypass workbench moderation'.
@@ -195,6 +292,7 @@ function esf_tc_content_types_user_default_permissions() {
   $permissions['create esf_tnc_event content'] = array(
     'name' => 'create esf_tnc_event content',
     'roles' => array(
+      'administrator' => 'administrator',
       'webmaster' => 'webmaster',
     ),
     'module' => 'node',
@@ -204,6 +302,7 @@ function esf_tc_content_types_user_default_permissions() {
   $permissions['create esf_tnc_hp_slide content'] = array(
     'name' => 'create esf_tnc_hp_slide content',
     'roles' => array(
+      'administrator' => 'administrator',
       'webmaster' => 'webmaster',
     ),
     'module' => 'node',
@@ -213,6 +312,7 @@ function esf_tc_content_types_user_default_permissions() {
   $permissions['create esf_tnc_news content'] = array(
     'name' => 'create esf_tnc_news content',
     'roles' => array(
+      'administrator' => 'administrator',
       'webmaster' => 'webmaster',
     ),
     'module' => 'node',
@@ -257,6 +357,26 @@ function esf_tc_content_types_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'delete any audio files'.
+  $permissions['delete any audio files'] = array(
+    'name' => 'delete any audio files',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
+    'module' => 'file_entity',
+  );
+
+  // Exported permission: 'delete any document files'.
+  $permissions['delete any document files'] = array(
+    'name' => 'delete any document files',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
+    'module' => 'file_entity',
+  );
+
   // Exported permission: 'delete any esf_tnc_call_for_project content'.
   $permissions['delete any esf_tnc_call_for_project content'] = array(
     'name' => 'delete any esf_tnc_call_for_project content',
@@ -271,6 +391,7 @@ function esf_tc_content_types_user_default_permissions() {
   $permissions['delete any esf_tnc_event content'] = array(
     'name' => 'delete any esf_tnc_event content',
     'roles' => array(
+      'administrator' => 'administrator',
       'webmaster' => 'webmaster',
     ),
     'module' => 'node',
@@ -280,6 +401,7 @@ function esf_tc_content_types_user_default_permissions() {
   $permissions['delete any esf_tnc_hp_slide content'] = array(
     'name' => 'delete any esf_tnc_hp_slide content',
     'roles' => array(
+      'administrator' => 'administrator',
       'webmaster' => 'webmaster',
     ),
     'module' => 'node',
@@ -289,6 +411,7 @@ function esf_tc_content_types_user_default_permissions() {
   $permissions['delete any esf_tnc_news content'] = array(
     'name' => 'delete any esf_tnc_news content',
     'roles' => array(
+      'administrator' => 'administrator',
       'webmaster' => 'webmaster',
     ),
     'module' => 'node',
@@ -335,6 +458,46 @@ function esf_tc_content_types_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'delete any image files'.
+  $permissions['delete any image files'] = array(
+    'name' => 'delete any image files',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
+    'module' => 'file_entity',
+  );
+
+  // Exported permission: 'delete any video files'.
+  $permissions['delete any video files'] = array(
+    'name' => 'delete any video files',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
+    'module' => 'file_entity',
+  );
+
+  // Exported permission: 'delete own audio files'.
+  $permissions['delete own audio files'] = array(
+    'name' => 'delete own audio files',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
+    'module' => 'file_entity',
+  );
+
+  // Exported permission: 'delete own document files'.
+  $permissions['delete own document files'] = array(
+    'name' => 'delete own document files',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
+    'module' => 'file_entity',
+  );
+
   // Exported permission: 'delete own esf_tnc_call_for_project content'.
   $permissions['delete own esf_tnc_call_for_project content'] = array(
     'name' => 'delete own esf_tnc_call_for_project content',
@@ -349,6 +512,7 @@ function esf_tc_content_types_user_default_permissions() {
   $permissions['delete own esf_tnc_event content'] = array(
     'name' => 'delete own esf_tnc_event content',
     'roles' => array(
+      'administrator' => 'administrator',
       'webmaster' => 'webmaster',
     ),
     'module' => 'node',
@@ -358,6 +522,7 @@ function esf_tc_content_types_user_default_permissions() {
   $permissions['delete own esf_tnc_hp_slide content'] = array(
     'name' => 'delete own esf_tnc_hp_slide content',
     'roles' => array(
+      'administrator' => 'administrator',
       'webmaster' => 'webmaster',
     ),
     'module' => 'node',
@@ -367,6 +532,7 @@ function esf_tc_content_types_user_default_permissions() {
   $permissions['delete own esf_tnc_news content'] = array(
     'name' => 'delete own esf_tnc_news content',
     'roles' => array(
+      'administrator' => 'administrator',
       'webmaster' => 'webmaster',
     ),
     'module' => 'node',
@@ -412,6 +578,167 @@ function esf_tc_content_types_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'delete own video files'.
+  $permissions['delete own video files'] = array(
+    'name' => 'delete own video files',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
+    'module' => 'file_entity',
+  );
+
+  // Exported permission: 'delete terms in call_types'.
+  $permissions['delete terms in call_types'] = array(
+    'name' => 'delete terms in call_types',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'delete terms in esf_countries_regions'.
+  $permissions['delete terms in esf_countries_regions'] = array(
+    'name' => 'delete terms in esf_countries_regions',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'delete terms in esf_themes'.
+  $permissions['delete terms in esf_themes'] = array(
+    'name' => 'delete terms in esf_themes',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'delete terms in organisation_types'.
+  $permissions['delete terms in organisation_types'] = array(
+    'name' => 'delete terms in organisation_types',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'delete terms in project_activities'.
+  $permissions['delete terms in project_activities'] = array(
+    'name' => 'delete terms in project_activities',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'delete terms in project_target_groups'.
+  $permissions['delete terms in project_target_groups'] = array(
+    'name' => 'delete terms in project_target_groups',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'download any audio files'.
+  $permissions['download any audio files'] = array(
+    'name' => 'download any audio files',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'file_entity',
+  );
+
+  // Exported permission: 'download any document files'.
+  $permissions['download any document files'] = array(
+    'name' => 'download any document files',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'file_entity',
+  );
+
+  // Exported permission: 'download any image files'.
+  $permissions['download any image files'] = array(
+    'name' => 'download any image files',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'file_entity',
+  );
+
+  // Exported permission: 'download any video files'.
+  $permissions['download any video files'] = array(
+    'name' => 'download any video files',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'file_entity',
+  );
+
+  // Exported permission: 'download own audio files'.
+  $permissions['download own audio files'] = array(
+    'name' => 'download own audio files',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
+    'module' => 'file_entity',
+  );
+
+  // Exported permission: 'download own document files'.
+  $permissions['download own document files'] = array(
+    'name' => 'download own document files',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+      'webmaster' => 'webmaster',
+    ),
+    'module' => 'file_entity',
+  );
+
+  // Exported permission: 'download own image files'.
+  $permissions['download own image files'] = array(
+    'name' => 'download own image files',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
+    'module' => 'file_entity',
+  );
+
+  // Exported permission: 'download own video files'.
+  $permissions['download own video files'] = array(
+    'name' => 'download own video files',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
+    'module' => 'file_entity',
+  );
+
+  // Exported permission: 'edit any audio files'.
+  $permissions['edit any audio files'] = array(
+    'name' => 'edit any audio files',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
+    'module' => 'file_entity',
+  );
+
   // Exported permission: 'edit any contact_profile profile'.
   $permissions['edit any contact_profile profile'] = array(
     'name' => 'edit any contact_profile profile',
@@ -420,6 +747,16 @@ function esf_tc_content_types_user_default_permissions() {
       'webmaster' => 'webmaster',
     ),
     'module' => 'profile2',
+  );
+
+  // Exported permission: 'edit any document files'.
+  $permissions['edit any document files'] = array(
+    'name' => 'edit any document files',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
+    'module' => 'file_entity',
   );
 
   // Exported permission: 'edit any esf_tnc_call_for_project content'.
@@ -436,6 +773,7 @@ function esf_tc_content_types_user_default_permissions() {
   $permissions['edit any esf_tnc_event content'] = array(
     'name' => 'edit any esf_tnc_event content',
     'roles' => array(
+      'administrator' => 'administrator',
       'webmaster' => 'webmaster',
     ),
     'module' => 'node',
@@ -445,6 +783,7 @@ function esf_tc_content_types_user_default_permissions() {
   $permissions['edit any esf_tnc_hp_slide content'] = array(
     'name' => 'edit any esf_tnc_hp_slide content',
     'roles' => array(
+      'administrator' => 'administrator',
       'webmaster' => 'webmaster',
     ),
     'module' => 'node',
@@ -454,6 +793,7 @@ function esf_tc_content_types_user_default_permissions() {
   $permissions['edit any esf_tnc_news content'] = array(
     'name' => 'edit any esf_tnc_news content',
     'roles' => array(
+      'administrator' => 'administrator',
       'webmaster' => 'webmaster',
     ),
     'module' => 'node',
@@ -500,6 +840,36 @@ function esf_tc_content_types_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'edit any image files'.
+  $permissions['edit any image files'] = array(
+    'name' => 'edit any image files',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
+    'module' => 'file_entity',
+  );
+
+  // Exported permission: 'edit any video files'.
+  $permissions['edit any video files'] = array(
+    'name' => 'edit any video files',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
+    'module' => 'file_entity',
+  );
+
+  // Exported permission: 'edit own audio files'.
+  $permissions['edit own audio files'] = array(
+    'name' => 'edit own audio files',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'file_entity',
+  );
+
   // Exported permission: 'edit own comments'.
   $permissions['edit own comments'] = array(
     'name' => 'edit own comments',
@@ -520,6 +890,16 @@ function esf_tc_content_types_user_default_permissions() {
     'module' => 'profile2',
   );
 
+  // Exported permission: 'edit own document files'.
+  $permissions['edit own document files'] = array(
+    'name' => 'edit own document files',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'file_entity',
+  );
+
   // Exported permission: 'edit own esf_tnc_call_for_project content'.
   $permissions['edit own esf_tnc_call_for_project content'] = array(
     'name' => 'edit own esf_tnc_call_for_project content',
@@ -534,6 +914,7 @@ function esf_tc_content_types_user_default_permissions() {
   $permissions['edit own esf_tnc_event content'] = array(
     'name' => 'edit own esf_tnc_event content',
     'roles' => array(
+      'administrator' => 'administrator',
       'webmaster' => 'webmaster',
     ),
     'module' => 'node',
@@ -543,6 +924,7 @@ function esf_tc_content_types_user_default_permissions() {
   $permissions['edit own esf_tnc_hp_slide content'] = array(
     'name' => 'edit own esf_tnc_hp_slide content',
     'roles' => array(
+      'administrator' => 'administrator',
       'webmaster' => 'webmaster',
     ),
     'module' => 'node',
@@ -552,6 +934,7 @@ function esf_tc_content_types_user_default_permissions() {
   $permissions['edit own esf_tnc_news content'] = array(
     'name' => 'edit own esf_tnc_news content',
     'roles' => array(
+      'administrator' => 'administrator',
       'webmaster' => 'webmaster',
     ),
     'module' => 'node',
@@ -597,6 +980,76 @@ function esf_tc_content_types_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'edit own video files'.
+  $permissions['edit own video files'] = array(
+    'name' => 'edit own video files',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'file_entity',
+  );
+
+  // Exported permission: 'edit terms in call_types'.
+  $permissions['edit terms in call_types'] = array(
+    'name' => 'edit terms in call_types',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'edit terms in esf_countries_regions'.
+  $permissions['edit terms in esf_countries_regions'] = array(
+    'name' => 'edit terms in esf_countries_regions',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'edit terms in esf_themes'.
+  $permissions['edit terms in esf_themes'] = array(
+    'name' => 'edit terms in esf_themes',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'edit terms in organisation_types'.
+  $permissions['edit terms in organisation_types'] = array(
+    'name' => 'edit terms in organisation_types',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'edit terms in project_activities'.
+  $permissions['edit terms in project_activities'] = array(
+    'name' => 'edit terms in project_activities',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'edit terms in project_target_groups'.
+  $permissions['edit terms in project_target_groups'] = array(
+    'name' => 'edit terms in project_target_groups',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
+    'module' => 'taxonomy',
+  );
+
   // Exported permission: 'flag esf_tc_favorites'.
   $permissions['flag esf_tc_favorites'] = array(
     'name' => 'flag esf_tc_favorites',
@@ -609,28 +1062,40 @@ function esf_tc_content_types_user_default_permissions() {
   // Exported permission: 'republish any esf_tnc_call_for_project content'.
   $permissions['republish any esf_tnc_call_for_project content'] = array(
     'name' => 'republish any esf_tnc_call_for_project content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
     'module' => 'esf_tc_content_types',
   );
 
   // Exported permission: 'republish any esf_tnc_organisation content'.
   $permissions['republish any esf_tnc_organisation content'] = array(
     'name' => 'republish any esf_tnc_organisation content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
     'module' => 'esf_tc_content_types',
   );
 
   // Exported permission: 'republish any esf_tnc_project content'.
   $permissions['republish any esf_tnc_project content'] = array(
     'name' => 'republish any esf_tnc_project content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
     'module' => 'esf_tc_content_types',
   );
 
   // Exported permission: 'republish any esf_tnc_tca content'.
   $permissions['republish any esf_tnc_tca content'] = array(
     'name' => 'republish any esf_tnc_tca content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
     'module' => 'esf_tc_content_types',
   );
 
@@ -668,6 +1133,8 @@ function esf_tc_content_types_user_default_permissions() {
     'name' => 'view own contact_profile profile',
     'roles' => array(
       'administrator' => 'administrator',
+      'contact' => 'contact',
+      'webmaster' => 'webmaster',
     ),
     'module' => 'profile2',
   );

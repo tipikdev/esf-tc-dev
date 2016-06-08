@@ -55,9 +55,7 @@ function esf_tc_content_types_field_group_info() {
     'label' => 'Token',
     'weight' => '8',
     'children' => array(
-      0 => 'field_organisation',
-      1 => 'field_profile_contact_contact',
-      2 => 'field_token_email',
+      0 => 'field_token_email',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
