@@ -112,16 +112,6 @@ function esf_tc_content_types_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: 'administer permissions'.
-  $permissions['administer permissions'] = array(
-    'name' => 'administer permissions',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'webmaster' => 'webmaster',
-    ),
-    'module' => 'user',
-  );
-
   // Exported permission: 'administer profile types'.
   $permissions['administer profile types'] = array(
     'name' => 'administer profile types',
