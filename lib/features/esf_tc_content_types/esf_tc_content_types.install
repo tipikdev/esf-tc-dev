@@ -145,7 +145,7 @@ function esf_tc_content_types_update_7101() {
   }
 
   // Remove all conditional fields.
-  $num_deleted = db_delete('conditional_fields')
+  db_delete('conditional_fields')
     ->execute();
 
   // Delete Global call content type.

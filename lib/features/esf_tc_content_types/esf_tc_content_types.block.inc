@@ -71,8 +71,6 @@ function _esf_tc_build_stats_block() {
     'link' => url($search_path, array('query' => $facet)),
   );
 
-  unset($query);
-
   // Count number of TCA.
   $count = _esf_tc_helper_count_published_content('esf_tnc_tca', $editorial_status_validation);
 

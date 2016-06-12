@@ -102,7 +102,7 @@ function esf_tc_content_types_comment_insert($comment) {
 }
 
 /**
- * Implements hook_form_alter().
+ * Implements hook_form_FORM_ID_alter().
  *
  * Alter contact profile form.
  */
@@ -248,7 +248,7 @@ function esf_tc_content_types_form_alter(&$form, &$form_state, $form_id) {
 }
 
 /**
- * Implements hook_form_FORMID_alter().
+ * Implements hook_form_FORM_ID_alter().
  *
  * Alter organisation node form.
  */
@@ -371,8 +371,6 @@ function esf_tc_content_types_field_org_additional_contacts_after_build($form, &
 }
 
 /**
- * Implements hook_form_validate().
- *
  * Add custom organisation node form validation.
  */
 function esf_tc_content_types_organisation_validate($form, &$form_state) {
@@ -446,13 +444,11 @@ function esf_tc_content_types_organisation_validate($form, &$form_state) {
 }
 
 /**
- * Implements hook_form_FORMID_alter().
+ * Implements hook_form_FORM_ID_alter().
  *
  * Alter project node form.
  */
 function esf_tc_content_types_form_esf_tnc_project_node_form_alter(&$form, &$form_state, $form_id) {
-
-  $type = $form['type']['#value'];
 
   // Add custom validate function.
   $form['#validate'][] = 'esf_tc_content_types_projects_database_draft_validate';
@@ -527,8 +523,6 @@ function _esf_tc_content_types_get_calls_by_country_options($country_tid) {
 }
 
 /**
- * Implements hook_form_validate().
- *
  * Add custom project node form validation.
  */
 function esf_tc_content_types_project_validate($form, &$form_state) {
@@ -544,7 +538,7 @@ function esf_tc_content_types_project_validate($form, &$form_state) {
 }
 
 /**
- * Implements hook_form_FORMID_alter().
+ * Implements hook_form_FORM_ID_alter().
  *
  * Alter call for call of project node form.
  */
@@ -621,7 +615,7 @@ function _esf_tc_content_types_get_organisations_by_country_options($country_tid
 }
 
 /**
- * Implements hook_form_FORMID_alter().
+ * Implements hook_form_FORM_ID_alter().
  *
  * Alter TCA node form.
  */
@@ -673,7 +667,7 @@ function esf_tc_content_types_projects_database_draft_validate(&$form, &$form_st
       // Clear errors.
       form_clear_error();
       // Remove error messages.
-      $error_messages = drupal_get_messages('error');
+      drupal_get_messages('error');
       $removed_messages = array();
 
       foreach ($errors as $name => $error_message) {
@@ -704,8 +698,6 @@ function esf_tc_content_types_projects_database_draft_validate(&$form, &$form_st
  * Project database (4 content types) custom submit for editorial status.
  */
 function esf_tc_content_types_projects_database_submit(&$form, &$form_state) {
-  $content_type = $form['type']['#value'];
-
   $arr_status = array(
     'publish' => 'published',
     'block' => 'blocked',
@@ -866,15 +858,6 @@ function esf_tc_content_types_node_grants($account, $op) {
 }
 
 /**
- * Implements hook_preprocess_node().
- */
-function esf_tc_content_types_preprocess_node(&$variables) {
-  $node = $variables['node'];
-  $content_type = $variables['type'];
-  $mas = _esf_tc_content_types_get_responsible_authorities($content_type, $node);
-}
-
-/**
  * Implements template_preprocess_forums().
  */
 function esf_tc_content_types_preprocess_forums(&$variables) {
@@ -1002,7 +985,7 @@ function _esf_tc_content_types_button_access($action, $content_type, $node, $sta
   if (!$status) {
     $status = field_get_items('node', $node, $editorial_status_field_name);
     if (is_array($status)) {
-      $status = reset($current_status)['value'];
+      $status = reset($status)['value'];
     }
   }
 
@@ -1451,7 +1434,7 @@ function esf_tc_content_types_node_delete($node) {
 }
 
 /**
- * Implements hook_form_FORMID_alter().
+ * Implements hook_form_FORM_ID_alter().
  *
  * Alter WB Access editor form.
  */

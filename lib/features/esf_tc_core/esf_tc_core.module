@@ -13,6 +13,7 @@ function esf_tc_core_menu() {
   return array(
     'my-tnc' => array(
       'title' => 'myTNC',
+      // Anonymous & authenticated are redirected differently.
       'access callback' => TRUE,
       'page callback' => '_esf_tc_core_mytnc_redirect',
       'menu_name' => 'my-tnc',
