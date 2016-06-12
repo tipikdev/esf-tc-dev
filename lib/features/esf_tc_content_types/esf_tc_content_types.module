@@ -495,6 +495,14 @@ function esf_tc_content_types_form_esf_tnc_project_node_form_alter(&$form, &$for
 
 /**
  * Custom callback to display MA per selected country.
+ *
+ * @param array $form
+ *    The form needed for ajax.
+ * @param array $form_state
+ *    The form state needed for ajax.
+ *
+ * @return array|mixed
+ *    Return the field target fot Ajax refresh.
  */
 function _esf_tc_content_types_project_country_callback($form, $form_state) {
   return $form['field_project_call_for_projects'];
@@ -502,6 +510,12 @@ function _esf_tc_content_types_project_country_callback($form, $form_state) {
 
 /**
  * Return all calls for project per country as list options.
+ *
+ * @param int $country_tid
+ *    The taxonomy ID of the country.
+ *
+ * @return array
+ *    related call of projects options.
  */
 function _esf_tc_content_types_get_calls_by_country_options($country_tid) {
   $query = db_select('node', 'n')
@@ -574,6 +588,14 @@ function esf_tc_content_types_form_esf_tnc_call_for_project_node_form_alter(&$fo
 
 /**
  * Custom callback to display MA per selected country.
+ *
+ * @param array $form
+ *    The form needed for ajax.
+ * @param array $form_state
+ *    The form state needed for ajax.
+ *
+ * @return array|mixed
+ *    Return the field target fot Ajax refresh.
  */
 function _esf_tc_content_types_call_country_callback($form, $form_state) {
   return $form['field_call_org_involved'];
@@ -581,6 +603,14 @@ function _esf_tc_content_types_call_country_callback($form, $form_state) {
 
 /**
  * Custom after build function for call for project.
+ *
+ * @param array $form
+ *    The form subject to after build.
+ * @param array $form_state
+ *    The form state subject to after build.
+ *
+ * @return mixed
+ *    Return the modified form.
  */
 function _esf_tc_content_types_call_for_project_after_build($form, &$form_state) {
   // Remove Other option form country list.
@@ -593,6 +623,12 @@ function _esf_tc_content_types_call_for_project_after_build($form, &$form_state)
 
 /**
  * Return all organisations per country as list options.
+ *
+ * @param int $country_tid
+ *    The taxonomy ID of the country.
+ *
+ * @return array
+ *    Return all related organisations as a list of options.
  */
 function _esf_tc_content_types_get_organisations_by_country_options($country_tid) {
   $query = db_select('node', 'n')
@@ -871,7 +907,17 @@ function esf_tc_content_types_preprocess_forums(&$variables) {
 }
 
 /**
- * Render view.
+ * Render view for events and news block.
+ *
+ * @param string $view_name
+ *    The name of view used for rendering.
+ * @param string $view_display
+ *    The display of view used for rendering.
+ * @param string $param
+ *    Additionals parameters.
+ *
+ * @return string
+ *    Return output of view.
  */
 function _esf_tc_content_types_render_view($view_name, $view_display, $param) {
   $output = '';
@@ -957,6 +1003,9 @@ function esf_tc_content_types_menu_alter(&$items) {
 
 /**
  * Helper function get the editorial status field name.
+ *
+ * @return string
+ *    Return the field name of the editorial status.
  */
 function _esf_tc_content_types_get_editorial_status_field_name() {
   return variable_get('esf_tc_editorial_status_field_name', 'field_esf_editorial_status');
@@ -964,6 +1013,9 @@ function _esf_tc_content_types_get_editorial_status_field_name() {
 
 /**
  * Helper function get all content types used for Projects database.
+ *
+ * @return array
+ *    Return a list of content types used for the projects databases.
  */
 function _esf_tc_content_types_get_project_database_types() {
   return array(
@@ -976,6 +1028,18 @@ function _esf_tc_content_types_get_project_database_types() {
 
 /**
  * Helper function to check if user can access to the actions button.
+ *
+ * @param string $action
+ *    The action of the button.
+ * @param string $content_type
+ *    The viewed content type.
+ * @param string $node
+ *    The viewed node.
+ * @param string $status
+ *    The current status of the content.
+ *
+ * @return bool
+ *    Return if the current user can access to the action button.
  */
 function _esf_tc_content_types_button_access($action, $content_type, $node, $status = NULL) {
   $content_types = _esf_tc_content_types_get_project_database_types();
@@ -1061,7 +1125,13 @@ function _esf_tc_content_types_button_access($action, $content_type, $node, $sta
 /**
  * Helper function to get the Managing Authorities linked to the node.
  *
- * Return array of nodes.
+ * @param string $content_type
+ *    The content type used to find responsible authorities.
+ * @param object $node
+ *    The node used to find responsible authorities.
+ *
+ * @return array
+ *    Return nodes of associated Managing authorities.
  */
 function _esf_tc_content_types_get_responsible_authorities($content_type, $node) {
   $content_types = _esf_tc_content_types_get_project_database_types();
@@ -1095,6 +1165,12 @@ function _esf_tc_content_types_get_responsible_authorities($content_type, $node)
 
 /**
  * Helper function to check if current user is an Managing Authorities granted.
+ *
+ * @param array $mas
+ *    The managing authorities to check.
+ *
+ * @return bool
+ *    Return TRUE if Managing Authorities have update rights.
  */
 function _esf_tc_content_types_ma_access($mas) {
   if (is_array($mas) && count($mas)) {
@@ -1111,6 +1187,11 @@ function _esf_tc_content_types_ma_access($mas) {
 
 /**
  * Notify the forum moderator.
+ *
+ * @param object $forum_term
+ *    The taxonomy object of the forum used for network.
+ * @param string $op
+ *    The operation asked by user.
  */
 function _esf_tc_content_types_manage_networking($forum_term, $op) {
   global $user;
@@ -1179,6 +1260,12 @@ function esf_tc_content_types_menu_local_tasks_alter(&$data, $router_item, $root
 
 /**
  * Get emails of moderators by forum.
+ *
+ * @param object $forum_term
+ *    The taxonomy object used for network.
+ *
+ * @return array
+ *    Return the emails of network moderators.
  */
 function _esf_tc_content_types_get_forum_moderators($forum_term) {
   $moderator_rid = ($role = user_role_load_by_name('forum moderator')) ? $role->rid : NULL;
@@ -1202,6 +1289,14 @@ function _esf_tc_content_types_get_forum_moderators($forum_term) {
 
 /**
  * Return tid of a term in a specific vocabulary.
+ *
+ * @param object $term
+ *    The term to treat.
+ * @param object $vocabulary
+ *    The vocabulary associed to the term.
+ *
+ * @return int
+ *    Return the term ID of other country if exists.
  */
 function _esf_tc_content_types_get_term_id_by_vocabulary($term, $vocabulary) {
   $tid = NULL;
@@ -1239,6 +1334,16 @@ function esf_tc_content_types_user_login(&$edit, $account) {
 
 /**
  * Helper function to get entity references IDs.
+ *
+ * @param string $field_name
+ *    The field name used to get references.
+ * @param object $entity
+ *    The entity having the references.
+ * @param string $type
+ *    The type of the entity having references.
+ *
+ * @return array
+ *    Return all user ID references into the field.
  */
 function _esf_tc_content_types_get_references_ids($field_name, $entity, $type = 'node') {
   $uids = array();
@@ -1256,6 +1361,12 @@ function _esf_tc_content_types_get_references_ids($field_name, $entity, $type = 
 
 /**
  * Helper function to get all organisation of a user.
+ *
+ * @param int $uid
+ *    The user ID target.
+ *
+ * @return array
+ *    Return all organisation IDs where the user is referenced.
  */
 function _esf_tc_content_type_get_organisation($uid) {
   $nids = array();
@@ -1290,6 +1401,11 @@ function _esf_tc_content_type_get_organisation($uid) {
 
 /**
  * Helper function to display message on form when status is not published.
+ *
+ * @param object $node
+ *    The node targered by message.
+ * @param string $state
+ *    The current status of the node.
  */
 function _esf_tc_content_type_display_message($node, $state) {
   switch ($state) {
@@ -1313,6 +1429,14 @@ function _esf_tc_content_type_display_message($node, $state) {
 
 /**
  * Helper function to get all associated email to a node.
+ *
+ * @param object $node
+ *    The node object targered.
+ * @param bool $with_ma
+ *    If TRUE the managing authorities is also returned.
+ *
+ * @return array
+ *    Return the emails addresses of all users which are associated to the node.
  */
 function _esf_tc_content_types_get_associated_email($node, $with_ma = FALSE) {
   $emails = array();
@@ -1390,6 +1514,12 @@ function _esf_tc_content_types_get_associated_email($node, $with_ma = FALSE) {
 
 /**
  * Helper function to get Webmasters emails.
+ *
+ * @param string $rolename
+ *    The role used for the webmasters.
+ *
+ * @return mixed
+ *    Return all emails of webmasters.
  */
 function _esf_tc_content_types_get_webmasters_email($rolename = 'webmaster') {
   // Get Role rid.
@@ -1491,6 +1621,17 @@ function esf_tc_content_types_preprocess_field(&$variables) {
 
 /**
  * Helper function to send notification to a contact.
+ *
+ * @param string $key
+ *    The key used to generate email message.
+ * @param object $node
+ *    The node targered by the notification.
+ * @param string $name
+ *    The name of receiver.
+ * @param string $role
+ *    The role of the receiver.
+ * @param string $email
+ *    The email of the receiver.
  */
 function _esf_tc_content_types_notify_contact($key, $node, $name, $role, $email) {
   $error = TRUE;

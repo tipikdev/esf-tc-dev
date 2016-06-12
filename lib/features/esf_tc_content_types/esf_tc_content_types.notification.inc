@@ -138,6 +138,16 @@ function esf_tc_content_state_notification_form($form, &$form_state, $content_ty
 
 /**
  * Helper - Define default notification text.
+ *
+ * @param string $key
+ *    The key for identifying the type of input and notification.
+ * @param array $variables
+ *    Additionals variables to build the notification.
+ * @param string $language
+ *    The language to use for the notification.
+ *
+ * @return bool|null|string
+ *    Return content used in email for notifications.
  */
 function _esf_tc_content_types_mail_text($key, $variables = array(), $language = LANGUAGE_NONE) {
   $_states = _esf_tc_content_type_get_notification_states();
@@ -222,6 +232,9 @@ function _esf_tc_content_types_mail_text($key, $variables = array(), $language =
 
 /**
  * Helper to get notification states.
+ *
+ * @return array
+ *    Return the list of editorial status.
  */
 function _esf_tc_content_type_get_notification_states() {
   return array(
@@ -235,6 +248,9 @@ function _esf_tc_content_type_get_notification_states() {
 
 /**
  * Helper to notify users when node is saved.
+ *
+ * @param object $node
+ *    The node used to notify.
  */
 function _esf_tc_content_types_node_notify($node) {
   global $user;
@@ -404,6 +420,9 @@ function _esf_tc_content_types_node_notify($node) {
 
 /**
  * Helper to notify users when contact field collection is saved.
+ *
+ * @param object $field_collection_item
+ *    The field collection used to notify.
  */
 function _esf_tc_content_types_field_collection_notify($field_collection_item) {
   // Contact of organisation.

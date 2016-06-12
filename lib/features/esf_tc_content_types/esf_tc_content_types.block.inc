@@ -35,6 +35,9 @@ function esf_tc_content_types_block_view($delta = '') {
 
 /**
  * Build the content of Statistics block.
+ *
+ * @return array
+ *    Return additionals information to build statistics blocks.
  */
 function _esf_tc_build_stats_block() {
   $info = array();
@@ -96,6 +99,16 @@ function _esf_tc_build_stats_block() {
 
 /**
  * Helper function - Count of published content.
+ *
+ * @param string $bundle
+ *    The node bundle.
+ * @param bool $editorial_status
+ *    add an editorial_status published constraint if TRUE.
+ * @param array $fields
+ *    Add field Contditions array of $field => $value.
+ *
+ * @return int
+ *    Return the count of content type.
  */
 function _esf_tc_helper_count_published_content($bundle, $editorial_status = FALSE, $fields = array()) {
   // Field_esf_editorial_status.
