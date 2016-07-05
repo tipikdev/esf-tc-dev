@@ -274,7 +274,7 @@ function _esf_tc_content_types_node_notify($node) {
       }
     }
 
-    if ($status && $status != 'draft') {
+    if (isset($status) && $status && $status != 'draft') {
       // Status notifications.
       if ($status != $old_status) {
         // Notify related users.

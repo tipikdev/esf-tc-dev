@@ -1149,8 +1149,10 @@ function _esf_tc_content_types_get_responsible_authorities($content_type, $node)
         break;
 
       case 'esf_tnc_project':
-        $cid = intval($node->field_project_call_for_projects_target_id[LANGUAGE_NONE][0]['value']);
-        $sql->join('field_data_field_project_call_for_projects', 'project', 'calls.entity_id = :cid', array(':cid' => $cid));
+        if (isset($node->field_project_call_for_projects[LANGUAGE_NONE][0]['value'])) {
+          $cid = intval($node->field_project_call_for_projects[LANGUAGE_NONE][0]['value']);
+          $sql->join('field_data_field_project_call_for_projects', 'project', 'calls.entity_id = :cid', array(':cid' => $cid));
+        }
         break;
     }
     if ($sql) {
