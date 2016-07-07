@@ -195,6 +195,14 @@ function esf_tc_content_types_form_alter(&$form, &$form_state, $form_id) {
     // Alert if status is not published.
     if ((!isset($form_state['input']['ajax_html_ids']))) {
       _esf_tc_content_type_display_message($form['#node'], $state);
+      $_arr_types = array(
+        'esf_tnc_project',
+        'esf_tnc_call_for_project',
+        'esf_tnc_tca',
+      );
+      if (!isset($form['#node']->nid) && in_array($form['#node']->type, $_arr_types)) {
+        _esf_tc_content_types_advice_message();
+      }
     }
 
     $form['actions']['submit']['#access'] = _esf_tc_content_types_button_access('submit', $form['type']['#value'], $form['#node'], $state);
@@ -254,6 +262,7 @@ function esf_tc_content_types_form_alter(&$form, &$form_state, $form_id) {
  */
 function esf_tc_content_types_form_esf_tnc_organisation_node_form_alter(&$form, &$form_state, $form_id) {
   global $user;
+  $node = $form['#node'];
   // Add afterbuild function to manage states on field collection.
   $form['field_org_additional_contacts'][LANGUAGE_NONE]['#after_build'][] = 'esf_tc_content_types_field_org_additional_contacts_after_build';
 
@@ -557,6 +566,12 @@ function esf_tc_content_types_project_validate($form, &$form_state) {
  * Alter call for call of project node form.
  */
 function esf_tc_content_types_form_esf_tnc_call_for_project_node_form_alter(&$form, &$form_state) {
+
+  // Add advice in message queue.
+  if (!isset($form_state['input']['ajax_html_ids']) && !isset($form['#node']->nid)) {
+    _esf_tc_content_types_advice_message();
+  }
+
   // Add custom after build and validate function.
   $form['#after_build'][] = '_esf_tc_content_types_call_for_project_after_build';
   $form['#validate'][] = 'esf_tc_content_types_projects_database_draft_validate';
@@ -1691,4 +1706,16 @@ function esf_tc_content_types_field_default_field_instances_alter(&$fields) {
     }
   }
   unset($bundle, $field_name);
+}
+
+/**
+ * Helper function to add an advice message on node creation.
+ */
+function _esf_tc_content_types_advice_message() {
+  $message = '<p>' . t('Please, before starting a new project input, make sure that:') . '</p>' .
+    '<ul><li>' . t('you have created your organisation details ("Project lead organisation")') . '</li>' .
+    '<li>' . t('the "Project manager" you want to indicate already has a valid user account on the myTNC website.') . '</li></ul>' .
+    '<p>' . t('(You also may indicate your own account as "Project manager" temporarily, and update this later once the permanant project manager has validated his/her user account.)') . '</p>';
+
+  drupal_set_message($message, 'warning');
 }
