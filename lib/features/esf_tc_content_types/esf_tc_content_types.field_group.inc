@@ -21,13 +21,13 @@ function esf_tc_content_types_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Legal contact',
-    'weight' => '12',
+    'weight' => '13',
     'children' => array(
-      0 => 'field_org_contact_account',
-      1 => 'field_org_contact_legal_name',
+      0 => 'field_org_contact',
+      1 => 'field_org_contact_account',
       2 => 'field_org_contact_legal_email',
-      3 => 'field_org_contact_legal_role',
-      4 => 'field_org_contact',
+      3 => 'field_org_contact_legal_name',
+      4 => 'field_org_contact_legal_role',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

@@ -11,6 +11,67 @@ function esf_tc_content_types_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance:
+  // 'comment-comment_node_forum-field_topic_comment_files'.
+  $field_instances['comment-comment_node_forum-field_topic_comment_files'] = array(
+    'bundle' => 'comment_node_forum',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'file',
+        'settings' => array(),
+        'type' => 'file_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'comment',
+    'field_name' => 'field_topic_comment_files',
+    'label' => 'Files',
+    'required' => 0,
+    'settings' => array(
+      'description_field' => 1,
+      'entity_translation_sync' => FALSE,
+      'file_directory' => 'comments',
+      'file_extensions' => 'jpg jpeg gif png txt pdf xls xlsx doc docx odt ods odp ppt pptx zip tar',
+      'max_filesize' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'file',
+      'settings' => array(
+        'filefield_sources' => array(
+          'filefield_sources' => array(
+            'attach' => 0,
+            'clipboard' => 0,
+            'plupload' => 0,
+            'reference' => 0,
+            'remote' => 0,
+            'upload' => 'upload',
+          ),
+          'source_attach' => array(
+            'absolute' => 0,
+            'attach_mode' => 'move',
+            'path' => 'file_attach',
+          ),
+          'source_imce' => array(
+            'imce_mode' => 0,
+          ),
+          'source_reference' => array(
+            'autocomplete' => 0,
+            'search_all_fields' => 0,
+          ),
+        ),
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'file_generic',
+      'weight' => 1,
+    ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance:
   // 'field_collection_item-field_fc_budget_activity-field_fc_budget'.
   $field_instances['field_collection_item-field_fc_budget_activity-field_fc_budget'] = array(
     'bundle' => 'field_fc_budget_activity',
@@ -2473,7 +2534,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 26,
+      'weight' => 28,
     ),
   );
 
@@ -2568,7 +2629,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 25,
+      'weight' => 26,
     ),
   );
 
@@ -2609,7 +2670,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'apply_chosen' => 0,
       ),
       'type' => 'options_buttons',
-      'weight' => 15,
+      'weight' => 16,
     ),
     'workbench_access_field' => 0,
   );
@@ -2773,7 +2834,7 @@ function esf_tc_content_types_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 13,
+      'weight' => 14,
     ),
   );
 
@@ -3240,7 +3301,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 17,
+      'weight' => 18,
     ),
   );
 
@@ -3283,7 +3344,7 @@ function esf_tc_content_types_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 20,
+      'weight' => 21,
     ),
   );
 
@@ -3355,7 +3416,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 22,
+      'weight' => 23,
     ),
   );
 
@@ -3427,7 +3488,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 19,
+      'weight' => 20,
     ),
   );
 
@@ -3531,7 +3592,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'link_field',
-      'weight' => 23,
+      'weight' => 24,
     ),
   );
 
@@ -3605,7 +3666,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 18,
+      'weight' => 19,
     ),
     'workbench_access_field' => 0,
   );
@@ -3681,7 +3742,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 21,
+      'weight' => 22,
     ),
     'workbench_access_field' => 0,
   );
@@ -3754,7 +3815,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 14,
+      'weight' => 15,
     ),
   );
 
@@ -3825,6 +3886,78 @@ function esf_tc_content_types_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 9,
+    ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance: 'node-esf_tnc_organisation-field_org_notes'.
+  $field_instances['node-esf_tnc_organisation-field_org_notes'] = array(
+    'bundle' => 'esf_tnc_organisation',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 31,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_org_notes',
+    'label' => 'Notes',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'basic_html' => 'basic_html',
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'basic_html' => array(
+              'weight' => 5,
+            ),
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -10,
+            ),
+            'plain_text' => array(
+              'weight' => -8,
+            ),
+          ),
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => 500,
+        'maxlength_js_enforce' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_truncate_html' => 0,
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 27,
     ),
     'workbench_access_field' => 0,
   );
@@ -4036,7 +4169,76 @@ function esf_tc_content_types_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 16,
+      'weight' => 17,
+    ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance:
+  // 'node-esf_tnc_organisation-field_org_phone_number'.
+  $field_instances['node-esf_tnc_organisation-field_org_phone_number'] = array(
+    'bundle' => 'esf_tnc_organisation',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'ex: +32-27364960',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 30,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_org_phone_number',
+    'label' => 'Phone number',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'basic_html' => 'basic_html',
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'basic_html' => array(
+              'weight' => 5,
+            ),
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -10,
+            ),
+            'plain_text' => array(
+              'weight' => -8,
+            ),
+          ),
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 12,
     ),
     'workbench_access_field' => 0,
   );
@@ -4221,7 +4423,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 24,
+      'weight' => 25,
     ),
     'workbench_access_field' => 0,
   );
@@ -7863,7 +8065,7 @@ If an organisation is not found, please save your work as draft and check that t
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_select',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
@@ -7970,7 +8172,7 @@ If an organisation is not found, please save your work as draft and check that t
         'track_list' => 0,
       ),
       'type' => 'term_reference_tree',
-      'weight' => 5,
+      'weight' => 6,
     ),
     'workbench_access_field' => 0,
   );
@@ -8203,6 +8405,69 @@ If an organisation is not found, please save your work as draft and check that t
     ),
   );
 
+  // Exported field_instance:
+  // 'profile2-contact_profile-field_profile_contact_skype'.
+  $field_instances['profile2-contact_profile-field_profile_contact_skype'] = array(
+    'bundle' => 'contact_profile',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 14,
+      ),
+    ),
+    'entity_type' => 'profile2',
+    'field_name' => 'field_profile_contact_skype',
+    'label' => 'Skype ID',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'basic_html' => 'basic_html',
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'basic_html' => array(
+              'weight' => 5,
+            ),
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -10,
+            ),
+            'plain_text' => array(
+              'weight' => -8,
+            ),
+          ),
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 5,
+    ),
+    'workbench_access_field' => 0,
+  );
+
   // Exported field_instance: 'profile2-contact_profile-field_token_email'.
   $field_instances['profile2-contact_profile-field_token_email'] = array(
     'bundle' => 'contact_profile',
@@ -8410,6 +8675,7 @@ If an organisation is not found, please save your work as draft and check that t
   t('Experience & current activities of the organisation (in relation to TNC)');
   t('Experience and facilities available');
   t('External link');
+  t('Files');
   t('Flag featured TCA');
   t('Flag featured organisation');
   t('Flag featured project');
@@ -8436,6 +8702,7 @@ If an organisation is not found, please save your work as draft and check that t
   t('Name');
   t('Name in English');
   t('Name in national language');
+  t('Notes');
   t('Notify partners');
   t('Notify the legal contact of all partners in order to validate their data.');
   t('Number / Short reference');
@@ -8453,6 +8720,7 @@ If an organisation is not found, please save your work as draft and check that t
   t('Phone (Home)');
   t('Phone (Mobile)');
   t('Phone (Work)');
+  t('Phone number');
   t('Picture');
   t('Place of signature');
   t('Please specify the type of organisation');
@@ -8477,6 +8745,7 @@ If an organisation is not found, please save your work as draft and check that t
   t('Role');
   t('Searching');
   t('Signed agreement');
+  t('Skype ID');
   t('Start date');
   t('Start date of the TCA activity');
   t('Status');
@@ -8496,6 +8765,7 @@ If an organisation is not found, please save your work as draft and check that t
   t('Type of organisation');
   t('You must select first a country to display the available calls. If a call is not found, please save your work as draft and check with your Managing Authority.');
   t('You must select first a country to display the available organisations.');
+  t('ex: +32-27364960');
   t('token');
 
   return $field_instances;
