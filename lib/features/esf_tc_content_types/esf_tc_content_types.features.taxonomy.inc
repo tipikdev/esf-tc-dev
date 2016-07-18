@@ -63,7 +63,7 @@ function esf_tc_content_types_taxonomy_default_vocabularies() {
       'name' => 'ESF themes',
       'machine_name' => 'esf_themes',
       'description' => 'List of ESF themes and sub-themes',
-      'hierarchy' => 1,
+      'hierarchy' => 0,
       'module' => 'taxonomy',
       'weight' => 0,
       'language' => 'und',

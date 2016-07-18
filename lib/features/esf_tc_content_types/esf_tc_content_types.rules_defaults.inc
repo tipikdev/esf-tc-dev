@@ -88,7 +88,7 @@ function esf_tc_content_types_default_rules_configuration() {
               { "mail" : {
                   "to" : "[list-item:value]",
                   "subject" : "ESF-TC: a contact would like to join a network",
-                  "message" : "Dear forum moderator,\\r\\n\\r\\nA user is asking to join a network:\\r\\n\\r\\n- User: [user:field_lastname] [user:field_firstname]\\r\\n- Thematic: [thematic:name]\\r\\n\\r\\nYou can manage the networking access of the user at the following address: [site:url]\\/user\\/[user:uid]\\/sections\\r\\n\\r\\nESF-TC Admin Team",
+                  "message" : "Dear forum moderator,\\r\\n\\r\\nA user is asking to join a network:\\r\\n\\r\\n- User: [user:field_lastname] [user:field_firstname]\\r\\n- Thematic: [thematic:name]\\r\\n\\r\\nYou can manage the networking access of the user at the following address: [site:url]user\\/[user:uid]\\/sections\\r\\n\\r\\nESF-TC Admin Team",
                   "language" : [ "" ]
                 }
               }

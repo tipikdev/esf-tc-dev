@@ -51,6 +51,7 @@ function esf_tc_content_types_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'contact' => 'contact',
+      'webmaster' => 'webmaster',
     ),
     'module' => 'workbench_access',
   );
