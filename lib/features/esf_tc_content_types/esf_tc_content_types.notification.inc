@@ -402,7 +402,7 @@ function _esf_tc_content_types_node_notify($node) {
     // Send notifications.
     $keys = array_keys($contacts);
     foreach ($keys as $key) {
-      $key_prefix = $node->type . '_notification_' . $key;
+      $key_prefix = $node->type . '_notification_contact_' . $key;
       foreach ($contacts[$key] as $contact) {
         $email = $contact['email'];
         if (valid_email_address($email)) {
