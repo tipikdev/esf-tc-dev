@@ -93,8 +93,11 @@ function esf_tc_content_state_notification_form($form, &$form_state, $content_ty
 
       $keys = array(
         'contact_ecas' => 'ECAS account',
-        'contact_simple' => 'Without ECAS account',
       );
+
+    if ($content_type == 'organisation') {
+      $keys['contact_simple'] = 'Without ECAS account';
+    }
 
       $options['type'] = 'contact';
 
