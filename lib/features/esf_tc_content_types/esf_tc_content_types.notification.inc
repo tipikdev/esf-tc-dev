@@ -17,6 +17,7 @@ function esf_tc_content_state_notification_form($form, &$form_state, $content_ty
   $_content_types = array(
     'organisation' => 'esf_tnc_organisation',
     'project' => 'esf_tnc_project',
+    'tca' => 'esf_tnc_tca',
   );
 
   $form['contenttype'] = array(
@@ -42,40 +43,9 @@ function esf_tc_content_state_notification_form($form, &$form_state, $content_ty
       '#type' => 'vertical_tabs',
     );
 
-    foreach ($_states as $key => $state) {
-      $key_prefix = $_content_types[$content_type] . '_notification_' . $key;
-      $options['action'] = $key;
-
-      $form[$state . 'state'] = array(
-        '#type' => 'fieldset',
-        '#title' => $state,
-        '#collapsible' => TRUE,
-        '#descriptions' => t('Block status'),
-        '#group' => 'notifyform',
-      );
-      $form[$state . 'state'][$key_prefix . '_subject'] = array(
-        '#type' => 'textfield',
-        '#title' => t('Subject'),
-        '#required' => 'true',
-        '#group' => 'notifyform',
-        '#default_value' => _esf_tc_content_types_mail_text($key_prefix . '_subject', $options),
-      );
-      $form[$state . 'state'][$key_prefix . '_body'] = array(
-        '#type' => 'textarea',
-        '#title' => t('Body'),
-        '#required' => 'true',
-        '#group' => 'notifyform',
-        '#default_value' => _esf_tc_content_types_mail_text($key_prefix . '_body', $options),
-      );
-      $form[$state . 'state'][$key_prefix . '_token'] = array(
-        '#theme' => 'token_tree_link',
-        '#token_types' => array('node', 'user'),
-        '#global_types' => FALSE,
-        '#click_insert' => FALSE,
-        '#group' => 'notifyform',
-      );
-    }
-    unset($state);
+    $token_types = array('node', 'user');
+    // Generate inputs of the form.
+    _esf_tc_content_get_email_inputs($_content_types[$content_type], $_states, $options, 'notifyform', $token_types, $form);
   }
   // Specific menu.
   switch ($content_type) {
@@ -95,44 +65,19 @@ function esf_tc_content_state_notification_form($form, &$form_state, $content_ty
         'contact_ecas' => 'ECAS account',
       );
 
-    if ($content_type == 'organisation') {
-      $keys['contact_simple'] = 'Without ECAS account';
-    }
+      if ($content_type == 'organisation') {
+        $keys['contact_simple'] = 'Without ECAS account';
+      }
 
       $options['type'] = 'contact';
 
-      foreach ($keys as $key => $value) {
-        $key_prefix = $_content_types[$content_type] . '_notification_' . $key;
-        $form[$key] = array(
-          '#type' => 'fieldset',
-          '#title' => $value,
-          '#collapsible' => TRUE,
-          '#descriptions' => t('Block status'),
-          '#group' => 'notifycontact',
-        );
-        $form[$key][$key_prefix . '_subject'] = array(
-          '#type' => 'textfield',
-          '#title' => t('Subject'),
-          '#required' => 'true',
-          '#group' => 'notifyform',
-          '#default_value' => _esf_tc_content_types_mail_text($key_prefix . '_subject', $options),
-        );
-        $form[$key][$key_prefix . '_body'] = array(
-          '#type' => 'textarea',
-          '#title' => t('Body'),
-          '#required' => 'true',
-          '#group' => 'notifyform',
-          '#default_value' => _esf_tc_content_types_mail_text($key_prefix . '_body', $options),
-        );
-        $form[$key][$key_prefix . '_token'] = array(
-          '#theme' => 'token_tree_link',
-          '#token_types' => array('node', 'user', 'site', 'contact'),
-          '#global_types' => FALSE,
-          '#click_insert' => FALSE,
-          '#group' => 'notifyform',
-        );
-      }
-      unset($key);
+      // Generate inputs of the form.
+      $token_types = array('node', 'user', 'site', 'contact');
+      _esf_tc_content_get_email_inputs($_content_types[$content_type], $keys, $options, 'notifycontact', $token_types, $form);
+      break;
+
+    case 'tca':
+      // Type TCA status.
       break;
   }
 
@@ -527,4 +472,68 @@ function esf_tc_content_types_mail($key, &$message, $params) {
     $message['subject'] = token_replace(_esf_tc_content_types_mail_text($key . '_subject', $params), $tokens);
     $message['body'][] = token_replace(_esf_tc_content_types_mail_text($key . '_body', $params), $tokens);
   }
+}
+
+/**
+ * Helper to generate form inputs for notifications administration.
+ *
+ * @param string $content_type
+ *    The machine name of the content type.
+ * @param array $keys
+ *    The array of keys used to fill the fieldset.
+ * @param array $options
+ *    The options passed to the message manager function.
+ * @param string $fieldset
+ *    The name of the generated fieldset.
+ * @param array $token_types
+ *    The types of token allowed.
+ * @param array $form
+ *    The types of token allowed.
+ * @param string $group
+ *    The name of the group to associate to the inputs.
+ *
+ * @return array
+ *    Return the form with inputs.
+ */
+function _esf_tc_content_get_email_inputs($content_type, $keys, $options, $fieldset, $token_types = NULL, &$form = array(), $group = 'notifyform') {
+  if (is_array($keys) && count($keys)) {
+    foreach ($keys as $key => $value) {
+      $key_prefix = $content_type . '_notification_' . $key;
+      $options['action'] = $key;
+      $form[$key] = array(
+        '#type' => 'fieldset',
+        '#title' => $value,
+        '#collapsible' => TRUE,
+        '#descriptions' => t('Block status'),
+        '#group' => $fieldset,
+      );
+      $form[$key][$key_prefix . '_subject'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Subject'),
+        '#required' => 'true',
+        '#group' => $group,
+        '#default_value' => _esf_tc_content_types_mail_text($key_prefix . '_subject', $options),
+      );
+      $form[$key][$key_prefix . '_body'] = array(
+        '#type' => 'textarea',
+        '#title' => t('Body'),
+        '#required' => 'true',
+        '#group' => $group,
+        '#default_value' => _esf_tc_content_types_mail_text($key_prefix . '_body', $options),
+      );
+      // Display the help for token if exists.
+      if (is_array($token_types) && count($token_types)) {
+        $form[$key][$key_prefix . '_token'] = array(
+          '#theme' => 'token_tree_link',
+          '#token_types' => $token_types,
+          '#global_types' => FALSE,
+          '#click_insert' => FALSE,
+          '#group' => $group,
+        );
+      }
+    }
+    unset($key);
+  }
+
+  return $form;
 }
