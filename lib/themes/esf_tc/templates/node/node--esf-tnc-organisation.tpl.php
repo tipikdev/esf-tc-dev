@@ -186,6 +186,15 @@
               <td><?php print render($content['field_org_address']); ?></td>
             </tr>
           <?php endif; ?>
+          
+          <?php if (isset($content['field_org_phone_number'])) : ?>
+            <tr>
+              <th>
+                <?php print render($content['field_org_phone_number']['#title']); ?>
+              </th>
+              <td><?php print render($content['field_org_phone_number']); ?></td>
+            </tr>
+          <?php endif; ?>
 
           <?php if (isset($content['field_org_contact_account'])) : ?>
             <tr>
@@ -253,7 +262,14 @@
               <td><?php print render($content['field_organisation_attachments']); ?></td>
             </tr>
           <?php endif; ?>
-          
+
+          <?php if (isset($content['field_org_notes'])) : ?>
+            <tr>
+              <th><?php print render($content['field_org_notes']['#title']); ?></th>
+              <td><?php print render($content['field_org_notes']); ?></td>
+            </tr>
+          <?php endif; ?>
+
         <?php endif; ?>
       </table>
     <?php else: ?>
