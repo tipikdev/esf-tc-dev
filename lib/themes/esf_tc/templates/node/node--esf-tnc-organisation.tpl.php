@@ -105,8 +105,8 @@
       <table class="standard-table" cellpadding="0" cellspacing="0">
         <?php if (isset($content['field_org_type_of_organisation'])) : ?>
           <tr>
-            <th><?php print render($content['field_org_type_of_organisation']['#title']); ?>
-              :
+            <th>
+              <?php print render($content['field_org_type_of_organisation']['#title']); ?>
             </th>
             <td><?php if ($content['field_org_type_of_organisation'][0]['#markup'] == t('Other')) : ?>
                 <?php print render($content['field_org_specify_type'][0]['#markup']); ?>
@@ -119,8 +119,8 @@
 
         <?php if (isset($content['field_org_is_ma_ib'])) : ?>
           <tr>
-            <th><?php print render($content['field_org_is_ma_ib']['#title']); ?>
-              :
+            <th>
+              <?php print render($content['field_org_is_ma_ib']['#title']); ?>
             </th>
             <td><?php print render($content['field_org_is_ma_ib']); ?>
             </td>
@@ -129,8 +129,8 @@
 
         <?php if (isset($content['field_esf_country_ref'])) : ?>
           <tr>
-            <th><?php print render($content['field_esf_country_ref']['#title']); ?>
-              :
+            <th>
+              <?php print render($content['field_esf_country_ref']['#title']); ?>
             </th>
             <td><?php if ($content['field_esf_country_ref'][0]['#markup'] == t('Other')) : ?>
                 <?php print render($content['field_org_other_countries']); ?>
@@ -143,8 +143,8 @@
 
         <?php if (isset($content['field_esf_region_ref'])) : ?>
           <tr>
-            <th><?php print render($content['field_esf_region_ref']['#title']); ?>
-              :
+            <th>
+              <?php print render($content['field_esf_region_ref']['#title']); ?>
             </th>
             <td><?php print render($content['field_esf_region_ref']); ?></td>
           </tr>
@@ -153,8 +153,8 @@
         <?php if ($view_mode == 'full'): ?>
           <?php if (isset($content['field_org_acronym'])) : ?>
             <tr>
-              <th><?php print render($content['field_org_acronym']['#title']); ?>
-                :
+              <th>
+                <?php print render($content['field_org_acronym']['#title']); ?>
               </th>
               <td><?php print render($content['field_org_acronym']); ?></td>
             </tr>
@@ -162,8 +162,8 @@
 
           <?php if (isset($content['field_org_name_national_lang'])) : ?>
             <tr>
-              <th><?php print render($content['field_org_name_national_lang']['#title']); ?>
-                :
+              <th>
+                <?php print render($content['field_org_name_national_lang']['#title']); ?>
               </th>
               <td><?php print render($content['field_org_name_national_lang']); ?></td>
             </tr>
@@ -171,8 +171,8 @@
 
           <?php if (isset($content['field_org_organisation_depart'])) : ?>
             <tr>
-              <th><?php print render($content['field_org_organisation_depart']['#title']); ?>
-                :
+              <th>
+                <?php print render($content['field_org_organisation_depart']['#title']); ?>
               </th>
               <td><?php print render($content['field_org_organisation_depart']); ?></td>
             </tr>
@@ -180,8 +180,8 @@
 
           <?php if (isset($content['field_org_address'])) : ?>
             <tr>
-              <th><?php print render($content['field_org_address']['#title']); ?>
-                :
+              <th>
+                <?php print render($content['field_org_address']['#title']); ?>
               </th>
               <td><?php print render($content['field_org_address']); ?></td>
             </tr>
@@ -189,7 +189,7 @@
 
           <?php if (isset($content['field_org_contact_account'])) : ?>
             <tr>
-              <th><?php print t('Legal contact'); ?>:</th>
+              <th><?php print t('Legal contact'); ?></th>
               <td>
                 <?php if (isset($contact_name)) : ?>
                   <?php print t('Name'); ?>: <?php print $contact_name; ?>
@@ -213,8 +213,8 @@
 
           <?php if (isset($content['field_org_additional_contacts'])) : ?>
             <tr>
-              <th><?php print render($content['field_org_additional_contacts']['#title']); ?>
-                :
+              <th>
+                <?php print render($content['field_org_additional_contacts']['#title']); ?>
               </th>
               <td><?php print render($content['field_org_additional_contacts']); ?></td>
             </tr>
@@ -222,8 +222,8 @@
 
           <?php if (isset($content['field_org_main_occupation'])) : ?>
             <tr>
-              <th><?php print render($content['field_org_main_occupation']['#title']); ?>
-                :
+              <th>
+                <?php print render($content['field_org_main_occupation']['#title']); ?>
               </th>
               <td><?php print render($content['field_org_main_occupation']); ?></td>
             </tr>
@@ -231,8 +231,8 @@
 
           <?php if (isset($content['field_esf_languages_ref'])) : ?>
             <tr>
-              <th><?php print render($content['field_esf_languages_ref']['#title']); ?>
-                :
+              <th>
+                <?php print render($content['field_esf_languages_ref']['#title']); ?>
               </th>
               <td><?php print render($content['field_esf_languages_ref']); ?></td>
             </tr>
@@ -240,8 +240,8 @@
 
           <?php if (isset($content['field_org_other_language'])) : ?>
             <tr>
-              <th><?php print render($content['field_org_other_language']['#title']); ?>
-                :
+              <th>
+                <?php print render($content['field_org_other_language']['#title']); ?>
               </th>
               <td><?php print render($content['field_org_other_language']); ?></td>
             </tr>
