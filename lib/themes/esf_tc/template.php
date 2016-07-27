@@ -336,3 +336,37 @@ function _esf_tc_link_tag_to_section(&$variables) {
     }
   }
 }
+
+/**
+ * Implements hook_user_view_alter().
+ */
+function esf_tc_user_view_alter(&$build) {
+  $account = $build['#account'];
+  $profile2 = profile2_load_by_user($account);
+
+  if (isset($profile2['contact_profile'])) {
+    $wrapper = entity_metadata_wrapper('profile2', $profile2['contact_profile']);
+    // If user do not keep his email private.
+    if ($wrapper->field_profile_cont_email_private->value() != 'yes') {
+      // Display his email address on fake field.
+      $access = profile2_profile2_access('view', $profile2['contact_profile']) ? TRUE : FALSE;
+      $build['profile_contact_profile']['view']['profile2']['field_mail'] = array(
+        '#theme' => 'field',
+        '#weight' => 1,
+        '#field_type' => 'text',
+        '#label_display' => 'inline',
+        '#field_name' => 'email',
+        '#entity_type' => 'user',
+        '#bundle' => 'user',
+        '#title' => t('E-mail'),
+        '#items' => array(array('value' => $account->mail)),
+        '#access' => $access,
+        0 => array('#markup' => $account->mail),
+      );
+    }
+  }
+
+  if (isset($build['tmgmt_translation_skills']['#items']) && !count($build['tmgmt_translation_skills']['#items'])) {
+    unset($build['tmgmt_translation_skills']);
+  }
+}

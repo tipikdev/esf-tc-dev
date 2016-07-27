@@ -8047,10 +8047,9 @@ If an organisation is not found, please save your work as draft and check that t
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'inline',
-        'module' => 'list',
+        'label' => 'hidden',
         'settings' => array(),
-        'type' => 'list_default',
+        'type' => 'hidden',
         'weight' => 6,
       ),
     ),
@@ -8478,7 +8477,7 @@ If an organisation is not found, please save your work as draft and check that t
     'bundle' => 'contact_profile',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'If your user account is not correctly connected to an organisation or a project, please ask the legal contact of the organisation or the project manager to re-invite you via the platform, or contact us (<a href="mailto:bga@aeidl.eu">bga@aeidl.eu</a> or +32 2 736 1890).',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -8489,7 +8488,7 @@ If an organisation is not found, please save your work as draft and check that t
     ),
     'entity_type' => 'profile2',
     'field_name' => 'field_token_email',
-    'label' => 'token',
+    'label' => 'Did you receive a token by email? If so, please enter it below.',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -8668,6 +8667,7 @@ If an organisation is not found, please save your work as draft and check that t
   t('Date of initial signature');
   t('Date of news');
   t('Description');
+  t('Did you receive a token by email? If so, please enter it below.');
   t('ESF project status');
   t('ESF region');
   t('Editorial status');
@@ -8689,6 +8689,7 @@ If an organisation is not found, please save your work as draft and check that t
   t('Highlight / promotion text');
   t('Highlight / promotion text (for the promotional section)');
   t('ISO 3166-1 alpha-2 code');
+  t('If your user account is not correctly connected to an organisation or a project, please ask the legal contact of the organisation or the project manager to re-invite you via the platform, or contact us (<a href="mailto:bga@aeidl.eu">bga@aeidl.eu</a> or +32 2 736 1890).');
   t('Indicative budget for transnational activities');
   t('Keep my email private');
   t('Languages spoken by the project team');
@@ -8771,7 +8772,6 @@ If an organisation is not found, please save your work as draft and check that t
   t('You must select first a country to display the available calls. If a call is not found, please save your work as draft and check with your Managing Authority.');
   t('You must select first a country to display the available organisations.');
   t('ex: +32-27364960');
-  t('token');
 
   return $field_instances;
 }
