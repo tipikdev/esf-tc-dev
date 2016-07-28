@@ -876,7 +876,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'label_position' => 'above',
         'no_fieldset' => 0,
         'text_parts' => array(),
-        'year_range' => '-3:+3',
+        'year_range' => '-3:+9',
       ),
       'type' => 'date_select',
       'weight' => 9,
