@@ -327,6 +327,13 @@ function esf_tc_content_types_form_esf_tnc_organisation_node_form_alter(&$form, 
     ),
   );
 
+  // Notification system.
+  $form['field_org_notif_address']['#states'] = array(
+    'disabled' => array(
+      ':input[name="field_org_notif_choice[und]"]' => array('value' => 0),
+    ),
+  );
+
   // Change Field Access.
   if (!user_access('administer nodes')) {
     $form['field_org_flag_featured']['#access'] = FALSE;
@@ -1463,31 +1470,43 @@ function _esf_tc_content_type_display_message($node, $state) {
  */
 function _esf_tc_content_types_get_associated_email($node, $with_ma = FALSE) {
   $emails = array();
+  $wrapper = entity_metadata_wrapper('node', $node);
+
   switch ($node->type) {
     case 'esf_tnc_organisation':
-      // Legal contact.
-      $has_account = field_get_items('node', $node, 'field_org_contact_account');
-      if (is_array($has_account) && isset(reset($has_account)['value'])) {
-        $has_account = reset($has_account)['value'];
-      }
-      if ($has_account == 'no') {
-        $field_value = field_get_items('node', $node, 'field_org_contact_legal_email');
-        if (is_array($field_value) && isset(reset($field_value)['value'])) {
-          $emails[] = reset($field_value)['value'];
+      $choice = $wrapper->field_org_notif_choice->value();
+      // Check who has to be notified.
+      if ($choice) {
+        if ($wrapper->field_org_notif_address->value()) {
+          $emails[] = $wrapper->field_org_notif_address->value();
         }
       }
-      elseif ($has_account == 'yes') {
-        $uids = _esf_tc_content_types_get_references_ids('field_org_contact', $node);
-        if (is_array($uids)) {
-          foreach ($uids as $uid) {
-            $user = user_load($uid);
-            if ($user->mail) {
-              $emails[] = $user->mail;
-            }
+      else {
+        // Legal contact.
+        $has_account = field_get_items('node', $node, 'field_org_contact_account');
+        if (is_array($has_account) && isset(reset($has_account)['value'])) {
+          $has_account = reset($has_account)['value'];
+        }
+        if ($has_account == 'no') {
+          $field_value = field_get_items('node', $node, 'field_org_contact_legal_email');
+          if (is_array($field_value) && isset(reset($field_value)['value'])) {
+            $emails[] = reset($field_value)['value'];
           }
-          unset($uid, $user);
+        }
+        elseif ($has_account == 'yes') {
+          $uids = _esf_tc_content_types_get_references_ids('field_org_contact', $node);
+          if (is_array($uids)) {
+            foreach ($uids as $uid) {
+              $user = user_load($uid);
+              if ($user->mail) {
+                $emails[] = $user->mail;
+              }
+            }
+            unset($uid, $user);
+          }
         }
       }
+
       break;
 
     case 'esf_tnc_project':

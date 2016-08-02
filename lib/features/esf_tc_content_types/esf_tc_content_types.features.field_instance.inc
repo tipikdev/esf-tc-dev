@@ -2534,7 +2534,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 28,
+      'weight' => 30,
     ),
   );
 
@@ -2629,7 +2629,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 26,
+      'weight' => 28,
     ),
   );
 
@@ -2670,7 +2670,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'apply_chosen' => 0,
       ),
       'type' => 'options_buttons',
-      'weight' => 16,
+      'weight' => 18,
     ),
     'workbench_access_field' => 0,
   );
@@ -2834,7 +2834,7 @@ function esf_tc_content_types_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 14,
+      'weight' => 16,
     ),
   );
 
@@ -3301,7 +3301,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 18,
+      'weight' => 20,
     ),
   );
 
@@ -3344,7 +3344,7 @@ function esf_tc_content_types_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 21,
+      'weight' => 23,
     ),
   );
 
@@ -3416,7 +3416,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 23,
+      'weight' => 25,
     ),
   );
 
@@ -3488,7 +3488,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 20,
+      'weight' => 22,
     ),
   );
 
@@ -3592,7 +3592,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'link_field',
-      'weight' => 24,
+      'weight' => 26,
     ),
   );
 
@@ -3666,7 +3666,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 19,
+      'weight' => 21,
     ),
     'workbench_access_field' => 0,
   );
@@ -3742,7 +3742,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 22,
+      'weight' => 24,
     ),
     'workbench_access_field' => 0,
   );
@@ -3815,7 +3815,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 15,
+      'weight' => 17,
     ),
   );
 
@@ -3957,7 +3957,93 @@ function esf_tc_content_types_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 27,
+      'weight' => 29,
+    ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance:
+  // 'node-esf_tnc_organisation-field_org_notif_address'.
+  $field_instances['node-esf_tnc_organisation-field_org_notif_address'] = array(
+    'bundle' => 'esf_tnc_organisation',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Notifications related to the management of the user profile (passwords, login etc.) will still be sent to the owner of the corresponding ECAS account.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(),
+        'type' => 'email_default',
+        'weight' => 33,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_org_notif_address',
+    'label' => 'Address for notifications',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'email',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'email_textfield',
+      'weight' => 15,
+    ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance:
+  // 'node-esf_tnc_organisation-field_org_notif_choice'.
+  $field_instances['node-esf_tnc_organisation-field_org_notif_choice'] = array(
+    'bundle' => 'esf_tnc_organisation',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 32,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_org_notif_choice',
+    'label' => 'Notification',
+    'required' => 1,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 14,
     ),
     'workbench_access_field' => 0,
   );
@@ -4169,7 +4255,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 17,
+      'weight' => 19,
     ),
     'workbench_access_field' => 0,
   );
@@ -4428,7 +4514,7 @@ function esf_tc_content_types_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 25,
+      'weight' => 27,
     ),
     'workbench_access_field' => 0,
   );
@@ -8655,6 +8741,7 @@ If an organisation is not found, please save your work as draft and check that t
   t('Activity');
   t('Additional  contacts');
   t('Address');
+  t('Address for notifications');
   t('Attached document');
   t('Attachments');
   t('Body');
@@ -8709,6 +8796,8 @@ If an organisation is not found, please save your work as draft and check that t
   t('Name in English');
   t('Name in national language');
   t('Notes');
+  t('Notification');
+  t('Notifications related to the management of the user profile (passwords, login etc.) will still be sent to the owner of the corresponding ECAS account.');
   t('Notify partners');
   t('Notify the legal contact of all partners in order to validate their data.');
   t('Number / Short reference');
