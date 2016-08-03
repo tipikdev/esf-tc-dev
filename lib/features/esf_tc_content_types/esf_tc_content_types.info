@@ -361,6 +361,7 @@ features[taxonomy][] = project_activities
 features[taxonomy][] = project_target_groups
 features[user_permission][] = access administration menu
 features[user_permission][] = access administration pages
+features[user_permission][] = access content overview
 features[user_permission][] = access media browser
 features[user_permission][] = access workbench access by role
 features[user_permission][] = add media from remote sources

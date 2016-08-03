@@ -33,6 +33,16 @@ function esf_tc_content_types_user_default_permissions() {
     'module' => 'system',
   );
 
+  // Exported permission: 'access content overview'.
+  $permissions['access content overview'] = array(
+    'name' => 'access content overview',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'editorial team member' => 'editorial team member',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'access media browser'.
   $permissions['access media browser'] = array(
     'name' => 'access media browser',
