@@ -1030,6 +1030,30 @@ p:empty {
   margin: 0 0 9px;
 }
 
+#content-wrapper table div.field-name-field-org-contact div,
+#content-wrapper table div.field-name-field-project-manager div,
+#content-wrapper table div.field-name-field-project-operat-contact div,
+#content-wrapper table div.field-name-field-org-additional-contacts div {
+  margin: 0;
+}
+
+#content-wrapper table div.field-name-field-org-contact blockquote,
+#content-wrapper table div.field-name-field-project-manager blockquote,
+#content-wrapper table div.field-name-field-project-operat-contact blockquote,
+#content-wrapper table div.field-name-field-org-additional-contacts blockquote {
+  padding-bottom: 0;
+}
+
+#content-wrapper table .field-type-entityreference div.profile {
+  margin-bottom: 1rem;
+}
+
+#content-wrapper table div.field-name-field-fc-org-contact {
+  margin: 0;
+}
+#content-wrapper table div.field-name-field-org-additional-contacts > .field-items > .field-item {
+  margin-bottom: 2rem;
+}
 /* BLOC STATISTICS */
 
 #block-esf-tc-content-types-statistics {
@@ -1541,10 +1565,6 @@ p:empty {
   margin: 10px 0;
 }
 
-.cke_contents {
-  height: 200px !important;
-}
-
 /* ELEMENT CREATING FORMS */
 
 .no-term-reference-tree-button {
@@ -1560,7 +1580,7 @@ tr .form-item {
 }
 
 body.cke_editable {
-  min-height: 200px;
+  height: 100%;
   background-color: #fff;
 }
 
@@ -1588,7 +1608,7 @@ body.cke_editable {
 }
 
 input.form-control {
-  margin: 6px 0;
+  margin: 0;
 }
 
 .term-reference-tree-level > li {
@@ -1678,4 +1698,15 @@ a.tabledrag-handle .handle {
 
 .opener + .item-list {
   display: none;
+}
+
+/* Organisation */
+.node-type-esf-tnc-organisation .field-label-inline .field-label,
+.node-type-esf-tnc-project .field-label-inline .field-label {
+  width: 50px;
+}
+
+.node-type-esf-tnc-organisation .field-collection-view ul.field-collection-view-links {
+  float: none;
+  margin: 0;
 }
