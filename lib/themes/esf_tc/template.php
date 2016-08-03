@@ -52,20 +52,21 @@ function esf_tc_preprocess_node(&$variables) {
   );
 
   if ($variables['type'] == 'esf_tnc_organisation') {
+
     if (isset($variables['field_org_contact_account'][0])) {
       // Manage legal contact data.
       if ($variables['field_org_contact_account'][0]['value'] == 'yes') {
         $resend['type'] = 'ecas';
         if (!empty($variables['field_org_contact'][0])) {
-          $legal_contact = user_load($variables['field_org_contact'][0]['target_id']);
-          $variables['contact_name'] = $legal_contact->field_firstname[LANGUAGE_NONE][0]['value'] . ' ' . $legal_contact->field_lastname[LANGUAGE_NONE][0]['value'];
+          $legal_contact = $variables['field_org_contact'][0]['entity'];
+
           $resend['name'] = format_username($legal_contact);
           $resend['email'] = $legal_contact->mail;
-          $contact_profile = profile2_load_by_user($legal_contact, 'contact_profile');
-          if (isset($contact_profile)) {
-            if ($contact_profile->field_profile_cont_email_private[LANGUAGE_NONE][0]['value'] == 'no') {
-              $variables['contact_email'] = $legal_contact->mail;
-            }
+
+          // Diplay user profile (esf_teaser).
+          $variables['content']['contact'] = $variables['content']['field_org_contact'];
+          if (!empty($variables['field_org_contact_legal_role'][0]['value']) && $legal_contact->uid) {
+            $variables['content']['contact'][0]['user'][$legal_contact->uid]['#additional_info'] = $variables['field_org_contact_legal_role'][0]['value'];
           }
         }
       }
@@ -73,33 +74,55 @@ function esf_tc_preprocess_node(&$variables) {
         $resend['type'] = 'simple';
         if ($variables['field_org_contact_account'][0]['value'] == 'no') {
           if (!empty($variables['field_org_contact_legal_name'][0]['value'])) {
-            $variables['contact_name'] = $variables['field_org_contact_legal_name'][0]['value'];
-            $resend['name'] = $variables['contact_name'];
+            // Diplay contact fields.
+            $variables['content']['contact']['field_org_contact_legal_name'] = $variables['content']['field_org_contact_legal_name'];
+            $variables['content']['contact']['field_org_contact_legal_email'] = $variables['content']['field_org_contact_legal_email'];
+            $variables['content']['contact']['field_org_contact_legal_role'] = $variables['content']['field_org_contact_legal_role'];
+
+            $resend['name'] = $variables['field_org_contact_legal_name'][0]['value'];
           }
           if (!empty($variables['field_org_contact_legal_email'][0]['value'])) {
-            $variables['contact_email'] = $variables['field_org_contact_legal_email'][0]['value'];
-            $resend['email'] = $variables['contact_email'];
+            $resend['email'] = $variables['field_org_contact_legal_email'][0]['value'];
           }
         }
       }
     }
-    if (!empty($variables['field_org_contact_legal_role'][0]['value'])) {
-      $variables['contact_role'] = $variables['field_org_contact_legal_role'][0]['value'];
-    }
     // Add link to notify contact again.
     // Check if array is fully filled.
     if (count($resend) == 5 && node_access('update', $variables['node'])) {
+      $contact_role = $variables['field_org_contact_legal_role'][0]['value'];
+      $options = array(
+        'query' => array('destination' => current_path()),
+        'attributes' => array(
+          'type' => 'message',
+          'class' => array('btn-danger'),
+        ),
+        'html' => FALSE,
+      );
       $variables['contact_notify_link'] = l(t('Resend invitation'), drupal_encode_path(format_string('esf/notify/contact/@type/@nid/@name/@role/@email',
         array(
           '@type' => $variables['type'],
           '@nid' => $variables['nid'],
           '@name' => $resend['name'],
-          '@role' => $variables['contact_role'],
+          '@role' => $contact_role,
           '@email' => $resend['email'],
         ))),
-        array('query' => array('destination' => current_path()))
+        $options
       );
     }
+  }
+
+  if ($variables['type'] == 'esf_tnc_project') {
+    $_arr_fields = array('field_project_manager', 'field_project_operat_contact');
+    foreach ($_arr_fields as $field_name) {
+      $element = &$variables['content'][$field_name];
+      $indexes = array_filter(array_keys($element), 'is_int');
+      foreach ($indexes as $index) {
+        $element[$index]['user'][$element['#items'][$index]['target_id']]['#additional_info'] = $element['#title'];
+      }
+      unset($index);
+    }
+    unset($field_name);
   }
 
   // Link the TN tag to related section page with term selected in a facet.
@@ -125,19 +148,17 @@ function esf_tc_preprocess_entity_field_collection_item(&$variables) {
   if ($variables['elements']['#bundle'] == 'field_org_additional_contacts') {
     $contact_entity = $variables['elements']['#entity'];
     if ($contact_entity->field_fc_contact_account[LANGUAGE_NONE][0]['value'] == 'yes') {
-      $contact = $variables['elements']['#entity']->field_fc_org_contact[LANGUAGE_NONE][0]['entity'];
-      $variables['contact_name'] = $contact->field_firstname[LANGUAGE_NONE][0]['value'] . ' ' . $contact->field_lastname[LANGUAGE_NONE][0]['value'];
-      $contact_profile = profile2_load_by_user($contact, 'contact_profile');
-      if (isset($contact_profile)) {
-        if ($contact_profile->field_profile_cont_email_private[LANGUAGE_NONE][0]['value'] == 'no') {
-          $variables['contact_email'] = $contact->mail;
-        }
+      $variables['content']['contact'] = $variables['content']['field_fc_org_contact'];
+      $uid = $contact_entity->field_fc_org_contact[LANGUAGE_NONE][0]['target_id'];
+      if (!empty($variables['field_fc_org_role'][0]['value']) && $uid) {
+        $variables['content']['contact'][0]['user'][$uid]['#additional_info'] = $variables['field_fc_org_role'][0]['value'];
       }
     }
     else {
       if ($contact_entity->field_fc_contact_account[LANGUAGE_NONE][0]['value'] == 'no') {
-        $variables['contact_name'] = $variables['field_fc_org_name'][0]['value'];
-        $variables['contact_email'] = $variables['field_fc_org_email'][0]['value'];
+        $variables['content']['contact']['field_fc_org_name'] = $variables['content']['field_fc_org_name'];
+        $variables['content']['contact']['field_fc_org_email'] = $variables['content']['field_fc_org_email'];
+        $variables['content']['contact']['field_fc_org_role'] = $variables['content']['field_fc_org_role'];
       }
     }
   }
@@ -368,5 +389,15 @@ function esf_tc_user_view_alter(&$build) {
 
   if (isset($build['tmgmt_translation_skills']['#items']) && !count($build['tmgmt_translation_skills']['#items'])) {
     unset($build['tmgmt_translation_skills']);
+  }
+}
+
+/**
+ * Implements template_preprocess_user_profile().
+ */
+function esf_tc_preprocess_user_profile(&$variables) {
+  // Replace date by additional info.
+  if (empty($variables['user_info']['date']) && !empty($variables['elements']['#additional_info'])) {
+    $variables['user_info']['date'] = ucfirst($variables['elements']['#additional_info']);
   }
 }

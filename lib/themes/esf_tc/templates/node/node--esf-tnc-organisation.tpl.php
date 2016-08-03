@@ -200,19 +200,9 @@
             <tr>
               <th><?php print t('Legal contact'); ?></th>
               <td>
-                <?php if (isset($contact_name)) : ?>
-                  <?php print t('Name'); ?>: <?php print $contact_name; ?>
-                <?php endif; ?>
-                <?php if (isset($contact_email)) : ?>
-                  <br/>
-                  <?php print t('Email'); ?>: <?php print $contact_email; ?>
-                <?php endif; ?>
-                <?php if (isset($contact_role)) : ?>
-                  <br/>
-                  <?php print t('Role'); ?>: <?php print $contact_role; ?>
-                <?php endif; ?>
+                <?php print render($content['contact']); ?>
                 <?php if (isset($contact_notify_link)) : ?>
-                  <p>
+                  <p class="more">
                     <?php print $contact_notify_link; ?>
                   </p>
                 <?php endif; ?>

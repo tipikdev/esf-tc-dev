@@ -1653,6 +1653,11 @@ function esf_tc_content_types_preprocess_field(&$variables) {
               )
             )),
             'query' => array('destination' => current_path()),
+            'attributes' => array(
+              'type' => 'message',
+              'class' => array('btn-danger'),
+            ),
+            'html' => FALSE,
           );
         }
       }
