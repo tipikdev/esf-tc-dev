@@ -10,6 +10,157 @@
 function esf_tc_content_types_menu_default_menu_links() {
   $menu_links = array();
 
+  $menu_links['menu-breadcrumb-menu_employment-social-affairs--inclusion:http://ec.europa.eu/social/home.jsp?langId=en'] = array(
+    'menu_name' => 'menu-breadcrumb-menu',
+    'link_path' => 'http://ec.europa.eu/social/home.jsp?langId=en',
+    'router_path' => '',
+    'link_title' => 'Employment, Social Affairs & Inclusion',
+    'options' => array(
+      'attributes' => array(
+        'data-display-title' => 1,
+        'data-hide-children' => 0,
+        'data-remove-class' => 1,
+      ),
+      'item_attributes' => array(
+        'data-image' => '',
+        'data-display-title' => 1,
+        'data-hide-children' => 0,
+        'id' => '',
+        'class' => '',
+        'data-remove-class' => 0,
+        'style' => '',
+      ),
+      'identifier' => 'menu-breadcrumb-menu_employment-social-affairs--inclusion:http://ec.europa.eu/social/home.jsp?langId=en',
+    ),
+    'module' => 'menu',
+    'hidden' => 1,
+    'external' => 1,
+    'has_children' => 0,
+    'expanded' => 1,
+    'weight' => -48,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
+
+  $menu_links['menu-breadcrumb-menu_european-commission:http://ec.europa.eu/index_en.htm'] = array(
+    'menu_name' => 'menu-breadcrumb-menu',
+    'link_path' => 'http://ec.europa.eu/index_en.htm',
+    'router_path' => '',
+    'link_title' => 'European Commission',
+    'options' => array(
+      'alter' => TRUE,
+      'attributes' => array(
+        'data-display-title' => 1,
+        'data-remove-class' => 1,
+      ),
+      'identifier' => 'menu-breadcrumb-menu_european-commission:http://ec.europa.eu/index_en.htm',
+    ),
+    'module' => 'menu',
+    'hidden' => 1,
+    'external' => 1,
+    'has_children' => 0,
+    'expanded' => 1,
+    'weight' => -49,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
+
+  $menu_links['menu-breadcrumb-menu_european-social-fund:http://ec.europa.eu/esf/home.jsp?langId=en'] = array(
+    'menu_name' => 'menu-breadcrumb-menu',
+    'link_path' => 'http://ec.europa.eu/esf/home.jsp?langId=en',
+    'router_path' => '',
+    'link_title' => 'European Social Fund',
+    'options' => array(
+      'attributes' => array(
+        'data-display-title' => 1,
+        'data-hide-children' => 0,
+        'data-remove-class' => 1,
+      ),
+      'item_attributes' => array(
+        'data-image' => '',
+        'data-display-title' => 1,
+        'data-hide-children' => 0,
+        'id' => '',
+        'class' => '',
+        'data-remove-class' => 0,
+        'style' => '',
+      ),
+      'identifier' => 'menu-breadcrumb-menu_european-social-fund:http://ec.europa.eu/esf/home.jsp?langId=en',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 1,
+    'has_children' => 0,
+    'expanded' => 1,
+    'weight' => -47,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
+  // Exported menu link: menu-breadcrumb-menu_sitename:menutoken/52ebaf910f9d0.
+  $menu_links['menu-breadcrumb-menu_sitename:menutoken/52ebaf910f9d0'] = array(
+    'menu_name' => 'menu-breadcrumb-menu',
+    'link_path' => 'menutoken/52ebaf910f9d0',
+    'router_path' => 'menutoken/%',
+    'link_title' => '[site:name]',
+    'options' => array(
+      'alter' => TRUE,
+      'attributes' => array(
+        'data-display-title' => 1,
+        'data-remove-class' => 1,
+      ),
+      'menu_token_link_path' => '<front>',
+      'menu_token_data' => array(),
+      'menu_token_options' => array(
+        'clear' => 0,
+      ),
+      'identifier' => 'menu-breadcrumb-menu_sitename:menutoken/52ebaf910f9d0',
+    ),
+    'module' => 'menu',
+    'hidden' => 1,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 1,
+    'weight' => -50,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
+  // Exported menu link: menu-breadcrumb-menu_transnationality:<front>.
+  $menu_links['menu-breadcrumb-menu_transnationality:<front>'] = array(
+    'menu_name' => 'menu-breadcrumb-menu',
+    'link_path' => '<front>',
+    'router_path' => '',
+    'link_title' => 'Transnationality',
+    'options' => array(
+      'attributes' => array(
+        'data-display-title' => 1,
+        'data-hide-children' => 0,
+        'data-remove-class' => 1,
+      ),
+      'item_attributes' => array(
+        'data-image' => '',
+        'data-display-title' => 1,
+        'data-hide-children' => 0,
+        'id' => '',
+        'class' => '',
+        'data-remove-class' => 0,
+        'style' => '',
+      ),
+      'identifier' => 'menu-breadcrumb-menu_transnationality:<front>',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 1,
+    'has_children' => 0,
+    'expanded' => 1,
+    'weight' => -46,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
   // Exported menu link: menu-left-menu_esf-transnational-cooperation:<front>.
   $menu_links['menu-left-menu_esf-transnational-cooperation:<front>'] = array(
     'menu_name' => 'menu-left-menu',
@@ -213,14 +364,54 @@ function esf_tc_content_types_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'menu-left-menu_esf-transnational-cooperation:<front>',
   );
+  // Exported menu link: menu-left-menu_search-platform:search/site.
+  $menu_links['menu-left-menu_search-platform:search/site'] = array(
+    'menu_name' => 'menu-left-menu',
+    'link_path' => 'search/site',
+    'router_path' => 'search/site',
+    'link_title' => 'Search Platform',
+    'options' => array(
+      'identifier' => 'menu-left-menu_search-platform:search/site',
+      'attributes' => array(
+        'data-display-title' => 1,
+        'data-hide-children' => 0,
+        'data-remove-class' => 0,
+      ),
+      'item_attributes' => array(
+        'data-image' => '',
+        'data-display-title' => 1,
+        'data-hide-children' => 0,
+        'id' => '',
+        'class' => 'search',
+        'data-remove-class' => 0,
+        'style' => '',
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 1,
+    'weight' => -44,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+    'parent_identifier' => 'menu-left-menu_esf-transnational-cooperation:<front>',
+  );
 
   // Translatables
   // Included for use with string extractors like potx.
   t('ESF Transnational Cooperation');
+  t('Employment, Social Affairs & Inclusion');
+  t('European Commission');
+  t('European Social Fund');
   t('Events');
   t('Networking');
   t('News');
   t('Partner database');
+  t('Search Platform');
+  t('Transnationality');
+  t('[site:name]');
   t('myTNC');
 
   return $menu_links;
