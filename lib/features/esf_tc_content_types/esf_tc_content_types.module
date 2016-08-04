@@ -497,8 +497,16 @@ function esf_tc_content_types_form_esf_tnc_project_node_form_alter(&$form, &$for
     'wrapper' => 'call_involved_div',
   );
 
+  // Add callback to warn user that the deadline date is a past date.
+  $form['field_project_end_date_activity'][LANGUAGE_NONE][0]['#ajax'] = array(
+    'callback' => '_esf_tc_content_types_projects_end_date_callback',
+    'event' => 'change',
+    'method' => 'html',
+    'wrapper' => 'end_date_div',
+  );
+
   // Manage field to be replace after callback.
-  $selected_country = isset($form_state['values']['field_esf_country_ref']) ? $form_state['values']['field_esf_country_ref'][LANGUAGE_NONE][0]['tid'] : $form['field_esf_country_ref'][LANGUAGE_NONE]['#default_value'];
+  $selected_country = isset($form_state['values']['field_esf_country_ref'][LANGUAGE_NONE][0]) ? $form_state['values']['field_esf_country_ref'][LANGUAGE_NONE][0]['tid'] : $form['field_esf_country_ref'][LANGUAGE_NONE]['#default_value'];
   $call_default_value = '';
   if (isset($form_state['values']['field_project_call_for_projects'])) {
     $call_default_value = $form_state['values']['field_project_call_for_projects'];
@@ -509,6 +517,7 @@ function esf_tc_content_types_form_esf_tnc_project_node_form_alter(&$form, &$for
 
   $form['field_project_call_for_projects'][LANGUAGE_NONE]['#prefix'] = '<div id="call_involved_div">';
   $form['field_project_call_for_projects'][LANGUAGE_NONE]['#suffix'] = '</div>';
+  $form['field_project_end_date_activity'][LANGUAGE_NONE][0]['#suffix'] = '<div id="end_date_div"></div>';
   $form['field_project_call_for_projects'][LANGUAGE_NONE]['#options'] = _esf_tc_content_types_get_calls_by_country_options($selected_country);
   $form['field_project_call_for_projects'][LANGUAGE_NONE]['#default_value'] = $call_default_value;
 }
@@ -526,6 +535,29 @@ function esf_tc_content_types_form_esf_tnc_project_node_form_alter(&$form, &$for
  */
 function _esf_tc_content_types_project_country_callback($form, $form_state) {
   return $form['field_project_call_for_projects'];
+}
+
+/**
+ * Custom callback to alert user which select a past date.
+ *
+ * @param array $form
+ *    The form parameters.
+ * @param array $form_state
+ *    The form parameters.
+ *
+ * @return string
+ *    Return warning message if past date selected.
+ */
+function _esf_tc_content_types_projects_end_date_callback($form, $form_state) {
+  $return = '<div id="end_date_div"></div>';
+  $datetime = new DateTime('today');
+  $message = t('You selected a past date');
+
+  if ($form_state['values']['field_project_end_date_activity'][LANGUAGE_NONE][0]['value'] < $datetime->getTimestamp()) {
+    $return = '<div id="end_date_div"><div class="messages warning">' . $message . '</div></div>';
+  }
+
+  return $return;
 }
 
 /**
