@@ -188,3 +188,25 @@ function esf_tc_content_types_update_7102() {
     variable_set('esf_tnc_4_3_default_image_fid', $file->fid);
   }
 }
+
+/**
+ * Implements hook_update_N().
+ */
+function esf_tc_content_types_update_7103() {
+  // Associate the default sections to the all active users.
+  $query = new EntityFieldQuery();
+  $results = $query->entityCondition('entity_type', 'user')
+    ->propertyCondition('status', 1)
+    ->execute();
+
+  if (!empty($results['user'])) {
+    $uids = array_keys($results['user']);
+    foreach ($uids as $uid) {
+      _esf_tc_content_types_user_set_default_sections($uid);
+    }
+    unset($uid);
+    $message = t('@count have been associated with default sections', array('@count' => count($results['user'])));
+    drupal_set_message($message);
+    watchdog('workbench_access', $message, array(), WATCHDOG_INFO);
+  }
+}

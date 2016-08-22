@@ -1370,6 +1370,21 @@ function _esf_tc_content_types_get_term_id_by_vocabulary($term, $vocabulary) {
 }
 
 /**
+ * Implements hook_user_insert().
+ */
+function esf_tc_content_types_user_insert(&$edit, $account, $category) {
+  // Add default role to user if he have only authenticated role.
+  if (count($account->roles) == 1) {
+    $default_role = user_role_load_by_name('contact');
+    if (!empty($default_role->rid) && intval($default_role->rid)) {
+      $account->roles[$default_role->rid] = $default_role;
+    }
+  }
+  // Associate the default sections to the new user.
+  _esf_tc_content_types_user_set_default_sections($account);
+}
+
+/**
  * Implements hook_user_login().
  */
 function esf_tc_content_types_user_login(&$edit, $account) {
@@ -1390,6 +1405,47 @@ function esf_tc_content_types_user_login(&$edit, $account) {
         drupal_set_message(t('You have been redirected to fill out your contact information. You can also enter the token received in the email to link your account with an organisation.'));
         drupal_goto("user/$account->uid/edit/contact_profile");
       }
+    }
+  }
+}
+
+/**
+ * Helper to add default workbench access sections to a user.
+ *
+ * @param mixed $account
+ *    The id or account (object) of targered user.
+ */
+function _esf_tc_content_types_user_set_default_sections($account) {
+
+  // Load user if only uid.
+  if (is_int($account)) {
+    $uid = $account;
+    $account = user_load($uid);
+  }
+  else {
+    $uid = $account->uid;
+  }
+
+  $default_forums = array(
+    'ESF Transnationality',
+    'Discussions on projects',
+    'Technical support',
+  );
+
+  $default_role = user_role_load_by_name('contact');
+  $rid = $default_role->rid;
+
+  if ($account && user_has_role($rid, $account)) {
+    $tids = array();
+
+    foreach ($default_forums as $forum) {
+      if (($tax = taxonomy_get_term_by_name($forum)) && $tid = key($tax)) {
+        $tids[] = $tid;
+      }
+    }
+    unset($forum);
+    if (!empty($uid) && !empty($tids)) {
+      workbench_access_rebuild_user($uid, $tids);
     }
   }
 }
