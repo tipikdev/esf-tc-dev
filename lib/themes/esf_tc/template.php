@@ -116,11 +116,13 @@ function esf_tc_preprocess_node(&$variables) {
     $_arr_fields = array('field_project_manager', 'field_project_operat_contact');
     foreach ($_arr_fields as $field_name) {
       $element = &$variables['content'][$field_name];
-      $indexes = array_filter(array_keys($element), 'is_int');
-      foreach ($indexes as $index) {
-        $element[$index]['user'][$element['#items'][$index]['target_id']]['#additional_info'] = $element['#title'];
+      if (!empty($element)) {
+        $indexes = array_filter(array_keys($element), 'is_int');
+        foreach ($indexes as $index) {
+          $element[$index]['user'][$element['#items'][$index]['target_id']]['#additional_info'] = $element['#title'];
+        }
+        unset($index);
       }
-      unset($index);
     }
     unset($field_name);
   }
