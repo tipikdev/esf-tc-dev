@@ -10,6 +10,20 @@
  */
 function esf_tc_core_install() {
   $t = get_t();
+  // Active and set ESF Theme by default.
+  $esf_theme = 'esf_tc';
+  $themes = list_themes();
+  if (!empty($themes[$esf_theme])) {
+    theme_enable(array($esf_theme));
+    variable_set('theme_default', $esf_theme);
+    $settings = variable_get('theme_esf_tc_settings');
+    if (empty($settings)) {
+      $settings = array();
+    }
+    $settings['disable_dropdown_menu'] = 1;
+    variable_set('theme_esf_tc_settings', $settings);
+  }
+  cache_clear_all();
   drupal_set_message($t("The feature ESF TC core has been installed."));
 }
 
