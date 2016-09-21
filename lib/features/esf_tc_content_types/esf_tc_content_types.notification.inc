@@ -9,7 +9,7 @@
  */
 function esf_tc_content_state_notification_form($form, &$form_state, $content_type = 'organisation') {
 
-  $title = ucfirst($content_type);
+  $title = drupal_ucfirst($content_type);
   drupal_set_title($title);
 
   $_states = _esf_tc_content_type_get_notification_states();
