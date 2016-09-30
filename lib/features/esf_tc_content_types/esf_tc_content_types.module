@@ -1046,7 +1046,7 @@ function esf_tc_content_types_menu() {
   );
   foreach ($_type as $type => $description) {
     $item = $item_template;
-    $item['title'] = ucfirst($type);
+    $item['title'] = drupal_ucfirst($type);
     $item['description'] = $description;
     $items['admin/config/esf-notifications/' . $type] = $item;
   }

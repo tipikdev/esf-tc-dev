@@ -400,6 +400,6 @@ function esf_tc_user_view_alter(&$build) {
 function esf_tc_preprocess_user_profile(&$variables) {
   // Replace date by additional info.
   if (empty($variables['user_info']['date']) && !empty($variables['elements']['#additional_info'])) {
-    $variables['user_info']['date'] = ucfirst($variables['elements']['#additional_info']);
+    $variables['user_info']['date'] = drupal_ucfirst($variables['elements']['#additional_info']);
   }
 }
