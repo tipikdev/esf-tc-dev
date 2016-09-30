@@ -72,112 +72,6 @@ function esf_tc_content_types_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_fc_budget_activity-field_fc_budget'.
-  $field_instances['field_collection_item-field_fc_budget_activity-field_fc_budget'] = array(
-    'bundle' => 'field_fc_budget_activity',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 0,
-          'thousand_separator' => '',
-        ),
-        'type' => 'number_integer',
-        'weight' => 1,
-      ),
-    ),
-    'entity_type' => 'field_collection_item',
-    'field_name' => 'field_fc_budget',
-    'label' => 'Budget',
-    'required' => 1,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'max' => 2147483647,
-      'min' => '',
-      'prefix' => '€',
-      'suffix' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'number',
-      'settings' => array(),
-      'type' => 'number',
-      'weight' => 2,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'field_collection_item-field_fc_budget_activity-field_fc_budget_activity1'.
-  $field_instances['field_collection_item-field_fc_budget_activity-field_fc_budget_activity1'] = array(
-    'bundle' => 'field_fc_budget_activity',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'field_collection_item',
-    'field_name' => 'field_fc_budget_activity1',
-    'label' => 'Activity',
-    'required' => 1,
-    'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'basic_html' => 'basic_html',
-          'filtered_html' => 'filtered_html',
-          'full_html' => 'full_html',
-          'plain_text' => 'plain_text',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'basic_html' => array(
-              'weight' => 5,
-            ),
-            'filtered_html' => array(
-              'weight' => -9,
-            ),
-            'full_html' => array(
-              'weight' => -10,
-            ),
-            'plain_text' => array(
-              'weight' => -8,
-            ),
-          ),
-        ),
-      ),
-      'entity_translation_sync' => FALSE,
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'maxlength_js' => 0,
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 1,
-    ),
-  );
-
-  // Exported field_instance:
   // 'field_collection_item-field_org_additional_contacts-field_fc_contact_account'.
   $field_instances['field_collection_item-field_org_additional_contacts-field_fc_contact_account'] = array(
     'bundle' => 'field_org_additional_contacts',
@@ -446,98 +340,12 @@ function esf_tc_content_types_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_tca_partner_organisations-field_fc_budget_activity'.
-  $field_instances['field_collection_item-field_tca_partner_organisations-field_fc_budget_activity'] = array(
-    'bundle' => 'field_tca_partner_organisations',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'field_collection',
-        'settings' => array(
-          'view_mode' => 'full',
-        ),
-        'type' => 'field_collection_fields',
-        'weight' => 2,
-      ),
-    ),
-    'entity_type' => 'field_collection_item',
-    'field_name' => 'field_fc_budget_activity',
-    'label' => 'Budget for transnational activities',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'field_collection',
-      'settings' => array(),
-      'type' => 'field_collection_embed',
-      'weight' => 2,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'field_collection_item-field_tca_partner_organisations-field_fc_date_initial_sign'.
-  $field_instances['field_collection_item-field_tca_partner_organisations-field_fc_date_initial_sign'] = array(
-    'bundle' => 'field_tca_partner_organisations',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'inline',
-        'module' => 'date',
-        'settings' => array(
-          'format_type' => 'short',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
-          'show_remaining_days' => 0,
-        ),
-        'type' => 'date_default',
-        'weight' => 4,
-      ),
-    ),
-    'entity_type' => 'field_collection_item',
-    'field_name' => 'field_fc_date_initial_sign',
-    'label' => 'Date of initial signature',
-    'required' => 1,
-    'settings' => array(
-      'default_value' => 'blank',
-      'default_value2' => 'same',
-      'default_value_code' => '',
-      'default_value_code2' => '',
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'date',
-      'settings' => array(
-        'increment' => 15,
-        'input_format' => 'd/m/Y - H:i:s',
-        'input_format_custom' => '',
-        'label_position' => 'above',
-        'no_fieldset' => 0,
-        'text_parts' => array(),
-        'year_range' => '-3:+3',
-      ),
-      'type' => 'date_popup',
-      'weight' => 4,
-    ),
-  );
-
-  // Exported field_instance:
   // 'field_collection_item-field_tca_partner_organisations-field_fc_mas_approval_status'.
   $field_instances['field_collection_item-field_tca_partner_organisations-field_fc_mas_approval_status'] = array(
     'bundle' => 'field_tca_partner_organisations',
     'default_value' => array(
       0 => array(
-        'value' => 'not-yet-defined',
+        'value' => 'pending-key-changes',
       ),
     ),
     'deleted' => 0,
@@ -568,6 +376,7 @@ function esf_tc_content_types_field_default_field_instances() {
       'type' => 'options_select',
       'weight' => 5,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance:
@@ -575,8 +384,9 @@ function esf_tc_content_types_field_default_field_instances() {
   $field_instances['field_collection_item-field_tca_partner_organisations-field_fc_partner_project'] = array(
     'bundle' => 'field_tca_partner_organisations',
     'default_value' => NULL,
+    'default_value_function' => '',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please enter each project taking part in the TCA (name and/or TPI number):',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -593,6 +403,11 @@ function esf_tc_content_types_field_default_field_instances() {
     'label' => 'Partner project',
     'required' => 0,
     'settings' => array(
+      'behaviors' => array(
+        'prepopulate' => array(
+          'status' => 0,
+        ),
+      ),
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
@@ -607,112 +422,7 @@ function esf_tc_content_types_field_default_field_instances() {
       'type' => 'entityreference_autocomplete_tags',
       'weight' => 0,
     ),
-  );
-
-  // Exported field_instance:
-  // 'field_collection_item-field_tca_partner_organisations-field_fc_total_budget_'.
-  $field_instances['field_collection_item-field_tca_partner_organisations-field_fc_total_budget_'] = array(
-    'bundle' => 'field_tca_partner_organisations',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'inline',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 0,
-          'thousand_separator' => '',
-        ),
-        'type' => 'number_integer',
-        'weight' => 5,
-      ),
-    ),
-    'entity_type' => 'field_collection_item',
-    'field_name' => 'field_fc_total_budget_',
-    'label' => 'Total budget',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'max' => 2147483647,
-      'min' => '',
-      'prefix' => '€',
-      'suffix' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'number',
-      'settings' => array(),
-      'type' => 'number',
-      'weight' => 3,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'field_collection_item-field_tca_partner_organisations-field_place_of_signature'.
-  $field_instances['field_collection_item-field_tca_partner_organisations-field_place_of_signature'] = array(
-    'bundle' => 'field_tca_partner_organisations',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'inline',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 1,
-      ),
-    ),
-    'entity_type' => 'field_collection_item',
-    'field_name' => 'field_place_of_signature',
-    'label' => 'Place of signature',
-    'required' => 0,
-    'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'basic_html' => 'basic_html',
-          'filtered_html' => 'filtered_html',
-          'full_html' => 'full_html',
-          'plain_text' => 'plain_text',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'basic_html' => array(
-              'weight' => 5,
-            ),
-            'filtered_html' => array(
-              'weight' => -9,
-            ),
-            'full_html' => array(
-              'weight' => -10,
-            ),
-            'plain_text' => array(
-              'weight' => -8,
-            ),
-          ),
-        ),
-      ),
-      'entity_translation_sync' => FALSE,
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'maxlength_js' => 0,
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 1,
-    ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance: 'node-esf_tnc_call_for_project-body'.
@@ -7177,7 +6887,7 @@ If an organisation is not found, please save your work as draft and check that t
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 17,
+      'weight' => 16,
     ),
   );
 
@@ -7221,7 +6931,7 @@ If an organisation is not found, please save your work as draft and check that t
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 16,
+      'weight' => 15,
     ),
   );
 
@@ -7295,14 +7005,216 @@ If an organisation is not found, please save your work as draft and check that t
     ),
   );
 
-  // Exported field_instance: 'node-esf_tnc_tca-field_tca_end_date_activity'.
-  $field_instances['node-esf_tnc_tca-field_tca_end_date_activity'] = array(
+  // Exported field_instance: 'node-esf_tnc_tca-field_tca_attach_budget_table'.
+  $field_instances['node-esf_tnc_tca-field_tca_attach_budget_table'] = array(
+    'bundle' => 'esf_tnc_tca',
+    'deleted' => 0,
+    'description' => 'Please attach the budget table in euro showing each partners’ activities and the budget per activity, with totals for each partner and activity. (e.g. Excel)',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'file',
+        'settings' => array(),
+        'type' => 'file_default',
+        'weight' => 24,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_tca_attach_budget_table',
+    'label' => 'Please attach budget table',
+    'required' => 0,
+    'settings' => array(
+      'description_field' => 1,
+      'entity_translation_sync' => FALSE,
+      'file_directory' => 'TCA/budget_tables',
+      'file_extensions' => 'pdf xls xlsx doc docx odt ods odp zip tar',
+      'max_filesize' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'file',
+      'settings' => array(
+        'filefield_sources' => array(
+          'filefield_sources' => array(
+            'attach' => 0,
+            'clipboard' => 0,
+            'plupload' => 0,
+            'reference' => 0,
+            'remote' => 0,
+            'upload' => 'upload',
+          ),
+          'source_attach' => array(
+            'absolute' => 0,
+            'attach_mode' => 'move',
+            'path' => 'file_attach',
+          ),
+          'source_imce' => array(
+            'imce_mode' => 0,
+          ),
+          'source_reference' => array(
+            'autocomplete' => 0,
+            'search_all_fields' => 0,
+          ),
+        ),
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'file_generic',
+      'weight' => 9,
+    ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance: 'node-esf_tnc_tca-field_tca_attachments'.
+  $field_instances['node-esf_tnc_tca-field_tca_attachments'] = array(
+    'bundle' => 'esf_tnc_tca',
+    'deleted' => 0,
+    'description' => 'Please feel free to attach any other relevant documents, in addition to the full TCA agreement and budget table already uploaded above.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'file',
+        'settings' => array(),
+        'type' => 'file_default',
+        'weight' => 23,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_tca_attachments',
+    'label' => 'Other attachments',
+    'required' => 0,
+    'settings' => array(
+      'description_field' => 1,
+      'entity_translation_sync' => FALSE,
+      'file_directory' => 'TCA/attachments',
+      'file_extensions' => 'jpg jpeg gif png txt pdf xls xlsx doc docx odt ods odp ppt pptx zip tar',
+      'max_filesize' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'file',
+      'settings' => array(
+        'filefield_sources' => array(
+          'filefield_sources' => array(
+            'attach' => 0,
+            'clipboard' => 0,
+            'plupload' => 0,
+            'reference' => 0,
+            'remote' => 0,
+            'upload' => 'upload',
+          ),
+          'source_attach' => array(
+            'absolute' => 0,
+            'attach_mode' => 'move',
+            'path' => 'file_attach',
+          ),
+          'source_imce' => array(
+            'imce_mode' => 0,
+          ),
+          'source_reference' => array(
+            'autocomplete' => 0,
+            'search_all_fields' => 0,
+          ),
+        ),
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'file_generic',
+      'weight' => 14,
+    ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance: 'node-esf_tnc_tca-field_tca_budget'.
+  $field_instances['node-esf_tnc_tca-field_tca_budget'] = array(
+    'bundle' => 'esf_tnc_tca',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Budget for the transnational work (Ex: 12 345.69)',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 17,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_tca_budget',
+    'label' => 'Total budget in euro',
+    'required' => 1,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'basic_html' => 'basic_html',
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'basic_html' => array(
+              'weight' => 5,
+            ),
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -10,
+            ),
+            'plain_text' => array(
+              'weight' => -8,
+            ),
+          ),
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 8,
+    ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance: 'node-esf_tnc_tca-field_tca_date_sign'.
+  $field_instances['node-esf_tnc_tca-field_tca_date_sign'] = array(
     'bundle' => 'esf_tnc_tca',
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
+        'label' => 'above',
         'module' => 'date',
         'settings' => array(
           'format_type' => 'long',
@@ -7313,7 +7225,7 @@ If an organisation is not found, please save your work as draft and check that t
           'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
-        'weight' => 7,
+        'weight' => 22,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -7323,11 +7235,11 @@ If an organisation is not found, please save your work as draft and check that t
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_tca_end_date_activity',
-    'label' => 'End date of the TCA activity',
-    'required' => 1,
+    'field_name' => 'field_tca_date_sign',
+    'label' => 'Date of signature of TCA',
+    'required' => 0,
     'settings' => array(
-      'default_value' => 'blank',
+      'default_value' => '',
       'default_value2' => 'same',
       'default_value_code' => '',
       'default_value_code2' => '',
@@ -7347,87 +7259,44 @@ If an organisation is not found, please save your work as draft and check that t
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 8,
+      'weight' => 11,
     ),
+    'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-esf_tnc_tca-field_tca_flag_featured'.
-  $field_instances['node-esf_tnc_tca-field_tca_flag_featured'] = array(
+  // Exported field_instance: 'node-esf_tnc_tca-field_tca_decision'.
+  $field_instances['node-esf_tnc_tca-field_tca_decision'] = array(
     'bundle' => 'esf_tnc_tca',
-    'default_value' => array(
-      0 => array(
-        'value' => 'no',
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => '<div class="alert alert-warning">
+<p>Organisation & decision-making, please describe:</p>
+<ul>
+<li>contribution and responsibilities of each partner</li>
+<li>role and tasks relating to the co-ordination of the TCA</li>
+<li>arrangements for decision-making</li>
+<li>working language(s)</li>
+<li>evaluation</li>
+</ul>
+</div>',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
-        'module' => 'list',
+        'label' => 'above',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 2,
+        'type' => 'text_default',
+        'weight' => 20,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_tca_flag_featured',
-    'label' => 'Flag featured TCA',
-    'required' => 1,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_buttons',
-      'weight' => 9,
-    ),
-  );
-
-  // Exported field_instance: 'node-esf_tnc_tca-field_tca_highlight_promo_txt'.
-  $field_instances['node-esf_tnc_tca-field_tca_highlight_promo_txt'] = array(
-    'bundle' => 'esf_tnc_tca',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 4,
-      ),
-      'teaser' => array(
-        'label' => 'hidden',
-        'module' => 'smart_trim',
-        'settings' => array(
-          'more_link' => FALSE,
-          'more_text' => 'Read more',
-          'summary_handler' => 'full',
-          'trim_length' => 300,
-          'trim_link' => FALSE,
-          'trim_options' => array(),
-          'trim_preserve_tags' => '',
-          'trim_suffix' => '...',
-          'trim_type' => 'chars',
-        ),
-        'type' => 'smart_trim_format',
-        'weight' => 3,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_tca_highlight_promo_txt',
-    'label' => 'Highlight / promotion text (for the promotional section)',
+    'field_name' => 'field_tca_decision',
+    'label' => 'Organisation & decision-making',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -7468,84 +7337,10 @@ If an organisation is not found, please save your work as draft and check that t
         'maxlength_js_enforce' => 0,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'maxlength_js_truncate_html' => 0,
-        'rows' => 3,
+        'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 11,
-    ),
-  );
-
-  // Exported field_instance: 'node-esf_tnc_tca-field_tca_logo'.
-  $field_instances['node-esf_tnc_tca-field_tca_logo'] = array(
-    'bundle' => 'esf_tnc_tca',
-    'default_value' => array(),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'image',
-        'settings' => array(
-          'image_link' => '',
-          'image_style' => 'esf_database_logo',
-        ),
-        'type' => 'image',
-        'weight' => 3,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 15,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_tca_logo',
-    'label' => 'Logo of the TCA (for the promotional section)',
-    'required' => 0,
-    'settings' => array(
-      'alt_field' => 0,
-      'default_image' => 0,
-      'entity_translation_sync' => FALSE,
-      'file_directory' => '',
-      'file_extensions' => 'png gif jpg jpeg',
-      'max_filesize' => '5 MB',
-      'max_resolution' => '600x600',
-      'min_resolution' => '150x150',
-      'title_field' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'image',
-      'settings' => array(
-        'filefield_sources' => array(
-          'filefield_sources' => array(
-            'attach' => 0,
-            'clipboard' => 0,
-            'plupload' => 0,
-            'reference' => 0,
-            'remote' => 0,
-            'upload' => 'upload',
-          ),
-          'source_attach' => array(
-            'absolute' => 0,
-            'attach_mode' => 'move',
-            'path' => 'file_attach',
-          ),
-          'source_imce' => array(
-            'imce_mode' => 0,
-          ),
-          'source_reference' => array(
-            'autocomplete' => 0,
-            'search_all_fields' => 0,
-          ),
-        ),
-        'preview_image_style' => 'esf_database_logo',
-        'progress_indicator' => 'throbber',
-      ),
-      'type' => 'image_image',
-      'weight' => 10,
+      'weight' => 6,
     ),
     'workbench_access_field' => 0,
   );
@@ -7554,6 +7349,7 @@ If an organisation is not found, please save your work as draft and check that t
   $field_instances['node-esf_tnc_tca-field_tca_main_contact_point'] = array(
     'bundle' => 'esf_tnc_tca',
     'default_value' => NULL,
+    'default_value_function' => '',
     'deleted' => 0,
     'description' => 'Please type the name of a partner organisation to display possible options. If an organisation is not found, please save your work and check that the editorial status of the organisation is set to Published or create a new organisation.',
     'display' => array(
@@ -7581,39 +7377,12 @@ If an organisation is not found, please save your work as draft and check that t
     'label' => 'Main contact organisation',
     'required' => 0,
     'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'nodeaccess_nodereference' => array(
-        'all' => array(
-          'view' => 0,
+      'behaviors' => array(
+        'prepopulate' => array(
+          'status' => 0,
         ),
-        'all_published' => 0,
-        'author' => array(
-          'delete' => 0,
-          'update' => 0,
-          'view' => 0,
-        ),
-        'author_published' => 0,
-        'priority' => 0,
-        'referenced' => array(
-          'delete' => array(
-            'delete' => 0,
-            'update' => 0,
-            'view' => 0,
-          ),
-          'published' => 0,
-          'update' => array(
-            'delete' => 0,
-            'update' => 0,
-            'view' => 0,
-          ),
-          'view' => array(
-            'delete' => 0,
-            'update' => 0,
-            'view' => 0,
-          ),
-        ),
-        'unused' => 0,
       ),
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -7625,50 +7394,163 @@ If an organisation is not found, please save your work as draft and check that t
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 6,
+      'weight' => 3,
     ),
+    'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-esf_tnc_tca-field_tca_notify_partners'.
-  $field_instances['node-esf_tnc_tca-field_tca_notify_partners'] = array(
+  // Exported field_instance: 'node-esf_tnc_tca-field_tca_notes'.
+  $field_instances['node-esf_tnc_tca-field_tca_notes'] = array(
     'bundle' => 'esf_tnc_tca',
-    'default_value' => array(
-      0 => array(
-        'value' => 'no',
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Notify the legal contact of all partners in order to validate their data.',
+    'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
-        'module' => 'list',
+        'label' => 'above',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 1,
+        'type' => 'text_default',
+        'weight' => 21,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_tca_notify_partners',
-    'label' => 'Notify partners',
-    'required' => 1,
+    'field_name' => 'field_tca_notes',
+    'label' => 'Other notes',
+    'required' => 0,
     'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'basic_html' => 0,
+          'filtered_html' => 0,
+          'full_html' => 'full_html',
+          'plain_text' => 0,
+        ),
+        'allowed_formats_toggle' => 1,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'basic_html' => array(
+              'weight' => 5,
+            ),
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -10,
+            ),
+            'plain_text' => array(
+              'weight' => -8,
+            ),
+          ),
+        ),
+      ),
       'entity_translation_sync' => FALSE,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_buttons',
-      'weight' => 5,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => '',
+        'maxlength_js_enforce' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_truncate_html' => 0,
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 13,
     ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance: 'node-esf_tnc_tca-field_tca_objectives'.
+  $field_instances['node-esf_tnc_tca-field_tca_objectives'] = array(
+    'bundle' => 'esf_tnc_tca',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '<div class="alert alert-warning">
+<p>Rationale & objectives, please describe:</p>
+<ul>
+ <li>problem addressed, common interests, methodology</li>
+ <li>common transnational objectives of the partners</li>
+<li>target group</li>
+<li>products, outputs and deliverables</li>
+<li>added value of the activities and planned results for each partner</li>
+<li>incorporation of horizontal aspects (gender, CSR, …)</li>
+</ul>
+</div>',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 18,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_tca_objectives',
+    'label' => 'Rationale & objectives',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'basic_html' => 0,
+          'filtered_html' => 0,
+          'full_html' => 'full_html',
+          'plain_text' => 0,
+        ),
+        'allowed_formats_toggle' => 1,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'basic_html' => array(
+              'weight' => 5,
+            ),
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -10,
+            ),
+            'plain_text' => array(
+              'weight' => -8,
+            ),
+          ),
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => '',
+        'maxlength_js_enforce' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_truncate_html' => 0,
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 4,
+    ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance:
@@ -7708,7 +7590,7 @@ If an organisation is not found, please save your work as draft and check that t
     ),
     'entity_type' => 'node',
     'field_name' => 'field_tca_partner_organisations',
-    'label' => 'Partner organisations',
+    'label' => 'Partnering projects',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -7719,8 +7601,9 @@ If an organisation is not found, please save your work as draft and check that t
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 4,
+      'weight' => 7,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance: 'node-esf_tnc_tca-field_tca_signed_agreement'.
@@ -7746,13 +7629,13 @@ If an organisation is not found, please save your work as draft and check that t
     ),
     'entity_type' => 'node',
     'field_name' => 'field_tca_signed_agreement',
-    'label' => 'Signed agreement',
-    'required' => 0,
+    'label' => 'Please attach full TCA agreement',
+    'required' => 1,
     'settings' => array(
       'description_field' => 1,
       'entity_translation_sync' => FALSE,
-      'file_directory' => 'tca/attachments',
-      'file_extensions' => 'jpg jpeg gif png txt pdf xls xlsx doc docx odt ods odp ppt pptx zip tar',
+      'file_directory' => 'TCA/agreements',
+      'file_extensions' => 'pdf xls xlsx doc docx odt ods odp zip tar',
       'max_filesize' => '',
       'user_register_form' => FALSE,
     ),
@@ -7785,65 +7668,9 @@ If an organisation is not found, please save your work as draft and check that t
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 12,
+      'weight' => 10,
     ),
     'workbench_access_field' => 0,
-  );
-
-  // Exported field_instance: 'node-esf_tnc_tca-field_tca_start_date_activity'.
-  $field_instances['node-esf_tnc_tca-field_tca_start_date_activity'] = array(
-    'bundle' => 'esf_tnc_tca',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'date',
-        'settings' => array(
-          'format_type' => 'long',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
-          'show_remaining_days' => FALSE,
-        ),
-        'type' => 'date_default',
-        'weight' => 6,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_tca_start_date_activity',
-    'label' => 'Start date of the TCA activity',
-    'required' => 0,
-    'settings' => array(
-      'default_value' => 'blank',
-      'default_value2' => 'same',
-      'default_value_code' => '',
-      'default_value_code2' => '',
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'date',
-      'settings' => array(
-        'increment' => 15,
-        'input_format' => 'd/m/Y - H:i:s',
-        'input_format_custom' => '',
-        'label_position' => 'above',
-        'no_fieldset' => 0,
-        'text_parts' => array(),
-        'year_range' => '-3:+3',
-      ),
-      'type' => 'date_popup',
-      'weight' => 7,
-    ),
   );
 
   // Exported field_instance: 'node-esf_tnc_tca-field_tca_status'.
@@ -7851,7 +7678,7 @@ If an organisation is not found, please save your work as draft and check that t
     'bundle' => 'esf_tnc_tca',
     'default_value' => array(
       0 => array(
-        'value' => 'not-yet-defined',
+        'value' => 'orange',
       ),
     ),
     'deleted' => 0,
@@ -7886,8 +7713,9 @@ If an organisation is not found, please save your work as draft and check that t
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 13,
+      'weight' => 12,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance: 'node-esf_tnc_tca-field_tca_title_another_lang'.
@@ -7959,51 +7787,85 @@ If an organisation is not found, please save your work as draft and check that t
     ),
   );
 
-  // Exported field_instance: 'node-esf_tnc_tca-field_tca_total_budget'.
-  $field_instances['node-esf_tnc_tca-field_tca_total_budget'] = array(
+  // Exported field_instance: 'node-esf_tnc_tca-field_tca_work_pgm'.
+  $field_instances['node-esf_tnc_tca-field_tca_work_pgm'] = array(
     'bundle' => 'esf_tnc_tca',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => '<div class="alert alert-warning">
+<p>Work programme and working methodology, please describe:</p>
+<ul>
+<li>planned transnational activities</li>
+<li>methodology for sharing information, results and working tools</li>
+<li>time schedule for milestones, outcomes and events</li>
+<li>dissemination strategy</li>
+<li>evaluation</li>
+</ul>
+</div>',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 0,
-          'thousand_separator' => '',
-        ),
-        'type' => 'number_integer',
-        'weight' => 13,
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 19,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_tca_total_budget',
-    'label' => 'Total budget',
+    'field_name' => 'field_tca_work_pgm',
+    'label' => 'Work programme and working methodology',
     'required' => 0,
     'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'basic_html' => 0,
+          'filtered_html' => 0,
+          'full_html' => 'full_html',
+          'plain_text' => 0,
+        ),
+        'allowed_formats_toggle' => 1,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'basic_html' => array(
+              'weight' => 5,
+            ),
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -10,
+            ),
+            'plain_text' => array(
+              'weight' => -8,
+            ),
+          ),
+        ),
+      ),
       'entity_translation_sync' => FALSE,
-      'max' => 2147483647,
-      'min' => '',
-      'prefix' => '€',
-      'suffix' => '',
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 0,
-      'module' => 'number',
-      'settings' => array(),
-      'type' => 'number',
-      'weight' => 15,
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => '',
+        'maxlength_js_enforce' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_truncate_html' => 0,
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 5,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance: 'node-esf_tnc_tca-title_field'.
@@ -8742,23 +8604,52 @@ If an organisation is not found, please save your work as draft and check that t
   // Translatables
   // Included for use with string extractors like potx.
   t('<a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 codes</a> are two-letter country codes defined in ISO 3166-1, part of the ISO 3166 standard published by the International Organization for Standardization (ISO), to represent countries, dependent territories, and special areas of geographical interest.');
+  t('<div class="alert alert-warning">
+<p>Organisation & decision-making, please describe:</p>
+<ul>
+<li>contribution and responsibilities of each partner</li>
+<li>role and tasks relating to the co-ordination of the TCA</li>
+<li>arrangements for decision-making</li>
+<li>working language(s)</li>
+<li>evaluation</li>
+</ul>
+</div>');
+  t('<div class="alert alert-warning">
+<p>Rationale & objectives, please describe:</p>
+<ul>
+ <li>problem addressed, common interests, methodology</li>
+ <li>common transnational objectives of the partners</li>
+<li>target group</li>
+<li>products, outputs and deliverables</li>
+<li>added value of the activities and planned results for each partner</li>
+<li>incorporation of horizontal aspects (gender, CSR, …)</li>
+</ul>
+</div>');
+  t('<div class="alert alert-warning">
+<p>Work programme and working methodology, please describe:</p>
+<ul>
+<li>planned transnational activities</li>
+<li>methodology for sharing information, results and working tools</li>
+<li>time schedule for milestones, outcomes and events</li>
+<li>dissemination strategy</li>
+<li>evaluation</li>
+</ul>
+</div>');
   t('Acronym or short denomination');
   t('Activities');
-  t('Activity');
   t('Additional  contacts');
   t('Address');
   t('Address for notifications');
   t('Attached document');
   t('Attachments');
   t('Body');
-  t('Budget');
-  t('Budget for transnational activities');
+  t('Budget for the transnational work (Ex: 12 345.69)');
   t('Call for projects');
   t('Contact');
   t('Country');
   t('Country of submission');
-  t('Date of initial signature');
   t('Date of news');
+  t('Date of signature of TCA');
   t('Description');
   t('Did you receive a token by email? If so, please enter it below.');
   t('ESF project status');
@@ -8766,7 +8657,6 @@ If an organisation is not found, please save your work as draft and check that t
   t('Editorial status');
   t('Eligibility dates');
   t('Email');
-  t('End date of the TCA activity');
   t('End date of transnational activity');
   t('Enter a number without separators (dot, spaces). Ex: 150000.');
   t('Expected partners and their roles');
@@ -8774,7 +8664,6 @@ If an organisation is not found, please save your work as draft and check that t
   t('Experience and facilities available');
   t('External link');
   t('Files');
-  t('Flag featured TCA');
   t('Flag featured organisation');
   t('Flag featured project');
   t('Gender');
@@ -8790,7 +8679,6 @@ If an organisation is not found, please save your work as draft and check that t
   t('Linked TN');
   t('Links');
   t('Location');
-  t('Logo of the TCA (for the promotional section)');
   t('MA or IB involved');
   t('MAs approval status');
   t('Main activity of the organisation');
@@ -8804,26 +8692,31 @@ If an organisation is not found, please save your work as draft and check that t
   t('Notes');
   t('Notification');
   t('Notifications related to the management of the user profile (passwords, login etc.) will still be sent to the owner of the corresponding ECAS account.');
-  t('Notify partners');
-  t('Notify the legal contact of all partners in order to validate their data.');
   t('Number / Short reference');
   t('Objectives');
   t('Operational contact');
+  t('Organisation & decision-making');
   t('Organisation department');
   t('Organisation logo');
   t('Organisation logo (for the promotional section)');
   t('Organiser');
   t('Other Countries');
   t('Other activity');
+  t('Other attachments');
   t('Other languages');
-  t('Partner organisations');
+  t('Other notes');
   t('Partner project');
+  t('Partnering projects');
   t('Phone (Home)');
   t('Phone (Mobile)');
   t('Phone (Work)');
   t('Phone number');
   t('Picture');
-  t('Place of signature');
+  t('Please attach budget table');
+  t('Please attach full TCA agreement');
+  t('Please attach the budget table in euro showing each partners’ activities and the budget per activity, with totals for each partner and activity. (e.g. Excel)');
+  t('Please enter each project taking part in the TCA (name and/or TPI number):');
+  t('Please feel free to attach any other relevant documents, in addition to the full TCA agreement and budget table already uploaded above.');
   t('Please specify the type of organisation');
   t('Please type the name of a contact to display possible options. If a user is not found, please save your work as draft and check that the editorial status of the user profile is set to Published or add name and email.');
   t('Please type the name of a contact to display possible options. If a user is not found, please save your work as draft and check that the editorial status of the user profile is set to Published or ask the user to create an ECAS account and ask to be informed when the user has logged once.
@@ -8842,13 +8735,12 @@ If an organisation is not found, please save your work as draft and check that t
   t('Project national number');
   t('Project submitted to the MA/IB responsible for the call');
   t('Public');
+  t('Rationale & objectives');
   t('Results and deliverables');
   t('Role');
   t('Searching');
-  t('Signed agreement');
   t('Skype ID');
   t('Start date');
-  t('Start date of the TCA activity');
   t('Status');
   t('Submission deadline');
   t('TCA Title in English');
@@ -8862,8 +8754,10 @@ If an organisation is not found, please save your work as draft and check that t
   t('Title in the national language');
   t('Title/Function');
   t('Total budget');
+  t('Total budget in euro');
   t('Type of call');
   t('Type of organisation');
+  t('Work programme and working methodology');
   t('You must select first a country to display the available calls. If a call is not found, please save your work as draft and check with your Managing Authority.');
   t('You must select first a country to display the available organisations.');
   t('ex: +32-27364960');

@@ -210,3 +210,44 @@ function esf_tc_content_types_update_7103() {
     watchdog('workbench_access', $message, array(), WATCHDOG_INFO);
   }
 }
+
+/**
+ * Implements hook_update_N().
+ */
+function esf_tc_content_types_update_7104() {
+  // Update status fields.
+  $count = db_update('field_data_field_tca_status')
+    ->fields(array('field_tca_status_value' => 'orange'))
+    ->execute();
+  $message = t('@count status (TCA) have been replaced by the default value', array('@count' => $count));
+  drupal_set_message($message);
+
+  $count = db_update('field_data_field_fc_mas_approval_status')
+    ->fields(array('field_fc_mas_approval_status_value' => 'pending-key-changes'))
+    ->execute();
+  $message = t('@count status (Partners project) have been replaced by the default value', array('@count' => $count));
+  drupal_set_message($message);
+
+  // Delete unsused fields.
+  $fields = array(
+    'field_place_of_signature',
+    'field_fc_budget_activity',
+    'field_fc_total_budget_',
+    'field_fc_date_initial_sign',
+    'field_tca_notify_partners',
+    'field_tca_total_budget',
+    'field_tca_start_date_activity',
+    'field_tca_end_date_activity',
+    'field_tca_flag_featured',
+    'field_tca_logo',
+    'field_tca_highlight_promo_txt',
+  );
+  foreach ($fields as $field) {
+    if (field_info_field($field)) {
+      field_delete_field($field);
+    };
+  }
+  unset($field);
+  // Clear caches.
+  drupal_flush_all_caches();
+}

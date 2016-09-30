@@ -201,7 +201,7 @@ function esf_tc_content_types_form_alter(&$form, &$form_state, $form_id) {
         'esf_tnc_tca',
       );
       if (!isset($form['#node']->nid) && in_array($form['#node']->type, $_arr_types)) {
-        _esf_tc_content_types_advice_message();
+        _esf_tc_content_types_advice_message($form['#node']->type);
       }
     }
 
@@ -714,34 +714,56 @@ function _esf_tc_content_types_get_organisations_by_country_options($country_tid
  * Alter TCA node form.
  */
 function esf_tc_content_types_form_esf_tnc_tca_node_form_alter(&$form, &$form_state, $form_id) {
+  $form['body']['#access'] = FALSE;
+  // Replace status by read only markup.
+  $list = $form['field_tca_status'][LANGUAGE_NONE];
+  $list_value = $list['#options'][$list['#default_value'][0]];
+  if ($list_value) {
+    $form['field_tca_status_item'] = array(
+      '#type' => 'markup',
+      '#markup' => "<strong>" . $list['#title'] . ": </strong>" . $list_value,
+      '#weight' => $form['field_tca_status']['#weight'],
+    );
+    $form['field_tca_status'][LANGUAGE_NONE]['#access'] = FALSE;
+  }
   // Add custom validate function.
   $form['#validate'][] = 'esf_tc_content_types_projects_database_draft_validate';
   $form['#validate'][] = 'esf_tc_content_types_tca_validate';
+  $form['#submit'][] = 'esf_tc_content_types_tca_submit';
 }
 
 /**
  * TCA custom validation.
  */
 function esf_tc_content_types_tca_validate($form, &$form_state) {
+  // Check Budget format.
+  $budget = $form_state['values']['field_tca_budget'][LANGUAGE_NONE][0]['value'];
+  if (!$budget && preg_match('/(^([0-9]{1,3}(\s[0-9]{3})*)|^([0-9]+))(\.[0-9]{0,2})?$/', $budget) == FALSE) {
+    form_set_error('field_tca_budget', t('Please enter a valid Budget format.'));
+  }
+
   $partners = $form_state['values']['field_tca_partner_organisations'][LANGUAGE_NONE];
   if ($form_state['values']['op'] == 'Publish') {
+    // Check Partners.
     foreach ($partners as $key => $partner) {
       if (is_numeric($key)) {
         if (empty($partner['field_fc_partner_project'][LANGUAGE_NONE][0]['target_id'])) {
           form_set_error('field_fc_partner_project', t('!name field is required.', array('!name' => $form['field_tca_partner_organisations'][LANGUAGE_NONE][0]['field_fc_partner_project'][LANGUAGE_NONE]['#title'])));
         }
-        else {
-          $budgets = $partner['field_fc_budget_activity'][LANGUAGE_NONE];
-          foreach ($budgets as $key_b => $budget) {
-            if (is_numeric($key_b) && empty($budget['field_fc_budget_activity1'][LANGUAGE_NONE][0]['value'])) {
-              form_set_error('field_fc_budget_activity1', t('!name field is required.', array('!name' => $form['field_tca_partner_organisations'][LANGUAGE_NONE][0]['field_fc_budget_activity'][LANGUAGE_NONE][0]['field_fc_budget_activity1'][LANGUAGE_NONE]['#title'])));
-            }
-            if (is_numeric($key_b) && empty($budget['field_fc_budget'][LANGUAGE_NONE][0]['value'])) {
-              form_set_error('field_fc_budget', t('!name field is required.', array('!name' => $form['field_tca_partner_organisations'][LANGUAGE_NONE][0]['field_fc_budget_activity'][LANGUAGE_NONE][0]['field_fc_budget'][LANGUAGE_NONE]['#title'])));
-            }
-          }
-        }
       }
+    }
+  }
+}
+
+/**
+ * TCA custom submit.
+ */
+function esf_tc_content_types_tca_submit($form, &$form_state) {
+  // Format the budget value.
+  if (!empty($form_state['values']['field_tca_budget'][LANGUAGE_NONE][0]['value'])) {
+    $budget = str_replace(' ', '', $form_state['values']['field_tca_budget'][LANGUAGE_NONE][0]['value']);
+    if ($budget) {
+      $form_state['values']['field_tca_budget'][LANGUAGE_NONE][0]['value'] = number_format($budget, 2, '.', ' ');
     }
   }
 }
@@ -800,6 +822,7 @@ function esf_tc_content_types_projects_database_submit(&$form, &$form_state) {
   );
 
   $field_esf_editorial_status = _esf_tc_content_types_get_editorial_status_field_name();
+
   if (isset($form_state['clicked_button']['#value'])) {
     $action = drupal_strtolower($form_state['clicked_button']['#value']);
   }
@@ -808,6 +831,7 @@ function esf_tc_content_types_projects_database_submit(&$form, &$form_state) {
     $form_state['status'] = $form_state['values']['status'] = 1;
     // Force Editorial status.
     $new_status = (isset($arr_status[$action])) ? $arr_status[$action] : NULL;
+
     if ($new_status) {
       $form_state['values'][$field_esf_editorial_status][LANGUAGE_NONE][0]['value'] = $new_status;
     }
@@ -1194,7 +1218,7 @@ function _esf_tc_content_types_button_access($action, $content_type, $node, $sta
 function _esf_tc_content_types_get_responsible_authorities($content_type, $node) {
   $content_types = _esf_tc_content_types_get_project_database_types();
 
-  if (in_array($content_type, $content_types)) {
+  if (in_array($content_type, $content_types) && $content_type != 'esf_tnc_tca') {
     $sql = db_select('field_data_field_org_is_ma_ib', 'MA')
       ->fields('MA', array('entity_id'))
       ->condition('field_org_is_ma_ib_value', '1');
@@ -1218,8 +1242,9 @@ function _esf_tc_content_types_get_responsible_authorities($content_type, $node)
     if ($sql) {
       $result = $sql->execute()
         ->fetchCol();
-      $result = array_unique($result);
-      return $result;
+      if (!empty($result) && is_array($result)) {
+        return array_unique($result);
+      }
     }
   }
   return array();
@@ -1528,7 +1553,11 @@ function _esf_tc_content_type_get_organisation($uid) {
 function _esf_tc_content_type_display_message($node, $state) {
   switch ($state) {
     case 'draft':
-      drupal_set_message(t('The status of this content is draft'), 'warning', TRUE);
+      $message = t('The status of this content is draft');
+      if (!empty($node->type) && $node->type == 'esf_tnc_tca') {
+        $message = t('The status of this content is draft. Don’t forget to submit it for approval to all the MAs/IBs when ready');
+      }
+      drupal_set_message($message, 'warning', TRUE);
       break;
 
     case 'blocked':
@@ -1829,11 +1858,28 @@ function esf_tc_content_types_field_default_field_instances_alter(&$fields) {
 /**
  * Helper function to add an advice message on node creation.
  */
-function _esf_tc_content_types_advice_message() {
-  $message = '<p>' . t('Please, before starting a new project input, make sure that:') . '</p>' .
-    '<ul><li>' . t('you have created your organisation details ("Project lead organisation")') . '</li>' .
-    '<li>' . t('the "Project manager" you want to indicate already has a valid user account on the myTNC website.') . '</li></ul>' .
-    '<p>' . t('(You also may indicate your own account as "Project manager" temporarily, and update this later once the permanant project manager has validated his/her user account.)') . '</p>';
+function _esf_tc_content_types_advice_message($type = NULL) {
+  if ($type == 'esf_tnc_tca') {
+    $message = '<p>' . t('Please ensure, that you have created a record in the Partner database for each project taking part in the TCA') . '</p>';
+  }
+  else {
+    $message = '<p>' . t('Please, before starting a new project input, make sure that:') . '</p>' .
+      '<ul><li>' . t('you have created your organisation details ("Project lead organisation")') . '</li>' .
+      '<li>' . t('the "Project manager" you want to indicate already has a valid user account on the myTNC website.') . '</li></ul>' .
+      '<p>' . t('(You also may indicate your own account as "Project manager" temporarily, and update this later once the permanant project manager has validated his/her user account.)') . '</p>';
+  }
 
   drupal_set_message($message, 'warning');
+}
+
+/**
+ * Implements hook_field_widget_form_alter().
+ */
+function esf_tc_content_types_field_widget_form_alter(&$element, &$form_state, $context) {
+  if (!empty($element['#bundle']) && "field_tca_partner_organisations" == $element['#bundle']) {
+    if ("field_fc_mas_approval_status" == $element['#field_name']) {
+      $element['#type'] = 'markup';
+      $element['#markup'] = "<strong>" . $element['#title'] . ': </strong>' . $element['#options'][$element['#default_value'][0]];
+    }
+  }
 }
