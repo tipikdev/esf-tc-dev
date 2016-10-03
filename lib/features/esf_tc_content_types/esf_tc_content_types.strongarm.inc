@@ -657,7 +657,7 @@ function esf_tc_content_types_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '3',
+          'weight' => '17',
         ),
       ),
       'display' => array(),
@@ -1116,55 +1116,6 @@ function esf_tc_content_types_strongarm() {
   $strongarm->name = 'pathauto_node_esf_tnc_tca_pattern';
   $strongarm->value = 'TCA-[node:nid]';
   $export['pathauto_node_esf_tnc_tca_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_taxonomy_term_call_types_pattern';
-  $strongarm->value = '';
-  $export['pathauto_taxonomy_term_call_types_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_taxonomy_term_esf_countries_regions_pattern';
-  $strongarm->value = '';
-  $export['pathauto_taxonomy_term_esf_countries_regions_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_taxonomy_term_esf_themes_pattern';
-  $strongarm->value = '';
-  $export['pathauto_taxonomy_term_esf_themes_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_taxonomy_term_languages_pattern';
-  $strongarm->value = '';
-  $export['pathauto_taxonomy_term_languages_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_taxonomy_term_organisation_types_pattern';
-  $strongarm->value = '';
-  $export['pathauto_taxonomy_term_organisation_types_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_taxonomy_term_project_activities_pattern';
-  $strongarm->value = '';
-  $export['pathauto_taxonomy_term_project_activities_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_taxonomy_term_project_target_groups_pattern';
-  $strongarm->value = '';
-  $export['pathauto_taxonomy_term_project_target_groups_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
