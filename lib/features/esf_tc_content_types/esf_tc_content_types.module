@@ -1857,6 +1857,9 @@ function esf_tc_content_types_field_default_field_instances_alter(&$fields) {
 
 /**
  * Helper function to add an advice message on node creation.
+ *
+ * @param string $type
+ *    The machine name of the targered content type.
  */
 function _esf_tc_content_types_advice_message($type = NULL) {
   if ($type == 'esf_tnc_tca') {
