@@ -324,11 +324,6 @@ features[flag][] = esf_tc_favorites
 features[image][] = esf_database_4_3
 features[image][] = esf_database_4_3_thumbnail
 features[image][] = esf_database_logo
-features[menu_links][] = menu-breadcrumb-menu_employment-social-affairs--inclusion:http://ec.europa.eu/social/home.jsp?langId=en
-features[menu_links][] = menu-breadcrumb-menu_european-commission:http://ec.europa.eu/index_en.htm
-features[menu_links][] = menu-breadcrumb-menu_european-social-fund:http://ec.europa.eu/esf/home.jsp?langId=en
-features[menu_links][] = menu-breadcrumb-menu_sitename:menutoken/52ebaf910f9d0
-features[menu_links][] = menu-breadcrumb-menu_transnationality:<front>
 features[menu_links][] = menu-left-menu_esf-transnational-cooperation:<front>
 features[menu_links][] = menu-left-menu_events:events
 features[menu_links][] = menu-left-menu_mytnc:my-tnc
