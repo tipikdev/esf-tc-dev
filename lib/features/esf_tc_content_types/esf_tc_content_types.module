@@ -193,7 +193,7 @@ function esf_tc_content_types_form_alter(&$form, &$form_state, $form_id) {
     $weight = $form['actions']['submit']['#weight'] + 1;
 
     // Alert if status is not published.
-    if ((!isset($form_state['input']['ajax_html_ids']))) {
+    if (!isset($form_state['input']['ajax_html_ids'])) {
       _esf_tc_content_type_display_message($form['#node'], $state);
       $_arr_types = array(
         'esf_tnc_project',
@@ -262,7 +262,6 @@ function esf_tc_content_types_form_alter(&$form, &$form_state, $form_id) {
  */
 function esf_tc_content_types_form_esf_tnc_organisation_node_form_alter(&$form, &$form_state, $form_id) {
   global $user;
-  $node = $form['#node'];
   // Add afterbuild function to manage states on field collection.
   $form['field_org_additional_contacts'][LANGUAGE_NONE]['#after_build'][] = 'esf_tc_content_types_field_org_additional_contacts_after_build';
 
