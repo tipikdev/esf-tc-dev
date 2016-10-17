@@ -855,8 +855,8 @@ function esf_tc_content_types_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         'pending-key-changes' => 'Pending key changes',
-        'ask' => 'Ready for MA/IB validation',
-        'ready' => 'Approved',
+        'ready' => 'Ready for MA/IB validation',
+        'accepted' => 'Approved',
         'rejected' => 'Rejected',
       ),
       'allowed_values_function' => '',

@@ -1816,13 +1816,17 @@ function _esf_tc_content_types_advice_message($type = NULL) {
 }
 
 /**
- * Implements hook_field_widget_form_alter().
+ * Helper to concat the select input in a markup text.
+ *
+ * @param array $element
+ *    The targered select input element.
+ * @return string
+ *    Return a text in a html format.
  */
-function esf_tc_content_types_field_widget_form_alter(&$element, &$form_state, $context) {
-  if (!empty($element['#bundle']) && "field_tca_partner_organisations" == $element['#bundle']) {
-    if ("field_fc_mas_approval_status" == $element['#field_name']) {
-      $element['#type'] = 'markup';
-      $element['#markup'] = "<strong>" . $element['#title'] . ': </strong>' . $element['#options'][$element['#default_value'][0]];
-    }
+function _esf_tc_content_types_field_get_markup_text($element) {
+  $return = "";
+  if (!empty($element['#title']) && !empty($element['#options'][$element['#default_value'][0]])) {
+    $return = "<strong>" . $element['#title'] . ': </strong>' . $element['#options'][$element['#default_value'][0]];
   }
+  return $return;
 }

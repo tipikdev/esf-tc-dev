@@ -26,6 +26,42 @@ function esf_tc_content_types_form_esf_tnc_tca_node_form_alter(&$form, &$form_st
   $form['#validate'][] = 'esf_tc_content_types_projects_database_draft_validate';
   $form['#validate'][] = 'esf_tc_content_types_tca_validate';
   $form['#submit'][] = 'esf_tc_content_types_tca_submit';
+  // Add after build for projects partners field.
+  $field_partner_organisations = &$form['field_tca_partner_organisations'][LANGUAGE_NONE];
+  $indexes = array_filter(array_keys($field_partner_organisations), 'is_int');
+
+  // Add ready buttons.
+  if (!empty($indexes)) {
+    $element_wrapper = $field_partner_organisations['add_more']['#ajax']['wrapper'];
+    foreach ($indexes as $index) {
+      $status = !empty($field_partner_organisations[$index]['field_fc_mas_approval_status'][LANGUAGE_NONE]['#default_value'][0]) ? $field_partner_organisations[$index]['field_fc_mas_approval_status'][LANGUAGE_NONE]['#default_value'][0] : "";
+      if (!empty($field_partner_organisations[$index]) &&  $status == 'pending-key-changes') {
+        $field_partner_organisations[$index]['ready_button'] = array(
+          '#type' => 'submit',
+          '#name' => 'ready_button_' . $index,
+          '#value' => t('Ready for MA/IBs validation'),
+          '#submit' => array('_esf_tnc_content_types_tca_partners_ready_submit'),
+          '#validate' => array(),
+          '#limit_validation_errors' => array(),
+          '#attributes' => array('class' => array('btn-success')),
+          '#ajax' => array(
+            'callback' => '_esf_tnc_content_types_tca_partners_ready_js',
+            'wrapper' => $element_wrapper,
+            'effect' => 'fade',
+          ),
+          '#weight' => '99',
+        );
+      }
+      else {
+        // Project autocomplete input become read only.
+        $field_partner_organisations[$index]['field_fc_partner_project'][LANGUAGE_NONE]['#attributes']['readonly'] = TRUE;
+      }
+      // Hide select input.
+      $field_partner_organisations[$index]['field_fc_mas_approval_status']['#attributes']['class'][] = 'sr-only';
+      $field_partner_organisations[$index]['markup'] = _esf_tnc_content_types_get_partners_status_markup($field_partner_organisations[$index]['field_fc_mas_approval_status'][LANGUAGE_NONE]);
+    }
+    unset($index);
+  }
 }
 
 /**
@@ -62,4 +98,82 @@ function esf_tc_content_types_tca_submit($form, &$form_state) {
       $form_state['values']['field_tca_budget'][LANGUAGE_NONE][0]['value'] = number_format($budget, 2, '.', ' ');
     }
   }
+}
+
+/**
+ * Helper defining specific submit function for the partners status button.
+ *
+ * @param array $form
+ *    The form.
+ * @param array $form_state
+ *    The form state.
+ */
+function _esf_tnc_content_types_tca_partners_ready_submit(&$form, &$form_state) {
+  $button = $form_state['triggering_element'];
+  $element = drupal_array_get_nested_value($form, array_slice($button['#array_parents'], 0, -1));
+}
+
+/**
+ * Helper Ajax for change partners status.
+ *
+ * @param array $form
+ *    The form.
+ * @param array $form_state
+ *    The form state.
+ *
+ * @return array|mixed|null
+ *    Return the form element.
+ */
+function _esf_tnc_content_types_tca_partners_ready_js(&$form, &$form_state) {
+  $button = $form_state['triggering_element'];
+  $ready_status = 'ready';
+  // Find delta.
+  sscanf($button['#name'], 'ready_button_%d', $delta);
+  $element = drupal_array_get_nested_value($form, array_slice($button['#array_parents'], 0, -2));
+  if (!empty($element[$delta]['field_fc_partner_project'][LANGUAGE_NONE]['#value'])) {
+    // Check if project is valid.
+    $entities = drupal_explode_tags($element[$delta]['field_fc_partner_project'][LANGUAGE_NONE]['#value']);
+    $value = array();
+    foreach ($entities as $entity) {
+      if (preg_match("/.+\((\d+)\)/", $entity, $matches)) {
+        $nid = $matches[1];
+      }
+      else {
+        form_set_error('field_tca_partner_organisations[' . LANGUAGE_NONE . '][' . $delta . '][field_fc_partner_project', t('Please insert a valid project'));
+        $nid = 0;
+      }
+    }
+    if (intval($nid)) {
+      $element[$delta]['field_fc_mas_approval_status'][LANGUAGE_NONE]['#value'] = $ready_status;
+      $element[$delta]['field_fc_mas_approval_status'][LANGUAGE_NONE]['#default_value'][0] = $ready_status;
+      unset($element[$delta]['ready_button']);
+
+      // Replace select input to markup.
+      $element[$delta]['markup'] = _esf_tnc_content_types_get_partners_status_markup($element[$delta]['field_fc_mas_approval_status'][LANGUAGE_NONE]);
+      // Read only projects input.
+      $element[$delta]['field_fc_partner_project'][LANGUAGE_NONE]['#attributes']['readonly'] = TRUE;
+      // Hide select.
+      $form_state['rebuild'] = TRUE;
+    }
+  }
+  return $element;
+}
+
+/**
+ * Helper to get the partners status markup element.
+ *
+ * @param array $select_element
+ *    The partners status form select input element.
+ *
+ * @return array
+ *    Return a markup form element.
+ */
+function _esf_tnc_content_types_get_partners_status_markup($select_element) {
+  return array(
+    '#prefix' => "<div class='parnters--status-markup'>",
+    '#suffix' => '</div>',
+    '#type' => 'markup',
+    '#markup' => _esf_tc_content_types_field_get_markup_text($select_element),
+    '#weight' => 99,
+  );
 }
