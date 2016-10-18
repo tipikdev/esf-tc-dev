@@ -384,6 +384,7 @@ function esf_tc_content_types_field_default_field_bases() {
         'published' => 'Published',
         'needs-clearance' => 'Needs clearance',
         'needs-deletion' => 'Needs deletion',
+        'negotiation' => 'In negotiation',
         'archived' => 'Archived',
         'blocked' => 'Blocked',
       ),
