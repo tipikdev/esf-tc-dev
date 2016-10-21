@@ -763,13 +763,7 @@ function esf_tc_content_types_projects_database_draft_validate(&$form, &$form_st
  * Project database (4 content types) custom submit for editorial status.
  */
 function esf_tc_content_types_projects_database_submit(&$form, &$form_state) {
-  $arr_status = array(
-    'publish' => 'published',
-    'block' => 'blocked',
-    'archive' => 'archived',
-    'ask for deletion' => 'needs-deletion',
-    'submit to ib/ma for validation' => 'negotiation',
-  );
+  $arr_status = _esf_tc_content_types_get_status();
 
   $field_esf_editorial_status = _esf_tc_content_types_get_editorial_status_field_name();
 
@@ -1058,6 +1052,21 @@ function _esf_tc_content_types_get_project_database_types() {
   );
 }
 
+/**
+ * Helper function get all editorial status.
+ *
+ * @return array
+ *    Return a list of button label keys and their related editorial status.
+ */
+function _esf_tc_content_types_get_status() {
+  return array(
+    'publish' => 'published',
+    'block' => 'blocked',
+    'archive' => 'archived',
+    'ask for deletion' => 'needs-deletion',
+    'submit to ib/ma for validation' => 'negotiation',
+  );
+}
 /**
  * Helper function to check if user can access to the actions button.
  *

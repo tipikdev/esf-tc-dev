@@ -70,19 +70,31 @@ function esf_tc_content_types_form_esf_tnc_tca_node_form_alter(&$form, &$form_st
 function esf_tc_content_types_tca_validate($form, &$form_state) {
   // Check Budget format.
   $budget = $form_state['values']['field_tca_budget'][LANGUAGE_NONE][0]['value'];
-  if (!$budget && preg_match('/(^([0-9]{1,3}(\s[0-9]{3})*)|^([0-9]+))(\.[0-9]{0,2})?$/', $budget) == FALSE) {
-    form_set_error('field_tca_budget', t('Please enter a valid Budget format.'));
-  }
-
   $partners = $form_state['values']['field_tca_partner_organisations'][LANGUAGE_NONE];
-  if ($form_state['values']['op'] == 'Publish') {
+  $arr_status = _esf_tc_content_types_get_status();
+  $op = drupal_strtolower($form_state['values']['op']);
+
+  if (!empty($arr_status[$op]) && in_array($arr_status[$op], array('published', 'negotiation'))) {
     // Check Partners.
     foreach ($partners as $key => $partner) {
       if (is_numeric($key)) {
+        $focused_field_error = 'field_tca_partner_organisations][' . LANGUAGE_NONE . '][' . $key . '][field_fc_partner_project][' . LANGUAGE_NONE;
+        // Parter project name is required.
         if (empty($partner['field_fc_partner_project'][LANGUAGE_NONE][0]['target_id'])) {
-          form_set_error('field_fc_partner_project', t('!name field is required.', array('!name' => $form['field_tca_partner_organisations'][LANGUAGE_NONE][0]['field_fc_partner_project'][LANGUAGE_NONE]['#title'])));
+          form_set_error($focused_field_error, t('!name field is required.', array('!name' => $form['field_tca_partner_organisations'][LANGUAGE_NONE][0]['field_fc_partner_project'][LANGUAGE_NONE]['#title'])));
+        }
+        // Parter project status 'Ready for MA/IB validation'
+        // is required for the negotiation.
+        $partner_status = $partner['field_fc_mas_approval_status'][LANGUAGE_NONE][0]['value'];
+        if ($arr_status[$op] == 'negotiation' && $partner_status != 'ready') {
+          form_set_error($focused_field_error, t('!name is not ready for validation', array('!name' => $form['field_tca_partner_organisations'][LANGUAGE_NONE][0]['field_fc_partner_project'][LANGUAGE_NONE]['#title'])));
         }
       }
+    }
+  }
+  if ($op != 'save as draft') {
+    if (!$budget && preg_match('/(^([0-9]{1,3}(\s[0-9]{3})*)|^([0-9]+))(\.[0-9]{0,2})?$/', $budget) == FALSE) {
+      form_set_error('field_tca_budget', t('Please enter a valid Budget format.'));
     }
   }
 }
