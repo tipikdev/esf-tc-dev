@@ -181,6 +181,7 @@ function esf_tc_content_types_form_alter(&$form, &$form_state, $form_id) {
     'info' => 'btn-info',
     'warning' => 'btn-warning',
     'danger' => 'btn-danger',
+    'primary' => 'btn-primary',
   );
 
   // Avoid checking on ajax refresh.
@@ -213,7 +214,15 @@ function esf_tc_content_types_form_alter(&$form, &$form_state, $form_id) {
       $form['actions']['submit']['#value'] = t('Save as draft');
     }
 
-    if ($state != 'published') {
+    if ($form['#node']->type == 'esf_tnc_tca' && in_array($state, array('draft'))) {
+      // Submit to the MA/IBS button for TCA.
+      $form['actions']['negotiation'] = $form['actions']['submit'];
+      $form['actions']['negotiation']['#value'] = t('Submit to IB/MA for validation');
+      $form['actions']['negotiation']['#weight'] = $weight++;
+      $form['actions']['negotiation']['#attributes']['class'][] = $color_class['primary'];
+      $form['actions']['negotiation']['#access'] = _esf_tc_content_types_button_access('negotiation', $form['type']['#value'], $form['#node'], $state);
+    }
+    elseif ($state != 'published') {
       // Publish button.
       $form['actions']['published'] = $form['actions']['submit'];
       $form['actions']['published']['#value'] = t('Publish');
@@ -759,6 +768,7 @@ function esf_tc_content_types_projects_database_submit(&$form, &$form_state) {
     'block' => 'blocked',
     'archive' => 'archived',
     'ask for deletion' => 'needs-deletion',
+    'submit to ib/ma for validation' => 'negotiation',
   );
 
   $field_esf_editorial_status = _esf_tc_content_types_get_editorial_status_field_name();
@@ -1074,7 +1084,6 @@ function _esf_tc_content_types_button_access($action, $content_type, $node, $sta
       $status = reset($status)['value'];
     }
   }
-
   if (in_array($content_type, $content_types)) {
     switch ($action) {
       case 'block':
@@ -1082,6 +1091,7 @@ function _esf_tc_content_types_button_access($action, $content_type, $node, $sta
           'published',
           'archived',
           'needs-deletion',
+          'negotiate',
         ))) {
           if (user_access("block any $content_type content")) {
             return TRUE;
@@ -1095,7 +1105,7 @@ function _esf_tc_content_types_button_access($action, $content_type, $node, $sta
         break;
 
       case 'archive':
-        if ($status == 'published') {
+        if (in_array($status, array('published', 'negotiation'))){
           return user_access("archive any $content_type content");
         }
         break;
@@ -1137,6 +1147,10 @@ function _esf_tc_content_types_button_access($action, $content_type, $node, $sta
         if ($status != 'archived') {
           return TRUE;
         }
+        break;
+
+      case 'negotiation':
+        return TRUE;
         break;
 
     }
