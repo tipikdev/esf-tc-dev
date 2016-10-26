@@ -764,18 +764,22 @@ function esf_tc_content_types_projects_database_draft_validate(&$form, &$form_st
  */
 function esf_tc_content_types_projects_database_submit(&$form, &$form_state) {
   $arr_status = _esf_tc_content_types_get_status();
+  $exept_status = array('draft', 'negotiation');
 
   $field_esf_editorial_status = _esf_tc_content_types_get_editorial_status_field_name();
 
   if (isset($form_state['clicked_button']['#value'])) {
     $action = drupal_strtolower($form_state['clicked_button']['#value']);
   }
-  if ($action && ($action != 'save as draft')) {
-    // Force publish drupal status.
-    $form_state['status'] = $form_state['values']['status'] = 1;
+  $new_status = (isset($arr_status[$action])) ? $arr_status[$action] : NULL;
+  if ($action && ($new_status != 'draft')) {
+    if ($new_status != 'negotiation') {
+      // Force publish drupal status.
+      $form_state['status'] = $form_state['values']['status'] = 1;
+    } else {
+      $form_state['status'] = $form_state['values']['status'] = 0;
+    }
     // Force Editorial status.
-    $new_status = (isset($arr_status[$action])) ? $arr_status[$action] : NULL;
-
     if ($new_status) {
       $form_state['values'][$field_esf_editorial_status][LANGUAGE_NONE][0]['value'] = $new_status;
     }
@@ -844,6 +848,24 @@ function esf_tc_content_types_node_access_records($node) {
         break;
 
       case 'esf_tnc_tca':
+        $tca_wrapper = entity_metadata_wrapper('node', $node);
+        // Get Main contact organisation.
+        $nids = array_merge($nids, _esf_tc_content_types_get_references_ids('field_tca_main_contact_point', $node));
+        // Projects partners.
+        foreach ($tca_wrapper->field_tca_partner_organisations->getIterator() as $partner) {
+          if (!empty($partner->field_fc_partner_project->value())) {
+            $project = $partner->field_fc_partner_project->value();
+            if (!empty($project)) {
+              // Get Lead organisation contact.
+              $nids = array_merge($nids, _esf_tc_content_types_get_references_ids('field_project_lead_organisation', $project));
+              // Get Projects Managers ID.
+              $uids = array_merge($uids, _esf_tc_content_types_get_references_ids('field_project_manager', $project));
+              // Get Operational Contact ID.
+              $uids = array_merge($uids, _esf_tc_content_types_get_references_ids('field_project_operat_contact', $project));
+            }
+          }
+        }
+        unset($partner);
         break;
 
     }

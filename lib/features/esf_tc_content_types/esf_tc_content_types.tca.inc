@@ -223,6 +223,7 @@ function _esf_tc_content_types_tca_partners_validation($tca, $fc, $action) {
       if ($tca_ready) {
         $tca_wrapper->field_esf_editorial_status = 'published';
         $tca_wrapper->field_tca_status = 'green';
+        $tca_wrapper->status = 1;
         $tca_wrapper->save();
         drupal_set_message(t('the TCA has turned green'));
       }
