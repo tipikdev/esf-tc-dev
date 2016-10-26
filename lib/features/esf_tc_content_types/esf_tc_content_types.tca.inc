@@ -145,7 +145,6 @@ function _esf_tnc_content_types_tca_partners_ready_js(&$form, &$form_state) {
   if (!empty($element[$delta]['field_fc_partner_project'][LANGUAGE_NONE]['#value'])) {
     // Check if project is valid.
     $entities = drupal_explode_tags($element[$delta]['field_fc_partner_project'][LANGUAGE_NONE]['#value']);
-    $value = array();
     foreach ($entities as $entity) {
       if (preg_match("/.+\((\d+)\)/", $entity, $matches)) {
         $nid = $matches[1];
@@ -188,4 +187,94 @@ function _esf_tnc_content_types_get_partners_status_markup($select_element) {
     '#markup' => _esf_tc_content_types_field_get_markup_text($select_element),
     '#weight' => 99,
   );
+}
+
+/**
+ * Helper to handle the project partners validation of a TCA.
+ *
+ * @param object $tca
+ *    The node object of the TCA.
+ * @param object $fc
+ *    The field collection object of the project to validate.
+ * @param string $action
+ *    The action to proceed on the partner's project
+ *    allowed_values (accepted/rejected).
+ */
+function _esf_tc_content_types_tca_partners_validation($tca, $fc, $action) {
+  $action = check_plain(drupal_strtolower($action));
+  $tca_wrapper = entity_metadata_wrapper('node', $tca);
+  $fc_wrapper = entity_metadata_wrapper('field_collection_item', $fc);
+
+  $status = $fc_wrapper->field_fc_mas_approval_status->value();
+  if ($status == 'ready') {
+    if ($action == 'accepted') {
+      $fc_wrapper->field_fc_mas_approval_status = $action;
+      $fc_wrapper->save();
+      drupal_set_message(t('the partners project has been accepted'));
+      // Check if all project are validated.
+      $tca_ready = TRUE;
+      foreach ($tca_wrapper->field_tca_partner_organisations->getIterator() as $partner) {
+        if ($partner->field_fc_mas_approval_status->value() != 'accepted') {
+          $tca_ready = FALSE;
+        }
+      }
+      unset($partner);
+      // Change TCA status if ready.
+      if ($tca_ready) {
+        $tca_wrapper->field_esf_editorial_status = 'published';
+        $tca_wrapper->field_tca_status = 'green';
+        $tca_wrapper->save();
+        drupal_set_message(t('the TCA has turned green'));
+      }
+    }
+    elseif ($action == 'rejected') {
+      $fc_wrapper->field_fc_mas_approval_status = $action;
+      $fc_wrapper->save();
+      $tca_wrapper->field_tca_status = 'red';
+      $tca_wrapper->save();
+      drupal_set_message(t('the partners project has been rejected'), 'error');
+      drupal_set_message(t('the TCA has turned red'), 'error');
+    }
+  }
+  drupal_goto('node/' . $tca->nid);
+}
+
+/**
+ * Custom access for TCA partners project validation.
+ *
+ * @param object $field_collection
+ *    The Field Collection item object of the partners project.
+ *
+ * @return bool
+ *    Return true if the access is granted.
+ */
+function _esf_tc_content_types_tca_partners_project_access($field_collection) {
+  global $user;
+
+  $fc_wrapper = entity_metadata_wrapper('field_collection_item', $field_collection);
+  $project = $fc_wrapper->field_fc_partner_project->value();
+
+  $admin_role = array('administrator', 'webmaster');
+  $access = FALSE;
+
+  foreach ($admin_role as $role) {
+    if (in_array($role, $user->roles)) {
+      $access = TRUE;
+    }
+  }
+  unset($role);
+
+  if (!$access) {
+    // Check if use is a MA for the node.
+    $mas = _esf_tc_content_types_get_responsible_authorities($project->type, $project);
+
+    foreach ($mas as $ma) {
+      if (!$access) {
+        $access = node_access('update', node_load($ma));
+      }
+    }
+    unset($ma);
+  }
+
+  return $access;
 }
