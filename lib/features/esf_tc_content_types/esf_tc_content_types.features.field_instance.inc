@@ -7239,7 +7239,7 @@ If an organisation is not found, please save your work as draft and check that t
     'label' => 'Date of signature of TCA',
     'required' => 0,
     'settings' => array(
-      'default_value' => '',
+      'default_value' => 'blank',
       'default_value2' => 'same',
       'default_value_code' => '',
       'default_value_code2' => '',
