@@ -69,7 +69,7 @@ function esf_tc_content_types_node_update($node) {
   // Notidy project databases content types.
   _esf_tc_content_types_node_notify($node);
 
-  if (in_array($node->type, _esf_tc_content_types_get_project_database_types()) && $node->type != '$node->type') {
+  if (in_array($node->type, _esf_tc_content_types_get_project_database_types()) && $node->type != 'esf_tnc_tca') {
     // Check if blocked.
     $wrapper = entity_metadata_wrapper('node', $node);
     $wrapper_original = entity_metadata_wrapper('node', $node->original);
