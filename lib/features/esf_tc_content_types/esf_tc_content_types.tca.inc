@@ -279,3 +279,51 @@ function _esf_tc_content_types_tca_partners_project_access($field_collection) {
 
   return $access;
 }
+
+/**
+ * Helper to find a related TCA.
+ *
+ * @param object $node
+ *    The linked node object.
+ *
+ * @return mixed
+ *    Return a list of the related TCA node object
+ *    return NULL if not found or not appropriated content type.
+ */
+function _esf_tc_content_types_find_related_tca($node) {
+  $return = NULL;
+  switch ($node->type) {
+    case 'esf_tnc_organisation':
+      $query = new EntityFieldQuery();
+      $result = $query->entityCondition('entity_type', 'node')
+        ->entityCondition('bundle', 'esf_tnc_tca')
+        ->fieldCondition('field_tca_main_contact_point', 'target_id', $node->nid)
+        ->execute();
+      if (!empty($result['node'])) {
+        $return = node_load_multiple(array_keys($result['node']));
+      }
+      break;
+
+    case 'esf_tnc_project':
+      $query = new EntityFieldQuery();
+      $result = $query->entityCondition('entity_type', 'field_collection_item')
+        ->entityCondition('bundle', 'field_tca_partner_organisations')
+        ->fieldCondition('field_fc_partner_project', 'target_id', $node->nid)
+        ->execute();
+
+      if (!empty($result['field_collection_item'])) {
+        foreach (field_collection_item_load_multiple(array_keys($result['field_collection_item'])) as $fc) {
+          if ($tca = $fc->hostEntity()) {
+            $return[$tca->nid] = $tca;
+          }
+        }
+        unset($fc);
+      }
+      break;
+
+    case 'esf_tnc_tca':
+      $return = array($node->nid => $node);
+      break;
+  }
+  return $return;
+}

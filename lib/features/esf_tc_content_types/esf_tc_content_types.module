@@ -68,6 +68,77 @@ function esf_tc_content_types_node_insert($node) {
 function esf_tc_content_types_node_update($node) {
   // Notidy project databases content types.
   _esf_tc_content_types_node_notify($node);
+
+  if (in_array($node->type, _esf_tc_content_types_get_project_database_types()) && $node->type != '$node->type') {
+    // Check if blocked.
+    $wrapper = entity_metadata_wrapper('node', $node);
+    $wrapper_original = entity_metadata_wrapper('node', $node->original);
+    $sensitive_fields = _esf_tc_content_types_sensitive_data_fields($node->type);
+
+    $tca_altered = FALSE;
+    $node_blocked = FALSE;
+
+    $ed_status = $wrapper->field_esf_editorial_status->value();
+    if ($ed_status != $wrapper_original->field_esf_editorial_status->value() && $ed_status == 'blocked') {
+      $node_blocked = TRUE;
+    }
+    elseif (!empty($sensitive_fields)) {
+      // Check if changes impact the related TCA status.
+      $idx = count($sensitive_fields);
+
+      while ($idx-- && !$tca_altered) {
+        $data = $wrapper->$sensitive_fields[$idx]->value();
+        $data_old = $wrapper_original->$sensitive_fields[$idx]->value();
+
+        // If data have changed.
+        if (!empty($data) && $data !== $data_old) {
+          $tca_altered = TRUE;
+        }
+      }
+    }
+
+
+    if ($tca_altered || $node_blocked) {
+      $tca = _esf_tc_content_types_find_related_tca($node);
+      if (!empty($tca)) {
+        $tcas_title = array();
+        foreach ($tca as $key => $t) {
+          $tcas_title[] = $t->title . ' (TCA-' . $key . ')';
+          $wrapper_tca = entity_metadata_wrapper('node', $t);
+          // TCA status is changed to orange or red.
+          $color_status = $node_blocked ? 'red' : 'orange';
+          if ($wrapper_tca->field_tca_status->value() != 'red') {
+            $wrapper_tca->field_tca_status = $color_status;
+            $wrapper_tca->save();
+          }
+          // Projects partner changes status.
+          if ($node->type == 'esf_tnc_project') {
+            $new_status = $node_blocked ? 'rejected' : 'pending-key-changes';
+            foreach ($wrapper_tca->field_tca_partner_organisations->getIterator() as $partner) {
+              $pjt = $partner->field_fc_partner_project->value();
+              if (!empty($pjt) && $pjt->nid == $node->nid) {
+                $partner->field_fc_mas_approval_status = $new_status;
+                $partner->save();
+              }
+            }
+            unset($partner);
+          }
+        }
+        unset($key, $t);
+        if ($node_blocked) {
+          watchdog('TCA regression', '%title has been blocked. Following tca have been impacted : %tcas', array(
+            '%title' => $node->title,
+            '%tcas' => drupal_implode_tags($tcas_title)
+          ));
+        } elseif ($tca_altered) {
+          watchdog('TCA regression', 'Sensitive data changes detected on %title. Following tca have been impacted : %tcas', array(
+            '%title' => $node->title,
+            '%tcas' => drupal_implode_tags($tcas_title)
+          ));
+        }
+      }
+    }
+  }
 }
 
 /**
@@ -1081,6 +1152,44 @@ function _esf_tc_content_types_get_project_database_types() {
     'esf_tnc_call_for_project',
     'esf_tnc_tca',
   );
+}
+
+/**
+ * Helper function get all sentive data fields name.
+ *
+ * @return array
+ *    Return a list of fields name.
+ */
+function _esf_tc_content_types_sensitive_data_fields($type) {
+  switch ($type) {
+    case 'esf_tnc_organisation':
+      $fields = array(
+        'field_esf_country_ref',
+        'field_org_name_national_lang',
+      );
+      break;
+
+    case 'esf_tnc_project':
+      $fields = array(
+        'field_esf_country_ref',
+        'field_project_call_for_projects',
+        'field_project_lead_organisation',
+      );
+      break;
+
+    case 'esf_tnc_tca':
+      $fields = array(
+        'title',
+        'field_tca_budget',
+        'field_tca_attach_budget_table',
+        'field_tca_signed_agreement',
+        'field_tca_objectives',
+        'field_tca_work_pgm',
+        'field_tca_decision',
+      );
+      break;
+  }
+  return $fields;
 }
 
 /**
