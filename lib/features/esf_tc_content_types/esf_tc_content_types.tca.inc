@@ -73,8 +73,12 @@ function esf_tc_content_types_tca_validate($form, &$form_state) {
   $partners = $form_state['values']['field_tca_partner_organisations'][LANGUAGE_NONE];
   $arr_status = _esf_tc_content_types_get_status();
   $op = drupal_strtolower($form_state['values']['op']);
+  $ed_status = '';
+  if (!empty($form['#node']->field_esf_editorial_status[LANGUAGE_NONE][0]['value'])) {
+    $ed_status = $form['#node']->field_esf_editorial_status[LANGUAGE_NONE][0]['value'];
+  }
 
-  if (!empty($arr_status[$op]) && in_array($arr_status[$op], array('published', 'negotiation'))) {
+  if (!empty($arr_status[$op]) && in_array($arr_status[$op], array('published', 'negotiation')) || $op = 'save' && $ed_status == 'published') {
     // Check Partners.
     foreach ($partners as $key => $partner) {
       if (is_numeric($key)) {
@@ -86,7 +90,7 @@ function esf_tc_content_types_tca_validate($form, &$form_state) {
         // Parter project status 'Ready for MA/IB validation'
         // is required for the negotiation.
         $partner_status = $partner['field_fc_mas_approval_status'][LANGUAGE_NONE][0]['value'];
-        if ($arr_status[$op] == 'negotiation' && $partner_status != 'ready') {
+        if (!empty($arr_status[$op]) && $arr_status[$op] == 'negotiation' && $partner_status != 'ready') {
           form_set_error($focused_field_error, t('!name is not ready for validation', array('!name' => $form['field_tca_partner_organisations'][LANGUAGE_NONE][0]['field_fc_partner_project'][LANGUAGE_NONE]['#title'])));
         }
       }

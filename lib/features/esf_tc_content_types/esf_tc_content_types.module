@@ -69,10 +69,10 @@ function esf_tc_content_types_node_presave($node) {
       // Insertion dectection.
       $count = count($partners_data);
       while ($count-- && !$parnters_changed) {
-        if (empty($partners_data[$count]['entity']->field_fc_partner_project)) {
-          unset($partners_data[$count]);
-        } elseif (empty($partners_data[$count]['entity']->item_id)) {
-          $parnters_changed = TRUE;
+        if (!empty($partners_data[$count]['entity'])) {
+          if (empty($partners_data[$count]['entity']->item_id)) {
+            $parnters_changed = TRUE;
+          }
         }
       }
     }
