@@ -206,7 +206,7 @@ function _esf_tc_content_types_tca_partners_validation($tca, $fc, $action) {
   $fc_wrapper = entity_metadata_wrapper('field_collection_item', $fc);
 
   $status = $fc_wrapper->field_fc_mas_approval_status->value();
-  if ($status == 'ready') {
+  if ($status != 'pending-key-changes') {
     if ($action == 'accepted') {
       $fc_wrapper->field_fc_mas_approval_status = $action;
       $fc_wrapper->save();

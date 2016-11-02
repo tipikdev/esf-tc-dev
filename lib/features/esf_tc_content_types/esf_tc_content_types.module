@@ -84,7 +84,8 @@ function esf_tc_content_types_node_presave($node) {
       }
       unset($partner);
       $node->field_tca_status[LANGUAGE_NONE][0]['value'] = 'orange';
-      $node->field_esf_editorial_status[LANGUAGE_NONE][0]['value'] = 'negotiation';
+      $node->field_esf_editorial_status[LANGUAGE_NONE][0]['value'] = 'draft';
+      $node->status = 0;
     } elseif (_esf_tc_content_types_sensitive_data_changed($node)) {
       // Change TCA status if sensitive data changes.
       if ($node->field_tca_status[LANGUAGE_NONE][0]['value'] == 'green') {
@@ -1929,7 +1930,7 @@ function esf_tc_content_types_preprocess_field(&$variables) {
 
             // Display button only if the status is ready
             // and TCA in negotiation.
-            if ($status == 'ready' && $tca_status == 'negotiation') {
+            if ($status != 'pending-key-changes') {
               // Check if user is a webmaster or administrator.
               $access = _esf_tc_content_types_tca_partners_project_access($fc);
               // Add buttons.
@@ -1962,6 +1963,14 @@ function esf_tc_content_types_preprocess_field(&$variables) {
                   ),
                   'html' => FALSE,
                 );
+                $arr_status = array(
+                  'accepted' => 'accept',
+                  'rejected' => 'reject',
+                );
+                // Disable button if necessary.
+                if (in_array($status, array_keys($arr_status))) {
+                  $item['links']['#links'][$arr_status[$status]]['attributes']['disabled'] = TRUE;
+                }
               }
             }
           }
