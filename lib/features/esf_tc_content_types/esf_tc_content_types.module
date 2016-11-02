@@ -52,6 +52,46 @@ function esf_tc_content_types_node_presave($node) {
     }
   }
 
+  // Check if data have changed (Published only).
+  $status = $node->field_esf_editorial_status[LANGUAGE_NONE][0]['value'];
+
+  if ($node->type == 'esf_tnc_tca' && !$node->is_new && $status == 'published') {
+
+    // Projects partners detect changes.
+    $partners_data = $node->field_tca_partner_organisations[LANGUAGE_NONE];
+    $partners_data_original = $node->original->field_tca_partner_organisations[LANGUAGE_NONE];
+
+    $parnters_changed = FALSE;
+    // Deletion detection.
+    if (count($partners_data) != count($partners_data_original)) {
+      $parnters_changed = TRUE;
+    } elseif (!empty($partners_data)) {
+      // Insertion dectection.
+      $count = count($partners_data);
+      while ($count-- && !$parnters_changed) {
+        if (empty($partners_data[$count]['entity']->field_fc_partner_project)) {
+          unset($partners_data[$count]);
+        } elseif (empty($partners_data[$count]['entity']->item_id)) {
+          $parnters_changed = TRUE;
+        }
+      }
+    }
+    // Change partners status if a change is detected.
+    if ($parnters_changed) {
+      foreach ($partners_data as &$partner) {
+        $new_status = 'pending-key-changes';
+        $partner['entity']->field_fc_mas_approval_status[LANGUAGE_NONE][0]['value'] = $new_status;
+      }
+      unset($partner);
+      $node->field_tca_status[LANGUAGE_NONE][0]['value'] = 'orange';
+      $node->field_esf_editorial_status[LANGUAGE_NONE][0]['value'] = 'negotiation';
+    } elseif (_esf_tc_content_types_sensitive_data_changed($node)) {
+      // Change TCA status if sensitive data changes.
+      if ($node->field_tca_status[LANGUAGE_NONE][0]['value'] == 'green') {
+        $node->field_tca_status[LANGUAGE_NONE][0]['value'] = 'orange';
+      }
+    }
+  }
 }
 
 /**
@@ -73,7 +113,6 @@ function esf_tc_content_types_node_update($node) {
     // Check if blocked.
     $wrapper = entity_metadata_wrapper('node', $node);
     $wrapper_original = entity_metadata_wrapper('node', $node->original);
-    $sensitive_fields = _esf_tc_content_types_sensitive_data_fields($node->type);
 
     $tca_altered = FALSE;
     $node_blocked = FALSE;
@@ -82,21 +121,9 @@ function esf_tc_content_types_node_update($node) {
     if ($ed_status != $wrapper_original->field_esf_editorial_status->value() && $ed_status == 'blocked') {
       $node_blocked = TRUE;
     }
-    elseif (!empty($sensitive_fields)) {
-      // Check if changes impact the related TCA status.
-      $idx = count($sensitive_fields);
-
-      while ($idx-- && !$tca_altered) {
-        $data = $wrapper->$sensitive_fields[$idx]->value();
-        $data_old = $wrapper_original->$sensitive_fields[$idx]->value();
-
-        // If data have changed.
-        if (!empty($data) && $data !== $data_old) {
-          $tca_altered = TRUE;
-        }
-      }
+    else {
+      $tca_altered = _esf_tc_content_types_sensitive_data_changed($node);
     }
-
 
     if ($tca_altered || $node_blocked) {
       $tca = _esf_tc_content_types_find_related_tca($node);
@@ -835,7 +862,6 @@ function esf_tc_content_types_projects_database_draft_validate(&$form, &$form_st
  */
 function esf_tc_content_types_projects_database_submit(&$form, &$form_state) {
   $arr_status = _esf_tc_content_types_get_status();
-  $exept_status = array('draft', 'negotiation');
 
   $field_esf_editorial_status = _esf_tc_content_types_get_editorial_status_field_name();
 
@@ -2052,4 +2078,40 @@ function _esf_tc_content_types_field_get_markup_text($element) {
     $return = "<strong>" . $element['#title'] . ': </strong>' . $element['#options'][$element['#default_value'][0]];
   }
   return $return;
+}
+
+/**
+ * Helper to compare sensitive data (node with node->original).
+ *
+ * @param object $node
+ *    Target node, node->original must exist.
+ *
+ * @return bool
+ *    Return true if sensitive data have changed.
+ */
+function _esf_tc_content_types_sensitive_data_changed($node) {
+  $wrapper = entity_metadata_wrapper('node', $node);
+  $wrapper_original = entity_metadata_wrapper('node', $node->original);
+  $sensitive_fields = _esf_tc_content_types_sensitive_data_fields($node->type);
+
+  $tca_altered = FALSE;
+
+  if (!empty($sensitive_fields) && !empty($node->original)) {
+    // Check if changes impact the related TCA status.
+    $idx = count($sensitive_fields);
+
+    while ($idx-- && !$tca_altered) {
+      $data = $wrapper->$sensitive_fields[$idx]->value();
+      $data_old = $wrapper_original->$sensitive_fields[$idx]->value();
+
+      // If data have changed.
+      if (!empty($data) && $data !== $data_old) {
+        if (!is_array($data) || empty($data['fid']) || $data['fid'] != $data_old['fid']) {
+          $tca_altered = TRUE;
+        }
+      }
+    }
+  }
+
+  return $tca_altered;
 }
