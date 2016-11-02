@@ -1969,7 +1969,8 @@ function esf_tc_content_types_preprocess_field(&$variables) {
                 );
                 // Disable button if necessary.
                 if (in_array($status, array_keys($arr_status))) {
-                  $item['links']['#links'][$arr_status[$status]]['attributes']['disabled'] = TRUE;
+                  $item['links']['#links'][$arr_status[$status]]['attributes']['disabled'] = 'disabled';
+                  $item['links']['#links'][$arr_status[$status]]['attributes']['class'][] = 'disabled';
                 }
               }
             }
