@@ -1087,6 +1087,7 @@ function esf_tc_content_types_menu() {
   $_type = array(
     'organisation' => 'Manage notifications for the organisations',
     'project' => 'Manage notifications for the projects',
+    'tca' => 'Manage notifications for the TCA',
   );
 
   $item_template = array(

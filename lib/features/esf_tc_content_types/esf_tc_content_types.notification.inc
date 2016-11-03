@@ -12,7 +12,8 @@ function esf_tc_content_state_notification_form($form, &$form_state, $content_ty
   $title = drupal_ucfirst($content_type);
   drupal_set_title($title);
 
-  $_states = _esf_tc_content_type_get_notification_states();
+  $more = $content_type == 'tca';
+  $_states = _esf_tc_content_type_get_notification_states($more);
 
   $_content_types = array(
     'organisation' => 'esf_tnc_organisation',
@@ -38,6 +39,11 @@ function esf_tc_content_state_notification_form($form, &$form_state, $content_ty
       'type' => 'editorial_status',
       'content_type' => $content_type,
     );
+
+    // Additional status.
+    if ($more) {
+      $options['more'] = TRUE;
+    }
 
     $form['notifyform'] = array(
       '#type' => 'vertical_tabs',
@@ -98,7 +104,8 @@ function esf_tc_content_state_notification_form($form, &$form_state, $content_ty
  *    Return content used in email for notifications.
  */
 function _esf_tc_content_types_mail_text($key, $variables = array(), $language = LANGUAGE_NONE) {
-  $_states = _esf_tc_content_type_get_notification_states();
+  $more = !empty($variables['more']);
+  $_states = _esf_tc_content_type_get_notification_states($more);
   // Check if message is customized.
   if ($predef_setting = variable_get($key, FALSE)) {
     return $predef_setting;
@@ -181,17 +188,28 @@ function _esf_tc_content_types_mail_text($key, $variables = array(), $language =
 /**
  * Helper to get notification states.
  *
+ * @param boolean $more
+ *    Binary choice for additional status.
+ *
  * @return array
  *    Return the list of editorial status.
  */
-function _esf_tc_content_type_get_notification_states() {
-  return array(
+function _esf_tc_content_type_get_notification_states($more=FALSE) {
+  $return = array(
     'published' => 'Published',
     'blocked' => 'Blocked',
     'archived' => 'Archived',
     'needs-deletion' => 'Asked for deletion',
     'deleted' => 'Deleted',
   );
+  if ($more) {
+    $additionals = array(
+      'negotiation' => 'In negotiation',
+    );
+    $return = $additionals + $return;
+  }
+
+  return $return;
 }
 
 /**
