@@ -110,7 +110,7 @@ function esf_tc_content_types_node_update($node) {
   // Notidy project databases content types.
   _esf_tc_content_types_node_notify($node);
 
-  if (in_array($node->type, _esf_tc_content_types_get_project_database_types()) && $node->type != 'esf_tnc_tca') {
+  if (in_array($node->type, _esf_tc_content_types_get_project_database_types())) {
     // Check if blocked.
     $wrapper = entity_metadata_wrapper('node', $node);
     $wrapper_original = entity_metadata_wrapper('node', $node->original);
@@ -1782,6 +1782,28 @@ function _esf_tc_content_types_get_associated_email($node, $with_ma = FALSE) {
       if (is_array($contacts) && count($contacts)) {
         $emails = array_merge($emails, $contacts);
       }
+      break;
+
+    case 'esf_tnc_tca':
+      $wrapper = entity_metadata_wrapper('node', $node);
+      // Main contact organisation.
+      $org = $wrapper->field_tca_main_contact_point->value();
+      if ($org) {
+        $contacts = _esf_tc_content_types_get_associated_email($org);
+        if (count($contacts)) {
+          $emails = array_merge($emails, $contacts);
+        }
+      }
+      // Projects parnters.
+      foreach ($wrapper->field_tca_partner_organisations->getIterator() as $partner) {
+        if ($project = $partner->field_fc_partner_project->value()) {
+          $contacts = _esf_tc_content_types_get_associated_email($project);
+          if (count($contacts)) {
+            $emails = array_merge($emails, $contacts);
+          }
+        }
+      }
+      unset($partner);
       break;
   }
   // Managing Authorities.

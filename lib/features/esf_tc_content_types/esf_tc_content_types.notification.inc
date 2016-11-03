@@ -336,6 +336,8 @@ function _esf_tc_content_types_node_notify($node) {
         }
         break;
 
+      case 'esf_tnc_tca':
+
       case 'esf_tnc_project':
         $emails = _esf_tc_content_types_get_associated_email($node);
         if (!$force_notify) {
@@ -344,7 +346,7 @@ function _esf_tc_content_types_node_notify($node) {
             foreach ($emails as $email) {
               if (valid_email_address($email)) {
                 $usr = user_load_by_mail($email);
-                if ($usr->uid && $email != $user->mail) {
+                if (!empty($usr->uid) && $email != $user->mail) {
                   $contacts['ecas'][] = array(
                     'name' => format_username($usr),
                     'role' => 'a ' . $default_role,
