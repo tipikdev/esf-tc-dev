@@ -330,3 +330,19 @@ function _esf_tc_content_types_find_related_tca($node) {
   }
   return $return;
 }
+
+/**
+ * Helper to get allowed values of TCA status fields.
+ *
+ * @return array
+ *    Return a list of status.
+ */
+function _esf_tc_get_tca_status() {
+  $return = array();
+  $info = field_info_field('field_tca_status');
+  if (!empty($info) && !empty($info['settings']['allowed_values'])) {
+    $return = $info['settings']['allowed_values'];
+  }
+
+  return $return;
+}

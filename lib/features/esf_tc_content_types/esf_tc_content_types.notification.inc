@@ -84,7 +84,23 @@ function esf_tc_content_state_notification_form($form, &$form_state, $content_ty
 
     case 'tca':
       // Type TCA status.
-      break;
+      $_title = 'Color status';
+      $form['contenttype_contact'] = array(
+        '#type' => 'markup',
+        '#markup' => '<h2>' . $_title . '</h2>',
+      );
+      $form['colorform'] = array(
+        '#type' => 'vertical_tabs',
+      );
+
+      $keys = _esf_tc_get_tca_status();
+
+      $options['type'] = 'color';
+
+      // Generate inputs of the form.
+      $token_types = array('node', 'user', 'site');
+      _esf_tc_content_get_email_inputs($_content_types[$content_type], $keys, $options, 'colorform', $token_types, $form);
+    break;
   }
 
   return system_settings_form($form);
@@ -176,6 +192,29 @@ function _esf_tc_content_types_mail_text($key, $variables = array(), $language =
                   '+32 2 736 1890' . PHP_EOL;
                 return $body;
 
+            }
+          }
+          break;
+
+        case 'color':
+          $keys = explode('_', $key);
+          if (is_array($keys) && count($keys)) {
+            $input_type = array_pop($keys);
+            $action = array_pop($keys);
+
+            switch ($input_type) {
+              case 'subject':
+                return t('The TCA [node:title] has turned @action', array(
+                  '@action' => $action,
+                ));
+
+              case 'body':
+                $body = t('The TCA [node:title] has turned @action by [user:name]', array(
+                  '@action' => $action,
+                ));
+                $body .= PHP_EOL . PHP_EOL . '[node:url]';
+
+                return $body;
             }
           }
           break;
@@ -382,6 +421,48 @@ function _esf_tc_content_types_node_notify($node) {
     }
     unset($key);
 
+    // TCA - Color status.
+    if ($node->type == 'esf_tnc_tca') {
+      // Options for email.
+      $options = array(
+        'type' => 'color',
+        'content_type' => $node->type,
+        'node' => $node,
+      );
+
+      // Status.
+      $fieldname = 'field_tca_status';
+      $field = field_get_items('node', $node, $fieldname);
+      if (is_array($field) && reset($field)['value']) {
+        $status = reset($field)['value'];
+      }
+      // Old status.
+      $old_status = "";
+      if (isset($node->original)) {
+        $field = field_get_items('node', $node->original, $fieldname);
+        if (is_array($field) && reset($field)['value']) {
+          $old_status = reset($field)['value'];
+        }
+      }
+      // Status.
+      $fieldname = _esf_tc_content_types_get_editorial_status_field_name();
+      $field = field_get_items('node', $node, $fieldname);
+      if (is_array($field) && reset($field)['value']) {
+        $ed_status = reset($field)['value'];
+      }
+
+      $key_prefix = $node->type . '_notification_' . $status;
+
+      if (!$node->is_new && !empty($status) && $ed_status != 'draft' && $status != $old_status) {
+        $emails = _esf_tc_content_types_get_associated_email($node, TRUE);
+        foreach ($emails as $email) {
+          if (valid_email_address($email)) {
+            drupal_mail('esf_tc_content_types', $key_prefix, $email, language_default(), $options);
+          }
+        }
+        unset($email, $emails);
+      }
+    }
   }
 
 }
@@ -481,7 +562,15 @@ function _esf_tc_content_types_field_collection_notify($field_collection_item) {
  */
 function esf_tc_content_types_mail($key, &$message, $params) {
   global $user;
-  if ($params['type'] == 'editorial_status' || $params['type'] == 'contact') {
+
+  $allowed_types = array(
+    'editorial_status',
+    'contact',
+    'color',
+    'partners_project',
+  );
+
+  if (in_array($params['type'], $allowed_types)) {
     $tokens = array(
       'node' => $params['node'],
       'user' => $user,
