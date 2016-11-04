@@ -332,14 +332,34 @@ function _esf_tc_content_types_find_related_tca($node) {
 }
 
 /**
- * Helper to get allowed values of TCA status fields.
+ * Helper to get allowed values of TCA status field.
  *
  * @return array
  *    Return a list of status.
  */
-function _esf_tc_get_tca_status() {
+function _esf_tc_content_types_get_tca_status() {
+  return _esf_tc_content_types_get_allowed_values_list('field_tca_status');
+}
+
+/**
+ * Helper to get allowed values of partners project field.
+ *
+ * @return array
+ *    Return a list of status.
+ */
+function _esf_tc_content_types_get_partners_projects_status() {
+  return _esf_tc_content_types_get_allowed_values_list('field_fc_mas_approval_status');
+}
+
+/**
+ * Helper to get allowed values of a list field.
+ *
+ * @return array
+ *    Return a list of status.
+ */
+function _esf_tc_content_types_get_allowed_values_list($fieldname) {
   $return = array();
-  $info = field_info_field('field_tca_status');
+  $info = field_info_field($fieldname);
   if (!empty($info) && !empty($info['settings']['allowed_values'])) {
     $return = $info['settings']['allowed_values'];
   }

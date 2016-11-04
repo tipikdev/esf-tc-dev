@@ -83,9 +83,27 @@ function esf_tc_content_state_notification_form($form, &$form_state, $content_ty
       break;
 
     case 'tca':
+      // Partners projects status.
+      $_title = 'Partners projects';
+      $form['tca_partners'] = array(
+        '#type' => 'markup',
+        '#markup' => '<h2>' . $_title . '</h2>',
+      );
+      $form['partnersform'] = array(
+        '#type' => 'vertical_tabs',
+      );
+
+      $keys = _esf_tc_content_types_get_partners_projects_status();
+
+      $options['type'] = 'partners';
+
+      // Generate inputs of the form.
+      $token_types = array('node', 'user', 'site');
+      _esf_tc_content_get_email_inputs($_content_types[$content_type], $keys, $options, 'partnersform', $token_types, $form);
+
       // Type TCA status.
       $_title = 'Color status';
-      $form['contenttype_contact'] = array(
+      $form['tca_status'] = array(
         '#type' => 'markup',
         '#markup' => '<h2>' . $_title . '</h2>',
       );
@@ -93,7 +111,7 @@ function esf_tc_content_state_notification_form($form, &$form_state, $content_ty
         '#type' => 'vertical_tabs',
       );
 
-      $keys = _esf_tc_get_tca_status();
+      $keys = _esf_tc_content_types_get_tca_status();
 
       $options['type'] = 'color';
 
@@ -218,6 +236,31 @@ function _esf_tc_content_types_mail_text($key, $variables = array(), $language =
             }
           }
           break;
+
+        case 'partners':
+          $keys = explode('_', $key);
+          if (is_array($keys) && count($keys)) {
+            $input_type = array_pop($keys);
+            $action = array_pop($keys);
+            $_states = _esf_tc_content_types_get_partners_projects_status();
+            $action = drupal_strtolower($_states[$action] ? $_states[$action] : $action);
+
+            switch ($input_type) {
+              case 'subject':
+                return t('The partner project for TCA [node:title] is @action', array(
+                  '@action' => $action,
+                ));
+
+              case 'body':
+                $body = t('The partner project for TCA [node:title] is @action', array(
+                  '@action' => $action,
+                ));
+                $body .= PHP_EOL . PHP_EOL . '[node:url]';
+
+                return $body;
+            }
+            break;
+          }
       }
     }
   }
@@ -555,6 +598,34 @@ function _esf_tc_content_types_field_collection_notify($field_collection_item) {
     }
     unset($key);
   }
+  // Projects partners.
+  if ($field_collection_item->field_name == 'field_tca_partner_organisations') {
+    $wrapper_fc = entity_metadata_wrapper('field_collection_item', $field_collection_item);
+    $status = '';
+    if (!empty($wrapper_fc->field_fc_mas_approval_status->value())) {
+      $status = $wrapper_fc->field_fc_mas_approval_status->value();
+    }
+    if (empty($field_collection_item->is_new) || $status != 'pending-key-changes') {
+      $tca_id = $field_collection_item->hostEntityId();
+      $tca = node_load($tca_id);
+      $key_prefix = $tca->type . '_notification_' . $status;
+      $options = array(
+        'type' => 'partners',
+        'content_type' => $tca->type,
+        'node' => $tca,
+      );
+
+      if (!empty($tca)) {
+        $emails = _esf_tc_content_types_get_associated_email($tca, TRUE);
+        foreach ($emails as $email) {
+          if (valid_email_address($email)) {
+            drupal_mail('esf_tc_content_types', $key_prefix, $email, language_default(), $options);
+          }
+        }
+        unset($email);
+      }
+    }
+  }
 }
 
 /**
@@ -567,7 +638,7 @@ function esf_tc_content_types_mail($key, &$message, $params) {
     'editorial_status',
     'contact',
     'color',
-    'partners_project',
+    'partners',
   );
 
   if (in_array($params['type'], $allowed_types)) {
