@@ -323,10 +323,6 @@ function _esf_tc_content_types_find_related_tca($node) {
         unset($fc);
       }
       break;
-
-    case 'esf_tnc_tca':
-      $return = array($node->nid => $node);
-      break;
   }
   return $return;
 }
