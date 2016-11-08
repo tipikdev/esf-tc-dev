@@ -1719,9 +1719,11 @@ function _esf_tc_content_type_display_message($node, $state) {
 function _esf_tc_content_types_get_associated_email($node, $with_ma = FALSE) {
   $emails = array();
   $wrapper = entity_metadata_wrapper('node', $node);
+  $is_ma = FALSE;
 
   switch ($node->type) {
     case 'esf_tnc_organisation':
+      $is_ma = $wrapper->field_org_is_ma_ib->value();
       $choice = $wrapper->field_org_notif_choice->value();
       // Check who has to be notified.
       if ($choice) {
@@ -1807,7 +1809,7 @@ function _esf_tc_content_types_get_associated_email($node, $with_ma = FALSE) {
       break;
   }
   // Managing Authorities.
-  if ($with_ma) {
+  if ($with_ma && !$is_ma) {
     $mas = _esf_tc_content_types_get_responsible_authorities($node->type, $node);
     if (is_array($mas) && count($mas)) {
       foreach ($mas as $ma) {
