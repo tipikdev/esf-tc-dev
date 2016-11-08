@@ -101,7 +101,7 @@ function esf_tc_content_state_notification_form($form, &$form_state, $content_ty
 
       $options['type'] = 'partners';
 
-      $token_types = array('node', 'user', 'site');
+      $token_types = array('node', 'user', 'site', 'partner');
       _esf_tc_content_get_email_inputs($_content_types[$content_type], $keys, $options, 'partnersform', $token_types, $form);
 
       // Type TCA status.
@@ -251,7 +251,7 @@ function _esf_tc_content_types_mail_text($key, $variables = array(), $language =
             if ($action == 'mapjt-validation') {
               switch ($input_type) {
                 case 'subject':
-                  return t('The partner project for TCA [node:title] needs validation');
+                  return t('The partner project [partner:project:title] for TCA [node:title] needs validation');
 
                 case 'body':
                   return t('Please approve or reject the partners projects on [node:url]');
@@ -261,12 +261,12 @@ function _esf_tc_content_types_mail_text($key, $variables = array(), $language =
 
               switch ($input_type) {
                 case 'subject':
-                  return t('The partner project for TCA [node:title] is @action', array(
+                  return t('The partner project [partner:project:title] for TCA [node:title] is @action', array(
                     '@action' => $action,
                   ));
 
                 case 'body':
-                  $body = t('The partner project for TCA [node:title] is @action', array(
+                  $body = t('The partner project [partner:project:title] for TCA [node:title] is @action', array(
                     '@action' => $action,
                   ));
                   $body .= PHP_EOL . PHP_EOL . '[node:url]';
@@ -382,6 +382,7 @@ function _esf_tc_content_types_node_notify($node) {
         foreach ($wrapper->field_tca_partner_organisations->getIterator() as $partner) {
           $project = $partner->field_fc_partner_project->value();
           if (!empty($project)) {
+            $options['partner'] = $project;
             $mas = _esf_tc_content_types_get_responsible_authorities($project->type, $project);
             foreach ($mas as $ma) {
               $ma = node_load($ma);
@@ -657,6 +658,7 @@ function _esf_tc_content_types_field_collection_notify($field_collection_item) {
   // Projects partners.
   if ($field_collection_item->field_name == 'field_tca_partner_organisations') {
     $wrapper_fc = entity_metadata_wrapper('field_collection_item', $field_collection_item);
+    $project = $wrapper_fc->field_fc_partner_project->value();
     $status = '';
     if (!empty($wrapper_fc->field_fc_mas_approval_status->value())) {
       $status = $wrapper_fc->field_fc_mas_approval_status->value();
@@ -669,6 +671,7 @@ function _esf_tc_content_types_field_collection_notify($field_collection_item) {
         'type' => 'partners',
         'content_type' => $tca->type,
         'node' => $tca,
+        'partner' => $project,
       );
 
       if (!empty($tca)) {
@@ -704,6 +707,9 @@ function esf_tc_content_types_mail($key, &$message, $params) {
     );
     if (isset($params['contact'])) {
       $tokens['contact'] = $params['contact'];
+    }
+    if (isset($params['partner'])) {
+      $tokens['partner'] = $params['partner'];
     }
     $message['subject'] = token_replace(_esf_tc_content_types_mail_text($key . '_subject', $params), $tokens);
     $message['body'][] = token_replace(_esf_tc_content_types_mail_text($key . '_body', $params), $tokens);
