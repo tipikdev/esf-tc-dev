@@ -1953,7 +1953,7 @@ function esf_tc_content_types_preprocess_field(&$variables) {
 
             // Display button only if the status is ready
             // and TCA in negotiation.
-            if ($status != 'pending-key-changes') {
+            if ($status != 'pending-key-changes' && $tca_status != 'draft') {
               // Check if user is a webmaster or administrator.
               $access = _esf_tc_content_types_tca_partners_project_access($fc);
               // Add buttons.
