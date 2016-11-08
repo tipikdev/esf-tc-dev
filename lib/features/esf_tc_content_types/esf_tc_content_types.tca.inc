@@ -78,7 +78,7 @@ function esf_tc_content_types_tca_validate($form, &$form_state) {
     $ed_status = $form['#node']->field_esf_editorial_status[LANGUAGE_NONE][0]['value'];
   }
 
-  if (!empty($arr_status[$op]) && in_array($arr_status[$op], array('published', 'negotiation')) || $op = 'save' && $ed_status == 'published') {
+  if (!empty($arr_status[$op]) && in_array($arr_status[$op], array('published', 'negotiation')) || $op == 'save' && $ed_status == 'published') {
     // Check Partners.
     foreach ($partners as $key => $partner) {
       if (is_numeric($key)) {
