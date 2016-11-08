@@ -95,9 +95,12 @@ function esf_tc_content_state_notification_form($form, &$form_state, $content_ty
 
       $keys = _esf_tc_content_types_get_partners_projects_status();
 
+      // Special notification for Managing Authorities.
+      $spectial = array('mapjt-validation' => 'MA project validation');
+      $keys = $spectial + $keys;
+
       $options['type'] = 'partners';
 
-      // Generate inputs of the form.
       $token_types = array('node', 'user', 'site');
       _esf_tc_content_get_email_inputs($_content_types[$content_type], $keys, $options, 'partnersform', $token_types, $form);
 
@@ -243,23 +246,35 @@ function _esf_tc_content_types_mail_text($key, $variables = array(), $language =
             $input_type = array_pop($keys);
             $action = array_pop($keys);
             $_states = _esf_tc_content_types_get_partners_projects_status();
-            $action = drupal_strtolower($_states[$action] ? $_states[$action] : $action);
 
-            switch ($input_type) {
-              case 'subject':
-                return t('The partner project for TCA [node:title] is @action', array(
-                  '@action' => $action,
-                ));
+            // Exception for MA partners validation.
+            if ($action == 'mapjt-validation') {
+              switch ($input_type) {
+                case 'subject':
+                  return t('The partner project for TCA [node:title] needs validation');
 
-              case 'body':
-                $body = t('The partner project for TCA [node:title] is @action', array(
-                  '@action' => $action,
-                ));
-                $body .= PHP_EOL . PHP_EOL . '[node:url]';
+                case 'body':
+                  return t('Please approve or reject the partners projects on [node:url]');
+              }
+            } else {
+              $action = drupal_strtolower($_states[$action] ? $_states[$action] : $action);
 
-                return $body;
+              switch ($input_type) {
+                case 'subject':
+                  return t('The partner project for TCA [node:title] is @action', array(
+                    '@action' => $action,
+                  ));
+
+                case 'body':
+                  $body = t('The partner project for TCA [node:title] is @action', array(
+                    '@action' => $action,
+                  ));
+                  $body .= PHP_EOL . PHP_EOL . '[node:url]';
+
+                  return $body;
+              }
+              break;
             }
-            break;
           }
       }
     }
@@ -347,6 +362,47 @@ function _esf_tc_content_types_node_notify($node) {
           }
           unset($email, $emails);
         }
+      }
+    }
+
+    if ($node->type == 'esf_tnc_tca') {
+      // Special notification for Managing Authorities partners validation.
+      if ($status == 'negotiation' && $status != $old_status) {
+        // Notify all partners projects Managing Authorities.
+        $options = array(
+          'type' => 'partners',
+          'content_type' => $node->type,
+          'action' => $status,
+          'node' => $node,
+        );
+        $emails = array();
+
+        $wrapper = entity_metadata_wrapper('node', $node);
+
+        foreach ($wrapper->field_tca_partner_organisations->getIterator() as $partner) {
+          $project = $partner->field_fc_partner_project->value();
+          if (!empty($project)) {
+            $mas = _esf_tc_content_types_get_responsible_authorities($project->type, $project);
+            foreach ($mas as $ma) {
+              $ma = node_load($ma);
+              $contacts = _esf_tc_content_types_get_associated_email($ma, FALSE);
+              if (count($contacts)) {
+                $emails = array_merge($emails, $contacts);
+              }
+            }
+            unset($ma);
+
+            $key_prefix = $node->type . '_notification_mapjt-validation';
+            $emails = array_unique($emails);
+            foreach ($emails as $email) {
+              if (valid_email_address($email)) {
+                drupal_mail('esf_tc_content_types', $key_prefix, $email, language_default(), $options);
+              }
+            }
+            unset($email, $emails);
+          }
+        }
+        unset($partner);
       }
     }
 
