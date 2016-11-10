@@ -251,3 +251,56 @@ function esf_tc_content_types_update_7104() {
   // Clear caches.
   drupal_flush_all_caches();
 }
+
+/**
+ * Implements hook_update_N().
+ */
+function esf_tc_content_types_update_7105() {
+  // FIND organisation without notification choice.
+  $sql = db_select('field_data_field_org_notif_choice', 'choice');
+  $sql->rightJoin('node', NULL, 'node.nid = choice.entity_id');
+  $sql->fields('node', array('nid', 'type', 'vid'))
+    ->condition('type', 'esf_tnc_organisation')
+    ->isNull('entity_id');
+
+  $results = $sql->execute();
+  if (!empty($results) && $results->rowCount()) {
+    $nids = array();
+    // Insert into data and revision field table.
+    foreach ($results as $result) {
+      $nids[] = $result->nid;
+      // Data.
+      db_insert('field_data_field_org_notif_choice')
+        ->fields(array(
+          'entity_type' => 'node',
+          'bundle' => $result->type,
+          'language' => 'und',
+          'entity_id' => $result->nid,
+          'revision_id' => $result->vid,
+          'delta' => 0,
+          'field_org_notif_choice_value' => 0,
+        ))
+        ->execute();
+      // Revision.
+      db_insert('field_revision_field_org_notif_choice')
+        ->fields(array(
+          'entity_type' => 'node',
+          'bundle' => $result->type,
+          'language' => 'und',
+          'entity_id' => $result->nid,
+          'revision_id' => $result->vid,
+          'delta' => 0,
+          'field_org_notif_choice_value' => 0,
+        ))
+        ->execute();
+    }
+    unset($result);
+    if (!empty($nids)) {
+      // Clear Cache.
+      cache_clear_all($nids, 'cache_entity_node');
+      $message = t('@count organisations have been updated', array('@count' => count($nids)));
+      drupal_set_message($message);
+      watchdog('feature update', $message);
+    }
+  }
+}
