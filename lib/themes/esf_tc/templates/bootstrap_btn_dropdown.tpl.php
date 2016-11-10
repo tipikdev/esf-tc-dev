@@ -17,3 +17,6 @@
     </ul>
   <?php endif; ?>
 </div>
+<?php if (!empty($reset)):?>
+  <?php print $reset;?>
+<?php endif;?>

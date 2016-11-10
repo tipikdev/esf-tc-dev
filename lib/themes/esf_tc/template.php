@@ -231,6 +231,16 @@ function esf_tc_theme($existing, $type, $theme, $path) {
  * Implements theme_apachesolr_sort_list().
  */
 function esf_tc_apachesolr_sort_list($variables) {
+  $params = array(
+    'attributes' => array(
+      'class' => 'btn btn-link',
+    ),
+    'query' => array('f' => array()),
+  );
+  // Display reset.
+  if (!empty($_GET['f'])) {
+    $variables['reset'] = apachesolr_l(t('Reset'), _esf_tc_helper_get_solr_default_page_path(), $params);
+  }
   return theme('bootstrap_btn_dropdown', $variables);
 }
 
