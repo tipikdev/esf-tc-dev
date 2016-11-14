@@ -22,6 +22,16 @@
   <?php endif; ?>
 
   <div class="row">
+    <?php if (!empty($articles)): ?>
+      <div class="section-wrapper col-sm-12 col-xs-12">
+        <h2 class="section-title">
+          <span class="glyphicon glyphicon-chevron-right"></span><?php print t('Articles'); ?>
+        </h2>
+        <?php print $articles; ?>
+      </div>
+    <?php endif; ?>
+  </div>
+  <div class="row">
     <?php if (!empty($news)): ?>
       <div
         class="section-wrapper<?php print (!empty($events) ? ' col-lg-6' : ' col-lg-12'); ?> col-sm-12 col-xs-12">

@@ -167,6 +167,14 @@ function esf_tc_content_types_node_info() {
       'title_label' => t('Title'),
       'help' => '',
     ),
+    'esf_tnc_network_article' => array(
+      'name' => t('Network article'),
+      'base' => 'node_content',
+      'description' => t('Use <em>network articles</em>to attach simple content to the thematic page (Forum).'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
     'esf_tnc_news' => array(
       'name' => t('News'),
       'base' => 'node_content',

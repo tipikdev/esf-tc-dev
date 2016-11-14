@@ -34,6 +34,13 @@ function esf_tc_content_types_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_anonymous_esf_tnc_network_article';
+  $strongarm->value = '0';
+  $export['comment_anonymous_esf_tnc_network_article'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_anonymous_esf_tnc_news';
   $strongarm->value = '0';
   $export['comment_anonymous_esf_tnc_news'] = $strongarm;
@@ -79,6 +86,13 @@ function esf_tc_content_types_strongarm() {
   $strongarm->name = 'comment_default_mode_esf_tnc_hp_slide';
   $strongarm->value = 1;
   $export['comment_default_mode_esf_tnc_hp_slide'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_default_mode_esf_tnc_network_article';
+  $strongarm->value = 1;
+  $export['comment_default_mode_esf_tnc_network_article'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -132,6 +146,13 @@ function esf_tc_content_types_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_default_per_page_esf_tnc_network_article';
+  $strongarm->value = '50';
+  $export['comment_default_per_page_esf_tnc_network_article'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_per_page_esf_tnc_news';
   $strongarm->value = '50';
   $export['comment_default_per_page_esf_tnc_news'] = $strongarm;
@@ -177,6 +198,13 @@ function esf_tc_content_types_strongarm() {
   $strongarm->name = 'comment_esf_tnc_hp_slide';
   $strongarm->value = '1';
   $export['comment_esf_tnc_hp_slide'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_esf_tnc_network_article';
+  $strongarm->value = '0';
+  $export['comment_esf_tnc_network_article'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -230,6 +258,13 @@ function esf_tc_content_types_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_form_location_esf_tnc_network_article';
+  $strongarm->value = 1;
+  $export['comment_form_location_esf_tnc_network_article'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_form_location_esf_tnc_news';
   $strongarm->value = 1;
   $export['comment_form_location_esf_tnc_news'] = $strongarm;
@@ -279,6 +314,13 @@ function esf_tc_content_types_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_preview_esf_tnc_network_article';
+  $strongarm->value = '0';
+  $export['comment_preview_esf_tnc_network_article'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_preview_esf_tnc_news';
   $strongarm->value = '1';
   $export['comment_preview_esf_tnc_news'] = $strongarm;
@@ -324,6 +366,13 @@ function esf_tc_content_types_strongarm() {
   $strongarm->name = 'comment_subject_field_esf_tnc_hp_slide';
   $strongarm->value = 1;
   $export['comment_subject_field_esf_tnc_hp_slide'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_subject_field_esf_tnc_network_article';
+  $strongarm->value = 1;
+  $export['comment_subject_field_esf_tnc_network_article'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -475,6 +524,54 @@ function esf_tc_content_types_strongarm() {
     ),
   );
   $export['field_bundle_settings_node__esf_tnc_hp_slide'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_node__esf_tnc_network_article';
+  $strongarm->value = array(
+    'view_modes' => array(
+      'teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'full' => array(
+        'custom_settings' => FALSE,
+      ),
+      'rss' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_index' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_result' => array(
+        'custom_settings' => FALSE,
+      ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'print' => array(
+        'custom_settings' => FALSE,
+      ),
+      'token' => array(
+        'custom_settings' => FALSE,
+      ),
+      'revision' => array(
+        'custom_settings' => FALSE,
+      ),
+    ),
+    'extra_fields' => array(
+      'form' => array(
+        'title' => array(
+          'weight' => '1',
+        ),
+        'path' => array(
+          'weight' => '2',
+        ),
+      ),
+      'display' => array(),
+    ),
+  );
+  $export['field_bundle_settings_node__esf_tnc_network_article'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -815,6 +912,13 @@ function esf_tc_content_types_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'language_content_type_esf_tnc_network_article';
+  $strongarm->value = '0';
+  $export['language_content_type_esf_tnc_network_article'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_esf_tnc_news';
   $strongarm->value = '0';
   $export['language_content_type_esf_tnc_news'] = $strongarm;
@@ -860,6 +964,13 @@ function esf_tc_content_types_strongarm() {
   $strongarm->name = 'menu_options_esf_tnc_hp_slide';
   $strongarm->value = array();
   $export['menu_options_esf_tnc_hp_slide'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'menu_options_esf_tnc_network_article';
+  $strongarm->value = array();
+  $export['menu_options_esf_tnc_network_article'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -912,6 +1023,13 @@ function esf_tc_content_types_strongarm() {
   $strongarm->name = 'menu_parent_esf_tnc_hp_slide';
   $strongarm->value = 'main-menu:0';
   $export['menu_parent_esf_tnc_hp_slide'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'menu_parent_esf_tnc_network_article';
+  $strongarm->value = 'main-menu:0';
+  $export['menu_parent_esf_tnc_network_article'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -971,6 +1089,15 @@ function esf_tc_content_types_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'node_options_esf_tnc_network_article';
+  $strongarm->value = array(
+    0 => 'status',
+  );
+  $export['node_options_esf_tnc_network_article'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'node_options_esf_tnc_news';
   $strongarm->value = array(
     0 => 'status',
@@ -1022,6 +1149,13 @@ function esf_tc_content_types_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'node_preview_esf_tnc_network_article';
+  $strongarm->value = '0';
+  $export['node_preview_esf_tnc_network_article'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_esf_tnc_news';
   $strongarm->value = '0';
   $export['node_preview_esf_tnc_news'] = $strongarm;
@@ -1067,6 +1201,13 @@ function esf_tc_content_types_strongarm() {
   $strongarm->name = 'node_submitted_esf_tnc_hp_slide';
   $strongarm->value = 0;
   $export['node_submitted_esf_tnc_hp_slide'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_submitted_esf_tnc_network_article';
+  $strongarm->value = 0;
+  $export['node_submitted_esf_tnc_network_article'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -1238,6 +1379,7 @@ function esf_tc_content_types_strongarm() {
     'project_activities' => 0,
     'project_target_groups' => 0,
     'tags' => 0,
+    'taxocsv_2412_10031' => 0,
   );
   $export['workbench_access_taxonomy'] = $strongarm;
 

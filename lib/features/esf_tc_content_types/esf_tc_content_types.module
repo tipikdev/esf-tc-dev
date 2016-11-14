@@ -1051,7 +1051,8 @@ function esf_tc_content_types_preprocess_forums(&$variables) {
   // Add custom content to forum page.
   if ($variables['tid'] != 0) {
     $variables['topics_title'] = t('Discussions');
-    $variables['news'] = _esf_tc_content_types_render_view('esf_news', 'block_1', $variables['tid']);
+    $variables['articles'] = _esf_tc_content_types_render_view('esf_tn_articles', 'block_1',  $variables['tid']);
+    $variables['news'] = _esf_tc_content_types_render_view('esf_news', 'block_1',  $variables['tid']);
     $variables['events'] = _esf_tc_content_types_render_view('esf_events', 'block_1', $variables['tid']);
     $variables['action_links'] = menu_local_actions();
   }
