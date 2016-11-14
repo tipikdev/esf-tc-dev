@@ -37,7 +37,7 @@ function esf_tc_content_types_form_esf_tnc_tca_node_form_alter(&$form, &$form_st
       $status = !empty($field_partner_organisations[$index]['field_fc_mas_approval_status'][LANGUAGE_NONE]['#default_value'][0]) ? $field_partner_organisations[$index]['field_fc_mas_approval_status'][LANGUAGE_NONE]['#default_value'][0] : "";
       $element_wrapper = "fc_" . $index;
       if (!empty($field_partner_organisations[$index]) &&  $status == 'pending-key-changes') {
-        $field_partner_organisations[$index]['#prefix'] = "<div id='" . $element_wrapper . "'>";
+        $field_partner_organisations[$index]['#prefix'] = "<div id='" . $element_wrapper . "' class='subtree'>";
         $field_partner_organisations[$index]['#suffix'] = "</div>";
         $field_partner_organisations[$index]['ready_button'] = array(
           '#type' => 'submit',

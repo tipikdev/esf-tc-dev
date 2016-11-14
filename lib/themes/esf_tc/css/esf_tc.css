@@ -1019,7 +1019,7 @@ p:empty {
   padding: 3px 6px;
 }
 
-#content-wrapper table div {
+#content-wrapper table div:not(.messages) {
   padding: 0;
   margin: 0 12px 0 0;
   border: 0;
@@ -1054,7 +1054,15 @@ p:empty {
 #content-wrapper table div.field-name-field-org-additional-contacts > .field-items > .field-item {
   margin-bottom: 2rem;
 }
-/* BLOC STATISTICS */
+
+#content-wrapper form .field-name-field-tca-partner-organisations td > div,
+#content-wrapper form .field-name-field-tca-partner-organisations td .subtree > div {
+  margin-bottom: 1em;
+}
+#content-wrapper form .field-name-field-tca-partner-organisations .btn-success {
+  margin-right: 1em;
+}
+  /* BLOC STATISTICS */
 
 #block-esf-tc-content-types-statistics {
   border-top: 1px dashed #0067a3;
