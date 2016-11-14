@@ -664,6 +664,7 @@ function _esf_tc_content_types_field_collection_notify($field_collection_item) {
       $status = $wrapper_fc->field_fc_mas_approval_status->value();
     }
     if (empty($field_collection_item->is_new) || $status != 'pending-key-changes') {
+      $notify_mas = $status == 'ready' ? FALSE : TRUE;
       $tca_id = $field_collection_item->hostEntityId();
       $tca = node_load($tca_id);
       $key_prefix = $tca->type . '_notification_' . $status;
@@ -675,7 +676,7 @@ function _esf_tc_content_types_field_collection_notify($field_collection_item) {
       );
 
       if (!empty($tca)) {
-        $emails = _esf_tc_content_types_get_associated_email($tca, TRUE);
+        $emails = _esf_tc_content_types_get_associated_email($tca, $notify_mas);
         foreach ($emails as $email) {
           if (valid_email_address($email)) {
             drupal_mail('esf_tc_content_types', $key_prefix, $email, language_default(), $options);
