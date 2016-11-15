@@ -264,13 +264,6 @@ function esf_tc_content_types_views_default_views() {
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
   /* Filter criterion: Content: Editorial status (field_esf_editorial_status) */
   $handler->display->display_options['filters']['field_esf_editorial_status_value']['id'] = 'field_esf_editorial_status_value';
   $handler->display->display_options['filters']['field_esf_editorial_status_value']['table'] = 'field_data_field_esf_editorial_status';
