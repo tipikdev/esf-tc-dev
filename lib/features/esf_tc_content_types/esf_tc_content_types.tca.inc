@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Code for the tca content type.
@@ -145,23 +146,54 @@ function _esf_tnc_content_types_tca_partners_ready_submit(&$form, &$form_state) 
 function _esf_tnc_content_types_tca_partners_ready_js(&$form, &$form_state) {
   $button = $form_state['triggering_element'];
   $ready_status = 'ready';
+  $has_error = FALSE;
   // Find delta.
   sscanf($button['#name'], 'ready_button_%d', $delta);
   $element = drupal_array_get_nested_value($form, array_slice($button['#array_parents'], 0, -1));
+  $parent = drupal_array_get_nested_value($form, array_slice($button['#array_parents'], 0, -2));
+
   unset($element['_weight']);
   if (!empty($element['field_fc_partner_project'][LANGUAGE_NONE]['#value'])) {
     // Check if project is valid.
     $entities = drupal_explode_tags($element['field_fc_partner_project'][LANGUAGE_NONE]['#value']);
     foreach ($entities as $entity) {
-      if (preg_match("/.+\((\d+)\)/", $entity, $matches)) {
+      // Check if nid is defined.
+      if (preg_match('/.+\((\d+)\)/', $entity, $matches)) {
         $nid = $matches[1];
+        // Check if project is well published and have a Managing Authority.
+        $pjt_wrapper = entity_metadata_wrapper('node', $nid);
+        $pjt_status = $pjt_wrapper->field_esf_editorial_status->value();
+        $pjt_mas = _esf_tc_content_types_get_responsible_authorities($pjt_wrapper->getBundle(), $pjt_wrapper->value());
+
+        if ($pjt_status != 'published' || empty($pjt_mas)) {
+          $has_error = TRUE;
+          $attributes = array(
+            'attributes' => array(
+              'target' => '_blank',
+            ),
+          );
+          $message = t('Some data or action are missing for the corresponding !project_url. Before sending it for validation within the present TCA, you may need to effectively "Publish" your project and/or to add missing information in the description of your project, such as the chosen call for proposals. Please save any current change in your TCA in draft mode and then go to your !project_url or ask the corresponding project responsible to update and publish it.', array(
+            '!project_url' => l(t('project'), 'node/' . $nid, $attributes),
+          ));
+          form_set_error('field_tca_partner_organisations[' . LANGUAGE_NONE . '][' . $delta . '][field_fc_partner_project', $message);
+        }
+        else {
+          // Check if partners project is duplicated.
+          $projects = _esf_tc_content_types_get_partners_project_form_tca($parent);
+          if (in_array($nid, $projects)) {
+            $has_error = TRUE;
+            $message = t('This project is already selected as a partnering project. Please remove it.');
+            form_set_error('field_tca_partner_organisations[' . LANGUAGE_NONE . '][' . $delta . '][field_fc_partner_project', $message);
+          }
+        }
       }
       else {
         form_set_error('field_tca_partner_organisations[' . LANGUAGE_NONE . '][' . $delta . '][field_fc_partner_project', t('Please insert a valid project'));
         $nid = 0;
+        $has_error = TRUE;
       }
     }
-    if (intval($nid)) {
+    if (intval($nid) && !$has_error) {
       $element['field_fc_mas_approval_status'][LANGUAGE_NONE]['#value'] = $ready_status;
       $element['field_fc_mas_approval_status'][LANGUAGE_NONE]['#default_value'][0] = $ready_status;
       unset($element['ready_button']);
@@ -364,5 +396,32 @@ function _esf_tc_content_types_get_allowed_values_list($fieldname) {
     $return = $info['settings']['allowed_values'];
   }
 
+  return $return;
+}
+
+/**
+ * Helper to get all node id for partners' projects of a TCA.
+ *
+ * @param array $element
+ *    The form element of partners projects.
+ *
+ * @return array
+ *    Return an array of the partners' projects node ids.
+ */
+function _esf_tc_content_types_get_partners_project_form_tca($element) {
+  $return = array();
+  $indexes = array_filter(array_keys($element), 'is_int');
+  if (!empty($indexes)) {
+    foreach ($indexes as $index) {
+      $item = $element[$index];
+      if (!empty($item['field_fc_partner_project'][LANGUAGE_NONE]['#value'])) {
+        preg_match('/.+\((\d+)\)/', $item['field_fc_partner_project'][LANGUAGE_NONE]['#value'], $matches);
+        if ($nid = intval($matches[1])) {
+          $return[] = $nid;
+        }
+      }
+    }
+    unset($item);
+  }
   return $return;
 }
