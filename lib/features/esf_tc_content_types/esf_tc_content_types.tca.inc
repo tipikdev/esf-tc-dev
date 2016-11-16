@@ -94,7 +94,12 @@ function esf_tc_content_types_tca_validate($form, &$form_state) {
         // Is required for the negotiation.
         $partner_status = $partner['field_fc_mas_approval_status'][LANGUAGE_NONE][0]['value'];
         if (!empty($arr_status[$op]) && $arr_status[$op] == 'negotiation' && $partner_status != 'ready') {
-          form_set_error($focused_field_error, t('!name is not ready for validation', array('!name' => $form['field_tca_partner_organisations'][LANGUAGE_NONE][0]['field_fc_partner_project'][LANGUAGE_NONE]['#title'])));
+          $id = 'edit-field-tca-partner-organisations';
+          $tpi = trim(explode('|', $form['field_tca_partner_organisations'][LANGUAGE_NONE][$key]['field_fc_partner_project'][LANGUAGE_NONE]['#value'])[0]);
+          $label = $form['field_tca_partner_organisations'][LANGUAGE_NONE][0]['field_fc_partner_project'][LANGUAGE_NONE]['#title'] . ' ' . $tpi;
+          $link = l($label, '', array('fragment' => $id, 'external' => 'true'));
+
+          form_set_error($focused_field_error, t('!name is not ready for validation', array('!name' => $link)));
         }
       }
     }
