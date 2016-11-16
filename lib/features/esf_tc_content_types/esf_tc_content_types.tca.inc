@@ -184,7 +184,10 @@ function _esf_tnc_content_types_tca_partners_ready_js(&$form, &$form_state) {
         }
         else {
           // Check if partners project is duplicated.
-          $projects = _esf_tc_content_types_get_partners_project_form_tca($parent);
+          $parent_diff = $parent;
+          // Remove current project from parent array.
+          unset($parent_diff[$delta]);
+          $projects = _esf_tc_content_types_get_partners_project_form_tca($parent_diff);
           if (in_array($nid, $projects)) {
             $has_error = TRUE;
             $message = t('This project is already selected as a partnering project. Please remove it.');
