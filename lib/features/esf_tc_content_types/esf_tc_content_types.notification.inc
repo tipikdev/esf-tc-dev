@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Code for the esf_tc_content_types feature.
@@ -121,7 +122,7 @@ function esf_tc_content_state_notification_form($form, &$form_state, $content_ty
       // Generate inputs of the form.
       $token_types = array('node', 'user', 'site');
       _esf_tc_content_get_email_inputs($_content_types[$content_type], $keys, $options, 'colorform', $token_types, $form);
-    break;
+      break;
   }
 
   return system_settings_form($form);
@@ -256,7 +257,8 @@ function _esf_tc_content_types_mail_text($key, $variables = array(), $language =
                 case 'body':
                   return t('Please approve or reject the partners projects on [node:url]');
               }
-            } else {
+            }
+            else {
               $action = drupal_strtolower($_states[$action] ? $_states[$action] : $action);
 
               switch ($input_type) {
@@ -285,13 +287,13 @@ function _esf_tc_content_types_mail_text($key, $variables = array(), $language =
 /**
  * Helper to get notification states.
  *
- * @param boolean $more
+ * @param bool $more
  *    Binary choice for additional status.
  *
  * @return array
  *    Return the list of editorial status.
  */
-function _esf_tc_content_type_get_notification_states($more=FALSE) {
+function _esf_tc_content_type_get_notification_states($more = FALSE) {
   $return = array(
     'published' => 'Published',
     'blocked' => 'Blocked',
@@ -375,11 +377,11 @@ function _esf_tc_content_types_node_notify($node) {
           'action' => $status,
           'node' => $node,
         );
-        $emails = array();
 
         $wrapper = entity_metadata_wrapper('node', $node);
 
         foreach ($wrapper->field_tca_partner_organisations->getIterator() as $partner) {
+          $emails = array();
           $project = $partner->field_fc_partner_project->value();
           if (!empty($project)) {
             $options['partner'] = $project;
@@ -658,12 +660,20 @@ function _esf_tc_content_types_field_collection_notify($field_collection_item) {
   // Projects partners.
   if ($field_collection_item->field_name == 'field_tca_partner_organisations') {
     $wrapper_fc = entity_metadata_wrapper('field_collection_item', $field_collection_item);
+    $wrapper_fc_old = entity_metadata_wrapper('field_collection_item', $field_collection_item->original);
     $project = $wrapper_fc->field_fc_partner_project->value();
     $status = '';
+    $status_old = '';
+
     if (!empty($wrapper_fc->field_fc_mas_approval_status->value())) {
       $status = $wrapper_fc->field_fc_mas_approval_status->value();
     }
-    if (empty($field_collection_item->is_new) || $status != 'pending-key-changes') {
+    // Old Status.
+    if (!empty($wrapper_fc_old->field_fc_mas_approval_status->value())) {
+      $status_old = $wrapper_fc_old->field_fc_mas_approval_status->value();
+    }
+
+    if ((!empty($status_old) && $status != $status_old) || ($field_collection_item->is_new && $status != 'pending-key-changes')) {
       $notify_mas = $status == 'ready' ? FALSE : TRUE;
       $tca_id = $field_collection_item->hostEntityId();
       $tca = node_load($tca_id);
