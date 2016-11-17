@@ -303,4 +303,6 @@ function esf_tc_content_types_update_7105() {
       watchdog('feature update', $message);
     }
   }
+  // Rebuild Permission for TCA.
+  node_access_rebuild();
 }
