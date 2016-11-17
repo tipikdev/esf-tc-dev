@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Code for the esf_tc_content_types feature.
@@ -161,12 +162,13 @@ function esf_tc_content_types_node_update($node) {
         if ($node_blocked) {
           watchdog('TCA regression', '%title has been blocked. Following tca have been impacted : %tcas', array(
             '%title' => $node->title,
-            '%tcas' => drupal_implode_tags($tcas_title)
+            '%tcas' => drupal_implode_tags($tcas_title),
           ));
-        } elseif ($tca_altered) {
+        }
+        elseif ($tca_altered) {
           watchdog('TCA regression', 'Sensitive data changes detected on %title. Following tca have been impacted : %tcas', array(
             '%title' => $node->title,
-            '%tcas' => drupal_implode_tags($tcas_title)
+            '%tcas' => drupal_implode_tags($tcas_title),
           ));
         }
       }
@@ -879,7 +881,8 @@ function esf_tc_content_types_projects_database_submit(&$form, &$form_state) {
     if ($new_status != 'negotiation') {
       // Force publish drupal status.
       $form_state['status'] = $form_state['values']['status'] = 1;
-    } else {
+    }
+    else {
       $form_state['status'] = $form_state['values']['status'] = 0;
     }
     // Force Editorial status.
@@ -954,6 +957,8 @@ function esf_tc_content_types_node_access_records($node) {
         $tca_wrapper = entity_metadata_wrapper('node', $node);
         // Get Main contact organisation.
         $nids = array_merge($nids, _esf_tc_content_types_get_references_ids('field_tca_main_contact_point', $node));
+        // GET MAs.
+        $mas = array();
         // Projects partners.
         foreach ($tca_wrapper->field_tca_partner_organisations->getIterator() as $partner) {
           if (!empty($partner->field_fc_partner_project->value())) {
@@ -965,6 +970,8 @@ function esf_tc_content_types_node_access_records($node) {
               $uids = array_merge($uids, _esf_tc_content_types_get_references_ids('field_project_manager', $project));
               // Get Operational Contact ID.
               $uids = array_merge($uids, _esf_tc_content_types_get_references_ids('field_project_operat_contact', $project));
+              // Get Projects Managing Authorities.
+              $mas = array_merge($mas, _esf_tc_content_types_get_responsible_authorities($project->type, $project));
             }
           }
         }
@@ -1001,7 +1008,23 @@ function esf_tc_content_types_node_access_records($node) {
         $grants_template['gid'] = $nid;
         $grants[] = $grants_template;
       }
-      unset($uid);
+      unset($nid);
+    }
+    // Define MA ACCESS.
+    $mas = array_unique($mas);
+    if (is_array($mas) && count($mas)) {
+      $grants_template = array(
+        'realm' => 'projectdb_mas',
+        'grant_view' => 1,
+        'grant_update' => 0,
+        'grant_delete' => 0,
+        'priority' => 0,
+      );
+      foreach ($mas as $ma) {
+        $grants_template['gid'] = $ma;
+        $grants[] = $grants_template;
+      }
+      unset($ma);
     }
     // View published content by anonymous.
     if ($node->status) {
@@ -1038,6 +1061,7 @@ function esf_tc_content_types_node_grants($account, $op) {
     $org = _esf_tc_content_type_get_organisation($account->uid);
     if (is_array($org) && count($org)) {
       $grants['projectdb_organisation'] = $org;
+      $grants['projectdb_mas'] = $org;
     }
   }
   $grants['projectdb_published'][] = intval(user_access('access content'));
@@ -1051,8 +1075,8 @@ function esf_tc_content_types_preprocess_forums(&$variables) {
   // Add custom content to forum page.
   if ($variables['tid'] != 0) {
     $variables['topics_title'] = t('Discussions');
-    $variables['articles'] = _esf_tc_content_types_render_view('esf_tn_articles', 'block_1',  $variables['tid']);
-    $variables['news'] = _esf_tc_content_types_render_view('esf_news', 'block_1',  $variables['tid']);
+    $variables['articles'] = _esf_tc_content_types_render_view('esf_tn_articles', 'block_1', $variables['tid']);
+    $variables['news'] = _esf_tc_content_types_render_view('esf_news', 'block_1', $variables['tid']);
     $variables['events'] = _esf_tc_content_types_render_view('esf_events', 'block_1', $variables['tid']);
     $variables['action_links'] = menu_local_actions();
   }
@@ -1241,6 +1265,7 @@ function _esf_tc_content_types_get_status() {
     'submit to ib/ma for validation' => 'negotiation',
   );
 }
+
 /**
  * Helper function to check if user can access to the actions button.
  *
@@ -1288,7 +1313,7 @@ function _esf_tc_content_types_button_access($action, $content_type, $node, $sta
         break;
 
       case 'archive':
-        if (in_array($status, array('published', 'negotiation'))){
+        if (in_array($status, array('published', 'negotiation'))) {
           return user_access("archive any $content_type content");
         }
         break;
@@ -1334,7 +1359,6 @@ function _esf_tc_content_types_button_access($action, $content_type, $node, $sta
 
       case 'negotiation':
         return TRUE;
-        break;
 
     }
   }
@@ -2110,6 +2134,7 @@ function _esf_tc_content_types_advice_message($type = NULL) {
  *
  * @param array $element
  *    The targered select input element.
+ *
  * @return string
  *    Return a text in a html format.
  */
