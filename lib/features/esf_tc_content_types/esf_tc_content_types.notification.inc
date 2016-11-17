@@ -660,7 +660,12 @@ function _esf_tc_content_types_field_collection_notify($field_collection_item) {
   // Projects partners.
   if ($field_collection_item->field_name == 'field_tca_partner_organisations') {
     $wrapper_fc = entity_metadata_wrapper('field_collection_item', $field_collection_item);
-    $wrapper_fc_old = entity_metadata_wrapper('field_collection_item', $field_collection_item->original);
+
+    // previous field collection.
+    if (!empty($field_collection_item->original)) {
+      $wrapper_fc_old = entity_metadata_wrapper('field_collection_item', $field_collection_item->original);
+    }
+
     $project = $wrapper_fc->field_fc_partner_project->value();
     $status = '';
     $status_old = '';
@@ -669,7 +674,7 @@ function _esf_tc_content_types_field_collection_notify($field_collection_item) {
       $status = $wrapper_fc->field_fc_mas_approval_status->value();
     }
     // Old Status.
-    if (!empty($wrapper_fc_old->field_fc_mas_approval_status->value())) {
+    if (!empty($wrapper_fc_old) && !empty($wrapper_fc_old->field_fc_mas_approval_status->value())) {
       $status_old = $wrapper_fc_old->field_fc_mas_approval_status->value();
     }
 
