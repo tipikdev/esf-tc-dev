@@ -692,6 +692,11 @@ function _esf_tc_content_types_field_collection_notify($field_collection_item) {
 
       if (!empty($tca)) {
         $emails = _esf_tc_content_types_get_associated_email($tca, $notify_mas);
+
+        if ($field_collection_item->is_new) {
+          $emails = _esf_tc_content_types_get_associated_email($project, $notify_mas);
+        }
+
         foreach ($emails as $email) {
           if (valid_email_address($email)) {
             drupal_mail('esf_tc_content_types', $key_prefix, $email, language_default(), $options);
