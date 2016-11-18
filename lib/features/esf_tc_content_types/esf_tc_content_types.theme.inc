@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Drupal Module: esf_tc_content_types.theme.inc.

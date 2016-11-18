@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * esf_tc_content_types.views_default.inc
