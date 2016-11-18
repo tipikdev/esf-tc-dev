@@ -81,7 +81,7 @@ function esf_tc_content_types_node_presave($node) {
         }
       }
       // Change partners status if a change is detected.
-      if ($parnters_changed) {
+      if ($parnters_changed || _esf_tc_content_types_sensitive_data_changed($node)) {
         foreach ($partners_data as &$partner) {
           $new_status = 'pending-key-changes';
           $partner['entity']->field_fc_mas_approval_status[LANGUAGE_NONE][0]['value'] = $new_status;
@@ -90,12 +90,6 @@ function esf_tc_content_types_node_presave($node) {
         $node->field_tca_status[LANGUAGE_NONE][0]['value'] = 'orange';
         $node->field_esf_editorial_status[LANGUAGE_NONE][0]['value'] = 'draft';
         $node->status = 0;
-      }
-      elseif (_esf_tc_content_types_sensitive_data_changed($node)) {
-        // Change TCA status if sensitive data changes.
-        if ($node->field_tca_status[LANGUAGE_NONE][0]['value'] == 'green') {
-          $node->field_tca_status[LANGUAGE_NONE][0]['value'] = 'orange';
-        }
       }
     }
   }
@@ -143,19 +137,18 @@ function esf_tc_content_types_node_update($node) {
           $color_status = $node_blocked ? 'red' : 'orange';
           if ($wrapper_tca->field_tca_status->value() != 'red') {
             $wrapper_tca->field_tca_status = $color_status;
-            $wrapper_tca->save();
-          }
-          // Projects partner changes status.
-          if ($node->type == 'esf_tnc_project') {
             $new_status = $node_blocked ? 'rejected' : 'pending-key-changes';
             foreach ($wrapper_tca->field_tca_partner_organisations->getIterator() as $partner) {
               $pjt = $partner->field_fc_partner_project->value();
-              if (!empty($pjt) && $pjt->nid == $node->nid) {
+              if (!empty($pjt) && ($node->type != 'esf_tnc_project' || $pjt->nid == $node->nid)) {
                 $partner->field_fc_mas_approval_status = $new_status;
                 $partner->save();
               }
             }
             unset($partner);
+            $wrapper_tca->field_esf_editorial_status = 'draft';
+            $wrapper_tca->status = 0;
+            $wrapper_tca->save();
           }
         }
         unset($key, $t);
@@ -1011,8 +1004,8 @@ function esf_tc_content_types_node_access_records($node) {
       unset($nid);
     }
     // Define MA ACCESS.
-    $mas = array_unique($mas);
-    if (is_array($mas) && count($mas)) {
+    if (!empty($mas) && count($mas)) {
+      $mas = array_unique($mas);
       $grants_template = array(
         'realm' => 'projectdb_mas',
         'grant_view' => 1,
@@ -1828,11 +1821,16 @@ function _esf_tc_content_types_get_associated_email($node, $with_ma = FALSE) {
       }
       // Projects parnters.
       foreach ($wrapper->field_tca_partner_organisations->getIterator() as $partner) {
-        if ($project = $partner->field_fc_partner_project->value()) {
-          $contacts = _esf_tc_content_types_get_associated_email($project);
-          if (count($contacts)) {
-            $emails = array_merge($emails, $contacts);
+        try {
+          if ($project = $partner->field_fc_partner_project->value()) {
+            $contacts = _esf_tc_content_types_get_associated_email($project);
+            if (count($contacts)) {
+              $emails = array_merge($emails, $contacts);
+            }
           }
+        }
+        catch (\Exception $e) {
+          watchdog('partners_project', $e->getMessage(), array(), WATCHDOG_ERROR);
         }
       }
       unset($partner);
@@ -2170,6 +2168,10 @@ function _esf_tc_content_types_sensitive_data_changed($node) {
       $data = $wrapper->$sensitive_fields[$idx]->value();
       $data_old = $wrapper_original->$sensitive_fields[$idx]->value();
 
+      if ($sensitive_fields[$idx] == 'field_project_call_for_projects' && empty($data)) {
+        // Workaround for the empty call of project.
+        $data = 'empty';
+      }
       // If data have changed.
       if (!empty($data) && $data !== $data_old) {
         if (!is_array($data) || empty($data['fid']) || $data['fid'] != $data_old['fid']) {

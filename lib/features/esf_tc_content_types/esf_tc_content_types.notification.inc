@@ -383,7 +383,8 @@ function _esf_tc_content_types_node_notify($node) {
         foreach ($wrapper->field_tca_partner_organisations->getIterator() as $partner) {
           $emails = array();
           $project = $partner->field_fc_partner_project->value();
-          if (!empty($project)) {
+          $project_status = $partner->field_fc_mas_approval_status->value();
+          if (!empty($project) && $project_status != 'accepted') {
             $options['partner'] = $project;
             $mas = _esf_tc_content_types_get_responsible_authorities($project->type, $project);
             foreach ($mas as $ma) {
@@ -661,7 +662,7 @@ function _esf_tc_content_types_field_collection_notify($field_collection_item) {
   if ($field_collection_item->field_name == 'field_tca_partner_organisations') {
     $wrapper_fc = entity_metadata_wrapper('field_collection_item', $field_collection_item);
 
-    // previous field collection.
+    // Previous field collection.
     if (!empty($field_collection_item->original)) {
       $wrapper_fc_old = entity_metadata_wrapper('field_collection_item', $field_collection_item->original);
     }

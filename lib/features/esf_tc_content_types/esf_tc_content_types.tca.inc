@@ -11,11 +11,13 @@
  * Alter TCA node form.
  */
 function esf_tc_content_types_form_esf_tnc_tca_node_form_alter(&$form, &$form_state, $form_id) {
+  global $user;
   $form['body']['#access'] = FALSE;
+  $is_webmaster = in_array('webmaster', $user->roles) || in_array('administrator', $user->roles);
   // Replace status by read only markup.
   $list = $form['field_tca_status'][LANGUAGE_NONE];
   $list_value = $list['#options'][$list['#default_value'][0]];
-  if ($list_value) {
+  if ($list_value && !$is_webmaster) {
     $form['field_tca_status_item'] = array(
       '#type' => 'markup',
       '#markup' => "<strong>" . $list['#title'] . ": </strong>" . $list_value,
@@ -93,7 +95,7 @@ function esf_tc_content_types_tca_validate($form, &$form_state) {
         }
         // Is required for the negotiation.
         $partner_status = $partner['field_fc_mas_approval_status'][LANGUAGE_NONE][0]['value'];
-        if (!empty($arr_status[$op]) && $arr_status[$op] == 'negotiation' && $partner_status != 'ready') {
+        if (!empty($arr_status[$op]) && $arr_status[$op] == 'negotiation' && !in_array($partner_status, array('ready', 'accepted'))) {
           $id = 'edit-field-tca-partner-organisations';
           $tpi = trim(explode('|', $form['field_tca_partner_organisations'][LANGUAGE_NONE][$key]['field_fc_partner_project'][LANGUAGE_NONE]['#value'])[0]);
           $label = $form['field_tca_partner_organisations'][LANGUAGE_NONE][0]['field_fc_partner_project'][LANGUAGE_NONE]['#title'] . ' ' . $tpi;
