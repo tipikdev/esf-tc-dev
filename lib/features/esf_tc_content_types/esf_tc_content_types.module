@@ -70,7 +70,7 @@ function esf_tc_content_types_node_presave($node) {
         $parnters_changed = TRUE;
       }
       elseif (!empty($partners_data)) {
-        // Insertion dectection.
+        // Detect if a project partner is inserted.
         $count = count($partners_data);
         while ($count-- && !$parnters_changed) {
           if (!empty($partners_data[$count]['entity'])) {
