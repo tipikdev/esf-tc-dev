@@ -115,5 +115,5 @@ features[facetapi][] = apachesolr@solr:block:sm_vid_tags
 features[facetapi][] = apachesolr@solr:block:ss_name
 features[features_api][] = api:2
 features[variable][] = apachesolr_search_default_search_page
-multisite_version = 2.1
+multisite_version = 2.2
 php = 5.4

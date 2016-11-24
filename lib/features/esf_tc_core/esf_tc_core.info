@@ -53,5 +53,5 @@ features[user_role][] = forum moderator
 features[user_role][] = webmaster
 features_exclude[dependencies][menu] = menu
 features_exclude[menu_custom][main-menu] = main-menu
-multisite_version = 2.1
+multisite_version = 2.2
 php = 5.4

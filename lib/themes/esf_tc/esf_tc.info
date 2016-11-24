@@ -3,7 +3,7 @@ description = ESF TC website theme, based on Ec_resp theme
 package = ESF_TC_theme
 core = "7.x"
 base theme  = ec_resp
-multisite_version = 2.1
+multisite_version = 2.2
 php = "5.2.4"
 
 stylesheets[all][] = "css/esf_tc.css"

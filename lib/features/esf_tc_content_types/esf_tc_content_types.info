@@ -693,5 +693,5 @@ features_exclude[variable][pathauto_taxonomy_term_languages_pattern] = pathauto_
 features_exclude[variable][pathauto_taxonomy_term_organisation_types_pattern] = pathauto_taxonomy_term_organisation_types_pattern
 features_exclude[variable][pathauto_taxonomy_term_project_activities_pattern] = pathauto_taxonomy_term_project_activities_pattern
 features_exclude[variable][pathauto_taxonomy_term_project_target_groups_pattern] = pathauto_taxonomy_term_project_target_groups_pattern
-multisite_version = 2.1
+multisite_version = 2.2
 php = 5.4
