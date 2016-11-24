@@ -239,7 +239,8 @@ function esf_tc_apachesolr_sort_list($variables) {
     'query' => array('f' => array()),
   );
   // Display reset.
-  if (!empty($_GET['f'])) {
+  $parameters = drupal_get_query_parameters();
+  if (!empty($parameters['f'])) {
     $variables['reset'] = apachesolr_l(t('Reset'), _esf_tc_helper_get_solr_default_page_path(), $params);
   }
   return theme('bootstrap_btn_dropdown', $variables);
