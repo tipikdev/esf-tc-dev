@@ -254,9 +254,10 @@ function esf_tc_menu_link__menu_left_menu($variables) {
   $element = $variables['element'];
   $menu_string = $element['#title'];
   $menu_item = menu_get_item();
+  $icon = (isset($variables['element']['#localized_options']['attributes']['data-image']) ? $variables['element']['#localized_options']['attributes']['data-image'] : '');
 
   // Add forum topics in left menu.
-  if ($menu_item['page_callback'] == 'forum_page') {
+  if (!empty($menu_item) && $menu_item['page_callback'] == 'forum_page') {
     if (module_load_include('inc', 'pathauto', 'pathauto') !== FALSE) {
       $menu_string = pathauto_cleanstring($menu_string);
     }
@@ -274,6 +275,10 @@ function esf_tc_menu_link__menu_left_menu($variables) {
     $sub_menu = drupal_render($element['#below']);
   }
 
+  if ($icon) {
+    $element['#localized_options']['html'] = TRUE;
+    $element['#localized_options']['attributes']['class'][] = 'with-icon';
+  }
   $output = l($element['#title'], $element['#href'], $element['#localized_options']);
   return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
 }
