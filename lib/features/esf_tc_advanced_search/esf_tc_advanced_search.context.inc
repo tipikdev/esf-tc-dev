@@ -69,6 +69,12 @@ function esf_tc_advanced_search_context_default_contexts() {
           'region' => 'sidebar_left',
           'weight' => '-4',
         ),
+        'facetapi-5z7koKr5l9r50x2ndk0BS4XQiok2X9wm' => array(
+          'module' => 'facetapi',
+          'delta' => '5z7koKr5l9r50x2ndk0BS4XQiok2X9wm',
+          'region' => 'sidebar_left',
+          'weight' => '-3',
+        ),
         'apachesolr_search-sort' => array(
           'module' => 'apachesolr_search',
           'delta' => 'sort',

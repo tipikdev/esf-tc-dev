@@ -210,6 +210,9 @@ function esf_tc_facetapi_title($variables) {
     case "Linked TN":
       return t('Filter by Thematic Network');
 
+    case "My organisation is an MA/IB":
+      return t('Filter by MA/IB organisations');
+
     default:
       return t('Filter by @title', array('@title' => drupal_strtolower($variables['title'])));
   }
