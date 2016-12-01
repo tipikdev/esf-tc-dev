@@ -580,83 +580,102 @@ function _esf_tc_content_types_field_collection_notify($field_collection_item) {
   // Contact of organisation.
   if ($field_collection_item->field_name == 'field_org_additional_contacts') {
     $force_notify = $field_collection_item->is_new;
-    $default_role = 'member';
-    $contacts = array(
-      'simple' => array(),
-      'ecas' => array(),
-    );
-    $node = $field_collection_item->hostEntity();
-    $role = $field_collection_item;
-    $role = is_array($role) && isset(reset($role)['value']) ? reset($role)['value'] : $default_role;
+    $fc_original_wrapper = entity_metadata_wrapper('field_collection_item', $field_collection_item->original);
+    $fc_wrapper = entity_metadata_wrapper('field_collection_item', $field_collection_item);
 
-    if (isset($field_collection_item->original) && $field_collection_item->field_fc_contact_account !== $field_collection_item->original->field_fc_contact_account) {
-      $force_notify = TRUE;
-    }
+    // Check if the contact has the same email.
+    $same_contact = FALSE;
+    $orig_email = '';
+    $cur_email = '';
 
-    $has_account = field_get_items('field_collection_item', $field_collection_item, 'field_fc_contact_account');
-
-    if (is_array($has_account) && isset(reset($has_account)['value'])) {
-      $has_account = reset($has_account)['value'];
-    }
-    if ($has_account == 'no') {
-      if ($force_notify || $field_collection_item->field_fc_org_email[LANGUAGE_NONE][0]['value'] !== $field_collection_item->original->field_fc_org_email[LANGUAGE_NONE][0]['value']) {
-        // Email.
-        $field_value = field_get_items('field_collection_item', $field_collection_item, 'field_fc_org_email');
-        if (is_array($field_value) && isset(reset($field_value)['value'])) {
-          $email = reset($field_value)['value'];
+    if (!$force_notify && !empty($fc_original_wrapper)) {
+      $orig_email = $fc_original_wrapper->field_fc_contact_account->value() == 'yes' ? $fc_original_wrapper->field_fc_org_contact->mail->value() : $fc_original_wrapper->field_fc_org_email->value();
+      if (!empty($fc_wrapper)) {
+        $cur_email = $fc_wrapper->field_fc_contact_account->value() == 'yes' ? $fc_wrapper->field_fc_org_contact->mail->value() : $fc_wrapper->field_fc_org_email->value();
+        if ($orig_email && $orig_email == $cur_email) {
+          $same_contact = TRUE;
         }
-        // Name.
-        $field_value = field_get_items('field_collection_item', $field_collection_item, 'field_fc_org_name');
-        if (is_array($field_value) && isset(reset($field_value)['value'])) {
-          $name = reset($field_value)['value'];
-        }
-        // Add contact to simple email list.
-        $contacts['simple'][] = array(
-          'name' => $name,
-          'role' => $role,
-          'email' => $email,
-        );
       }
     }
-    elseif ($has_account == 'yes') {
-      if ($field_collection_item->field_fc_org_contact !== $field_collection_item->original->field_fc_org_contact || $force_notify) {
-        $uids = _esf_tc_content_types_get_references_ids('field_fc_org_contact', $field_collection_item, 'field_collection_item');
-        if (is_array($uids)) {
-          foreach ($uids as $uid) {
-            $user = user_load($uid);
-            if ($user->mail) {
-              // Add contact to ecas list.
-              $contacts['ecas'][] = array(
-                'name' => format_username($user),
-                'role' => $role,
-                'email' => $user->mail,
-              );
-            }
+    if (!$same_contact) {
+      $default_role = 'member';
+      $contacts = array(
+        'simple' => array(),
+        'ecas' => array(),
+      );
+      $node = $field_collection_item->hostEntity();
+      $role = $field_collection_item;
+      $role = is_array($role) && isset(reset($role)['value']) ? reset($role)['value'] : $default_role;
+
+      if (isset($field_collection_item->original) && $field_collection_item->field_fc_contact_account !== $field_collection_item->original->field_fc_contact_account) {
+        $force_notify = TRUE;
+      }
+
+      $has_account = field_get_items('field_collection_item', $field_collection_item, 'field_fc_contact_account');
+
+      if (is_array($has_account) && isset(reset($has_account)['value'])) {
+        $has_account = reset($has_account)['value'];
+      }
+      if ($has_account == 'no') {
+        if ($force_notify || $field_collection_item->field_fc_org_email[LANGUAGE_NONE][0]['value'] !== $field_collection_item->original->field_fc_org_email[LANGUAGE_NONE][0]['value']) {
+          // Email.
+          $field_value = field_get_items('field_collection_item', $field_collection_item, 'field_fc_org_email');
+          if (is_array($field_value) && isset(reset($field_value)['value'])) {
+            $email = reset($field_value)['value'];
           }
-          unset($uid, $user);
+          // Name.
+          $field_value = field_get_items('field_collection_item', $field_collection_item, 'field_fc_org_name');
+          if (is_array($field_value) && isset(reset($field_value)['value'])) {
+            $name = reset($field_value)['value'];
+          }
+          // Add contact to simple email list.
+          $contacts['simple'][] = array(
+            'name' => $name,
+            'role' => $role,
+            'email' => $email,
+          );
         }
       }
-    }
-    // Get approprieted message.
-    $options = array(
-      'type' => 'contact',
-      'content_type' => $node->type,
-      'node' => $node,
-    );
-    // Send notifications.
-    $keys = array_keys($contacts);
-    foreach ($keys as $key) {
-      $key_prefix = $node->type . '_notification_contact_' . $key;
-      foreach ($contacts[$key] as $contact) {
-        $email = $contact['email'];
-        if (valid_email_address($email)) {
-          $options['contact'] = $contact;
-          drupal_mail('esf_tc_content_types', $key_prefix, $email, language_default(), $options);
+      elseif ($has_account == 'yes') {
+        if ($field_collection_item->field_fc_org_contact !== $field_collection_item->original->field_fc_org_contact || $force_notify) {
+          $uids = _esf_tc_content_types_get_references_ids('field_fc_org_contact', $field_collection_item, 'field_collection_item');
+          if (is_array($uids)) {
+            foreach ($uids as $uid) {
+              $user = user_load($uid);
+              if ($user->mail) {
+                // Add contact to ecas list.
+                $contacts['ecas'][] = array(
+                  'name' => format_username($user),
+                  'role' => $role,
+                  'email' => $user->mail,
+                );
+              }
+            }
+            unset($uid, $user);
+          }
         }
       }
-      unset($contact);
+      // Get approprieted message.
+      $options = array(
+        'type' => 'contact',
+        'content_type' => $node->type,
+        'node' => $node,
+      );
+      // Send notifications.
+      $keys = array_keys($contacts);
+      foreach ($keys as $key) {
+        $key_prefix = $node->type . '_notification_contact_' . $key;
+        foreach ($contacts[$key] as $contact) {
+          $email = $contact['email'];
+          if (valid_email_address($email)) {
+            $options['contact'] = $contact;
+            drupal_mail('esf_tc_content_types', $key_prefix, $email, language_default(), $options);
+          }
+        }
+        unset($contact);
+      }
+      unset($key);
     }
-    unset($key);
   }
   // Projects partners.
   if ($field_collection_item->field_name == 'field_tca_partner_organisations') {
