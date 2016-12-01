@@ -4,6 +4,7 @@ core = 7.x
 package = ESF
 dependencies[] = addressfield
 dependencies[] = captcha
+dependencies[] = colorbox
 dependencies[] = ds
 dependencies[] = ecas_env
 dependencies[] = email
