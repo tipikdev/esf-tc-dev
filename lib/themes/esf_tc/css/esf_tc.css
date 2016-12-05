@@ -1,11 +1,10 @@
 /* RESET */
-
-html,
-body {
-  background: #d1e3ee;
+html {
+  background-color: #fff;
 }
 
 body {
+  background: #d1e3ee;
   padding: 0 0 17px;
 }
 
@@ -611,6 +610,12 @@ p:empty {
   position: relative;
 }
 
+#block-menu-menu-left-menu .menu > li .glyphicon {
+  margin: 0 6px 0 -37px;
+  font-size: 22px;
+  vertical-align: -4px;
+}
+
 #block-menu-menu-left-menu .menu > li > a {
   border: 0;
   padding: 18px 30px 18px 48px;
@@ -620,6 +625,11 @@ p:empty {
 
 #block-menu-menu-left-menu .panel-body > .menu > li:nth-child(1) > a {
   background: #4078c0 url(../images/nav/home2.png) no-repeat 12px 50%;
+  font-weight: bold;
+}
+
+#block-menu-menu-left-menu .panel-body > .menu > li.whoswho > a {
+  background: #4078c0 url(../images/nav/who.png) no-repeat 12px 50%;
   font-weight: bold;
 }
 
@@ -666,6 +676,26 @@ p:empty {
   padding: 12px 20px 12px 50px;
 }
 
+#block-menu-menu-left-menu .menu .menu > .about > a .glyphicon {
+  display: none;
+}
+
+#block-menu-menu-left-menu .menu .menu > .about > a.with-icon .glyphicon {
+  display: inline-block;
+}
+
+#block-menu-menu-left-menu .menu .menu > .about > a.with-icon {
+  background-image: none;
+}
+
+#block-menu-menu-left-menu .menu .menu > .about > a {
+  background-image: url(../images/nav/question.png);
+}
+
+#block-menu-menu-left-menu .menu .menu > .whoswho > a {
+  background-image: url(../images/nav/who.png);
+}
+
 #block-menu-menu-left-menu .menu .menu > .partner > a {
   background-image: url(../images/nav/folders.png);
 }
@@ -684,6 +714,10 @@ p:empty {
 
 #block-menu-menu-left-menu .menu .menu > .mytnc > a {
   background-image: url(../images/nav/lock.png);
+}
+
+#block-menu-menu-left-menu .menu .menu > .newsletters > a {
+  background-image: url(../images/nav/mail.png);
 }
 
 #block-menu-menu-left-menu .menu .menu > .search > a {
@@ -817,16 +851,26 @@ p:empty {
 
 .searching,
 .searching .panel-body {
-  background: #06162f;
+  background: #06162f !important;
 }
 
 .searching .panel-heading {
   background: #06162f url(../images/nav/download.png) no-repeat 12px 50%;
 }
 
+.my-organisation-maib,
+.my-organisation-maib .panel-body {
+  background: #282828 !important;
+}
+
+.my-organisation-maib .panel-heading {
+  background: #282828 url(../images/nav/organisations.png) no-repeat 12px 50%;
+}
+
+
 .linked-tn .panel-heading,
 .linked-tn .panel-body {
-  background-color: #087cec;
+  background-color: #087cec !important;
 }
 
 .block-facetapi.country,
@@ -840,7 +884,7 @@ p:empty {
 
 .start-date .panel-heading,
 .start-date .panel-body {
-  background-color: #a9a9a9;
+  background-color: #a9a9a9 !important;
 }
 
 .block-facetapi.panel .panel-body .item-list ul li {
@@ -882,7 +926,8 @@ p:empty {
   left: 100%;
   z-index: 100;
   width: 738px;
-  min-height: 86px;
+  min-height: 100%;
+  background-color: #0065a2;
 }
 
 /* MAIN CONTENT GENERAL */
@@ -980,25 +1025,47 @@ p:empty {
 }
 
 /* REGULAR TABLE */
-
 #content-wrapper table {
-  border-collapse: separate;
+  border-collapse: collapse;
   border: #d8d4ed 1px solid;
   margin: 12px auto;
   width: 100%;
 }
 
-#content-wrapper table th {
+#content-wrapper table caption {
+  font: 14px Verdana,Geneva,sans-serif;
+  color: #000;
+}
+
+#content-wrapper table thead th {
   background-color: #e6f2f9;
   border: 1px solid #d8e4ed;
   padding: 8px;
   margin: 0;
   font: normal 12px Verdana, Geneva, sans-serif;
   vertical-align: top;
+  text-align: center;
+  font-weight: bold;
+}
+
+#content-wrapper table thead th {
+  background-color: #4078c0;
+  color: #fff;
+}
+
+#content-wrapper table tbody th {
+  background-color: #e6f2f9;
+  border: 1px solid #d8e4ed;
+  padding: 8px;
+  margin: 0;
+  font: normal 12px Verdana, Geneva, sans-serif;
+  vertical-align: top;
+  text-align: left;
+  font-weight: bold;
 }
 
 #content-wrapper table td {
-  background-color: #f2f8fc;
+  background-color: #fafdff;
   border: 1px solid #d8e4ed;
   padding: 8px;
   margin: 0;
@@ -1062,8 +1129,221 @@ p:empty {
 #content-wrapper form .field-name-field-tca-partner-organisations .btn-success {
   margin-right: 1em;
 }
-/* BLOC STATISTICS */
 
+/* REGULAR TABLE */
+#content-wrapper table {
+  border-collapse: collapse;
+  border: #d8d4ed 1px solid;
+  margin: 12px auto;
+  width: 100%;
+}
+
+#content-wrapper table caption {
+  font: bold 14px Verdana,Geneva,sans-serif;
+  color: #000;
+}
+
+#content-wrapper table thead th {
+  background-color: #e6f2f9;
+  border: 1px solid #d8e4ed;
+  padding: 8px;
+  margin: 0;
+  font: normal 12px Verdana, Geneva, sans-serif;
+  vertical-align: top;
+  text-align: center;
+  font-weight: bold;
+}
+
+#content-wrapper table thead th {
+  background-color: #4078c0;
+  color: #fff;
+}
+
+#content-wrapper table tbody th {
+  background-color: #e6f2f9;
+  border: 1px solid #d8e4ed;
+  padding: 8px;
+  margin: 0;
+  font: normal 12px Verdana, Geneva, sans-serif;
+  vertical-align: top;
+  text-align: left;
+  font-weight: bold;
+}
+
+#content-wrapper table td {
+  background-color: #fafdff;
+  border: 1px solid #d8e4ed;
+  padding: 8px;
+  margin: 0;
+  font: normal 12px Verdana, Geneva, sans-serif;
+  vertical-align: top;
+  white-space: normal !important;
+}
+
+#content-wrapper table td a {
+  white-space: normal;
+  text-align: left;
+  display: inline-block;
+}
+
+#content-wrapper table td .field-type-taxonomy-term-reference ul.links li {
+  background: #fff;
+  border: 1px dotted #d8e4ed;
+  padding: 3px 6px;
+}
+
+#content-wrapper table div:not(.messages) {
+  padding: 0;
+  margin: 0 12px 0 0;
+  border: 0;
+}
+
+#content-wrapper table div.field-label-inline,
+#content-wrapper table div.field-type-field-collection {
+  margin: 0 0 9px;
+}
+
+#content-wrapper table div.field-name-field-org-contact div,
+#content-wrapper table div.field-name-field-project-manager div,
+#content-wrapper table div.field-name-field-project-operat-contact div,
+#content-wrapper table div.field-name-field-org-additional-contacts div {
+  margin: 0;
+}
+
+#content-wrapper table div.field-name-field-org-contact blockquote,
+#content-wrapper table div.field-name-field-project-manager blockquote,
+#content-wrapper table div.field-name-field-project-operat-contact blockquote,
+#content-wrapper table div.field-name-field-org-additional-contacts blockquote {
+  padding-bottom: 0;
+}
+
+#content-wrapper table .field-type-entityreference div.profile {
+  margin-bottom: 1rem;
+}
+
+#content-wrapper table div.field-name-field-fc-org-contact {
+  margin: 0;
+}
+#content-wrapper table div.field-name-field-org-additional-contacts > .field-items > .field-item {
+  margin-bottom: 2rem;
+}
+
+#content-wrapper form .field-name-field-tca-partner-organisations td > div,
+#content-wrapper form .field-name-field-tca-partner-organisations td .subtree > div {
+  margin-bottom: 1em;
+}
+#content-wrapper form .field-name-field-tca-partner-organisations .btn-success {
+  margin-right: 1em;
+}
+
+/* Editable zone table */
+.cke_editable table {
+  border-collapse: collapse;
+  border: #d8d4ed 1px solid;
+  margin: 12px auto;
+  width: 100%;
+}
+
+.cke_editable table caption {
+  font: bold 14px Verdana,Geneva,sans-serif;
+  color: #000;
+}
+
+.cke_editable table thead th {
+  background-color: #e6f2f9;
+  border: 1px solid #d8e4ed;
+  padding: 8px;
+  margin: 0;
+  font: normal 12px Verdana, Geneva, sans-serif;
+  vertical-align: top;
+  text-align: center;
+  font-weight: bold;
+}
+
+.cke_editable table thead th {
+  background-color: #4078c0;
+  color: #fff;
+}
+
+.cke_editable table tbody th {
+  background-color: #e6f2f9;
+  border: 1px solid #d8e4ed;
+  padding: 8px;
+  margin: 0;
+  font: normal 12px Verdana, Geneva, sans-serif;
+  vertical-align: top;
+  text-align: left;
+  font-weight: bold;
+}
+
+.cke_editable table td {
+  background-color: #fafdff;
+  border: 1px solid #d8e4ed;
+  padding: 8px;
+  margin: 0;
+  font: normal 12px Verdana, Geneva, sans-serif;
+  vertical-align: top;
+  white-space: normal !important;
+}
+
+.cke_editable table td a {
+  white-space: normal;
+  text-align: left;
+  display: inline-block;
+}
+
+.cke_editable table td .field-type-taxonomy-term-reference ul.links li {
+  background: #fff;
+  border: 1px dotted #d8e4ed;
+  padding: 3px 6px;
+}
+
+.cke_editable table div:not(.messages) {
+  padding: 0;
+  margin: 0 12px 0 0;
+  border: 0;
+}
+
+.cke_editable table div.field-label-inline,
+.cke_editable table div.field-type-field-collection {
+  margin: 0 0 9px;
+}
+
+.cke_editable table div.field-name-field-org-contact div,
+.cke_editable table div.field-name-field-project-manager div,
+.cke_editable table div.field-name-field-project-operat-contact div,
+.cke_editable table div.field-name-field-org-additional-contacts div {
+  margin: 0;
+}
+
+.cke_editable table div.field-name-field-org-contact blockquote,
+.cke_editable table div.field-name-field-project-manager blockquote,
+.cke_editable table div.field-name-field-project-operat-contact blockquote,
+.cke_editable table div.field-name-field-org-additional-contacts blockquote {
+  padding-bottom: 0;
+}
+
+.cke_editable table .field-type-entityreference div.profile {
+  margin-bottom: 1rem;
+}
+
+.cke_editable table div.field-name-field-fc-org-contact {
+  margin: 0;
+}
+.cke_editable table div.field-name-field-org-additional-contacts > .field-items > .field-item {
+  margin-bottom: 2rem;
+}
+
+#content-wrapper form .field-name-field-tca-partner-organisations td > div,
+#content-wrapper form .field-name-field-tca-partner-organisations td .subtree > div {
+  margin-bottom: 1em;
+}
+#content-wrapper form .field-name-field-tca-partner-organisations .btn-success {
+  margin-right: 1em;
+}
+
+
+/* BLOC STATISTICS */
 #block-esf-tc-content-types-statistics {
   border-top: 1px dashed #0067a3;
 }
@@ -1354,11 +1634,10 @@ p:empty {
 }
 
 /* Detailed pages common */
-
-.field-name-field-esf-news-picture,
-.field-name-field-esf-event-picture {
+.news-wrapper > .field-name-field-esf-news-picture,
+.news-wrapper > .field-name-field-esf-event-picture {
   float: left;
-  margin: 0 16px 0 0;
+  margin: 0 16px 12px 0;
 }
 
 .field-type-datestamp {
@@ -1717,4 +1996,19 @@ a.tabledrag-handle .handle {
 .node-type-esf-tnc-organisation .field-collection-view ul.field-collection-view-links {
   float: none;
   margin: 0;
+}
+
+
+.page-admin-workbench-create dl.node-type-list dd {
+  margin-bottom: 12px;
+}
+
+#autocomplete {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  max-height: 400px;
+  max-height: 60vh;
+  overflow-y: scroll;
+  left: 30px;
+  right: 30px;
 }
