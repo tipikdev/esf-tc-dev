@@ -144,6 +144,14 @@ function esf_tc_content_types_image_default_styles() {
  */
 function esf_tc_content_types_node_info() {
   $items = array(
+    'esf_tc_whoswho' => array(
+      'name' => t('whoswho'),
+      'base' => 'node_content',
+      'description' => t('Use <em>who\'s who</em> for the "Who\'s who" page. Only one content is take in account.'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
     'esf_tnc_call_for_project' => array(
       'name' => t('Call for project'),
       'base' => 'node_content',

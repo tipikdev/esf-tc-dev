@@ -280,6 +280,16 @@ function esf_tc_content_types_user_default_permissions() {
     'module' => 'workbench_moderation',
   );
 
+  // Exported permission: 'create esf_tc_whoswho content'.
+  $permissions['create esf_tc_whoswho content'] = array(
+    'name' => 'create esf_tc_whoswho content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'create esf_tnc_call_for_project content'.
   $permissions['create esf_tnc_call_for_project content'] = array(
     'name' => 'create esf_tnc_call_for_project content',
@@ -387,6 +397,16 @@ function esf_tc_content_types_user_default_permissions() {
       'webmaster' => 'webmaster',
     ),
     'module' => 'file_entity',
+  );
+
+  // Exported permission: 'delete any esf_tc_whoswho content'.
+  $permissions['delete any esf_tc_whoswho content'] = array(
+    'name' => 'delete any esf_tc_whoswho content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: 'delete any esf_tnc_call_for_project content'.
@@ -518,6 +538,16 @@ function esf_tc_content_types_user_default_permissions() {
       'webmaster' => 'webmaster',
     ),
     'module' => 'file_entity',
+  );
+
+  // Exported permission: 'delete own esf_tc_whoswho content'.
+  $permissions['delete own esf_tc_whoswho content'] = array(
+    'name' => 'delete own esf_tc_whoswho content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: 'delete own esf_tnc_call_for_project content'.
@@ -791,6 +821,16 @@ function esf_tc_content_types_user_default_permissions() {
     'module' => 'file_entity',
   );
 
+  // Exported permission: 'edit any esf_tc_whoswho content'.
+  $permissions['edit any esf_tc_whoswho content'] = array(
+    'name' => 'edit any esf_tc_whoswho content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'edit any esf_tnc_call_for_project content'.
   $permissions['edit any esf_tnc_call_for_project content'] = array(
     'name' => 'edit any esf_tnc_call_for_project content',
@@ -940,6 +980,16 @@ function esf_tc_content_types_user_default_permissions() {
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'file_entity',
+  );
+
+  // Exported permission: 'edit own esf_tc_whoswho content'.
+  $permissions['edit own esf_tc_whoswho content'] = array(
+    'name' => 'edit own esf_tc_whoswho content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'webmaster' => 'webmaster',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: 'edit own esf_tnc_call_for_project content'.

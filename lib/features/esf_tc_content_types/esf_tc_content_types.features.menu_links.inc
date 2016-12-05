@@ -72,7 +72,7 @@ function esf_tc_content_types_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 1,
-    'weight' => -47,
+    'weight' => -45,
     'customized' => 1,
     'language' => 'und',
     'menu_links_customized' => 1,
@@ -106,7 +106,7 @@ function esf_tc_content_types_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 1,
-    'weight' => -45,
+    'weight' => -44,
     'customized' => 1,
     'language' => 'und',
     'menu_links_customized' => 1,
@@ -140,7 +140,7 @@ function esf_tc_content_types_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -49,
+    'weight' => -47,
     'customized' => 1,
     'language' => 'und',
     'menu_links_customized' => 1,
@@ -174,7 +174,7 @@ function esf_tc_content_types_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 1,
-    'weight' => -48,
+    'weight' => -46,
     'customized' => 1,
     'language' => 'und',
     'menu_links_customized' => 1,
@@ -208,7 +208,7 @@ function esf_tc_content_types_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 1,
-    'weight' => -50,
+    'weight' => -48,
     'customized' => 1,
     'language' => 'und',
     'menu_links_customized' => 1,
@@ -242,7 +242,41 @@ function esf_tc_content_types_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 1,
-    'weight' => -44,
+    'weight' => -42,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+    'parent_identifier' => 'menu-left-menu_esf-transnational-cooperation:<front>',
+  );
+  // Exported menu link: menu-left-menu_whos-who:whoswho.
+  $menu_links['menu-left-menu_whos-who:whoswho'] = array(
+    'menu_name' => 'menu-left-menu',
+    'link_path' => 'whoswho',
+    'router_path' => 'whoswho',
+    'link_title' => 'Who\'s who',
+    'options' => array(
+      'attributes' => array(
+        'data-display-title' => 1,
+        'data-hide-children' => 0,
+        'data-remove-class' => 0,
+      ),
+      'item_attributes' => array(
+        'data-image' => '',
+        'data-display-title' => 1,
+        'data-hide-children' => 0,
+        'id' => '',
+        'class' => 'whoswho',
+        'data-remove-class' => 0,
+        'style' => '',
+      ),
+      'identifier' => 'menu-left-menu_whos-who:whoswho',
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -49,
     'customized' => 1,
     'language' => 'und',
     'menu_links_customized' => 1,
@@ -257,7 +291,9 @@ function esf_tc_content_types_menu_default_menu_links() {
   t('News');
   t('Partner database');
   t('Search Platform');
+  t("Who's who");
   t('myTNC');
+  t('whoswho');
 
   return $menu_links;
 }
