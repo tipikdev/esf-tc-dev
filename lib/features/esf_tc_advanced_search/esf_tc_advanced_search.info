@@ -78,6 +78,7 @@ features[facetapi][] = apachesolr@solr:block:sm_field_org_contact_legal_role
 features[facetapi][] = apachesolr@solr:block:sm_field_org_content_managers
 features[facetapi][] = apachesolr@solr:block:sm_field_org_editorial_status
 features[facetapi][] = apachesolr@solr:block:sm_field_org_flag_featured
+features[facetapi][] = apachesolr@solr:block:sm_field_org_is_ma_ib
 features[facetapi][] = apachesolr@solr:block:sm_field_org_name_national_lang
 features[facetapi][] = apachesolr@solr:block:sm_field_org_notification
 features[facetapi][] = apachesolr@solr:block:sm_field_org_organisation_depart
