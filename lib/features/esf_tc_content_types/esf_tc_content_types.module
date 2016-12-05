@@ -11,6 +11,7 @@ include_once 'esf_tc_content_types.block.inc';
 include_once 'esf_tc_content_types.tokens.inc';
 include_once 'esf_tc_content_types.notification.inc';
 include_once 'esf_tc_content_types.tca.inc';
+include_once 'esf_tc_content_types.whoswho.inc';
 
 /**
  * Implements hook_permission().
@@ -1156,6 +1157,13 @@ function esf_tc_content_types_menu() {
     'access arguments' => array(4),
     'file' => 'esf_tc_content_types.tca.inc',
   );
+  $items['whoswho'] = array(
+    'title' => "Who's who",
+    'type' => MENU_NORMAL_ITEM,
+    'page callback' => '_esf_tc_content_types_whoswho_page',
+    'file' => 'esf_tc_content_types.tca.inc',
+    'access arguments' => array('access content'),
+  );
   return $items;
 }
 
@@ -2182,4 +2190,24 @@ function _esf_tc_content_types_sensitive_data_changed($node) {
   }
 
   return $tca_altered;
+}
+
+/**
+ * Implements hook_node_view_alter().
+ */
+function esf_tc_content_types_node_view_alter(&$build) {
+  if ($build['#entity_type'] == 'node' && $build['#bundle'] == 'esf_tc_whoswho') {
+    // Add a link to the Managing Authorities facet.
+    $build['links']['node']['#links']['malink'] = array(
+      'title' => t('Find Managing Authorities'),
+      'href' => 'partners-search',
+      'html' => TRUE,
+      'attributes' => array(
+        'title' => t('Find Managing Authorities'),
+      ),
+      'query' => array(
+        'f' => array('sm_field_org_is_ma_ib:1'),
+      ),
+    );
+  }
 }
