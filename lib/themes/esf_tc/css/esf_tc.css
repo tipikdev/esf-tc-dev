@@ -1144,7 +1144,6 @@ p:empty {
 }
 
 #content-wrapper table thead th {
-  background-color: #e6f2f9;
   border: 1px solid #d8e4ed;
   padding: 8px;
   margin: 0;
@@ -1152,12 +1151,18 @@ p:empty {
   vertical-align: top;
   text-align: center;
   font-weight: bold;
-}
-
-#content-wrapper table thead th {
   background-color: #4078c0;
   color: #fff;
 }
+
+#content-wrapper table thead th a:link,
+#content-wrapper table thead th a:visited,
+#content-wrapper table thead th a:hover,
+#content-wrapper table thead th a:active,
+#content-wrapper table thead th a:focus {
+  color: #fff;
+}
+
 
 #content-wrapper table tbody th {
   background-color: #e6f2f9;
@@ -1877,6 +1882,7 @@ body.cke_editable {
   float: left;
   display: block;
   min-width: 12%;
+  width: auto;
   border-bottom: 1px solid #eee;
 }
 
