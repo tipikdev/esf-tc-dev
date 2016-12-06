@@ -481,9 +481,9 @@ function _esf_tc_content_types_node_notify($node) {
       case 'esf_tnc_tca':
 
       case 'esf_tnc_project':
-        $emails = _esf_tc_content_types_get_associated_email($node);
+        $emails = _esf_tc_content_types_get_associated_email($node, TRUE);
         if (!$force_notify) {
-          $emails = array_diff($emails, _esf_tc_content_types_get_associated_email($node->original));
+          $emails = array_diff($emails, _esf_tc_content_types_get_associated_email($node->original, TRUE));
           if (is_array($emails) && count($emails)) {
             foreach ($emails as $email) {
               if (valid_email_address($email)) {

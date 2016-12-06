@@ -1409,6 +1409,16 @@ function _esf_tc_content_types_get_responsible_authorities($content_type, $node)
       }
     }
   }
+  elseif ($content_type == 'esf_tnc_tca') {
+    $wrapper_tca = entity_metadata_wrapper('node', $node);
+    $result = array();
+    foreach ($wrapper_tca->field_tca_partner_organisations->getIterator() as $partners) {
+      $project = $partners->field_fc_partner_project;
+      $result = array_merge($result, _esf_tc_content_types_get_responsible_authorities($project->getBundle(), $project->value()));
+    }
+    unset($partners);
+    return array_unique($result);
+  }
   return array();
 }
 
