@@ -2246,13 +2246,15 @@ function esf_tc_content_types_node_view_alter(&$build) {
       }
       unset($key, $pjt);
       // Build links array.
-      $projects = array(
-        '#theme' => 'links',
-        '#links' => $links,
-        '#title' => t('Involved in projects:'),
-      );
-      $build['involved_project'] = $projects;
-      unset($links);
+      if (count($links)) {
+        $projects = array(
+          '#theme' => 'links',
+          '#links' => $links,
+          '#title' => t('Involved in projects:'),
+        );
+        $build['involved_project'] = $projects;
+        unset($links);
+      }
       // Get TCA which organisation is involved with.
       $links = array();
       $query = new EntityFieldQuery();
@@ -2275,12 +2277,14 @@ function esf_tc_content_types_node_view_alter(&$build) {
       }
       unset($fc);
       // Build links array.
-      $tca = array(
-        '#theme' => 'links',
-        '#links' => $links,
-        '#title' => t('In TCA:'),
-      );
-      $build['involved_tca'] = $tca;
+      if (count($links)) {
+        $tca = array(
+          '#theme' => 'links',
+          '#links' => $links,
+          '#title' => t('In TCA:'),
+        );
+        $build['involved_tca'] = $tca;
+      }
     }
   }
 }

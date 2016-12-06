@@ -346,7 +346,6 @@ features[menu_links][] = menu-left-menu_news:news
 features[menu_links][] = menu-left-menu_partner-database:partners-search
 features[menu_links][] = menu-left-menu_search-platform:search/site
 features[menu_links][] = menu-left-menu_whos-who:whoswho
-features[menu_links][] = navigation_whoswho:node/add/esf-tc-whoswho
 features[node][] = esf_tc_whoswho
 features[node][] = esf_tnc_call_for_project
 features[node][] = esf_tnc_event

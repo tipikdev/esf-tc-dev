@@ -291,9 +291,8 @@ function esf_tc_content_types_menu_default_menu_links() {
   t('News');
   t('Partner database');
   t('Search Platform');
-  t("Who's who");
+  t('Who\'s who');
   t('myTNC');
-  t('whoswho');
 
   return $menu_links;
 }
