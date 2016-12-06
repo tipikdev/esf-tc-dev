@@ -2210,4 +2210,77 @@ function esf_tc_content_types_node_view_alter(&$build) {
       ),
     );
   }
+
+  if ($build['#entity_type'] == 'node' && $build['#bundle'] == 'esf_tnc_organisation') {
+    global $language;
+    $nid = 0;
+    if (!empty($build['#node'])) {
+      $nid = $build['#node']->nid;
+    }
+    if ($nid) {
+      // Get Projects which organisation is involved with.
+      $query = new EntityFieldQuery();
+      $query->entityCondition('entity_type', 'node')
+        ->entityCondition('bundle', 'esf_tnc_project')
+        ->fieldCondition('field_project_lead_organisation', 'target_id', $nid)
+        ->propertyCondition('language', $language->language, '=')
+        ->propertyCondition('status', NODE_PUBLISHED);
+
+      $result = $query->execute();
+      $projects = $result['node'];
+
+      $fields = field_info_instances('node', 'esf_tnc_project');
+      $field_id = $fields['title_field']['field_id'];
+      field_attach_load('node', $projects, FIELD_LOAD_CURRENT, array('field_id' => $field_id));
+
+      $links = array();
+      foreach ($projects as $key => $pjt) {
+        $item = field_get_items('node', $pjt, 'title_field');
+        if (!empty($item[0]['safe_value'])) {
+          $title = 'TPI-' . $key . ' - ' . $item[0]['safe_value'];
+          $links[] = array(
+            'title' => $title,
+            'href' => 'node/' . $key,
+          );
+        }
+      }
+      unset($key, $pjt);
+      // Build links array.
+      $projects = array(
+        '#theme' => 'links',
+        '#links' => $links,
+        '#title' => t('Involved in projects:'),
+      );
+      $build['involved_project'] = $projects;
+      unset($links);
+      // Get TCA which organisation is involved with.
+      $links = array();
+      $query = new EntityFieldQuery();
+      $query->entityCondition('entity_type', 'field_collection_item')
+        ->fieldCondition('field_fc_partner_project', 'target_id', $nid);
+
+      $result = $query->execute();
+      $fcs = $result['field_collection_item'];
+
+      foreach ($fcs as $fc) {
+        $wrapper = entity_metadata_wrapper('field_collection_item', $fc->item_id);
+        $status = $wrapper->field_fc_mas_approval_status->value();
+        // If TCA is published and project is not rejected.
+        if ($wrapper->host_entity->status->value() && $status != 'rejected') {
+          $links[] = array(
+            'title' => $wrapper->host_entity->title->value(),
+            'href' => 'node/' . $wrapper->host_entity->getIdentifier(),
+          );
+        }
+      }
+      unset($fc);
+      // Build links array.
+      $tca = array(
+        '#theme' => 'links',
+        '#links' => $links,
+        '#title' => t('In TCA:'),
+      );
+      $build['involved_tca'] = $tca;
+    }
+  }
 }

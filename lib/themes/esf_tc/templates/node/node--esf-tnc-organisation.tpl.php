@@ -260,7 +260,18 @@
               <td><?php print render($content['field_org_notes']); ?></td>
             </tr>
           <?php endif; ?>
-
+          <?php if (isset($content['involved_project'])) : ?>
+                <tr>
+                    <th><?php print render($content['involved_project']['#title']); ?></th>
+                    <td><?php print render($content['involved_project']); ?></td>
+                </tr>
+          <?php endif; ?>
+          <?php if (isset($content['involved_tca'])) : ?>
+                <tr>
+                    <th><?php print render($content['involved_tca']['#title']); ?></th>
+                    <td><?php print render($content['involved_tca']); ?></td>
+                </tr>
+          <?php endif; ?>
         <?php endif; ?>
       </table>
     <?php else: ?>
