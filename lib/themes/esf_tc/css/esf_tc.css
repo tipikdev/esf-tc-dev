@@ -724,6 +724,10 @@ p:empty {
   background-image: url(../images/nav/zoom.png);
 }
 
+#block-menu-menu-left-menu .menu .menu > .esf-library > a {
+  background-image: url(../images/nav/library.png);
+}
+
 #block-menu-menu-left-menu .menu .menu .menu {
   margin-top: -12px;
 }
