@@ -1,0 +1,44 @@
+<?php
+/**
+ * @file
+ * Code for the [ESF] TC Library feature.
+ */
+
+include_once 'esf_tc_library.features.inc';
+
+
+/**
+ * Implements hook_file_download().
+ * Restricts access to private files in forum to users allowed to edit
+ * a specific forum by workbench
+ */
+function esf_tc_library_file_download($uri){
+  GLOBAL $user;
+  workbench_access_user_load_data($user);
+  $workbench_tids = array_keys($user->workbench_access);
+  $query = db_select('file_usage', 'fu');
+  $query->fields('fu', array('id', 'type'));
+  $query->join('file_managed', 'fm', 'fm.fid = fu.fid');
+  $query->condition('fm.uri', $uri, '=');
+  $result= $query->execute();
+
+  foreach($result as $record){
+    // If a file is associated with a forum or a comment in forum, check access
+    switch ($record->type) {
+      case 'node':
+        $node_wrapper = entity_metadata_wrapper('node', node_load($record->id));
+        break;
+      case 'comment':
+        $comment = comment_load($record->id);
+        $comment_nid = $comment->nid;
+        $node_wrapper = entity_metadata_wrapper('node', node_load($comment_nid));
+        break;
+    }
+    if (isset($node_wrapper->type) && $node_wrapper->type->value() == 'forum') {
+      $forum_term = $node_wrapper->taxonomy_forums->raw();
+      if (!in_array($forum_term, $workbench_tids)) {
+        return -1;
+      }
+    }
+  }
+}
