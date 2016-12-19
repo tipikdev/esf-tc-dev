@@ -23,7 +23,7 @@ function esf_tc_library_file_download($uri){
   $result= $query->execute();
 
   foreach($result as $record){
-    // If a file is associated with a forum or a comment in forum, check access
+    // If this file is used in a research node where Display File(s) is not checked, don't allow user to view file
     switch ($record->type) {
       case 'node':
         $node_wrapper = entity_metadata_wrapper('node', node_load($record->id));
@@ -41,4 +41,11 @@ function esf_tc_library_file_download($uri){
       }
     }
   }
+}
+
+/**
+* Override common.js file for filedepot to display reports as collapsed.
+*/
+function esf_tc_library_js_alter(&$javascript) {
+$javascript['sites/all/modules/contrib/filedepot/js/common.js']['data'] = 'sites/all/themes/esf_tc/scripts/common.js';
 }
