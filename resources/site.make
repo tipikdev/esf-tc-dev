@@ -15,8 +15,8 @@ projects[profile2][subdir] = "contrib"
 projects[profile2][version] = "1.3"
 projects[taxonomy_csv][subdir] = "contrib"
 projects[taxonomy_csv][version] = "5.10"
-projects[filedpot][subdir] = "contrib"
-projects[filedpot][version] = "1.3"
+projects[filedepot][subdir] = "contrib"
+projects[filedepot][version] = "1.3"
 projects[filedepot_multiupload][subdir] = "contrib"
 projects[filedepot_multiupload][version] = "1.0"
 
@@ -25,14 +25,14 @@ projects[filedepot_multiupload][version] = "1.0"
 ; =========
 
 libraries[html_encoder][download][type] = get
+libraries[html_encoder][download][filename] = "html_encoder.js"
 libraries[html_encoder][download][url] = http://www.strictly-software.com/scripts/downloads/encoder.js
 libraries[html_encoder][destination] = libraries
 libraries[jquery.blockui][download][type] = get
 libraries[jquery.blockui][download][url] = http://malsup.github.io/jquery.blockUI.js
+libraries[jquery.blockui][download][filename] = "jquery.blockui.js"
 libraries[jquery.blockui][destination] = libraries
-libraries[plupload-2.2.1][download][type] = get
-libraries[plupload-2.2.1][download][url] = https://github.com/moxiecode/plupload/archive/v2.2.1.zip
-libraries[plupload-2.2.1][destination] = libraries
+
 
 ; ======
 ; Themes
