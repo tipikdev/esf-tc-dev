@@ -1,0 +1,1 @@
+../../vendor/ec-europa/qa-automation/QualityAssuranceTask.php
