@@ -132,16 +132,16 @@ function esf_tc_content_state_notification_form($form, &$form_state, $content_ty
  * Helper - Define default notification text.
  *
  * @param string $key
- *    The key for identifying the type of input and notification.
+ *   The key for identifying the type of input and notification.
  * @param array $variables
- *    Additionals variables to build the notification.
+ *   Additionals variables to build the notification.
  * @param string $language
- *    The language to use for the notification.
+ *   The language to use for the notification.
  *
  * @return bool|null|string
- *    Return content used in email for notifications.
+ *   Return content used in email for notifications.
  */
-function _esf_tc_content_types_mail_text($key, $variables = array(), $language = LANGUAGE_NONE) {
+function _esf_tc_content_types_mail_text($key, array $variables = array(), $language = LANGUAGE_NONE) {
   $more = !empty($variables['more']);
   $_states = _esf_tc_content_type_get_notification_states($more);
   // Check if message is customized.
@@ -288,10 +288,10 @@ function _esf_tc_content_types_mail_text($key, $variables = array(), $language =
  * Helper to get notification states.
  *
  * @param bool $more
- *    Binary choice for additional status.
+ *   Binary choice for additional status.
  *
  * @return array
- *    Return the list of editorial status.
+ *   Return the list of editorial status.
  */
 function _esf_tc_content_type_get_notification_states($more = FALSE) {
   $return = array(
@@ -315,7 +315,7 @@ function _esf_tc_content_type_get_notification_states($more = FALSE) {
  * Helper to notify users when node is saved.
  *
  * @param object $node
- *    The node used to notify.
+ *   The node used to notify.
  */
 function _esf_tc_content_types_node_notify($node) {
   global $user;
@@ -574,7 +574,7 @@ function _esf_tc_content_types_node_notify($node) {
  * Helper to notify users when contact field collection is saved.
  *
  * @param object $field_collection_item
- *    The field collection used to notify.
+ *   The field collection used to notify.
  */
 function _esf_tc_content_types_field_collection_notify($field_collection_item) {
   // Contact of organisation.
@@ -761,24 +761,24 @@ function esf_tc_content_types_mail($key, &$message, $params) {
  * Helper to generate form inputs for notifications administration.
  *
  * @param string $content_type
- *    The machine name of the content type.
+ *   The machine name of the content type.
  * @param array $keys
- *    The array of keys used to fill the fieldset.
+ *   The array of keys used to fill the fieldset.
  * @param array $options
- *    The options passed to the message manager function.
+ *   The options passed to the message manager function.
  * @param string $fieldset
- *    The name of the generated fieldset.
+ *   The name of the generated fieldset.
  * @param array $token_types
- *    The types of token allowed.
+ *   The types of token allowed.
  * @param array $form
- *    The types of token allowed.
+ *   The types of token allowed.
  * @param string $group
- *    The name of the group to associate to the inputs.
+ *   The name of the group to associate to the inputs.
  *
  * @return array
- *    Return the form with inputs.
+ *   Return the form with inputs.
  */
-function _esf_tc_content_get_email_inputs($content_type, $keys, $options, $fieldset, $token_types = NULL, &$form = array(), $group = 'notifyform') {
+function _esf_tc_content_get_email_inputs($content_type, array $keys, array $options, $fieldset, array $token_types = NULL, array &$form = array(), $group = 'notifyform') {
   if (is_array($keys) && count($keys)) {
     foreach ($keys as $key => $value) {
       $key_prefix = $content_type . '_notification_' . $key;

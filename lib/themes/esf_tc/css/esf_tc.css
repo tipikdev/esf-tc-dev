@@ -2026,14 +2026,14 @@ a.tabledrag-handle .handle {
 /* Library css */
 
 .tagsearchboxcontainer {
-   word-wrap: normal;
-   margin-right: 10px;
+  word-wrap: normal;
+  margin-right: 10px;
 }
 
 #reportheadercontainer {
- padding-top: 0;
+  padding-top: 0;
 }
 
 .yui-layout-bd.yui-layout-bd-nohd.yui-layout-bd-noft {
- height: 400px;
+  height: 400px;
 }

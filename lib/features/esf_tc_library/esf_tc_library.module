@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Code for the [ESF] TC Library feature.
@@ -6,28 +7,31 @@
 
 include_once 'esf_tc_library.features.inc';
 
-
 /**
  * Implements hook_file_download().
- * Restricts access to private files in forum to users allowed to edit
- * a specific forum by workbench
+ *
+ * Restricts access to private files in forum controlled by workbench.
  */
-function esf_tc_library_file_download($uri){
-  GLOBAL $user;
+function esf_tc_library_file_download($uri) {
+  global $user;
   workbench_access_user_load_data($user);
   $workbench_tids = array_keys($user->workbench_access);
   $query = db_select('file_usage', 'fu');
   $query->fields('fu', array('id', 'type'));
   $query->join('file_managed', 'fm', 'fm.fid = fu.fid');
   $query->condition('fm.uri', $uri, '=');
-  $result= $query->execute();
+  $result = $query->execute();
 
-  foreach($result as $record){
-    // If this file is used in a research node where Display File(s) is not checked, don't allow user to view file
+  foreach ($result as $record) {
+
+    /* If this file is used in a research node where Display File(s)
+    is not checked, don't allow user to view file. */
+
     switch ($record->type) {
       case 'node':
         $node_wrapper = entity_metadata_wrapper('node', node_load($record->id));
         break;
+
       case 'comment':
         $comment = comment_load($record->id);
         $comment_nid = $comment->nid;
@@ -44,8 +48,8 @@ function esf_tc_library_file_download($uri){
 }
 
 /**
-* Override common.js file for filedepot to display reports as collapsed.
-*/
+ * Override common.js file for filedepot to display reports as collapsed.
+ */
 function esf_tc_library_js_alter(&$javascript) {
-$javascript['sites/all/modules/contrib/filedepot/js/common.js']['data'] = 'sites/all/themes/esf_tc/scripts/common.js';
+  $javascript['sites/all/modules/contrib/filedepot/js/common.js']['data'] = 'sites/all/themes/esf_tc/scripts/common.js';
 }

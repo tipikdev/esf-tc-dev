@@ -130,11 +130,11 @@ function esf_tc_content_types_tca_submit($form, &$form_state) {
  * Helper defining specific submit function for the partners status button.
  *
  * @param array $form
- *    The form.
+ *   The form.
  * @param array $form_state
- *    The form state.
+ *   The form state.
  */
-function _esf_tnc_content_types_tca_partners_ready_submit(&$form, &$form_state) {
+function _esf_tnc_content_types_tca_partners_ready_submit(array &$form, array &$form_state) {
   $button = $form_state['triggering_element'];
   $element = drupal_array_get_nested_value($form, array_slice($button['#array_parents'], 0, -1));
 }
@@ -143,14 +143,14 @@ function _esf_tnc_content_types_tca_partners_ready_submit(&$form, &$form_state) 
  * Helper Ajax for change partners status.
  *
  * @param array $form
- *    The form.
+ *   The form.
  * @param array $form_state
- *    The form state.
+ *   The form state.
  *
  * @return array|mixed|null
- *    Return the form element.
+ *   Return the form element.
  */
-function _esf_tnc_content_types_tca_partners_ready_js(&$form, &$form_state) {
+function _esf_tnc_content_types_tca_partners_ready_js(array &$form, array &$form_state) {
   $button = $form_state['triggering_element'];
   $ready_status = 'ready';
   $has_error = FALSE;
@@ -223,12 +223,12 @@ function _esf_tnc_content_types_tca_partners_ready_js(&$form, &$form_state) {
  * Helper to get the partners status markup element.
  *
  * @param array $select_element
- *    The partners status form select input element.
+ *   The partners status form select input element.
  *
  * @return array
- *    Return a markup form element.
+ *   Return a markup form element.
  */
-function _esf_tnc_content_types_get_partners_status_markup($select_element) {
+function _esf_tnc_content_types_get_partners_status_markup(array $select_element) {
   return array(
     '#prefix' => "<div class='parnters--status-markup'>",
     '#suffix' => '</div>',
@@ -242,11 +242,11 @@ function _esf_tnc_content_types_get_partners_status_markup($select_element) {
  * Helper to handle the project partners validation of a TCA.
  *
  * @param object $tca
- *    The node object of the TCA.
+ *   The node object of the TCA.
  * @param object $fc
- *    The field collection object of the project to validate.
+ *   The field collection object of the project to validate.
  * @param string $action
- *    The action to proceed on the partner's project
+ *   The action to proceed on the partner's project
  *    allowed_values (accepted/rejected).
  */
 function _esf_tc_content_types_tca_partners_validation($tca, $fc, $action) {
@@ -293,10 +293,10 @@ function _esf_tc_content_types_tca_partners_validation($tca, $fc, $action) {
  * Custom access for TCA partners project validation.
  *
  * @param object $field_collection
- *    The Field Collection item object of the partners project.
+ *   The Field Collection item object of the partners project.
  *
  * @return bool
- *    Return true if the access is granted.
+ *   Return true if the access is granted.
  */
 function _esf_tc_content_types_tca_partners_project_access($field_collection) {
   global $user;
@@ -333,10 +333,10 @@ function _esf_tc_content_types_tca_partners_project_access($field_collection) {
  * Helper to find a related TCA.
  *
  * @param object $node
- *    The linked node object.
+ *   The linked node object.
  *
  * @return mixed
- *    Return a list of the related TCA node object
+ *   Return a list of the related TCA node object
  *    return NULL if not found or not appropriated content type.
  */
 function _esf_tc_content_types_find_related_tca($node) {
@@ -377,7 +377,7 @@ function _esf_tc_content_types_find_related_tca($node) {
  * Helper to get allowed values of TCA status field.
  *
  * @return array
- *    Return a list of status.
+ *   Return a list of status.
  */
 function _esf_tc_content_types_get_tca_status() {
   return _esf_tc_content_types_get_allowed_values_list('field_tca_status');
@@ -387,7 +387,7 @@ function _esf_tc_content_types_get_tca_status() {
  * Helper to get allowed values of partners project field.
  *
  * @return array
- *    Return a list of status.
+ *   Return a list of status.
  */
 function _esf_tc_content_types_get_partners_projects_status() {
   return _esf_tc_content_types_get_allowed_values_list('field_fc_mas_approval_status');
@@ -397,7 +397,7 @@ function _esf_tc_content_types_get_partners_projects_status() {
  * Helper to get allowed values of a list field.
  *
  * @return array
- *    Return a list of status.
+ *   Return a list of status.
  */
 function _esf_tc_content_types_get_allowed_values_list($fieldname) {
   $return = array();
@@ -413,12 +413,12 @@ function _esf_tc_content_types_get_allowed_values_list($fieldname) {
  * Helper to get all node id for partners' projects of a TCA.
  *
  * @param array $element
- *    The form element of partners projects.
+ *   The form element of partners projects.
  *
  * @return array
- *    Return an array of the partners' projects node ids.
+ *   Return an array of the partners' projects node ids.
  */
-function _esf_tc_content_types_get_partners_project_form_tca($element) {
+function _esf_tc_content_types_get_partners_project_form_tca(array $element) {
   $return = array();
   $indexes = array_filter(array_keys($element), 'is_int');
   if (!empty($indexes)) {

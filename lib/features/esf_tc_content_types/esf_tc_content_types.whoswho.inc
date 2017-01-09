@@ -27,7 +27,7 @@ function esf_tc_content_types_form_esf_tc_whoswho_node_form_alter(&$form, &$form
  * Helper to get the whoswho node ID.
  *
  * @return int|bool
- *    Return the nid of the who's who content
+ *   Return the nid of the who's who content
  *    or FALSE if not found.
  */
 function _esf_tc_content_types_get_whoswho_nid() {
