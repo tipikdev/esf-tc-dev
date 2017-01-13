@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * esf_tc_library.features.user_permission.inc
