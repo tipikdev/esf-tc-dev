@@ -51,5 +51,7 @@ function esf_tc_library_file_download($uri) {
  * Override common.js file for filedepot to display reports as collapsed.
  */
 function esf_tc_library_js_alter(&$javascript) {
-  $javascript['sites/all/modules/contrib/filedepot/js/common.js']['data'] = 'sites/all/themes/esf_tc/scripts/common.js';
+  $file_depot_path = drupal_get_path('module', 'filedepot') . '/js/common.js';
+  $esf_tc_theme_path = drupal_get_path('theme', 'esf_tc') . '/scripts/common.js';
+  $javascript[$file_depot_path]['data'] = $esf_tc_theme_path;
 }

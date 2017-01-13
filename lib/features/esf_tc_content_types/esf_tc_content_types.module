@@ -1158,7 +1158,7 @@ function esf_tc_content_types_menu() {
     'file' => 'esf_tc_content_types.tca.inc',
   );
   $items['whoswho'] = array(
-    'title' => 'Who\'s who',
+    'title' => "Who's who",
     'type' => MENU_NORMAL_ITEM,
     'page callback' => '_esf_tc_content_types_whoswho_page',
     'file' => 'esf_tc_content_types.tca.inc',
