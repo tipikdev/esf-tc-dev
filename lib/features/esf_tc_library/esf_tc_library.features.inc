@@ -1,19 +1,13 @@
 <?php
 /**
  * @file
- * esf_tc_advanced_search.features.inc
+ * esf_tc_library.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
-function esf_tc_advanced_search_ctools_plugin_api($module = NULL, $api = NULL) {
-  if ($module == "apachesolr" && $api == "apachesolr_environments") {
-    return array("version" => "1");
-  }
-  if ($module == "apachesolr_search" && $api == "apachesolr_search_defaults") {
-    return array("version" => "3");
-  }
+function esf_tc_library_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "context" && $api == "context") {
     return array("version" => "3");
   }
@@ -28,6 +22,6 @@ function esf_tc_advanced_search_ctools_plugin_api($module = NULL, $api = NULL) {
 /**
  * Implements hook_views_api().
  */
-function esf_tc_advanced_search_views_api($module = NULL, $api = NULL) {
+function esf_tc_library_views_api($module = NULL, $api = NULL) {
   return array("api" => "3.0");
 }

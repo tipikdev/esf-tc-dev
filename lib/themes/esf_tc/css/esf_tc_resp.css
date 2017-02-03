@@ -312,3 +312,49 @@
     padding: 0 15px;
   }
 }
+
+/* Library Responsiveness  */
+
+@media (min-width: 1200px) {
+  .cb_region {
+    width: 100%;
+  }
+}
+@media (min-width: 992px){
+  .cb_region {
+    width: 100%;
+  }
+}
+@media (min-width: 768px) {
+  .cb_region {
+    width: 100%;
+  }
+}
+@media (max-width: 752px) {
+  .filedepottoolbar_searchbox {
+    padding-bottom: 10px;
+    margin-top: -20px
+  }
+}
+@media (max-width: 670px) {
+  .filedepottoolbar_searchbox .filedepottoolbar_searchform form input {
+    width: 100px;
+  }
+  .filedepottoolbar_searchform {
+    width: 50%;
+  }
+  #filedepottoolbar .first-child a {
+    font-size: 10px;
+  }
+  .filedepottoolbar_searchbox .filedepottoolbar_searchform form input  {
+    font-size: 10px;
+  }
+}
+@media (max-width: 595px) {
+  .filedepottoolbar_searchbox .filedepottoolbar_searchform form input {
+    width: 100px;
+}
+  .filedepottoolbar_searchform {
+    width: 50%;
+  }
+}

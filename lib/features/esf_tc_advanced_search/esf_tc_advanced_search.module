@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * Code for the esf_tc_advanced_search feature.

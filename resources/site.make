@@ -15,6 +15,10 @@ projects[profile2][subdir] = "contrib"
 projects[profile2][version] = "1.3"
 projects[taxonomy_csv][subdir] = "contrib"
 projects[taxonomy_csv][version] = "5.10"
+projects[taxonomy_menu][subdir] = "contrib"
+projects[addressfield][version] = "1.5"
+projects[move_region][subdir] = "contrib"
+projects[move_region][version] = "1.0"
 
 
 ; =========

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * esf_tc_advanced_search.facetapi_defaults.inc
@@ -264,29 +263,89 @@ function esf_tc_advanced_search_facetapi_default_facet_settings() {
   $facet->enabled = TRUE;
   $facet->settings = array(
     'weight' => 0,
-    'widget' => 'facetapi_links',
+    'widget' => 'date_range',
     'filters' => array(),
     'active_sorts' => array(
       'active' => 'active',
       'count' => 'count',
       'display' => 'display',
+      'indexed' => 0,
     ),
     'sort_weight' => array(
-      'active' => -50,
-      'count' => -49,
-      'display' => -48,
+      'active' => '-50',
+      'count' => '-49',
+      'display' => '-48',
+      'indexed' => '0',
     ),
     'sort_order' => array(
-      'active' => 3,
-      'count' => 3,
-      'display' => 4,
+      'active' => '3',
+      'count' => '3',
+      'display' => '4',
+      'indexed' => '4',
     ),
-    'empty_behavior' => 'none',
+    'empty_behavior' => 'text',
     'facet_more_text' => 'Show more',
     'facet_fewer_text' => 'Show fewer',
-    'soft_limit' => 20,
+    'soft_limit' => '20',
     'nofollow' => 1,
     'show_expanded' => 0,
+    'ranges' => array(
+      'coming_week_events' => array(
+        'label' => 'Coming week',
+        'machine_name' => 'coming_week_events',
+        'date_range_start_op' => '+',
+        'date_range_start_amount' => '7',
+        'date_range_start_unit' => 'DAY',
+        'date_range_end_op' => 'NOW',
+        'date_range_end_amount' => '7',
+        'date_range_end_unit' => 'DAY',
+        'weight' => '-10',
+        'delete' => 0,
+      ),
+      'coming_month_events' => array(
+        'label' => 'Coming Month',
+        'machine_name' => 'coming_month_events',
+        'date_range_start_op' => '+',
+        'date_range_start_amount' => '1',
+        'date_range_start_unit' => 'MONTH',
+        'date_range_end_op' => 'NOW',
+        'date_range_end_amount' => '1',
+        'date_range_end_unit' => 'MONTH',
+        'weight' => '-9',
+        'delete' => 0,
+      ),
+      'coming_year_events' => array(
+        'label' => 'Coming year',
+        'machine_name' => 'coming_year_events',
+        'date_range_start_op' => 'NOW',
+        'date_range_start_amount' => '1',
+        'date_range_start_unit' => 'YEAR',
+        'date_range_end_op' => '+',
+        'date_range_end_amount' => '5',
+        'date_range_end_unit' => 'YEAR',
+        'weight' => '-8',
+        'delete' => 0,
+      ),
+      'past_year_events' => array(
+        'label' => 'Previous Events',
+        'machine_name' => 'past_year_events',
+        'date_range_start_op' => '-',
+        'date_range_start_amount' => '10',
+        'date_range_start_unit' => 'YEAR',
+        'date_range_end_op' => 'NOW',
+        'date_range_end_amount' => '3',
+        'date_range_end_unit' => 'YEAR',
+        'weight' => '-6',
+        'delete' => 0,
+      ),
+    ),
+    'date_ranges' => array(
+      'add_range' => 'Add a new date range',
+    ),
+    'empty_text' => array(
+      'value' => '<p>There are currently no items to display</p>',
+      'format' => 'full_html',
+    ),
   );
   $export['apachesolr@solr:block:dm_field_esf_event_start_date'] = $facet;
 
@@ -297,32 +356,104 @@ function esf_tc_advanced_search_facetapi_default_facet_settings() {
   $facet->searcher = 'apachesolr@solr';
   $facet->realm = 'block';
   $facet->facet = 'dm_field_esf_news_date';
-  $facet->enabled = FALSE;
+  $facet->enabled = TRUE;
   $facet->settings = array(
     'weight' => 0,
-    'widget' => 'facetapi_links',
+    'widget' => 'date_range',
     'filters' => array(),
     'active_sorts' => array(
       'active' => 'active',
       'count' => 'count',
       'display' => 'display',
+      'indexed' => 0,
     ),
     'sort_weight' => array(
-      'active' => -50,
-      'count' => -49,
-      'display' => -48,
+      'active' => '-50',
+      'count' => '-49',
+      'display' => '-48',
+      'indexed' => '0',
     ),
     'sort_order' => array(
-      'active' => 3,
-      'count' => 3,
-      'display' => 4,
+      'active' => '3',
+      'count' => '3',
+      'display' => '4',
+      'indexed' => '3',
     ),
     'empty_behavior' => 'none',
     'facet_more_text' => 'Show more',
     'facet_fewer_text' => 'Show fewer',
-    'soft_limit' => 20,
+    'soft_limit' => '20',
     'nofollow' => 1,
     'show_expanded' => 0,
+    'empty_text' => array(
+      'value' => '',
+      'format' => 'full_html',
+    ),
+    'ranges' => array(
+      'past_hour' => array(
+        'label' => 'Past hour',
+        'machine_name' => 'past_hour',
+        'date_range_start_op' => '-',
+        'date_range_start_amount' => '1',
+        'date_range_start_unit' => 'HOUR',
+        'date_range_end_op' => 'NOW',
+        'date_range_end_amount' => '6',
+        'date_range_end_unit' => 'YEAR',
+        'weight' => '0',
+        'delete' => 0,
+      ),
+      'past_24_hours' => array(
+        'label' => 'Past 24 hours',
+        'machine_name' => 'past_24_hours',
+        'date_range_start_op' => '-',
+        'date_range_start_amount' => '24',
+        'date_range_start_unit' => 'HOUR',
+        'date_range_end_op' => 'NOW',
+        'date_range_end_amount' => '',
+        'date_range_end_unit' => 'HOUR',
+        'weight' => '1',
+        'delete' => 0,
+      ),
+      'past_week' => array(
+        'label' => 'Past week',
+        'machine_name' => 'past_week',
+        'date_range_start_op' => '-',
+        'date_range_start_amount' => '7',
+        'date_range_start_unit' => 'DAY',
+        'date_range_end_op' => 'NOW',
+        'date_range_end_amount' => '',
+        'date_range_end_unit' => 'HOUR',
+        'weight' => '2',
+        'delete' => 0,
+      ),
+      'past_month' => array(
+        'label' => 'Past month',
+        'machine_name' => 'past_month',
+        'date_range_start_op' => '-',
+        'date_range_start_amount' => '1',
+        'date_range_start_unit' => 'MONTH',
+        'date_range_end_op' => 'NOW',
+        'date_range_end_amount' => '',
+        'date_range_end_unit' => 'HOUR',
+        'weight' => '3',
+        'delete' => 0,
+      ),
+      'past_year' => array(
+        'label' => 'Past year',
+        'machine_name' => 'past_year',
+        'date_range_start_op' => '-',
+        'date_range_start_amount' => '1',
+        'date_range_start_unit' => 'YEAR',
+        'date_range_end_op' => 'NOW',
+        'date_range_end_amount' => '',
+        'date_range_end_unit' => 'HOUR',
+        'weight' => '4',
+        'delete' => 0,
+      ),
+    ),
+    'date_ranges' => array(
+      'add_range' => 'Add a new date range',
+    ),
   );
   $export['apachesolr@solr:block:dm_field_esf_news_date'] = $facet;
 
@@ -783,7 +914,16 @@ function esf_tc_advanced_search_facetapi_default_facet_settings() {
   $facet->settings = array(
     'weight' => 0,
     'widget' => 'facetapi_links',
-    'filters' => array(),
+    'filters' => array(
+      'active_items' => array(
+        'status' => 0,
+        'weight' => '-50',
+      ),
+      'current_depth' => array(
+        'status' => 1,
+        'weight' => '-49',
+      ),
+    ),
     'active_sorts' => array(
       'active' => 'active',
       'count' => 'count',
@@ -2056,42 +2196,6 @@ function esf_tc_advanced_search_facetapi_default_facet_settings() {
   $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
-  $facet->name = 'apachesolr@solr:block:sm_field_org_is_ma_ib';
-  $facet->searcher = 'apachesolr@solr';
-  $facet->realm = 'block';
-  $facet->facet = 'sm_field_org_is_ma_ib';
-  $facet->enabled = TRUE;
-  $facet->settings = array(
-    'weight' => 0,
-    'widget' => 'facetapi_links',
-    'filters' => array(),
-    'active_sorts' => array(
-      'active' => 'active',
-      'count' => 'count',
-      'display' => 'display',
-    ),
-    'sort_weight' => array(
-      'active' => -50,
-      'count' => -49,
-      'display' => -48,
-    ),
-    'sort_order' => array(
-      'active' => 3,
-      'count' => 3,
-      'display' => 4,
-    ),
-    'empty_behavior' => 'none',
-    'facet_more_text' => 'Show more',
-    'facet_fewer_text' => 'Show fewer',
-    'soft_limit' => 20,
-    'nofollow' => 1,
-    'show_expanded' => 0,
-  );
-  $export['apachesolr@solr:block:sm_field_org_is_ma_ib'] = $facet;
-
-  $facet = new stdClass();
-  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
-  $facet->api_version = 1;
   $facet->name = 'apachesolr@solr:block:sm_field_org_name_national_lang';
   $facet->searcher = 'apachesolr@solr';
   $facet->realm = 'block';
@@ -3140,7 +3244,7 @@ function esf_tc_advanced_search_facetapi_default_facet_settings() {
   $facet->searcher = 'apachesolr@solr';
   $facet->realm = 'block';
   $facet->facet = 'sm_field_tca_status';
-  $facet->enabled = FALSE;
+  $facet->enabled = TRUE;
   $facet->settings = array(
     'weight' => 0,
     'widget' => 'facetapi_links',
@@ -3149,23 +3253,95 @@ function esf_tc_advanced_search_facetapi_default_facet_settings() {
       'active' => 'active',
       'count' => 'count',
       'display' => 'display',
+      'indexed' => 0,
     ),
     'sort_weight' => array(
-      'active' => -50,
-      'count' => -49,
-      'display' => -48,
+      'active' => '-50',
+      'count' => '-49',
+      'display' => '-48',
+      'indexed' => '0',
     ),
     'sort_order' => array(
-      'active' => 3,
-      'count' => 3,
-      'display' => 4,
+      'active' => '3',
+      'count' => '3',
+      'display' => '4',
+      'indexed' => '4',
     ),
     'empty_behavior' => 'none',
     'facet_more_text' => 'Show more',
     'facet_fewer_text' => 'Show fewer',
-    'soft_limit' => 20,
+    'soft_limit' => '20',
     'nofollow' => 1,
     'show_expanded' => 0,
+    'ranges' => array(
+      'past_hour' => array(
+        'label' => 'Past hour',
+        'machine_name' => 'past_hour',
+        'date_range_start_op' => '-',
+        'date_range_start_amount' => '1',
+        'date_range_start_unit' => 'HOUR',
+        'date_range_end_op' => 'NOW',
+        'date_range_end_amount' => '',
+        'date_range_end_unit' => '',
+        'weight' => 0,
+        'delete' => 0,
+      ),
+      'past_24_hours' => array(
+        'label' => 'Past 24 hours',
+        'machine_name' => 'past_24_hours',
+        'date_range_start_op' => '-',
+        'date_range_start_amount' => '24',
+        'date_range_start_unit' => 'HOUR',
+        'date_range_end_op' => 'NOW',
+        'date_range_end_amount' => '',
+        'date_range_end_unit' => '',
+        'weight' => 1,
+        'delete' => 0,
+      ),
+      'past_week' => array(
+        'label' => 'Past week',
+        'machine_name' => 'past_week',
+        'date_range_start_op' => '-',
+        'date_range_start_amount' => '7',
+        'date_range_start_unit' => 'DAY',
+        'date_range_end_op' => 'NOW',
+        'date_range_end_amount' => '',
+        'date_range_end_unit' => '',
+        'weight' => 2,
+        'delete' => 0,
+      ),
+      'past_month' => array(
+        'label' => 'Past month',
+        'machine_name' => 'past_month',
+        'date_range_start_op' => '-',
+        'date_range_start_amount' => '1',
+        'date_range_start_unit' => 'MONTH',
+        'date_range_end_op' => 'NOW',
+        'date_range_end_amount' => '',
+        'date_range_end_unit' => '',
+        'weight' => 3,
+        'delete' => 0,
+      ),
+      'past_year' => array(
+        'label' => 'Past year',
+        'machine_name' => 'past_year',
+        'date_range_start_op' => '-',
+        'date_range_start_amount' => '1',
+        'date_range_start_unit' => 'YEAR',
+        'date_range_end_op' => 'NOW',
+        'date_range_end_amount' => '',
+        'date_range_end_unit' => '',
+        'weight' => 4,
+        'delete' => 0,
+      ),
+    ),
+    'date_ranges' => array(
+      'add_range' => 'Add a new date range',
+    ),
+    'empty_text' => array(
+      'value' => '',
+      'format' => 'full_html',
+    ),
   );
   $export['apachesolr@solr:block:sm_field_tca_status'] = $facet;
 
@@ -3248,7 +3424,7 @@ function esf_tc_advanced_search_facetapi_default_facet_settings() {
   $facet->searcher = 'apachesolr@solr';
   $facet->realm = 'block';
   $facet->facet = 'sm_title_field';
-  $facet->enabled = FALSE;
+  $facet->enabled = TRUE;
   $facet->settings = array(
     'weight' => 0,
     'widget' => 'facetapi_links',
@@ -3257,23 +3433,95 @@ function esf_tc_advanced_search_facetapi_default_facet_settings() {
       'active' => 'active',
       'count' => 'count',
       'display' => 'display',
+      'indexed' => 0,
     ),
     'sort_weight' => array(
-      'active' => -50,
-      'count' => -49,
-      'display' => -48,
+      'active' => '-50',
+      'count' => '-49',
+      'display' => '-48',
+      'indexed' => '0',
     ),
     'sort_order' => array(
-      'active' => 3,
-      'count' => 3,
-      'display' => 4,
+      'active' => '3',
+      'count' => '3',
+      'display' => '4',
+      'indexed' => '3',
     ),
     'empty_behavior' => 'none',
     'facet_more_text' => 'Show more',
     'facet_fewer_text' => 'Show fewer',
-    'soft_limit' => 20,
+    'soft_limit' => '0',
     'nofollow' => 1,
     'show_expanded' => 0,
+    'empty_text' => array(
+      'value' => '',
+      'format' => 'full_html',
+    ),
+    'ranges' => array(
+      'past_hour' => array(
+        'label' => 'Past hour',
+        'machine_name' => 'past_hour',
+        'date_range_start_op' => '-',
+        'date_range_start_amount' => '1',
+        'date_range_start_unit' => 'HOUR',
+        'date_range_end_op' => 'NOW',
+        'date_range_end_amount' => '',
+        'date_range_end_unit' => 'HOUR',
+        'weight' => '0',
+        'delete' => 0,
+      ),
+      'past_24_hours' => array(
+        'label' => 'Past 24 hours',
+        'machine_name' => 'past_24_hours',
+        'date_range_start_op' => '-',
+        'date_range_start_amount' => '24',
+        'date_range_start_unit' => 'HOUR',
+        'date_range_end_op' => 'NOW',
+        'date_range_end_amount' => '',
+        'date_range_end_unit' => 'HOUR',
+        'weight' => '1',
+        'delete' => 0,
+      ),
+      'past_week' => array(
+        'label' => 'Past week',
+        'machine_name' => 'past_week',
+        'date_range_start_op' => '-',
+        'date_range_start_amount' => '7',
+        'date_range_start_unit' => 'DAY',
+        'date_range_end_op' => 'NOW',
+        'date_range_end_amount' => '',
+        'date_range_end_unit' => 'HOUR',
+        'weight' => '2',
+        'delete' => 0,
+      ),
+      'past_month' => array(
+        'label' => 'Past month',
+        'machine_name' => 'past_month',
+        'date_range_start_op' => '-',
+        'date_range_start_amount' => '1',
+        'date_range_start_unit' => 'MONTH',
+        'date_range_end_op' => 'NOW',
+        'date_range_end_amount' => '',
+        'date_range_end_unit' => 'HOUR',
+        'weight' => '3',
+        'delete' => 0,
+      ),
+      'past_year' => array(
+        'label' => 'Past year',
+        'machine_name' => 'past_year',
+        'date_range_start_op' => '-',
+        'date_range_start_amount' => '1',
+        'date_range_start_unit' => 'YEAR',
+        'date_range_end_op' => 'NOW',
+        'date_range_end_amount' => '',
+        'date_range_end_unit' => 'HOUR',
+        'weight' => '4',
+        'delete' => 0,
+      ),
+    ),
+    'date_ranges' => array(
+      'add_range' => 'Add a new date range',
+    ),
   );
   $export['apachesolr@solr:block:sm_title_field'] = $facet;
 

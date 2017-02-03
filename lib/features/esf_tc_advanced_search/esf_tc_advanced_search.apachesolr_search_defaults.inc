@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * esf_tc_advanced_search.apachesolr_search_defaults.inc
@@ -18,7 +17,7 @@ function esf_tc_advanced_search_apachesolr_search_default_searchers() {
   $searcher->label = 'Core Search';
   $searcher->description = 'Core Search';
   $searcher->search_path = 'search/site';
-  $searcher->page_title = 'Search transnational platform';
+  $searcher->page_title = 'Site';
   $searcher->env_id = 'solr';
   $searcher->settings = array(
     'fq' => array(),
