@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * esf_tc_advanced_search.apachesolr_search_defaults.inc
