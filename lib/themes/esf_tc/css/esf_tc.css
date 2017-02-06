@@ -1681,8 +1681,8 @@ a.tabledrag-handle .handle {
 }
 
 .tagsearchboxcontainer {
-    word-wrap: normal;
-    margin-right: 10px;
+  word-wrap: normal;
+  margin-right: 10px;
 }
 
 #reportheadercontainer {
@@ -1716,7 +1716,7 @@ a.tabledrag-handle .handle {
 }
 
 input.form-text {
-    height: 20px;
+  height: 20px;
 }
 
 #showsearchtags,
@@ -1766,12 +1766,12 @@ input.form-text {
 /* News and Events Exposed Filters  */
 
 #block-views-66f8fca36e1545a359135c2aceebadc9 {
-  background-color: #0065A2;
+  background-color: #0065a2;
   border-radius: 0;
 }
 
 #block-views-66f8fca36e1545a359135c2aceebadc9 label {
-  color: white
+  color: white;
 }
 
 #block-views-66f8fca36e1545a359135c2aceebadc9 .description {
@@ -1793,12 +1793,12 @@ input.form-text {
 }
 
 #block-views-e04560c448558f135964520a77bad221 {
-  background-color: #0065A2;
+  background-color: #0065a2;
   border-radius: 0;
 }
 
 #block-views-e04560c448558f135964520a77bad221 label {
-  color: white
+  color: white;
 }
 
 #block-views-e04560c448558f135964520a77bad221 .description {
@@ -1814,17 +1814,3 @@ input.form-text {
   left: 0;
   content: "e.g. 31/01/2017";
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
