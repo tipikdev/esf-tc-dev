@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * esf_tc_advanced_search.views_default.inc

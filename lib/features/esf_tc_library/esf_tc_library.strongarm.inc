@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * esf_tc_library.strongarm.inc
@@ -226,6 +225,13 @@ ppt=ppt.gif, pptx=ppt.gif, mpp=mpp.gif, pdf=pdf.gif, txt=txt.gif, zip=zip.gif
     0 => 'status',
   );
   $export['node_options_filedepot_folder'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'workbench_access_node_type_filedepot_folder';
+  $strongarm->value = 1;
+  $export['workbench_access_node_type_filedepot_folder'] = $strongarm;
 
   return $export;
 }

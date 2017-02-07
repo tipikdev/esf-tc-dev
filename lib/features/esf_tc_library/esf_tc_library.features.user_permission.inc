@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * esf_tc_library.features.user_permission.inc
@@ -38,6 +37,64 @@ function esf_tc_library_user_default_permissions() {
       'webmaster' => 'webmaster',
     ),
     'module' => 'filedepot',
+  );
+
+  // Exported permission: 'create filedepot_folder content'.
+  $permissions['create filedepot_folder content'] = array(
+    'name' => 'create filedepot_folder content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'forum moderator' => 'forum moderator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete any filedepot_folder content'.
+  $permissions['delete any filedepot_folder content'] = array(
+    'name' => 'delete any filedepot_folder content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete own filedepot_folder content'.
+  $permissions['delete own filedepot_folder content'] = array(
+    'name' => 'delete own filedepot_folder content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'forum moderator' => 'forum moderator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete terms in library_vocabulary'.
+  $permissions['delete terms in library_vocabulary'] = array(
+    'name' => 'delete terms in library_vocabulary',
+    'roles' => array(),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'edit any filedepot_folder content'.
+  $permissions['edit any filedepot_folder content'] = array(
+    'name' => 'edit any filedepot_folder content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'edit own filedepot_folder content'.
+  $permissions['edit own filedepot_folder content'] = array(
+    'name' => 'edit own filedepot_folder content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'forum moderator' => 'forum moderator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'edit terms in library_vocabulary'.
+  $permissions['edit terms in library_vocabulary'] = array(
+    'name' => 'edit terms in library_vocabulary',
+    'roles' => array(),
+    'module' => 'taxonomy',
   );
 
   return $permissions;
